@@ -1,1 +1,1 @@
-<% response.sendRedirect("admin/trang-chu"); %>
+<% response.sendRedirect("dienthoai/danhsach"); %>

@@ -34,8 +34,10 @@
 							class="iconmenu fas fa-book"></i><b> GIỚI THIỆU </b></a></li>
 					<li class="nav-item position-relative"><a
 						class="nav-link position-relative  href="#"><i
-							class="fa fa-user" aria-hidden="true" data-toggle="modal"
-							data-target="#myModal" style="font-size: 20px;"></i></a></li>
+							class="fa fa-user"></i>
+							<!--  aria-hidden="true" data-toggle="modal"
+							data-target="#myModal" style="font-size: 20px;"></i>-->
+							</a></li>
 					<li class="nav-item position-relative"><a
 						class="nav-link position-relative" href="${pageContext.request.contextPath}/giohang/danhsach"><i
 							class="fa fa-shopping-cart"></i></a></li>

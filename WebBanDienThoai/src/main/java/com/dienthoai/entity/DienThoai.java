@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Nationalized;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -37,7 +38,6 @@ public class DienThoai implements Serializable{
 	
 	@Nationalized
 	private String baoHanh;
-	
 	private float giaDT;
 	private float giamGia;
 	private int soLuongTon;
@@ -94,7 +94,6 @@ public class DienThoai implements Serializable{
 	public void setBaoHanh(String baoHanh) {
 		this.baoHanh = baoHanh;
 	}
-
 	public float getGiaDT() {
 		return giaDT;
 	}

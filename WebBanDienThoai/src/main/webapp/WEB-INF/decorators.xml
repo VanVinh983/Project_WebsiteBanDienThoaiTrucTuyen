@@ -5,8 +5,8 @@
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
 	
-	<decorator name="danhsach-giohang" page="user.jsp">
-		<pattern>/giohang/danhsach</pattern>
+	<decorator name="user-giohang" page="user.jsp">
+		<pattern>/user/giohang</pattern>
 	</decorator>
 	
 	<decorator name="admin-trangchu" page="admin.jsp">

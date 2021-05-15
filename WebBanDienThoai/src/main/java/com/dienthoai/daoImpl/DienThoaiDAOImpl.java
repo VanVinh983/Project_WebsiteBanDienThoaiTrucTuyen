@@ -56,4 +56,13 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 		List<DienThoai> dts = theQuery.getResultList();
 		return dts;
 	}
+	@Transactional
+	@Override
+	public List<DienThoai> getListDienThoaiGiamGia() {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<DienThoai> theQuery = currentSession.createQuery("from DienThoai where giamGia>0 ", DienThoai.class);
+		List<DienThoai> dts = theQuery.getResultList();
+		return dts;	
+	}
 }

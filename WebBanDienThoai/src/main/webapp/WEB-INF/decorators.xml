@@ -5,6 +5,10 @@
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
 	
+	<decorator name="chiTietDienThoai" page="user.jsp">
+		<pattern>/user/chitietdt</pattern>
+	</decorator>
+	
 	<decorator name="user-giohang" page="user.jsp">
 		<pattern>/user/giohang</pattern>
 	</decorator>

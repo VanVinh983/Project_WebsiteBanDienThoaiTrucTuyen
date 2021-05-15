@@ -44,5 +44,9 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListTheoTen(tenDT);
 	}
-
+	@Override
+	public List<DienThoai> getDienThoaiGiamGia() {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiGiamGia(); 
+	}
 }

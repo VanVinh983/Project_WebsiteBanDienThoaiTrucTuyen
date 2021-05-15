@@ -1,5 +1,6 @@
 package com.dienthoai.controller.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ public class DienThoaiController {
 
 	@GetMapping("/danhsach")
 	public String listCustomers(Model theModel) {
-		List<DienThoai> dts = dienThoaiService.getListDienThoai();
-		theModel.addAttribute("dts", dts);
+		List<DienThoai> listGiamGia = dienThoaiService.getDienThoaiGiamGia();
+		List<DienThoai> dtsGiamGia = new ArrayList<DienThoai>();
+		for (int i = 0; i < 4; i++) {
+			dtsGiamGia.add(listGiamGia.get(i));
+		}
+		theModel.addAttribute("dts", dtsGiamGia);
 		return "user/danhsach-dienthoai";
 	}
 }

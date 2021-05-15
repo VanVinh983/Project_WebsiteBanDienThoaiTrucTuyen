@@ -151,7 +151,7 @@
 										<div><input id="detail_id" type="hidden" name="detail_id"/></div>
 							<div class="form-group">
 								<label>Hình ảnh</label><br> 
-								<input name="fileName" type="file"/>
+								<input name="fileName" type="file" />
 								<span id="result"></span>
 							</div>							
 							

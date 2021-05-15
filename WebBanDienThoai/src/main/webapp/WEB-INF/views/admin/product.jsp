@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/common/taglib.jsp"%>
 <c:url value="/resources" var="resources"></c:url>
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -50,7 +50,8 @@
 											<%-- td><img
 												style="width: 110px; height: 67px; border: 1px solid #fff;"
 												src="${img}/iPhone/iphone-11-pro-max-gold-200-180x125.png"></td> --%>
-											<td>${product.giaDT}</td>
+											<td><fmt:formatNumber type="number" pattern="#,###,###.##"
+												value="${product.giaDT}" />  đ</td>
 											<td>${product.soLuongTon}</td>
 											<td>${product.giamGia }%</td>
 
@@ -90,12 +91,8 @@
 					
 					<ul class="parameterfull">
 						<li>
-							<div style="text-align: center;">
-							<span id='anh'></span>
-
-							<c:url var="img" value="ip11trang.png" />
-							
-								<img  src="${resources}/admin/images/product/${img}"  width="300" height="250">
+							<div style="text-align: center;">												
+								<img id="anh" src=""  width="300" height="250">
 							</div>
 						</li>
 						<li><span>Màn hình</span>

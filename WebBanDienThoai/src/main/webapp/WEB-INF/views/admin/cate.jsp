@@ -49,7 +49,7 @@
 											<td></td>
 											<td>${cate.tenDanhMuc}</td>
 											<td>	
-												<a href="${delete}" onclick="return confirm('Bạn có chắc chắn xóa không?');" class="text-white"><button class="btn btn-danger">Xóa</button></a>
+												<a onClick="xoa(${cate.id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>
 												<a href="${edit}" class="text-white"><button class="btn btn-success">Sửa</button></a>
 											</td>
 										</tr>

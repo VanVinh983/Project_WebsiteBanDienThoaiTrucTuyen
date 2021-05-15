@@ -45,7 +45,7 @@ function renderDuLieu(data) {
 			.append($("<td>").text(null))
 			.append($("<td>").text(tenDanhMuc))
 			.append($("<td>").html(` 
-				<a href="delete?cateId=${id}" onclick="return confirm('Bạn có chắc chắn xóa không?');" class="text-white"><button class="btn btn-danger">Xóa</button></a>
+				<a onClick="xoa(${id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>
 				<a href="showFormEdit?cateId=${id}" class="text-white"><button class="btn btn-success">Sửa</button></a>
 				`));
 	});

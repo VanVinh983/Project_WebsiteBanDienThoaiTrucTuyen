@@ -5,10 +5,10 @@ function xemChiTiet(id) {
 
 	$.get(url, function(data, status) {
 
-		const { trongLuong,kichThuoc, mauSac, anhURL,thuongHieu, thongSo} = data;
+		const {trongLuong,kichThuoc, mauSac, anhURL,thuongHieu, thongSo} = data;
 
 		if (status === 'success') {
-			$("#xem-modal #anh").val(anhURL);
+			$("#xem-modal #anh").attr("src","/WebBanDienThoai/resources/admin/images/product/"+anhURL);	
 			$("#xem-modal #manHinh").html(`<label>${thongSo.manHinh}</label>`);
 			$("#xem-modal #heDieuHanh").html(`<label>${thongSo.heDieuHanh}</label>`);
 			$("#xem-modal #camera").html(`<label>${thongSo.camera}</label>`);

@@ -71,74 +71,29 @@
 					
 					<ul class="parameterfull">
 						<li>
-							<div style="text-align: center;">
-							<span id='anh'></span>
-
-							<c:url var="img" value="ip11trang.png" />
-							
-								<img  src="${resources}/admin/images/product/${img}"  width="300" height="250">
+							<div class="col-lg-6"><label>Mã hóa đơn</label>
+								<input type="text"></input>
+							</div>
+							<div class="col-lg-6"><label>Ngày lập hóa đơn</label>
+								<input type="text"></input>
 							</div>
 						</li>
-						<li><span>Màn hình</span>
-							<div><label id="manHinh"> </label></div>
-						</li>
-						
-						<li><span>Hệ điều hành</span>
-							<div>
-								<label id="heDieuHanh"> </label>
+						<li>
+							<div class="col-lg-6"><label>Mã khách hàng</label>
+								<input type="text"></input>
+							</div>
+							<div class="col-lg-6"><label>Tên khách hàng</label>
+								<input type="text"></input>
 							</div>
 						</li>
-						<li><span>Độ phân giải Camera</span>
-							<div>
-								<label id="camera"></label>
+						<li>
+							<div class="col-lg-6"><label>Số điện thoại</label>
+								<input type="text"></input>
+							</div>
+							<div class="col-lg-6"><label>Địa chỉ</label>
+								<input type="text"></input>
 							</div>
 						</li>
-						<li><span>Ram</span>
-							<div>
-								<label id="ram"></label>
-							</div>
-						</li>
-						<li><span>Bộ nhớ trong</span>
-							<div>
-								<label id="boNho"></label>
-							</div>
-						</li>
-						<li><span>Sim</span>
-							<div>
-								<label id="sim"></label>
-							</div>
-						</li>
-						<li><span>Pin</span>
-							<div>
-								<label id="pin"></label>
-							</div>
-						</li>
-						<li><span>Trọng lương</span>
-							<div>
-								<label id="trongLuong"></label>
-							</div>
-						</li>
-						<li><span>Kích thước</span>
-							<div>
-								<label id="kichThuoc"></label>
-							</div>
-						</li>
-						<li><span>Màu sắc</span>
-							<div>
-								<label id="mauSac"></label>
-							</div>
-						</li>
-						<li><span>Thương hiệu</span>
-							<div>
-								<label id="thuongHieu"></label>
-							</div>
-						</li>
-						<li><span>Xuất xứ</span>
-							<div>
-								<label id="xuatXu"></label>
-							</div>
-						</li>
-						
 					</ul>
 					<button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right">Đóng</button>
 				</div>

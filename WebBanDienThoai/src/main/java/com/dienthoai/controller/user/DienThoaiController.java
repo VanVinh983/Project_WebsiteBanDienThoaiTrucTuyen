@@ -21,11 +21,17 @@ public class DienThoaiController {
 	@GetMapping("/danhsach")
 	public String listCustomers(Model theModel) {
 		List<DienThoai> listGiamGia = dienThoaiService.getDienThoaiGiamGia();
+		List<DienThoai> listBanChay = dienThoaiService.getDienTHoaiBanChay();
 		List<DienThoai> dtsGiamGia = new ArrayList<DienThoai>();
+		List<DienThoai> dtsBanChay = new ArrayList<DienThoai>();
 		for (int i = 0; i < 4; i++) {
 			dtsGiamGia.add(listGiamGia.get(i));
+			dtsBanChay.add(listBanChay.get(i));
 		}
+		theModel.addAttribute("countGiamGia", listGiamGia.size());
+		theModel.addAttribute("countBanChay", listBanChay.size());
 		theModel.addAttribute("dts", dtsGiamGia);
+		theModel.addAttribute("dtsbc",dtsBanChay);
 		return "user/danhsach-dienthoai";
 	}
 }

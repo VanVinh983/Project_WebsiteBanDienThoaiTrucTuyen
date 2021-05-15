@@ -72,7 +72,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${dts.size()}ĐANG GIẢM GIÁ</h3>
+				<h3 style="float: left;">${countGiamGia} ĐIỆN THOẠI ĐANG GIẢM GIÁ</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -80,6 +80,48 @@
 			<div class="container-fluid mt-3 mb-3 col1_2 ">
 				<div class="row">
 					<c:forEach var="dt" items="${dts}">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
+							<div class="card text-center">
+								<div class="dt">
+									<div class="tragop">
+										<label class="installment">Trả góp <b>0%</b></label>
+									</div>
+									<form:form method="get"
+										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
+										<button class="btn " type="submit" style="text-decoration: none; color: black;"> <img
+											class="card-img-top" src="${img}/${dt.anhURL}"
+											alt="Card image" style="width: 50%">
+											<div class="card-body">
+												<h4 class="card-title">
+													<c:out value="${dt.tenDT}" />
+												</h4>
+												<p class="card-text">
+													<span style="color: red;"> <b><c:out
+																value="${dt.giaDT}" /> </b> &nbsp;<strike><i>33.990.000₫</i></strike>
+													</span><br>
+												</p>
+											</div>
+										</button>
+									</form:form>
+								</div>
+							</div>
+						</div>
+
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid ">
+			<div class="container-fluid "
+				style="overflow: hidden; margin-top: 1%">
+				<h3 style="float: left;">${countBanChay} ĐIỆN THOẠI BÁN CHẠY NHẤT</h3>
+				<button class="btn btn-light" type="submit" style="float: right;">
+					<h3>Xem tất cả ></h3>
+				</button>
+			</div>
+			<div class="container-fluid mt-3 mb-3 col1_2 ">
+				<div class="row">
+					<c:forEach var="dt" items="${dtsbc}">
 						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
 							<div class="card text-center">
 								<div class="dt">

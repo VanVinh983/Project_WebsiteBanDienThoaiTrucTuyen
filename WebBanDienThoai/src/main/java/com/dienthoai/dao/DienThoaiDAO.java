@@ -11,4 +11,5 @@ public interface DienThoaiDAO {
 	public List<DienThoai> getListDienThoai();
 	public List<DienThoai> getListTheoTen(String tenDT);
 	public List<DienThoai> getListDienThoaiGiamGia();
+	public List<DienThoai> getListDienThoaiBanChay();
 }

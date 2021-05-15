@@ -49,4 +49,10 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiGiamGia(); 
 	}
+
+	@Override
+	public List<DienThoai> getDienTHoaiBanChay() {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiBanChay();
+	}
 }

@@ -22,7 +22,7 @@ public class ChiTietDienThoaiController {
 	@Autowired
 	private DienThoaiService dienThoaiService;
 	@RequestMapping(value = "/chitietdt", method = RequestMethod.GET)
-	public String listCustomers(Model theModel,@ModelAttribute("dt") DienThoai dienThoai) {
+	public String listCustomers(Model theModel, @ModelAttribute("dt") DienThoai dienThoai) {
 		return "user/chiTietDienThoai";
 	}
 

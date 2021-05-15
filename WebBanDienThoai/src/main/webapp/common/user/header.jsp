@@ -39,7 +39,7 @@
 							data-target="#myModal" style="font-size: 20px;"></i>-->
 							</a></li>
 					<li class="nav-item position-relative"><a
-						class="nav-link position-relative" href="${pageContext.request.contextPath}/giohang/danhsach"><i
+						class="nav-link position-relative" href="${pageContext.request.contextPath}/user/giohang"><i
 							class="fa fa-shopping-cart"></i></a></li>
 					<li class="nav-item position-relative"><a
 						class="nav-link position-relative" href="#"> <i

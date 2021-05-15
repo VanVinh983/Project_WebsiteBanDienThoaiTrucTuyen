@@ -191,3 +191,36 @@ h5 {
 .card{
     margin-bottom: 20px;
 }
+.thongtinkhachhang{
+	margin-bottom:10px;
+	box-shadow: 2px 2px 10px black;
+    border-radius: 10px;
+	height: auto;
+	width: 60%;
+	padding: 10px;
+}
+.giohangtongtien{
+	margin-bottom:10px;
+	box-shadow: 2px 2px 10px black;
+    border-radius: 10px;
+	height: 150px;
+	width: 60%;
+}
+.giohangtongtien tr{
+	border: none;
+}
+.giohangtongtien td:nth-child(2){
+	float: right;
+}
+.giohangtongtien  td:nth-child(1){
+	float: left;
+}
+.thongtinkhachhang tr{
+	border: none;
+}
+.thongtinkhachhang  td:nth-child(2){
+	float: right;
+}
+.thongtinkhachhang  td:nth-child(1){
+	float: left;
+}

@@ -169,8 +169,8 @@ function renderDuLieu(data) {
 			
 	});
 }
-function xoa(id) {
 
+function xoa(id) {
 	if (confirm("Bạn có chắc chắn xóa không ?")) {
 		$.ajax({
 			url: `api/products/${id}`,

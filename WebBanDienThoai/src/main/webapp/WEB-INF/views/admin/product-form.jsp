@@ -22,7 +22,7 @@
 						<hr>
 						<form:form
 							action="${pageContext.request.contextPath}/admin/product/save"
-							method="post" modelAttribute="product">
+							method="post" modelAttribute="product" enctype="multipart/form-data">
 							<caption>
 								<div class="form-group">
 									<c:if test="${product.id != null}">
@@ -41,8 +41,7 @@
 							<div class="form-group">
 								<label>Danh mục</label>
 								<div>
-									<select class="form-control valid" name="cateId"
-										aria-invalid="false">
+									<select class="form-control valid" name="cateId" aria-invalid="false">
 										<c:forEach items="${cates}" var="cate">
 											<c:choose>
 													<c:when  test="${cate.id==id }">
@@ -151,7 +150,7 @@
 										<div><input id="detail_id" type="hidden" name="detail_id"/></div>
 							<div class="form-group">
 								<label>Hình ảnh</label><br> 
-								<input name="fileName" type="file" />
+								<input name="linkImage" type="file" />
 								<span id="result"></span>
 							</div>							
 							

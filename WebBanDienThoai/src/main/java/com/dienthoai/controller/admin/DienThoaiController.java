@@ -1,8 +1,13 @@
 package com.dienthoai.controller.admin;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
-import org.hibernate.annotations.Parameter;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +16,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.dienthoai.entity.DanhMuc;
 import com.dienthoai.entity.DienThoai;
-import com.dienthoai.entity.NguoiDung;
 import com.dienthoai.entity.ThongSo;
 import com.dienthoai.service.DanhMucService;
 import com.dienthoai.service.DienThoaiService;
@@ -23,6 +28,7 @@ import com.dienthoai.service.ThongSoService;
 @Controller(value = "dienThoaiControllerOfAdmin")
 @RequestMapping("/admin")
 public class DienThoaiController { 
+	private static final String UPLOA_DIRECTORY ="resources/admin/images/product";
 	@Autowired
 	private DienThoaiService dienThoaiService;
 	
@@ -66,11 +72,23 @@ public class DienThoaiController {
 	}
 	
 	@PostMapping("/product/save")
-	private String editAdmin(@ModelAttribute("product") DienThoai product, @RequestParam ("cateId") int id, @RequestParam("detail_id") String detail_id) {
+	private String editAdmin(@ModelAttribute("product") DienThoai product, @RequestParam ("cateId") int id, 
+			@RequestParam("detail_id") String detail_id,@RequestParam() CommonsMultipartFile linkImage, HttpServletRequest request) throws Exception {
+		ServletContext context= request.getServletContext();		
+		String path= context.getRealPath(UPLOA_DIRECTORY);
+		String imageUrl=linkImage.getOriginalFilename();
+		//String path="D:\\IUH\\WWW.JAVA\\A-project\\New folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
+		byte[] bytes=linkImage.getBytes();
+		BufferedOutputStream stream=new BufferedOutputStream(new FileOutputStream(new File(path+File.separator + imageUrl)));
+		stream.write(bytes);
+		stream.flush();
+		stream.close();
+		
+		product.setAnhURL(imageUrl);
 		DanhMuc cate=danhMucService.getDanhMuc(id);
 		product.setDanhMuc(cate);
 		ThongSo ts=thongSoService.getThongSo(Integer.parseInt(detail_id));
-		product.setThongSo(ts);
+		product.setThongSo(ts);		
 		dienThoaiService.saveDienThoai(product);
 		
 		return "redirect:/admin/product/list";

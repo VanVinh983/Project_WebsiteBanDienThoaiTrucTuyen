@@ -163,13 +163,30 @@ function renderDuLieu(data) {
 				<a onClick="xemChiTiet('${id}')" class="btn btn-success" data-toggle="modal" data-target="#xem-modal"> Xem </a>
 				`))
 			.append($("<td>").html(` 
-				<a href="delete?productId=${id}" onclick="return confirm('Bạn có chắc chắn xóa không?');"><button class="btn btn-danger">Xóa</button></a>																					
+				<a onClick="xoa(${product.id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>																					
 				<a href="showFormEdit?productId=${id}"><button class="btn btn-success">Sửa</button></a>		
 				`))	;
 			
 	});
 }
+function xoa(id) {
 
+	if (confirm("Bạn có chắc chắn xóa không ?")) {
+		$.ajax({
+			url: `api/products/${id}`,
+			type: 'DELETE',
+			contentType: 'application/json',
+			success: function() {
+				toastr.success('Xóa thành công')		
+			},
+			error: function() {
+				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
+			},
+
+		});
+
+	}
+}
 //tìm kiếm theo tên điện thoại
 function capNhatDuLieu(tenDT) {
 

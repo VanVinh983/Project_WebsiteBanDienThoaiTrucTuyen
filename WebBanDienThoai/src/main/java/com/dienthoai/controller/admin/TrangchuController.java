@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class TrangchuController {
 	
-	@GetMapping("/trang-chu")
+	@GetMapping({"/","/trang-chu"})
 	private String trangChu(Model model) {
 		return "admin/index";
 	}

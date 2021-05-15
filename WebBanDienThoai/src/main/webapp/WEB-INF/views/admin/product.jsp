@@ -59,7 +59,7 @@
 												class="btn btn-success" data-toggle="modal"
 												data-target="#xem-modal"> Xem </a></td>
 											<td>												
-													<a href="${delete} " onclick="return confirm('Bạn có chắc chắn xóa không?');"><button class="btn btn-danger">Xóa</button></a>																						
+													<a onClick="xoa(${product.id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>																						
 													<a href="${edit}"><button class="btn btn-success">Sửa</button></a>											
 											</td>
 										</tr>

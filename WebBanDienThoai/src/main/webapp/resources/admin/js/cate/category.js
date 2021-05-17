@@ -45,8 +45,10 @@ function renderDuLieu(data) {
 			.append($("<td>").text(null))
 			.append($("<td>").text(tenDanhMuc))
 			.append($("<td>").html(` 
-				<a onClick="xoa(${id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>
-				<a href="showFormEdit?cateId=${id}" class="text-white"><button class="btn btn-success">Sửa</button></a>
+				&nbsp;
+				<a href="showFormEdit?cateId=${id}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
+				&emsp;&nbsp;																																	
+				<a onClick="xoa(${id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>																													
 				`));
 	});
 }

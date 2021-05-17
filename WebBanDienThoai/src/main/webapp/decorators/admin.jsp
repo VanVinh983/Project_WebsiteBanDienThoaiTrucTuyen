@@ -20,7 +20,7 @@
 <link href="${resources}/admin/css/animate.css" rel="stylesheet" type="text/css" />
 <link href="${resources}/admin/css/icons.css" rel="stylesheet" type="text/css" />
 <link href="${resources}/admin/css/sidebar-menu.css" rel="stylesheet" />
-<link href="${resources}/admin/css/style.css" rel="stylesheet" />
+<link href="${resources}/admin/css/appstyle.css" rel="stylesheet" />
 <link href="${resources}/admin/css/fullparameter.css" rel="stylesheet" />
  <link rel="stylesheet" href="${resources}/admin/plugins/toastr/toastr.min.css">
 </head>

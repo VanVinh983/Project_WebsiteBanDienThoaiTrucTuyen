@@ -24,12 +24,12 @@
 								<thead>
 									<tr class="text-white">
 										<th scope="col">#</th>
-										<th scope="col">Tên điện thoại</th>
-										<!-- <th scope="col">Hình ảnh</th> -->
+										<th scope="col">Hình ảnh</th>
+										<th scope="col">Tên điện thoại</th>									  
 										<th scope="col">Giá</th>
 										<th scope="col">Số lượng</th>
 										<th scope="col">Giảm giá</th>
-										<th scope="col">Xem chi tiết</th>
+										<th scope="col">Xem</th>
 										<th scope="col">Hành động</th>
 									</tr>
 								</thead>
@@ -45,22 +45,21 @@
 										</c:url>
 										<tr>
 											<th scope="row">${product.id}</th>
-											
-											<td>${product.tenDT}</td>
-											<%-- td><img
-												style="width: 110px; height: 67px; border: 1px solid #fff;"
-												src="${img}/iPhone/iphone-11-pro-max-gold-200-180x125.png"></td> --%>
+											<td><img style="width: 110px; height: 67px; border: 1px solid #fff;"
+												src="${resources}/user/images/SanPham/${product.anhURL}"></td>
+											<td>${product.tenDT} ${product.thongSo.boNho } </td>
+											 
 											<td><fmt:formatNumber type="number" pattern="#,###,###.##"
 												value="${product.giaDT}" />  đ</td>
 											<td>${product.soLuongTon}</td>
 											<td>${product.giamGia }%</td>
 
 											<td><a onClick="xemChiTiet('${product.id}')"
-												class="btn btn-success" data-toggle="modal"
-												data-target="#xem-modal"> Xem </a></td>
-											<td>												
-													<a onClick="xoa(${product.id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>																						
-													<a href="${edit}"><button class="btn btn-success">Sửa</button></a>											
+												data-toggle="modal" data-target="#xem-modal"><i class="zmdi zmdi-eye zmdi-hc-lg"></i> </a></td>
+											<td>											
+													<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
+													&emsp;&nbsp;																																	
+													<a onClick="xoa(${product.id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>									
 											</td>
 										</tr>
 
@@ -179,4 +178,4 @@
 
 <script src="${resources}/admin/js/jquery.min.js"></script>
 <script type="text/javascript"
-	src="${resources}/admin/js/product/product.js"></script>
+	src="${resources}/admin/js/product/productt.js"></script>

@@ -8,7 +8,7 @@ function xemChiTiet(id) {
 		const {trongLuong,kichThuoc, mauSac, anhURL,thuongHieu, thongSo} = data;
 
 		if (status === 'success') {
-			$("#xem-modal #anh").attr("src","/WebBanDienThoai/resources/admin/images/product/"+anhURL);	
+			$("#xem-modal #anh").attr("src","/WebBanDienThoai/resources/user/images/SanPham/"+anhURL);	
 			$("#xem-modal #manHinh").html(`<label>${thongSo.manHinh}</label>`);
 			$("#xem-modal #heDieuHanh").html(`<label>${thongSo.heDieuHanh}</label>`);
 			$("#xem-modal #camera").html(`<label>${thongSo.camera}</label>`);
@@ -160,11 +160,12 @@ function renderDuLieu(data) {
 			.append($("<td>").text(soLuongTon))
 			.append($("<td>").text(giamGia))
 			.append($("<td>").html(` 
-				<a onClick="xemChiTiet('${id}')" class="btn btn-success" data-toggle="modal" data-target="#xem-modal"> Xem </a>
+				<a onClick="xemChiTiet('${id}')" data-toggle="modal" data-target="#xem-modal"><i class="zmdi zmdi-eye zmdi-hc-lg"></i> </a>
 				`))
 			.append($("<td>").html(` 
-				<a onClick="xoa(${product.id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>																					
-				<a href="showFormEdit?productId=${id}"><button class="btn btn-success">Sửa</button></a>		
+				<a href="showFormEdit?productId=${id}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
+				&emsp;&nbsp;																																	
+				<a onClick="xoa(${id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
 				`))	;
 			
 	});

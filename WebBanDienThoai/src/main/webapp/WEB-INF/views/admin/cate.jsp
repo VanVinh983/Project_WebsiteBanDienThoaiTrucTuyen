@@ -49,8 +49,10 @@
 											<td></td>
 											<td>${cate.tenDanhMuc}</td>
 											<td>	
-												<a onClick="xoa(${cate.id})" class="text-white"><button class="btn btn-danger">Xóa</button></a>
-												<a href="${edit}" class="text-white"><button class="btn btn-success">Sửa</button></a>
+											&nbsp;
+												<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
+													&emsp;&nbsp;																																	
+												<a onClick="xoa(${product.id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -66,4 +68,4 @@
 
 <c:url value="/resources" var="resources"></c:url>
 <script src="${resources}/admin/js/jquery.min.js"></script>
-<script type="text/javascript" src="${resources}/admin/js/cate/cate.js"></script>
+<script type="text/javascript" src="${resources}/admin/js/cate/category.js"></script>

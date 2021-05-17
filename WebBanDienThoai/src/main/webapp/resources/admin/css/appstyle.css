@@ -1798,10 +1798,6 @@ table.grid td {
 	margin-bottom:0px;
 }
 
-.card .table td, .card .table th {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-}
 .table {
     width: 100%;
     margin-bottom: 1rem;

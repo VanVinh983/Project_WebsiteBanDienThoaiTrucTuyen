@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<c:url value="/resources/user/images" var="img" />
+	<c:url value="/resources" var="resources" />
 	<div class="container-fluid">
 		<br>
 		<div class="container-fluid ">
@@ -89,15 +89,19 @@
 									<form:form method="get"
 										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
 										<button class="btn " type="submit" style="text-decoration: none; color: black;"> <img
-											class="card-img-top" src="${img}/${dt.anhURL}"
+											class="card-img-top" src="${resources}/user/images/SanPham/${dt.anhURL}"
 											alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
 													<c:out value="${dt.tenDT}" />
 												</h4>
 												<p class="card-text">
-													<span style="color: red;"> <b><c:out
-																value="${dt.giaDT}" /> </b> &nbsp;<strike><i>33.990.000₫</i></strike>
+													<span style="color: red;"> 
+													<b><fmt:formatNumber type="number" pattern="#,###,###.##" value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ
+												</b> &nbsp;
+												<strike><i>
+												<fmt:formatNumber type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+												 </i></strike>													
 													</span><br>
 												</p>
 											</div>
@@ -131,15 +135,19 @@
 									<form:form method="get"
 										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
 										<button class="btn " type="submit" style="text-decoration: none; color: black;"> <img
-											class="card-img-top" src="${img}/${dt.anhURL}"
+											class="card-img-top" src="${resources}/user/images/SanPham/${dt.anhURL}"
 											alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
 													<c:out value="${dt.tenDT}" />
 												</h4>
 												<p class="card-text">
-													<span style="color: red;"> <b><c:out
-																value="${dt.giaDT}" /> </b> &nbsp;<strike><i>33.990.000₫</i></strike>
+													<span style="color: red;"> 
+													<b><fmt:formatNumber type="number" pattern="#,###,###.##" value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ
+												</b> &nbsp;
+												<strike><i>
+												<fmt:formatNumber type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+												 </i></strike>													
 													</span><br>
 												</p>
 											</div>

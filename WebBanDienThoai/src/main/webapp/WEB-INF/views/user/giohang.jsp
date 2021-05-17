@@ -13,72 +13,79 @@
 	<c:url value="/resources/user/images" var="img" />
 	<br>
 	<div class="container">
-		<table class="table table-hover table-condensed">
+		<table class="table table-hover table-condensed" style="width: 80%">
+		<thead>
+				<tr>
+					<td style="text-align: left;"><a href="${pageContext.request.contextPath}/dienthoai/danhsach">
+							<button type="button" class="btn btn-success">
+								<i class="fa fa-angle-left"></i> Tiếp tục mua hàng
+							</button>
+					</a></td>
+					<td style="font-size: 20px">
+					<c:if test="${not empty tinhtranggiohang }"><img src="${img}/cartnull.jpg" style="width: 100px;height: 100px"><b>Không có sản phẩm nào trong giỏ hàng</b></c:if>
+					<c:if test="${empty tinhtranggiohang}"></c:if>
+					</td>
+				</tr>
+			</thead>
 			<tbody>
-				<c:forEach var="ds" items="${dsctgh}">
+				<c:forEach var="ds" items="${sessionScope.cart}">
 					<tr>
 						<td>
 							<div class="row ">
 								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
 									<img src="${img}/11pr.png" alt="" class="" style="width: 100%">
 									<div style="text-align: center; margin-top: 10%">
-										<button class="btn btn-danger btn-sm">
+										<a href="${pageContext.request.contextPath}/user/xoadienthoaigiohang/${ds.dienThoai.id}"><button  class="btn btn-danger btn-sm">
 											<i class="fa fa-trash"></i>
 										</button>
-										<button class="btn btn-primary btn-sm">
-											<i class="fa fa-edit"></i>
-										</button>
+											</a>										
 									</div>
 								</div>
-								<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 t"></div>
-								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mt-2">
-									<h4>${ds.tenDT}</h4>
-									<div style="margin-top: 10%">Màu : ${ds.mauSac}</div>
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mt-2" style="margin-top: 10%;font-size: 20px">
+									<div><b>Điện thoại ${ds.dienThoai.tenDT} ${ds.dienThoai.thongSo.boNho} - ${ds.dienThoai.thongSo.ram}</b></div>
+									<div>Màu : <b>${ds.dienThoai.mauSac}</b></div>
+									<div>Xuất xứ: <b>${ds.dienThoai.thuongHieu.xuatXu }</b></div>
+									<div>Giảm giá: <b><fmt:formatNumber type="number" pattern="#,#"
+									value="${ds.dienThoai.giamGia}" />%</b></div>
 								</div>
 							</div>
 						</td>
 						<td>
-							<div style="text-align: center;">
-								<fmt:formatNumber type="number" pattern="#,###,###.## ₫"
-									value="${ds.giaDT}" />
+							<div style="text-align: center;text-decoration: line-through;">
+								<fmt:formatNumber type="number" pattern="#,###,###.##₫"
+									value="${ds.dienThoai.giaDT}" />
 							</div>
-							<div>
-								<input class="form-control text-center" value="1" type="number">
+							<div style="text-align: center;color: red;font-size: 25px">
+								<fmt:formatNumber type="number" pattern="#,###,###.##₫"
+									value="${giaThucTe}" />
+							</div>
+							<div style="text-align: center;margin-top: 10px">
+								<button class="btn btn-warning"><b>-</b></button>
+								&nbsp; ${ds.soLuong} &nbsp;
+								<button class="btn btn-warning"><b>+</b></button>
 							</div>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
-			<tfoot>
-				<tr>
-					<td style="text-align: left;"><a href="index_1.html">
-							<button type="button" class="btn btn-success">
-								<i class="fa fa-angle-left"></i> Tiếp tục mua hàng
-							</button>
-					</a></td>
-					<td>
-						<button type="button" class="btn btn-success">
-							<a href="#" style="text-decoration: none; color: white;">Thanh
-								toán</a></i>
-						</button>
-					</td>
-				</tr>
-			</tfoot>
 		</table>
 		<div class="row">
 			<div class="giohangtongtien">
 				<table class="table">
 					<tr>
 						<td>Tạm tính:</td>
-						<td>42.280.000 đ</td>
+						<td><fmt:formatNumber type="number" pattern="#,###,###.## ₫"
+									value="${tamtinh}" /></td>
 					</tr>
 					<tr>
 						<td>Giảm:</td>
-						<td>-280.000 đ</td>
+						<td><fmt:formatNumber type="number" pattern="#,###,###.## ₫"
+									value="${giamgia}" /></td>
 					</tr>
 					<tr>
 						<td><b>Tổng tiền:</b></td>
-						<td style="color: red;"><b>40.000.000 đ</b></td>
+						<td style="color: red;"><b><fmt:formatNumber type="number" pattern="#,###,###.## ₫"
+									value="${tongtien}" /></b></td>
 					</tr>
 				</table>
 			</div>
@@ -133,3 +140,4 @@
 	</div>
 </body>
 </html>
+

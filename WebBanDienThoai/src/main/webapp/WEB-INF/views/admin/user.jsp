@@ -44,13 +44,9 @@
 													<td>${user.tenDangNhap}</td>
 													<td>${user.ngayTao}</td>
 													<td>
-														<button class="btn btn-danger">
-															<a href="${delete}" onclick="return confirm('Bạn có chắc chắn xóa không?');" class="text-white">Xóa</a>
-														</button>
-
-														<button class="btn btn-success">
-															<a href="${edit}" class="text-white">Sửa</a>
-														</button>
+														<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
+													&emsp;&nbsp;																																	
+													<a href="${delete}"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
 													</td>
 												</tr>
 											</c:if>

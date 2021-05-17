@@ -21,7 +21,7 @@ public class ChiTietHoaDonDAOImpl implements ChiTietHoaDonDAO {
 	public ChiTietHoaDon getChiTietHoaDon(int id) {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		ChiTietHoaDon cthd=currentSession.get(ChiTietHoaDon.class, id);
+		ChiTietHoaDon cthd = currentSession.createNativeQuery("select * from CHITIETHOADON where id_HoaDon="+id+"",ChiTietHoaDon.class).getSingleResult();
 		return cthd;
 	}
 	@Transactional

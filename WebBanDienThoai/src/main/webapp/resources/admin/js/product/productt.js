@@ -94,6 +94,7 @@ function sua(id) {
 			$("#sua-modal #boNhoSua").val(boNho);
 			$("#sua-modal #simSua").val(sim);
 			$("#sua-modal #pinSua").val(pin);
+			$("#sua-modal #linkImage").val(pin);
 		}
 	});
 }
@@ -148,13 +149,17 @@ function renderDuLieu(data) {
 	// lặp qua dữ liệu
 	$.each(data, (index, dt) => {
 
-		const { id, tenDT, giaDT,soLuongTon,giamGia } = dt;
+		const { id, tenDT, giaDT,soLuongTon,giamGia, anhURL} = dt;
 		console.log(JSON.stringify(dt));
 
 		// tạo tr trong table
 		$("<tr>").appendTo($("#tableBody"))
 			// thêm td vào tr
 			.append($("<td>").text(id))
+			.append($("<td>").html(` 
+				<img style="width: 110px; height: 67px; border: 1px solid #fff;" 
+				src="/WebBanDienThoai/resources/user/images/SanPham/${anhURL}">
+				`))			
 			.append($("<td>").text(tenDT))
 			.append($("<td>").text(giaDT))
 			.append($("<td>").text(soLuongTon))
@@ -171,14 +176,15 @@ function renderDuLieu(data) {
 	});
 }
 
-function xoa(id) {
+function xoats(id) {
 	if (confirm("Bạn có chắc chắn xóa không ?")) {
 		$.ajax({
-			url: `api/products/${id}`,
+			url: `api/details/${id}`,
 			type: 'DELETE',
 			contentType: 'application/json',
 			success: function() {
-				toastr.success('Xóa thành công')		
+				toastr.success('Xóa thành công')	
+				capNhatDuLieu("");	
 			},
 			error: function() {
 				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
@@ -188,6 +194,28 @@ function xoa(id) {
 
 	}
 }
+
+function xoa(id) {
+	if (confirm("Bạn có chắc chắn xóa không ?")) {
+		$.ajax({
+			url: `api/products/${id}`,
+			type: 'DELETE',
+			contentType: 'application/json',
+			success: function() {
+				toastr.success('Xóa thành công')	
+				capNhatDuLieu("");	
+			},
+			error: function() {
+				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
+			},
+
+		});
+
+	}
+}
+
+
+
 //tìm kiếm theo tên điện thoại
 function capNhatDuLieu(tenDT) {
 

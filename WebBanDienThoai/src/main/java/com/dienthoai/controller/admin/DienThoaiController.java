@@ -28,7 +28,7 @@ import com.dienthoai.service.ThongSoService;
 @Controller(value = "dienThoaiControllerOfAdmin")
 @RequestMapping("/admin")
 public class DienThoaiController { 
-	private static final String UPLOA_DIRECTORY ="resources/admin/images/product";
+	private static final String UPLOA_DIRECTORY ="resources/user/images/SanPham";
 	@Autowired
 	private DienThoaiService dienThoaiService;
 	
@@ -46,8 +46,9 @@ public class DienThoaiController {
 	}
 	
 	@GetMapping("/product/delete")
-	public String deleteProduct(@RequestParam("productId") int id) {
-		dienThoaiService.deleteDienThoai(id);
+	public String deleteProduct(@RequestParam("productId") int id, @RequestParam("productDetailId") int detailId) {
+		thongSoService.deleteThongSo(detailId);
+		dienThoaiService.deleteDienThoai(id);	
 		return "redirect:/admin/product/list";
 	}
 	

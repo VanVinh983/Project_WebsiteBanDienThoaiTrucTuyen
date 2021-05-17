@@ -150,7 +150,7 @@
 										<div><input id="detail_id" type="hidden" name="detail_id"/></div>
 							<div class="form-group">
 								<label>Hình ảnh</label><br> 
-								<input name="linkImage" type="file" />
+								<input name="linkImage" type="file" id="linkImage"/>
 								<span id="result"></span>
 							</div>							
 							
@@ -322,4 +322,4 @@
 </div>
 <c:url value="/resources" var="resources"></c:url>
 <script src="${resources}/admin/js/jquery.min.js"></script>
-<script type="text/javascript" src="${resources}/admin/js/product/product.js"></script>
+<script type="text/javascript" src="${resources}/admin/js/product/productt.js"></script>

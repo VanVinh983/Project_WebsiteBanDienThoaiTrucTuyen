@@ -1,24 +1,21 @@
-function xoa(id) {
 
-	if (confirm("Bạn có chắc chắn xóa không ?")) {
+function xemChiTiet(id) {
 
-		$.ajax({
-			url: `api/cates/${id}`,
-			type: 'DELETE',
-			contentType: 'application/json',
-			success: function() {
-				toastr.success('Xóa thành công')
-				capNhatDuLieu("");
-				
-			},
-			error: function() {
-				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
-			},
+	const url = `api/orderdetails/${id}`;
+	console.log('url: ', url);
 
-		});
+	$.get(url, function(data, status) {
 
-	}
+		const {hoaDon} = data;
+
+		if (status === 'success') {
+			
+			$("#xem-modal #ngay").html(`<span>${hoaDon.ngayLap}</span>`);
+			$("#xem-modal #ten").html(`<span>${hoaDon.hoTenKhachHang}</span>`);
+		}
+	});
 }
+
 // khi nhập vào ô tìm kiếm
 $("#timKiemTenDanhMuc").on("keyup", function() {
 

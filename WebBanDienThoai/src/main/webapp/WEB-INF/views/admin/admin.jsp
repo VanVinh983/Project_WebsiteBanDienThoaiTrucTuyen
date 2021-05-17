@@ -40,10 +40,8 @@
 												<td>${admin.soDienThoai}</td>
 												<td>${admin.tenDangNhap}</td>
 												<td>${admin.ngayTao}</td>
-												<td>
-													<button class="btn btn-success">
-														<a href="${edit}" class="text-white">Sửa</a>
-													</button>
+												<td>											
+														<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
 												</td>
 											</tr>
 									</c:if>

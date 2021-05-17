@@ -40,6 +40,7 @@
 										</c:url>
 										<c:url value="/admin/product/delete" var="delete">
 											<c:param name="productId" value="${product.id}"></c:param>
+											<c:param name="productDetailId" value="${product.thongSo.id}"></c:param>
 										</c:url>
 										<c:url value="/admin/product/list" var="detail">
 										</c:url>
@@ -59,7 +60,10 @@
 											<td>											
 													<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
 													&emsp;&nbsp;																																	
-													<a onClick="xoa(${product.id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>									
+													<a onClick="xoa(${product.id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i>
+													<a onClick="xoats(${product.thongSo.id})"></a>
+													</a>		
+																				
 											</td>
 										</tr>
 

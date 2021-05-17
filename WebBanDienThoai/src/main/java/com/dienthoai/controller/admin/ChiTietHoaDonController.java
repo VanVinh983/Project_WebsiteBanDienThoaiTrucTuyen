@@ -9,25 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dienthoai.entity.ChiTietHoaDon;
-import com.dienthoai.entity.HoaDon;
 import com.dienthoai.service.ChiTietHoaDonService;
-import com.dienthoai.service.HoaDonService;
 
-@Controller(value = "HoaDonControllerOfAdmin")
+@Controller(value = "ChiTietHoaDonControllerOfAdmin")
 @RequestMapping("/admin")
-public class HoaDonController {
-	@Autowired
-	private HoaDonService hoaDonService;
-	
+public class ChiTietHoaDonController {
 	@Autowired
 	private ChiTietHoaDonService chiTietHoaDonService;
 	
-	@GetMapping("/order/list")
+	@GetMapping("/orderdetail/list")
 	private String order(Model theModel) {
-		List<HoaDon> order=hoaDonService.getListHoaDon();
+		List<ChiTietHoaDon> order=chiTietHoaDonService.getAllChiTietHoaDon();
 		theModel.addAttribute("order",order);
-		List<ChiTietHoaDon> detail=chiTietHoaDonService.getAllChiTietHoaDon();
-		theModel.addAttribute("detail",detail);
 		return "admin/order";
 	}
 	

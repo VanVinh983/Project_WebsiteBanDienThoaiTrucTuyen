@@ -68,10 +68,6 @@ public class HoaDon implements Serializable{
 	}
 
 	
-	
-	
-	
-
 	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
 			PhuongThucThanhToan thanhToan, NguoiDung nguoiDung, List<ChiTietHoaDon> danhSachChiTiet) {
 		super();

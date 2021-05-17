@@ -22,31 +22,29 @@
 									</tr>
 								</thead>
 								<tbody class="text-white">
-									<c:forEach items="${order}" var="order">
+									<c:forEach items="${detail}" var="detail">
 										<tr>
-											<td scope="row">${order.id}</td>
-
-											<td>${order.nguoiDung.tenDangNhap}</td>
-											<td>${order.hoTenKhachHang}</td>
+											<td scope="row">${detail.hoaDon.id}</td>
+											<td>${detail.hoaDon.nguoiDung.tenDangNhap}</td>
+											<td>${detail.hoaDon.hoTenKhachHang}</td>								
 											<td><c:choose>
-													<c:when test="${order.thanhToan.phuongThuc == 'COD'}">
+													<c:when test="${detail.hoaDon.thanhToan.phuongThuc == 'COD'}">
 														<c:out value="COD" />
-													</c:when>
+													</c:when>	
 													<c:otherwise>
 														<c:out value="Thẻ nội địa ATM" />
 													</c:otherwise>
 												</c:choose></td>
 											<td><c:choose>
-													<c:when test="${order.thanhToan.phuongThuc == 'COD'}">
+													<c:when test="${detail.hoaDon.thanhToan.phuongThuc == 'COD'}">
 														<c:out value="Chưa thanh toán" />
 													</c:when>
 													<c:otherwise>
 														<c:out value="Đã thanh toán" />
 													</c:otherwise>
 												</c:choose></td>
-											<td><a onClick="xemChiTiet('${product.id}')"
-												class="btn btn-success" data-toggle="modal"
-												data-target="#xem-modal"> Xem </a></td>
+											<td><a onClick="xemChiTiet('${detail.hoaDon.id}')"
+												data-toggle="modal" data-target="#xem-modal"><i class="zmdi zmdi-eye zmdi-hc-lg"></i> </a></td>
 											<td></tr>
 									</c:forEach>
 								</tbody>
@@ -75,12 +73,12 @@
 								<input type="text"></input>
 							</div>
 							<div class="col-lg-6"><label>Ngày lập hóa đơn</label>
-								<input type="text"></input>
+								<span id="ngay"></span>
 							</div>
 						</li>
 						<li>
 							<div class="col-lg-6"><label>Mã khách hàng</label>
-								<input type="text"></input>
+								<span id="ten"></span>
 							</div>
 							<div class="col-lg-6"><label>Tên khách hàng</label>
 								<input type="text"></input>
@@ -102,3 +100,7 @@
 		</div>
 	</div>
 </div>
+
+<c:url value="/resources" var="resources"></c:url>
+<script src="${resources}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${resources}/admin/js/order/order.js"></script>

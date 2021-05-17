@@ -102,11 +102,11 @@
 												</p>
 											</div>
 										</button>
+										<a href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm tạm vào giỏ hàng</a>
 									</form:form>
 								</div>
 							</div>
 						</div>
-
 					</c:forEach>
 				</div>
 			</div>

@@ -30,24 +30,24 @@
 							</ol>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img src="${img}/apple.png" alt="First" class="d-block w-100">
+									<img src="${resources}/user/images/apple.png" alt="First" class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${img}/galaxy1.png" alt="Second"
+									<img src="${resources}/user/images/galaxy1.png" alt="Second"
 										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${img}/iphone.png" alt="Third" class="d-block w-100">
+									<img src="${resources}/user/images/iphone.png" alt="Third" class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${img}/phukien.png" alt="Fourth"
+									<img src="${resources}/user/images/phukien.png" alt="Fourth"
 										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${img}/samsung.png" alt="Fifth" class="d-block w-100">
+									<img src="${resources}/user/images/samsung.png" alt="Fifth" class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${img}/vivo.png" alt="Fifth" class="d-block w-100">
+									<img src="${resources}/user/images/vivo.png" alt="Fifth" class="d-block w-100">
 								</div>
 
 							</div>
@@ -93,7 +93,7 @@
 											alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
-													<c:out value="${dt.tenDT}" />
+													<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
 												</h4>
 												<p class="card-text">
 													<span style="color: red;"> 
@@ -139,7 +139,7 @@
 											alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
-													<c:out value="${dt.tenDT}" />
+													<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
 												</h4>
 												<p class="card-text">
 													<span style="color: red;"> 

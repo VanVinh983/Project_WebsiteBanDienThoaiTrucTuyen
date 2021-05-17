@@ -3,6 +3,7 @@ package com.dienthoai.service;
 import java.util.List;
 
 import com.dienthoai.entity.DienThoai;
+import com.dienthoai.entity.ThuongHieu;
 
 public interface DienThoaiService {
 	public void saveDienThoai(DienThoai dt);
@@ -12,4 +13,5 @@ public interface DienThoaiService {
 	public List<DienThoai> getListTheoTen(String tenDT);
 	public List<DienThoai> getDienThoaiGiamGia(); 
 	public List<DienThoai> getDienTHoaiBanChay();
+	public List<ThuongHieu> getListThuongHieu();
 }

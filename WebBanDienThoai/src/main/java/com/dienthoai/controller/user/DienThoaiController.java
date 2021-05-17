@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dienthoai.entity.DienThoai;
+import com.dienthoai.entity.ThuongHieu;
 import com.dienthoai.service.DienThoaiService;
 
 @Controller(value = "dienThoaiControllerOfUser")
@@ -24,6 +25,7 @@ public class DienThoaiController {
 		List<DienThoai> listBanChay = dienThoaiService.getDienTHoaiBanChay();
 		List<DienThoai> dtsGiamGia = new ArrayList<DienThoai>();
 		List<DienThoai> dtsBanChay = new ArrayList<DienThoai>();
+		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
 		for (int i = 0; i < 4; i++) {
 			dtsGiamGia.add(listGiamGia.get(i));
 			dtsBanChay.add(listBanChay.get(i));
@@ -32,6 +34,7 @@ public class DienThoaiController {
 		theModel.addAttribute("countBanChay", listBanChay.size());
 		theModel.addAttribute("dts", dtsGiamGia);
 		theModel.addAttribute("dtsbc",dtsBanChay);
+		theModel.addAttribute("ths", listThuongHieu);
 		return "user/danhsach-dienthoai";
 	}
 }

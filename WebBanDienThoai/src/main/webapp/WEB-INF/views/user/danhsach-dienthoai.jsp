@@ -72,7 +72,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${countGiamGia} ĐIỆN THOẠI ĐANG GIẢM GIÁ</h3>
+				<h3 style="float: left;">${countGiamGia} ĐIỆNTHOẠIĐANGGIẢMGIÁ</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -87,10 +87,12 @@
 										<label class="installment">Trả góp <b>0%</b></label>
 									</div>
 									<form:form method="get"
-										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
-										<button class="btn " type="submit" style="text-decoration: none; color: black;"> <img
-											class="card-img-top" src="${img}/${dt.anhURL}"
-											alt="Card image" style="width: 50%">
+										action="${pageContext.request.contextPath}/user/chitietdt"
+										modelAttribute="dt">
+										<button class="btn " type="submit"
+											style="text-decoration: none; color: black;">
+											<img class="card-img-top" src="${img}/${dt.anhURL}"
+												alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
 													<c:out value="${dt.tenDT}" />
@@ -102,7 +104,9 @@
 												</p>
 											</div>
 										</button>
-										<a href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm tạm vào giỏ hàng</a>
+										<a
+											href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
+											tạm vào giỏ hàng</a>
 									</form:form>
 								</div>
 							</div>
@@ -114,7 +118,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${countBanChay} ĐIỆN THOẠI BÁN CHẠY NHẤT</h3>
+				<h3 style="float: left;">${countBanChay} ĐIỆNTHOẠIBÁNCHẠYNHẤT</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -129,10 +133,12 @@
 										<label class="installment">Trả góp <b>0%</b></label>
 									</div>
 									<form:form method="get"
-										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
-										<button class="btn " type="submit" style="text-decoration: none; color: black;"> <img
-											class="card-img-top" src="${img}/${dt.anhURL}"
-											alt="Card image" style="width: 50%">
+										action="${pageContext.request.contextPath}/user/chitietdt"
+										modelAttribute="dt">
+										<button class="btn " type="submit"
+											style="text-decoration: none; color: black;">
+											<img class="card-img-top" src="${img}/${dt.anhURL}"
+												alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
 													<c:out value="${dt.tenDT}" />
@@ -148,13 +154,53 @@
 								</div>
 							</div>
 						</div>
-
 					</c:forEach>
 				</div>
 			</div>
 		</div>
+		<nav class="container-fluid ">
+			<div class="btn-group btn-group-lg" style="overflow: hidden; margin-top: 1%;">
+				<c:forEach var="th" items="${ths}">
+					<button class="btn btn-outline-info" type="submit" style="border-radius: 100px;">${th.tenTH}</button>
+				</c:forEach>
+			</div>
+			<hr>
+			<div class="container-fluid mt-3 mb-3 col1_2 ">
+				<div class="row">
+					<c:forEach var="dt" items="${dtsbc}">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
+							<div class="card text-center">
+								<div class="dt">
+									<div class="tragop">
+										<label class="installment">Trả góp <b>0%</b></label>
+									</div>
+									<form:form method="get"
+										action="${pageContext.request.contextPath}/user/chitietdt"
+										modelAttribute="dt">
+										<button class="btn " type="submit"
+											style="text-decoration: none; color: black;">
+											<img class="card-img-top" src="${img}/${dt.anhURL}"
+												alt="Card image" style="width: 50%">
+											<div class="card-body">
+												<h4 class="card-title">
+													<c:out value="${dt.tenDT}" />
+												</h4>
+												<p class="card-text">
+													<span style="color: red;"> <b><c:out
+																value="${dt.giaDT}" /> </b> &nbsp;<strike><i>33.990.000₫</i></strike>
+													</span><br>
+												</p>
+											</div>
+										</button>
+									</form:form>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</nav>
 		<!--------------------------------------------------FOOOTER----------------------------------------------------------------->
-	</div>
 	</div>
 
 </body>

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.DienThoaiDAO;
 import com.dienthoai.entity.DienThoai;
+import com.dienthoai.entity.ThuongHieu;
 @Repository
 public class DienThoaiDAOImpl implements DienThoaiDAO {
 	@Autowired
@@ -81,5 +82,13 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 			dts.add(dt);
 		}
 		return dts;	
+	}
+	@Transactional
+	@Override
+	public List<ThuongHieu> getListThuongHieu() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<ThuongHieu> theQuery = currentSession.createQuery("from ThuongHieu ", ThuongHieu.class);
+		List<ThuongHieu> ths = theQuery.getResultList();
+		return ths;	
 	}
 }

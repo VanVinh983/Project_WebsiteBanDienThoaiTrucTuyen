@@ -20,5 +20,4 @@ public class HoaDonRestController {
 	public List<HoaDon> getHoaDons(){
 		return hoaDonService.getListHoaDon();
 	}
-	
 }

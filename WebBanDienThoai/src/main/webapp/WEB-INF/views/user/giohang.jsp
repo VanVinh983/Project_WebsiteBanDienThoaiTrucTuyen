@@ -13,7 +13,7 @@
 	<c:url value="/resources/user/images" var="img" />
 	<br>
 	<div class="container">
-		<table class="table table-hover table-condensed">
+		<table class="table table-hover table-condensed" style="width: 80%">
 		<thead>
 				<tr>
 					<td style="text-align: left;"><a href="${pageContext.request.contextPath}/dienthoai/danhsach">
@@ -39,25 +39,30 @@
 											<i class="fa fa-trash"></i>
 										</button>
 											</a>										
-										<button class="btn btn-primary btn-sm">
-											<i class="fa fa-edit"></i>
-										</button>
 									</div>
 								</div>
-								<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 t"></div>
-								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mt-2">
-									<h4>${ds.dienThoai.tenDT}</h4>
-									<div style="margin-top: 10%">Màu : ${ds.dienThoai.mauSac}</div>
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mt-2" style="margin-top: 10%;font-size: 20px">
+									<div><b>Điện thoại ${ds.dienThoai.tenDT} ${ds.dienThoai.thongSo.boNho} - ${ds.dienThoai.thongSo.ram}</b></div>
+									<div>Màu : <b>${ds.dienThoai.mauSac}</b></div>
+									<div>Xuất xứ: <b>${ds.dienThoai.thuongHieu.xuatXu }</b></div>
+									<div>Giảm giá: <b><fmt:formatNumber type="number" pattern="#,#"
+									value="${ds.dienThoai.giamGia}" />%</b></div>
 								</div>
 							</div>
 						</td>
 						<td>
-							<div style="text-align: center;">
-								<fmt:formatNumber type="number" pattern="#,###,###.## ₫"
+							<div style="text-align: center;text-decoration: line-through;">
+								<fmt:formatNumber type="number" pattern="#,###,###.##₫"
 									value="${ds.dienThoai.giaDT}" />
 							</div>
-							<div>
-								<input class="form-control text-center" value="${ds.soLuong}" type="number">
+							<div style="text-align: center;color: red;font-size: 25px">
+								<fmt:formatNumber type="number" pattern="#,###,###.##₫"
+									value="${giaThucTe}" />
+							</div>
+							<div style="text-align: center;margin-top: 10px">
+								<button class="btn btn-warning"><b>-</b></button>
+								&nbsp; ${ds.soLuong} &nbsp;
+								<button class="btn btn-warning"><b>+</b></button>
 							</div>
 						</td>
 					</tr>
@@ -79,8 +84,8 @@
 					</tr>
 					<tr>
 						<td><b>Tổng tiền:</b></td>
-						<td style="color: red;"><fmt:formatNumber type="number" pattern="#,###,###.## ₫"
-									value="${tongtien}" /></td>
+						<td style="color: red;"><b><fmt:formatNumber type="number" pattern="#,###,###.## ₫"
+									value="${tongtien}" /></b></td>
 					</tr>
 				</table>
 			</div>

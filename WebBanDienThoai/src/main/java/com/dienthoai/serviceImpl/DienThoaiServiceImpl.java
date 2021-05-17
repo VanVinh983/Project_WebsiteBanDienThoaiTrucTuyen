@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.DienThoaiDAO;
 import com.dienthoai.entity.DienThoai;
+import com.dienthoai.entity.ThuongHieu;
 import com.dienthoai.service.DienThoaiService;
 
 @Service
@@ -54,5 +55,11 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 	public List<DienThoai> getDienTHoaiBanChay() {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiBanChay();
+	}
+	@Override
+	@Transactional
+	public List<ThuongHieu> getListThuongHieu() {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListThuongHieu();
 	}
 }

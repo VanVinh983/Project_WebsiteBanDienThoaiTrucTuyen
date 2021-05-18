@@ -23,6 +23,7 @@ public class DienThoaiController {
 	public String listCustomers(Model theModel) {
 		List<DienThoai> listGiamGia = dienThoaiService.getDienThoaiGiamGia();
 		List<DienThoai> listBanChay = dienThoaiService.getDienTHoaiBanChay();
+		List<DienThoai> listDienThoai = dienThoaiService.getListDienThoai();
 		List<DienThoai> dtsGiamGia = new ArrayList<DienThoai>();
 		List<DienThoai> dtsBanChay = new ArrayList<DienThoai>();
 		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
@@ -34,6 +35,7 @@ public class DienThoaiController {
 		theModel.addAttribute("countBanChay", listBanChay.size());
 		theModel.addAttribute("dts", dtsGiamGia);
 		theModel.addAttribute("dtsbc",dtsBanChay);
+		theModel.addAttribute("dienthoais", listDienThoai);
 		theModel.addAttribute("ths", listThuongHieu);
 		return "user/danhsach-dienthoai";
 	}

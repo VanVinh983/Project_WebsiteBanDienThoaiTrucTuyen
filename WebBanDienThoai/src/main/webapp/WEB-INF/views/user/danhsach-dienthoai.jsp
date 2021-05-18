@@ -30,24 +30,28 @@
 							</ol>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img src="${resources}/user/images/apple.png" alt="First" class="d-block w-100">
+									<img src="${resources}/user/images/apple.png" alt="First"
+										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
 									<img src="${resources}/user/images/galaxy1.png" alt="Second"
 										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${resources}/user/images/iphone.png" alt="Third" class="d-block w-100">
+									<img src="${resources}/user/images/iphone.png" alt="Third"
+										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
 									<img src="${resources}/user/images/phukien.png" alt="Fourth"
 										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${resources}/user/images/samsung.png" alt="Fifth" class="d-block w-100">
+									<img src="${resources}/user/images/samsung.png" alt="Fifth"
+										class="d-block w-100">
 								</div>
 								<div class="carousel-item ">
-									<img src="${resources}/user/images/vivo.png" alt="Fifth" class="d-block w-100">
+									<img src="${resources}/user/images/vivo.png" alt="Fifth"
+										class="d-block w-100">
 								</div>
 
 							</div>
@@ -72,7 +76,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${countGiamGia} ĐIỆN THOẠI ĐANG GIẢM GIÁ</h3>
+				<h3 style="float: left;">${countGiamGia}ĐIỆNTHOẠIĐANGGIẢMGIÁ</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -87,26 +91,31 @@
 										<label class="installment">Trả góp <b>0%</b></label>
 									</div>
 									<form:form method="get"
-										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
-										<button class="btn " type="submit" style="text-decoration: none; color: black;"> 
-										<img class="card-img-top" src="${resources}/user/images/SanPham/${dt.anhURL}"
-											alt="Card image" style="width: 50%">
+										action="${pageContext.request.contextPath}/user/chitietdt"
+										modelAttribute="dt">
+										<button class="btn " type="submit"
+											style="text-decoration: none; color: black;">
+											<img class="card-img-top"
+												src="${resources}/user/images/SanPham/${dt.anhURL}"
+												alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
 													<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
 												</h4>
 												<p class="card-text">
-													<span style="color: red;"> 
-													<b><fmt:formatNumber type="number" pattern="#,###,###.##" value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ
-												</b> &nbsp;
-												<strike><i>
-												<fmt:formatNumber type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ
-												 </i></strike>													
+													<span style="color: red;"> <b><fmt:formatNumber
+																type="number" pattern="#,###,###.##"
+																value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b> &nbsp;
+														<strike><i> <fmt:formatNumber type="number"
+																	pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+														</i></strike>
 													</span><br>
 												</p>
 											</div>
 										</button>
-										<a href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm tạm vào giỏ hàng</a>
+										<a
+											href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
+											tạm vào giỏ hàng</a>
 									</form:form>
 								</div>
 							</div>
@@ -118,7 +127,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${countBanChay} ĐIỆN THOẠI BÁN CHẠY NHẤT</h3>
+				<h3 style="float: left;">${countBanChay}ĐIỆNTHOẠIBÁNCHẠYNHẤT</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -133,21 +142,24 @@
 										<label class="installment">Trả góp <b>0%</b></label>
 									</div>
 									<form:form method="get"
-										action="${pageContext.request.contextPath}/user/chitietdt" modelAttribute="dt">
-										<button class="btn " type="submit" style="text-decoration: none; color: black;"> <img
-											class="card-img-top" src="${resources}/user/images/SanPham/${dt.anhURL}"
-											alt="Card image" style="width: 50%">
+										action="${pageContext.request.contextPath}/user/chitietdt"
+										modelAttribute="dt">
+										<button class="btn " type="submit"
+											style="text-decoration: none; color: black;">
+											<img class="card-img-top"
+												src="${resources}/user/images/SanPham/${dt.anhURL}"
+												alt="Card image" style="width: 50%">
 											<div class="card-body">
 												<h4 class="card-title">
 													<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
 												</h4>
 												<p class="card-text">
-													<span style="color: red;"> 
-													<b><fmt:formatNumber type="number" pattern="#,###,###.##" value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ
-												</b> &nbsp;
-												<strike><i>
-												<fmt:formatNumber type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ
-												 </i></strike>													
+													<span style="color: red;"> <b><fmt:formatNumber
+																type="number" pattern="#,###,###.##"
+																value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b> &nbsp;
+														<strike><i> <fmt:formatNumber type="number"
+																	pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+														</i></strike>
 													</span><br>
 												</p>
 											</div>
@@ -156,15 +168,130 @@
 								</div>
 							</div>
 						</div>
-
 					</c:forEach>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid ">
+			<div class="container-fluid "
+				style="overflow: hidden; margin-top: 1%">
+				<!-- Nav tabs -->
+				<ul class="nav nav-pills" role="tablist">
+					<c:forEach var="th" items="${ths}">
+						<c:if test="${th.id == 1}">
+							<li class="btn nav-item"><a
+								class="nav-link active btn btn-outline-info" data-toggle="pill"
+								href="#${th.tenTH}">${th.tenTH}</a></li>
+						</c:if>
+						<c:if test="${th.id != 1}">
+							<li class="btn nav-item"><a
+								class="nav-link btn btn-outline-info" data-toggle="pill"
+								href="#${th.tenTH}">${th.tenTH}</a></li>
+						</c:if>
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<!-- Tab panes -->
+					<div class="tab-content col-12 ">
+						<c:forEach var="th" items="${ths}">
+							<c:if test="${th.id == 1}">
+								<div id="${th.tenTH}" class="tab-pane active">
+									<c:forEach var="dt" items="${dienthoais}">
+										<c:if test="${dt.thuongHieu.id == th.id}">
+											<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 float-left">
+												<div class="card text-center">
+													<div class="dt">
+														<div class="tragop">
+															<label class="installment">Trả góp <b>0%</b></label>
+														</div>
+														<form:form method="get"
+															action="${pageContext.request.contextPath}/user/chitietdt"
+															modelAttribute="dt">
+															<button class="btn " type="submit"
+																style="text-decoration: none; color: black;">
+																<img class="card-img-top"
+																	src="${resources}/user/images/SanPham/${dt.anhURL}"
+																	alt="Card image" style="width: 50%">
+																<div class="card-body">
+																	<h4 class="card-title">
+																		<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
+																	</h4>
+																	<p class="card-text">
+																		<span style="color: red;"> <b><fmt:formatNumber
+																					type="number" pattern="#,###,###.##"
+																					value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b>
+																			&nbsp; <strike><i> <fmt:formatNumber
+																						type="number" pattern="#,###,###.##"
+																						value="${dt.giaDT}" /> đ
+																			</i></strike>
+																		</span><br>
+																	</p>
+																</div>
+															</button>
+															<a
+																href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
+																tạm vào giỏ hàng</a>
+														</form:form>
+													</div>
+												</div>
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+							</c:if>
+							<c:if test="${th.id != 1}">
+								<div id="${th.tenTH}" class="tab-pane fade">
+									<c:forEach var="dt" items="${dienthoais}">
+										<c:if test="${dt.thuongHieu.id == th.id}">
+											<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 float-left">
+												<div class="card text-center">
+													<div class="dt">
+														<div class="tragop">
+															<a href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
+																tạm vào giỏ hàng</a>
+															<label class="installment">Trả góp <b>0%</b></label>
+														</div>
+														<form:form method="get"
+															action="${pageContext.request.contextPath}/user/chitietdt"
+															modelAttribute="dt">
+															<button class="btn " type="submit"
+																style="text-decoration: none; color: black;">
+																<img class="card-img-top"
+																	src="${resources}/user/images/SanPham/${dt.anhURL}"
+																	alt="Card image" style="width: 50%">
+																<div class="card-body">
+																	<h4 class="card-title">
+																		<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
+																	</h4>
+																	<p class="card-text">
+																		<span style="color: red;"> <b><fmt:formatNumber
+																					type="number" pattern="#,###,###.##"
+																					value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b>
+																			&nbsp; <strike><i> <fmt:formatNumber
+																						type="number" pattern="#,###,###.##"
+																						value="${dt.giaDT}" /> đ
+																			</i></strike>
+																		</span><br>
+																	</p>
+																</div>
+															</button>
+														</form:form>
+													</div>
+												</div>
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!--------------------------------------------------FOOOTER----------------------------------------------------------------->
 	</div>
-	</div>
-
 </body>
 
 </html>

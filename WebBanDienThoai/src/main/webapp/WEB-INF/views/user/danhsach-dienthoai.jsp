@@ -76,7 +76,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${countGiamGia}ĐIỆNTHOẠIĐANGGIẢMGIÁ</h3>
+				<h3 style="float: left;">${countGiamGia} ĐIỆNTHOẠIĐANGGIẢMGIÁ</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -112,10 +112,13 @@
 													</span><br>
 												</p>
 											</div>
+											<div class="card-footer"
+												style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
+												<a class="btn btn-success btn-block"
+													href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+													Thêm vào gỏi hàng </a>
+											</div>
 										</button>
-										<a
-											href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
-											tạm vào giỏ hàng</a>
 									</form:form>
 								</div>
 							</div>
@@ -127,7 +130,7 @@
 		<div class="container-fluid ">
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
-				<h3 style="float: left;">${countBanChay}ĐIỆNTHOẠIBÁNCHẠYNHẤT</h3>
+				<h3 style="float: left;">${countBanChay} ĐIỆNTHOẠIBÁNCHẠYNHẤT</h3>
 				<button class="btn btn-light" type="submit" style="float: right;">
 					<h3>Xem tất cả ></h3>
 				</button>
@@ -162,6 +165,12 @@
 														</i></strike>
 													</span><br>
 												</p>
+											</div>
+											<div class="card-footer"
+												style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
+												<a class="btn btn-success btn-block"
+													href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+													Thêm vào gỏi hàng </a>
 											</div>
 										</button>
 									</form:form>
@@ -229,10 +238,13 @@
 																		</span><br>
 																	</p>
 																</div>
+																<div class="card-footer"
+																	style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
+																	<a class="btn btn-success btn-block"
+																		href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+																		Thêm vào gỏi hàng </a>
+																</div>
 															</button>
-															<a
-																href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
-																tạm vào giỏ hàng</a>
 														</form:form>
 													</div>
 												</div>
@@ -249,8 +261,6 @@
 												<div class="card text-center">
 													<div class="dt">
 														<div class="tragop">
-															<a href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">Thêm
-																tạm vào giỏ hàng</a>
 															<label class="installment">Trả góp <b>0%</b></label>
 														</div>
 														<form:form method="get"
@@ -275,6 +285,12 @@
 																			</i></strike>
 																		</span><br>
 																	</p>
+																</div>
+																<div class="card-footer"
+																	style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
+																	<a class="btn btn-success btn-block"
+																		href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+																		Thêm vào gỏi hàng </a>
 																</div>
 															</button>
 														</form:form>

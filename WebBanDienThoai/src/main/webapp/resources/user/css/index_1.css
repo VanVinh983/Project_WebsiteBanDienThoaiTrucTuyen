@@ -182,11 +182,13 @@ h5 {
 }
 .tragop{
     padding-top: 10px;
-    padding-left: 170px ;
+    padding-left: auto;
+    padding-right: auto;
     padding-bottom: 10px;
+    float: left;
 }
 .dt{
-    height: 350px;
+    height: 450px;
 }
 .card{
     margin-bottom: 20px;

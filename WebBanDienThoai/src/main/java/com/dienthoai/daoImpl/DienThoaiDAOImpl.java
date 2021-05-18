@@ -72,7 +72,7 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 	public List<DienThoai> getListDienThoaiBanChay() {
 		List<DienThoai> dts = new ArrayList<DienThoai>();
 		Session currentSession = sessionFactory.getCurrentSession();
-		String sql = "select  id, SUM(ct.soLuong) as sum from DIENTHOAI as dt join CHITIETHOADON ct on dt.id = ct.id_DienThoai\r\n"
+		String sql = "select top(4) id, SUM(ct.soLuong) as sum from DIENTHOAI as dt join CHITIETHOADON ct on dt.id = ct.id_DienThoai\r\n"
 				+ "group by dt.id,dt.tenDT\r\n"
 				+ "order by sum desc";
 		List<?> list = currentSession.createNativeQuery(sql).getResultList();

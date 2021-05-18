@@ -22,6 +22,7 @@
 <link href="${resources}/admin/css/sidebar-menu.css" rel="stylesheet" />
 <link href="${resources}/admin/css/appstyle.css" rel="stylesheet" />
 <link href="${resources}/admin/css/fullparameter.css" rel="stylesheet" />
+
  <link rel="stylesheet" href="${resources}/admin/plugins/toastr/toastr.min.css">
 </head>
 <body class="bg-theme bg-theme1">
@@ -36,6 +37,7 @@
 	<script src="${resources}/admin/js/jquery.min.js"></script>
     <script src="${resources}/admin/js/bootstrap.min.js"></script>
     <script src="${resources}/admin/plugins/toastr/toastr.min.js"></script>
+    <script src="${url}/plugins/Chart.js/Chart.min.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script> -->
 <script src="${resources}/admin/js/jquery.twbsPagination.js" type="text/javascript"></script>

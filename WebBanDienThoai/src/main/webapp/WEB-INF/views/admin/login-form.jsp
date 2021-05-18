@@ -11,17 +11,12 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Admin web nông sản</title>
-<!--favicon-->
+<title>Admin</title>
 <link rel="icon" href="${url}/images/favicon.ico" type="image/x-icon">
-<!-- Bootstrap core CSS-->
 <link href="${url}/css/bootstrap.min.css" rel="stylesheet" />
-<!-- animate CSS-->
 <link href="${url}/css/animate.css" rel="stylesheet" type="text/css" />
-<!-- Icons CSS-->
 <link href="${url}/css/icons.css" rel="stylesheet" type="text/css" />
-<!-- Custom Style-->
-<link href="${url}/css/style.css" rel="stylesheet" />
+<link href="${url}/css/appstyle.css" rel="stylesheet" />
 </head>
 
 <body class="bg-theme bg-theme1">

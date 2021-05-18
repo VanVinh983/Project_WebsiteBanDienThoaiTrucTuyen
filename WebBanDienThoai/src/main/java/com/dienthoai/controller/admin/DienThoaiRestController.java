@@ -18,41 +18,41 @@ import com.dienthoai.service.DienThoaiService;
 
 @RestController(value = "dienThoaiRestControllerOfAdmin")
 @RequestMapping("/admin/product/api")
-public class DienThoaiRestController { 
+public class DienThoaiRestController {
 	@Autowired
 	private DienThoaiService dienThoaiService;
-	
-	/*
-	 * @GetMapping("/products") public List<DienThoai> getDienThoais(){ return
-	 * dienThoaiService.getListDienThoai(); }
-	 */
-	
+
+	@GetMapping("/product")
+	public List<DienThoai> getDienThoais() {
+		return dienThoaiService.getDienTHoaiBanChay();
+	}
+
 	@GetMapping("/products/{id}")
-	public DienThoai getDienThoai(@PathVariable int id){
+	public DienThoai getDienThoai(@PathVariable int id) {
 		return dienThoaiService.getDienThoai(id);
 	}
-	
+
 	@GetMapping("/products")
-	public List<DienThoai> getListTheoTen(@RequestParam("tenDT") String tenDT){
+	public List<DienThoai> getListTheoTen(@RequestParam("tenDT") String tenDT) {
 		return dienThoaiService.getListTheoTen(tenDT);
 	}
-	
+
 	@PostMapping("/products")
 	public DienThoai themDienThoai(@RequestBody DienThoai dienThoai) {
 		dienThoai.setId(0);
 		dienThoaiService.saveDienThoai(dienThoai);
 		return dienThoai;
 	}
-	
+
 	@PutMapping("/products")
 	public DienThoai suaDienThoai(@RequestBody DienThoai dienThoai) {
 		dienThoaiService.saveDienThoai(dienThoai);
 		return dienThoai;
 	}
-	
+
 	@DeleteMapping("/products/{id}")
 	public void xoaDienThoai(@PathVariable int id) {
 		dienThoaiService.deleteDienThoai(id);
 	}
-	
+
 }

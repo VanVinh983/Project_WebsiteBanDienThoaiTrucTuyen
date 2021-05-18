@@ -35,7 +35,6 @@ public class AppConfig implements WebMvcConfigurer {
 	@Autowired
 	private Environment env;
 
-	private Logger logger = Logger.getLogger(getClass().getName());
 
 	@Bean
 	public MultipartResolver multipartResolver() {
@@ -60,8 +59,6 @@ public class AppConfig implements WebMvcConfigurer {
 		} catch (PropertyVetoException exc) {
 			throw new RuntimeException(exc);
 		}
-		logger.info("jdbc.url=" + env.getProperty("jdbc.url"));
-		logger.info("jdbc.user=" + env.getProperty("jdbc.user"));
 		securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
 		securityDataSource.setUser(env.getProperty("jdbc.user"));
 		securityDataSource.setPassword(env.getProperty("jdbc.password"));

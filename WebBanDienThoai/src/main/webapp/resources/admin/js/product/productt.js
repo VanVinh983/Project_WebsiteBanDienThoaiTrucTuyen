@@ -153,7 +153,7 @@ function renderDuLieu(data) {
 		console.log(JSON.stringify(dt));
 
 		// tạo tr trong table
-		$("<tr>").appendTo($("#tableBody"))
+		$("<tr>").appendTo($("#tableBody"))	
 			// thêm td vào tr
 			.append($("<td>").text(id))
 			.append($("<td>").html(` 

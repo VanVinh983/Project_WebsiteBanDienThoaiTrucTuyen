@@ -41,6 +41,7 @@ public class GioHangController {
 				return "user/giohang";
 			} else {
 				session.setAttribute("tinhtranggiohang", "");
+				capNhatGiaTrongGioHang(session);
 				return "user/giohang";
 			}
 		}
@@ -53,9 +54,6 @@ public class GioHangController {
 			DienThoaiGioHang dienThoaiGioHang = new DienThoaiGioHang(dienThoaiService.getDienThoai(id), 1);
 			cart.add(dienThoaiGioHang);
 			session.setAttribute("cart", cart);
-			session.setAttribute("giaThucTe",
-					dienThoaiGioHang.getDienThoai().getGiaDT() - (dienThoaiGioHang.getDienThoai().getGiaDT()
-							* dienThoaiGioHang.getDienThoai().getGiamGia() / 100));
 			capNhatGiaTrongGioHang(session);
 		} else {
 			List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
@@ -63,9 +61,6 @@ public class GioHangController {
 			if (index == -1) {
 				DienThoaiGioHang dienThoaiGioHang = new DienThoaiGioHang(dienThoaiService.getDienThoai(id), 1);
 				cart.add(dienThoaiGioHang);
-				session.setAttribute("giaThucTe",
-						dienThoaiGioHang.getDienThoai().getGiaDT() - (dienThoaiGioHang.getDienThoai().getGiaDT()
-								* dienThoaiGioHang.getDienThoai().getGiamGia() / 100));
 			} else {
 				int quantity = cart.get(index).getSoLuong() + 1;
 				cart.get(index).setSoLuong(quantity);
@@ -110,5 +105,29 @@ public class GioHangController {
 		session.setAttribute("cart", cart);
 		capNhatGiaTrongGioHang(session);
 		return "redirect:/user/giohang";
+	}
+	@RequestMapping(value = "/tangsoluong/{id}")
+	public String tangSoLuong(@PathVariable(value = "id") int id,HttpSession session) {
+		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
+		for (DienThoaiGioHang dienThoaiGioHang : cart) {
+			if(dienThoaiGioHang.getDienThoai().getId() == id) {
+				int quantity = dienThoaiGioHang.getSoLuong()+1;
+				dienThoaiGioHang.setSoLuong(quantity);
+			}
+		}
+		return "redirect:/user/giohang";
+		
+	}	
+	@RequestMapping(value = "/giamsoluong/{id}")
+	public String giamSoLuong(@PathVariable(value = "id") int id,HttpSession session) {
+		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
+		for (DienThoaiGioHang dienThoaiGioHang : cart) {
+			if(dienThoaiGioHang.getDienThoai().getId() == id) {
+				int quantity = dienThoaiGioHang.getSoLuong()-1;
+				dienThoaiGioHang.setSoLuong(quantity);
+			}
+		}
+		return "redirect:/user/giohang";
+		
 	}
 }

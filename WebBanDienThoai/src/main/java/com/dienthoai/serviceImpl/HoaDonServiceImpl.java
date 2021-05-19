@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.HoaDonDAO;
 import com.dienthoai.entity.HoaDon;
+import com.dienthoai.entity.PhuongThucThanhToan;
 import com.dienthoai.service.HoaDonService;
 
 @Service
@@ -32,5 +33,10 @@ public class HoaDonServiceImpl implements HoaDonService {
 	public List<HoaDon> getListHoaDon() {
 		return hoaDonDAO.getListHoaDon();
 	}
-
+	@Override
+	@Transactional
+	public List<PhuongThucThanhToan> layTatCaPhuongThucThanhToan() {
+		return hoaDonDAO.layTatCaPhuongThucThanhToan();
+	}
+	
 }

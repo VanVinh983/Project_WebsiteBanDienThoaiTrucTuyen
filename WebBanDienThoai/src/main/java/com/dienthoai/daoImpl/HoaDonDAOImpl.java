@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.HoaDonDAO;
 import com.dienthoai.entity.HoaDon;
+import com.dienthoai.entity.PhuongThucThanhToan;
+
 @Repository
 public class HoaDonDAOImpl implements HoaDonDAO {
 	@Autowired
@@ -23,6 +25,7 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.saveOrUpdate(hd);
 	}
+
 	@Transactional
 	@Override
 	public HoaDon getHoaDon(int id) {
@@ -31,6 +34,7 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		HoaDon hd = currentSession.get(HoaDon.class, id);
 		return hd;
 	}
+
 	@Transactional
 	@Override
 	public List<HoaDon> getListHoaDon() {
@@ -39,6 +43,16 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		Query<HoaDon> theQuery = currentSession.createQuery("from HoaDon", HoaDon.class);
 		List<HoaDon> hds = theQuery.getResultList();
 		return hds;
+	}
+
+	@Transactional
+	@Override
+	public List<PhuongThucThanhToan> layTatCaPhuongThucThanhToan() {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<PhuongThucThanhToan> list = currentSession
+				.createQuery("from PhuongThucThanhToan", PhuongThucThanhToan.class).getResultList();
+		return list;
 	}
 
 }

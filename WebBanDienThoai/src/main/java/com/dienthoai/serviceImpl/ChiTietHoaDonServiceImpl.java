@@ -18,7 +18,7 @@ public class ChiTietHoaDonServiceImpl implements ChiTietHoaDonService {
 	
 	@Override
 	@Transactional
-	public ChiTietHoaDon getChiTietHoaDon(int id) {
+	public List<ChiTietHoaDon> getChiTietHoaDon(int id) {
 		return chiTietHoaDonDAO.getChiTietHoaDon(id);
 	}
 

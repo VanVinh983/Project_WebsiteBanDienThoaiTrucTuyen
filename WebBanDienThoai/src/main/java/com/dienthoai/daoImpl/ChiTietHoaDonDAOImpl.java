@@ -18,11 +18,11 @@ public class ChiTietHoaDonDAOImpl implements ChiTietHoaDonDAO {
 	
 	@Transactional
 	@Override
-	public ChiTietHoaDon getChiTietHoaDon(int id) {
+	public List<ChiTietHoaDon> getChiTietHoaDon(int id) {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		ChiTietHoaDon cthd = currentSession.createNativeQuery("select * from CHITIETHOADON where id_HoaDon="+id+"" ,ChiTietHoaDon.class).getSingleResult();
-		return cthd;
+		List<ChiTietHoaDon> cthds = currentSession.createNativeQuery("select * from CHITIETHOADON where id_HoaDon="+id+"" ,ChiTietHoaDon.class).getResultList();
+		return cthds;
 	}
 	@Transactional
 	@Override

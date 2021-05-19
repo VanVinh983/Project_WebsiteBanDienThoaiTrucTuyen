@@ -2,9 +2,9 @@ function xemChiTiet(id) {
 
 	const url = `api/products/${id}`;
 	console.log('url: ', url);
-
+	
 	$.get(url, function(data, status) {
-
+	
 		const {trongLuong,kichThuoc, mauSac, anhURL,thuongHieu, thongSo} = data;
 
 		if (status === 'success') {
@@ -142,19 +142,11 @@ $("#timKiemTendienThoai").on("keyup", function() {
 
 // hiển thị dữ liệu khi tìm
 function renderDuLieu(data) {
-
-	// xóa dữ liệu trong table
 	$("#tableBody").html("");
-
-	// lặp qua dữ liệu
 	$.each(data, (index, dt) => {
-
 		const { id, tenDT, giaDT,soLuongTon,giamGia, anhURL} = dt;
 		console.log(JSON.stringify(dt));
-
-		// tạo tr trong table
-		$("<tr>").appendTo($("#tableBody"))	
-			// thêm td vào tr
+		$("<tr>").appendTo($("#tableBody"))				
 			.append($("<td>").text(id))
 			.append($("<td>").html(` 
 				<img style="width: 110px; height: 67px; border: 1px solid #fff;" 

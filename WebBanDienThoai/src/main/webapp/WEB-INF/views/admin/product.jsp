@@ -132,7 +132,7 @@
 								<label id="pin"></label>
 							</div>
 						</li>
-						<li><span>Trọng lương</span>
+						<li><span>Trọng lượng</span>
 							<div>
 								<label id="trongLuong"></label>
 							</div>

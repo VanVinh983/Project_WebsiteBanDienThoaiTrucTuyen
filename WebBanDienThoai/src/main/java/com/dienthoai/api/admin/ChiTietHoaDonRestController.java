@@ -22,7 +22,7 @@ public class ChiTietHoaDonRestController {
 		return chiTietHoaDonService.getAllChiTietHoaDon();
 	}
 	@GetMapping("/orderdetails/{id}")
-	public ChiTietHoaDon getHoaDon(@PathVariable int id){
+	public List<ChiTietHoaDon> getHoaDon(@PathVariable int id){
 		return chiTietHoaDonService.getChiTietHoaDon(id);
 	}
 }

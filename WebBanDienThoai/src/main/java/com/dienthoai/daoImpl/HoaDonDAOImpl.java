@@ -36,7 +36,7 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 	public List<HoaDon> getListHoaDon() {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<HoaDon> theQuery = currentSession.createQuery("from HoaDon", HoaDon.class);
+		Query<HoaDon> theQuery = currentSession.createQuery("from HoaDon order by id", HoaDon.class);
 		List<HoaDon> hds = theQuery.getResultList();
 		return hds;
 	}

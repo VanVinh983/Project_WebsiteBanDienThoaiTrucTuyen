@@ -1,4 +1,4 @@
-package com.dienthoai.controller.admin;
+package com.dienthoai.api.admin;
 
 import java.util.List;
 

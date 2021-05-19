@@ -23,7 +23,7 @@ public class DanhMucDaoImpl implements DanhMucDao {
 	public DanhMuc getDanhMuc(String tenDanhMuc) {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<DanhMuc> theQuery = currentSession.createQuery("from DanhMuc where name=:x", DanhMuc.class);
+		Query<DanhMuc> theQuery = currentSession.createQuery("from DanhMuc where name=:x order by id", DanhMuc.class);
 		theQuery.setParameter("x", tenDanhMuc);
 		DanhMuc danhMuc = null;
 		try {
@@ -39,7 +39,7 @@ public class DanhMucDaoImpl implements DanhMucDao {
 	public List<DanhMuc> getListDanhMuc() {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<DanhMuc> theQuery = currentSession.createQuery("from DanhMuc", DanhMuc.class);
+		Query<DanhMuc> theQuery = currentSession.createQuery("from DanhMuc order by id", DanhMuc.class);
 		List<DanhMuc> danhMucs = theQuery.getResultList();
 		return danhMucs;
 	}

@@ -1,4 +1,4 @@
-package com.dienthoai.controller.admin;
+package com.dienthoai.api.admin;
 
 import java.util.List;
 
@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dienthoai.entity.DienThoai;
-import com.dienthoai.service.DienThoaiService;
+import com.dienthoai.service.ThongKeService;
 
 @RestController(value = "trangChuRestControllerOfAdmin")
 @RequestMapping("/admin/api")
 public class TrangChuRestController {
 	@Autowired
-	private DienThoaiService dienThoaiService;
+	private ThongKeService thongKeService;
 
 	@GetMapping("/products")
 	public List<DienThoai> getDienThoaiBanChay() {
-		return dienThoaiService.getDienTHoaiBanChay();
+		return thongKeService.getListDienThoaiBanChay();
 	}
 }

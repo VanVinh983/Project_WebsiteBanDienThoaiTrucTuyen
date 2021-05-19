@@ -21,7 +21,7 @@ public class ChiTietHoaDonDAOImpl implements ChiTietHoaDonDAO {
 	public ChiTietHoaDon getChiTietHoaDon(int id) {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		ChiTietHoaDon cthd = currentSession.createNativeQuery("select * from CHITIETHOADON where id_HoaDon="+id+"",ChiTietHoaDon.class).getSingleResult();
+		ChiTietHoaDon cthd = currentSession.createNativeQuery("select * from CHITIETHOADON where id_HoaDon="+id+"" ,ChiTietHoaDon.class).getSingleResult();
 		return cthd;
 	}
 	@Transactional
@@ -29,7 +29,7 @@ public class ChiTietHoaDonDAOImpl implements ChiTietHoaDonDAO {
 	public List<ChiTietHoaDon> getAllChiTietHoaDon() {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<ChiTietHoaDon> theQuery = currentSession.createQuery("from ChiTietHoaDon", ChiTietHoaDon.class);
+		Query<ChiTietHoaDon> theQuery = currentSession.createQuery("from ChiTietHoaDon order by id_hoaDon", ChiTietHoaDon.class);
 		List<ChiTietHoaDon> cthds = theQuery.getResultList();
 		return cthds;
 	}

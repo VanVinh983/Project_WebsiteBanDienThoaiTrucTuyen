@@ -92,13 +92,19 @@
 					</div>
 					<div class="table-responsive">
 						<table class="table align-items-center">
+						<thead>
+									<tr class="text-white">
+										<th scope="col">Tên</th>
+										<th scope="col">Số lượng bán</th>
+									</tr>
+						</thead>
 							<tbody>
 								<tr>
 									<td><i class="fa fa-circle text-white mr-2"></i>
 										<span id="top1"></span>
 									</td>
 									<td>
-										<span id="gia1"></span> VNĐ
+										<span id="gia1"></span>
 									</td>
 								</tr>
 								<tr>
@@ -106,7 +112,7 @@
 										<span id="top2"></span>
 									</td>
 									<td>
-										<span id="gia2"></span> VNĐ
+										<span id="gia2"></span>
 									</td>
 								</tr>
 								<tr>
@@ -114,7 +120,7 @@
 										<span id="top3"></span>
 									</td>
 									<td>
-										<span id="gia3"></span> VNĐ
+										<span id="gia3"></span>
 									</td>
 								</tr>
 								<tr>
@@ -122,7 +128,7 @@
 										<span id="top4"></span>
 									</td>
 									<td>
-										<span id="gia4"></span> VNĐ
+										<span id="gia4"></span>
 									</td>
 								</tr>
 							</tbody>

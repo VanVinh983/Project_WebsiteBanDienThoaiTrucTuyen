@@ -1,11 +1,18 @@
 package com.dienthoai.daoImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.management.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.ThongKeDao;
+import com.dienthoai.entity.DienThoai;
 
 @Repository
 public class ThongKeDaoImpl implements ThongKeDao {
@@ -45,5 +52,20 @@ public class ThongKeDaoImpl implements ThongKeDao {
 		return doanhThu;
 	}
 
-	
+	@Transactional
+	@Override
+	public List<DienThoai> getListDienThoaiBanChay() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		String sql = "select  sum(soLuong) as sum, dt.tenDT, dt.giaDT, ts.boNho\r\n"
+				+ "from CHITIETHOADON ct \r\n"
+				+ "join DIENTHOAI dt on dt.id=ct.id_DienThoai\r\n"
+				+ "join THONGSO ts on dt.id_ThongSo=ts.id\r\n"
+				+ "group by dt.tenDT, dt.giaDT, ts.boNho\r\n"
+				+ "order by sum desc";
+		
+		@SuppressWarnings("unchecked")
+		List<DienThoai> listDT=currentSession.createNativeQuery(sql).getResultList();
+		return listDT;	
+	}
+
 }

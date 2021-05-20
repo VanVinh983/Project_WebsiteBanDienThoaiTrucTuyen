@@ -37,6 +37,7 @@ public class NguoiDungController {
 	
 	@PostMapping("/user/save")
 	private String editUser(@ModelAttribute("user") NguoiDung user) {
+		
 		nguoiDungService.saveNguoiDung(user);
 		return "redirect:/admin/user/list";
 	}

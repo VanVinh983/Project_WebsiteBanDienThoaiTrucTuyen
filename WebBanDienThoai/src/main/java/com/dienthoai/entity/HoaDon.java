@@ -35,6 +35,7 @@ public class HoaDon implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+	
 	private Date ngayLap;
 	
 	@Nationalized
@@ -171,13 +172,18 @@ public class HoaDon implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "HoaDon [id=" + id + ", ngayLap=" + ngayLap + ", thanhToan=" + thanhToan + ", nguoiDung=" + nguoiDung
-				+ "]";
+		return "HoaDon [id=" + id + ", ngayLap=" + ngayLap + ", hoTenKhachHang=" + hoTenKhachHang
+				+ ", soDienThoaiGiaoHang=" + soDienThoaiGiaoHang + ", diaChiGiaoHang=" + diaChiGiaoHang + ", email="
+				+ email + ", thanhToan=" + thanhToan + ", nguoiDung=" + nguoiDung + ", danhSachChiTiet="
+				+ danhSachChiTiet + "]";
 	}
-
-
 
 
 	public String getHoTenKhachHang() {

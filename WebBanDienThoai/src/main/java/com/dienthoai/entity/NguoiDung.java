@@ -1,8 +1,8 @@
 package com.dienthoai.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.sql.Date;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +17,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Nationalized;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -54,7 +53,6 @@ public class NguoiDung implements Serializable{
 	@Nationalized 
 	private String vaiTro;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

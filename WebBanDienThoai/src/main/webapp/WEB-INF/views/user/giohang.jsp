@@ -29,6 +29,7 @@
 							<b>Không có sản phẩm nào trong giỏ hàng</b>
 						</c:if> <c:if test="${empty tinhtranggiohang}"></c:if></td>
 				</tr>
+
 			</thead>
 			<tbody>
 				<c:forEach var="ds" items="${sessionScope.cart}">
@@ -104,11 +105,16 @@
 									type="number" pattern="#,###,###.## ₫" value="${tongtien}" /></b></td>
 					</tr>
 					<tr>
-						<td style="width: 100%"><a href="${pageContext.request.contextPath }/user/showformnguoinhan"><button style="width: 100%"
-									type="button" class="btn btn-success">Đặt hàng</button></a></td>
+						<td style="width: 100%"><a
+							href="${pageContext.request.contextPath }/user/showformnguoinhan"><button
+									style="width: 100%" type="button" class="btn btn-success">Đặt
+									hàng</button></a></td>
 					</tr>
 				</table>
 			</div>
+		</div>
+		<div class="row">
+			<div style="color: red; text-align: center;font-size: 20px"><b>${errorcartnull}</b></div>
 		</div>
 		<div class="row" style="display: none">
 			<div class="thongtinkhachhang">

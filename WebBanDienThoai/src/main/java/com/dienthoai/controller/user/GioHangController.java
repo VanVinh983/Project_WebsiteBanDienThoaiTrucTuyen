@@ -68,6 +68,7 @@ public class GioHangController {
 			session.setAttribute("cart", cart);
 			capNhatGiaTrongGioHang(session);
 		}
+		session.setAttribute("errorcartnull", "");
 		return "redirect:/user/giohang";
 	}
 
@@ -104,6 +105,7 @@ public class GioHangController {
 		}
 		session.setAttribute("cart", cart);
 		capNhatGiaTrongGioHang(session);
+		session.setAttribute("errorcartnull", "");
 		return "redirect:/user/giohang";
 	}
 	@RequestMapping(value = "/tangsoluong/{id}")

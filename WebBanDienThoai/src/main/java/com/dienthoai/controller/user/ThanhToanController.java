@@ -21,17 +21,17 @@ public class ThanhToanController {
 	@Autowired
 	HoaDonService hoaDonService;
 
-	@GetMapping(value = "/showformnguoinhan")
+	@GetMapping(value = "/showFormNguoiNhan")
 	public String showFormNguoiNhan(Model model, HttpSession session) {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		if (cart == null) {
 			session.setAttribute("errorcartnull", "Vui lòng chọn sản phẩm vào giỏ hàng");
-			return "redirect:/user/giohang";
+			return "redirect:/user/gioHang";
 
 		} else {
 			if (cart.size() <= 0) {
 				session.setAttribute("errorcartnull", "Vui lòng chọn sản phẩm vào giỏ hàng");
-				return "redirect:/user/giohang";
+				return "redirect:/user/gioHang";
 			} else {
 				List<PhuongThucThanhToan> layTatCaPhuongThucThanhToan = hoaDonService.layTatCaPhuongThucThanhToan();
 				model.addAttribute("nguoiNhan", new HoaDon());

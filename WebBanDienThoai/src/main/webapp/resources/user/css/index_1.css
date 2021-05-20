@@ -1,230 +1,297 @@
 * {
-    padding: 0px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    font: fantasy;
+	padding: 0px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	font: fantasy;
 }
 
 .outer {
-    background-color: rgba(255, 255, 255, 0.753);
-    padding: 16px;
-    margin-top: 30px;
-    height: 3000px;
-    /* Used in this example to enable scrolling */
+	background-color: rgba(255, 255, 255, 0.753);
+	padding: 16px;
+	margin-top: 30px;
+	height: 3000px;
+	/* Used in this example to enable scrolling */
 }
 
 .header {
-    background-color: white;
+	background-color: white;
 }
 
 .menu {
-    background-color: black !important;
+	background-color: black !important;
 }
 
 .menu {
-    background-color: black;
+	background-color: black;
 }
 
 .gt {
-    background-color: #a1a1a83b;
+	background-color: #a1a1a83b;
 }
 
 .menu a {
-    color: rgb(233, 227, 227);
-    font-size: 20px;
-    font-weight: bold;
+	color: rgb(233, 227, 227);
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .menu li:hover {
-    background-color: black !important;
+	background-color: black !important;
 }
 
 .menu a:hover {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .menu a:hover {
-    color: red;
+	color: red;
 }
 
 .sp .card:hover {
-    transform: scale(1.1, 1.1);
-    transition-property: all;
-    transition-duration: 1s;
-    transition-timing-function: linear;
+	transform: scale(1.1, 1.1);
+	transition-property: all;
+	transition-duration: 1s;
+	transition-timing-function: linear;
 }
 
 .sp .card {
-    transition-property: all;
-    transition-duration: 0.1s;
-    transition-timing-function: linear;
+	transition-property: all;
+	transition-duration: 0.1s;
+	transition-timing-function: linear;
 }
 
 .muaa:hover {
-    color: black;
-    background-color: white;
+	color: black;
+	background-color: white;
 }
 
 .quenmatkhau a:hover {
-    color: red;
+	color: red;
 }
 
 .sp {
-    box-shadow: 3px 3px 10px black;
+	box-shadow: 3px 3px 10px black;
 }
 
 .logo {
-    height: 50px;
+	height: 50px;
 }
 
 h5 {
-    border-bottom: 2px double black;
+	border-bottom: 2px double black;
 }
 
 .help a {
-    color: black;
+	color: black;
 }
 
 .formlg {
-    background-color: linear-gradient(180deg, purple, pink);
+	background-color: linear-gradient(180deg, purple, pink);
 }
 
 .card:hover {
-    box-shadow: 0px 10px 10px #808080;
+	box-shadow: 0px 10px 10px #808080;
 }
 
 .col1_2 {
-    background-color: white;
+	background-color: white;
 }
 
 .tintuc h5:hover {
-    color: red;
+	color: red;
 }
 
 .neww label:hover {
-    color: red;
+	color: red;
 }
 
 .nav-link {
-    color: black !important;
-    font-size: 20px;
+	color: black !important;
+	font-size: 20px;
 }
 
 .nav-link:hover {
-    color: rgb(253, 253, 253) !important;
-    text-transform: uppercase;
-    border-bottom: rgb(240, 136, 136);
+	color: rgb(253, 253, 253) !important;
+	text-transform: uppercase;
+	border-bottom: rgb(240, 136, 136);
 }
 
 .modalDangNhap:hover {
-    color: red;
+	color: red;
 }
 
 #danhgiaiPhone a {
-    font-size: 17px;
-    text-decoration: none;
+	font-size: 17px;
+	text-decoration: none;
 }
 
 #xemThemCauHinhChiTiet label a:hover {
-    color: blue;
-    background-color: white;
+	color: blue;
+	background-color: white;
 }
 
 #gioHang {
-    box-shadow: 3px 3px 10px black;
+	box-shadow: 3px 3px 10px black;
 }
 
 .navbar {
-    font-family: Montserrat, sans-serif;
-    margin-bottom: 0;
-    background-color: #2d2d30;
-    border: 0;
-    font-size: 11px !important;
-    letter-spacing: 4px;
-    opacity: 0.9;
+	font-family: Montserrat, sans-serif;
+	margin-bottom: 0;
+	background-color: #2d2d30;
+	border: 0;
+	font-size: 11px !important;
+	letter-spacing: 4px;
+	opacity: 0.9;
 }
 
 .navbar .navbar-brand {
-    color: #d5d5d5 !important;
+	color: #d5d5d5 !important;
 }
 
 .navbar-nav li a:hover {
-    color: #fff !important;
+	color: #fff !important;
 }
 
 .navbar-nav li.active a {
-    color: #fff !important;
-    background-color: #29292c !important;
+	color: #fff !important;
+	background-color: #29292c !important;
 }
 
 .navbar-default .navbar-toggle {
-    border-color: transparent;
+	border-color: transparent;
 }
 
 .open .dropdown-toggle {
-    color: #fff;
-    background-color: #555 !important;
+	color: #fff;
+	background-color: #555 !important;
 }
 
 .dropdown-menu li a {
-    color: #000 !important;
+	color: #000 !important;
 }
 
 .dropdown-menu li a:hover {
-    background-color: gray !important;
+	background-color: gray !important;
 }
-.installment{
-    background-color: rgb(233, 220, 38);
-    padding-left: 3px;
-    padding-right: 3px;
-    border-radius: 5px;
-    
+
+.installment {
+	background-color: rgb(233, 220, 38);
+	padding-left: 3px;
+	padding-right: 3px;
+	border-radius: 5px;
 }
-.tragop{
-    padding-top: 10px;
-    padding-left: auto;
-    padding-right: auto;
-    padding-bottom: 10px;
-    float: left;
+
+.tragop {
+	padding-top: 10px;
+	padding-left: auto;
+	padding-right: auto;
+	padding-bottom: 10px;
+	float: left;
 }
-.dt{
-    height: 450px;
+
+.dt {
+	height: 450px;
 }
-.card{
-    margin-bottom: 20px;
+
+.card {
+	margin-bottom: 20px;
 }
-.thongtinkhachhang{
-	margin-bottom:10px;
+
+.thongtinkhachhang {
+	margin-bottom: 10px;
 	box-shadow: 2px 2px 10px black;
-    border-radius: 10px;
+	border-radius: 10px;
 	height: auto;
 	width: 60%;
 	padding: 10px;
 }
-.giohangtongtien{
-	margin-bottom:10px;
+
+.giohangtongtien {
+	margin-bottom: 10px;
 	box-shadow: 2px 2px 10px black;
-    border-radius: 10px;
+	border-radius: 10px;
 	height: auto;
 	width: 60%;
 }
-.giohangtongtien tr{
+
+.giohangtongtien tr {
 	border: none;
 }
-.giohangtongtien td:nth-child(2){
+
+.giohangtongtien td:nth-child(2) {
 	float: right;
 }
-.giohangtongtien  td:nth-child(1){
-	float: left;
-}
-.thongtinkhachhang tr{
-	border: none;
-}
-.thongtinkhachhang  td:nth-child(2){
-	float: right;
-}
-.thongtinkhachhang  td:nth-child(1){
+
+.giohangtongtien  td:nth-child(1) {
 	float: left;
 }
 
+.thongtinkhachhang tr {
+	border: none;
+}
 
+.thongtinkhachhang  td:nth-child(2) {
+	float: right;
+}
+
+.thongtinkhachhang  td:nth-child(1) {
+	float: left;
+}
+
+.login {
+	background-color: white;
+	box-shadow: 2px 2px 10px black;
+	width: 100%;
+	height: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 50px;
+	border-radius: 20px;
+}
+
+.welcomelogin {
+	text-align: center;
+	padding: 20px;
+	padding-top : 100px;
+	height: auto;
+}
+
+.login div:nth-child(1) {
+	font-size: 25px;
+}
+
+.login label {
+	font-size: 16px;
+}
+
+.login input {
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 50px;
+	border: 1px solid transparent;
+	padding-left: 20px;
+	height: 48px;
+}
+
+.login button{
+	text-align:center;
+	font-size: 20px;
+	width: 100%;
+	background: #f2f885;
+	border-radius: 50px;
+	border: 1px solid transparent;
+	padding-left: 20px;
+	height: 48px;
+}
+.quenmatkhau{
+	text-align: center;
+	font-size: 18px;
+	margin-top: 20px;
+}
+.quenmatkhau a{
+	text-decoration: none;
+	color: black;
+}
+.quenmatkhau a:hover{
+	text-decoration: none;
+	color: black;
+}

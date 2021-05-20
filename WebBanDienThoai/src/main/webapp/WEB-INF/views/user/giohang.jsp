@@ -106,7 +106,7 @@
 					</tr>
 					<tr>
 						<td style="width: 100%"><a
-							href="${pageContext.request.contextPath }/user/showformnguoinhan"><button
+							href="${pageContext.request.contextPath }/user/showFormNguoiNhan"><button
 									style="width: 100%" type="button" class="btn btn-success">Đặt
 									hàng</button></a></td>
 					</tr>

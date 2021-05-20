@@ -23,7 +23,7 @@ public class GioHangController {
 	@Autowired
 	private DienThoaiService dienThoaiService;
 
-	@GetMapping(value = "/giohang")
+	@GetMapping(value = "/gioHang")
 	public String showGioHang(HttpSession session) {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		if (cart == null) {
@@ -69,7 +69,7 @@ public class GioHangController {
 			capNhatGiaTrongGioHang(session);
 		}
 		session.setAttribute("errorcartnull", "");
-		return "redirect:/user/giohang";
+		return "redirect:/user/gioHang";
 	}
 
 	public void capNhatGiaTrongGioHang(HttpSession session) {
@@ -106,7 +106,7 @@ public class GioHangController {
 		session.setAttribute("cart", cart);
 		capNhatGiaTrongGioHang(session);
 		session.setAttribute("errorcartnull", "");
-		return "redirect:/user/giohang";
+		return "redirect:/user/gioHang";
 	}
 	@RequestMapping(value = "/tangsoluong/{id}")
 	public String tangSoLuong(@PathVariable(value = "id") int id,HttpSession session) {
@@ -117,7 +117,7 @@ public class GioHangController {
 				dienThoaiGioHang.setSoLuong(quantity);
 			}
 		}
-		return "redirect:/user/giohang";
+		return "redirect:/user/gioHang";
 		
 	}	
 	@RequestMapping(value = "/giamsoluong/{id}")
@@ -129,7 +129,7 @@ public class GioHangController {
 				dienThoaiGioHang.setSoLuong(quantity);
 			}
 		}
-		return "redirect:/user/giohang";
+		return "redirect:/user/gioHang";
 		
 	}
 }

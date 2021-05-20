@@ -14,6 +14,30 @@
 	<br>
 	<div class="container">
 		<div class="row">
+			<table class="table" style="width: 60%">
+				<c:forEach var="dt" items="${sessionScope.cart}">
+					<tr>
+						<td><img alt="" src="${img}/11pr.png"
+							style="width: 100p; height: 100px"></td>
+						<td><b>Điện thoại ${dt.dienThoai.tenDT}
+								${dt.dienThoai.thongSo.boNho} - ${dt.dienThoai.thongSo.ram} <br>
+								Màu : ${dt.dienThoai.mauSac} <br>Đơn giá: <fmt:formatNumber
+									type="number" pattern="#,###,###.##₫"
+									value="${dt.dienThoai.giaDT}" /> <br> Số lượng:
+								${dt.soLuong}
+						</b></td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td><b style="color: red; font-size: 20px">Tổng tiền</b>
+					<td><b style="color: red; font-size: 20px; float: right;"><fmt:formatNumber
+								type="number" pattern="#,###,###.##₫" value="${tongtien}" /></b>
+					<td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="row">
 			<div class="thongtinkhachhang">
 				<div style="text-align: center;">
 					<h4>THÔNG TIN KHÁCH HÀNG</h4>
@@ -54,11 +78,10 @@
 					</div>
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Phương
-							thức thanh toán</label> <form:select path="thanhToan">
-							<c:forEach var="pttt" items="${layTatCaPhuongThucThanhToan}">
-								<form:option value="${pttt.id }">${pttt.phuongThuc}</form:option>
-							</c:forEach>
-						</form:select>
+							thức thanh toán</label>
+						<c:forEach var="pttt" items="${layTatCaPhuongThucThanhToan}">
+							<form:radiobutton path="thanhToan" value="${pttt.id }" />${pttt.phuongThuc } &nbsp;
+						</c:forEach>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></label>

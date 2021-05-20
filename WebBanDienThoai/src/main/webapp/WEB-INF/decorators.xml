@@ -4,7 +4,7 @@
 	<decorator name="danhsach-dienthoai" page="user.jsp">
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
-	
+
 	<decorator name="danhmuc" page="user.jsp">
 		<pattern>/dienthoai/danhmuc</pattern>
 	</decorator>
@@ -13,11 +13,14 @@
 		<pattern>/user/chitietdt</pattern>
 	</decorator>
 
-	<decorator name="user-giohang" page="user.jsp">
-		<pattern>/user/giohang</pattern>
+	<decorator name="user-gioang" page="user.jsp">
+		<pattern>/user/gioHang</pattern>
+	</decorator>
+	<decorator name="user-dangnhap" page="user.jsp">
+		<pattern>/user/formDangNhap</pattern>
 	</decorator>
 	<decorator name="user-thanhtoan" page="user.jsp">
-		<pattern>/user/showformnguoinhan</pattern>
+		<pattern>/user/showFormNguoiNhan</pattern>
 	</decorator>
 	<decorator name="admin-trangchu" page="admin.jsp">
 		<pattern>/admin/</pattern>

@@ -4,6 +4,10 @@
 	<decorator name="danhsach-dienthoai" page="user.jsp">
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
+	
+	<decorator name="danhmuc" page="user.jsp">
+		<pattern>/dienthoai/danhmuc</pattern>
+	</decorator>
 
 	<decorator name="chiTietDienThoai" page="user.jsp">
 		<pattern>/user/chitietdt</pattern>

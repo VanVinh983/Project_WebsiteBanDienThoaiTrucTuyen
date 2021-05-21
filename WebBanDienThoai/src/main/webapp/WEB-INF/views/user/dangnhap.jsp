@@ -34,7 +34,7 @@
 					<div style="text-align: center;">
 						<b>ĐĂNG NHẬP</b>
 					</div>
-					<form action="user/dangnhap" method="POST">
+					<form action="${pageContext.request.contextPath}/dangNhap" method="post">
 						<div class="form-group">
 							<label class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
 								for="tenDangNhap"><b>Tên đăng nhập</b></label>
@@ -47,7 +47,7 @@
 							<label class="col-xs-4 col-sm-4 col-md-4 col-lg-4" for="matKhau"><b>Mật
 									khẩu</b></label>
 							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-								<input type="text" placeholder="Nhập mật khẩu"
+								<input type="password" placeholder="Nhập mật khẩu"
 									class="form-control" name="matKhau" id="matKhau">
 							</div>
 						</div>
@@ -61,6 +61,7 @@
 					<div class="quenmatkhau">
 						<a href="">Quên mật khẩu</a>
 					</div>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</div>
 			</div>
 		</div>

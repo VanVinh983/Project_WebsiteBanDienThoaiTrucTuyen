@@ -33,10 +33,18 @@ public class HoaDonServiceImpl implements HoaDonService {
 	public List<HoaDon> getListHoaDon() {
 		return hoaDonDAO.getListHoaDon();
 	}
+
 	@Override
 	@Transactional
 	public List<PhuongThucThanhToan> layTatCaPhuongThucThanhToan() {
 		return hoaDonDAO.layTatCaPhuongThucThanhToan();
 	}
-	
+
+	@Transactional
+	@Override
+	public PhuongThucThanhToan getPhuongThuc(int id) {
+		// TODO Auto-generated method stub
+		return hoaDonDAO.getPhuongThuc(id);
+	}
+
 }

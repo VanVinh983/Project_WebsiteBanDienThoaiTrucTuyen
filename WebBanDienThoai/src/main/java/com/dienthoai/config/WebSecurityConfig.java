@@ -28,18 +28,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 		.authorizeRequests()
 			.antMatchers("/resources/**").permitAll()
-			//.antMatchers("/user/**").hasRole("USER")
-			.antMatchers("/admin/**").hasRole("ADMIN")
-			
+			.antMatchers("/user/showFormNguoiNhan").hasAnyRole("USER","ADMIN")
+			.antMatchers("/admin/**").hasRole("ADMIN")			
 			.and()
 			.formLogin()
-				.loginPage("/showFormLogin")
-				.loginProcessingUrl("/login")
-				.usernameParameter("username")
-				.passwordParameter("password")
+				.loginPage("/user/formDangNhap")
+				.loginProcessingUrl("/dangNhap")
+				.usernameParameter("tenDangNhap")
+				.passwordParameter("matKhau")
 				.defaultSuccessUrl("/")
+				.permitAll()
 			.and()
-			.logout().permitAll();
+			.logout().permitAll()
+			.and()
+				.exceptionHandling()
+				.accessDeniedPage("/access-denied");
 		
 	}
 

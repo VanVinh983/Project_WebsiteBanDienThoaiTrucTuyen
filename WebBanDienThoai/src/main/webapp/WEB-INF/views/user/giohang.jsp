@@ -121,7 +121,7 @@
 				<div style="text-align: center;">
 					<h4>THÔNG TIN KHÁCH HÀNG</h4>
 				</div>
-				<form:form action="" method="POST">
+				<form:form action="${pageContext.request.contextPath}/user/showFormNguoiNhan" method="POST">
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Họ và
 							tên</label>

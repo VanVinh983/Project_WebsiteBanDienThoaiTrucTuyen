@@ -166,7 +166,7 @@ public class HoaDon implements Serializable{
 //	public void setDanhSachSanPham(List<ChiTietHoaDon> danhSachSanPham) {
 //		this.danhSachSanPham = danhSachSanPham;
 //	}
-	public void addDanhSachChiTiet(DienThoai dienThoai, int soLuong, double donGia) {
+	public void addDanhSachChiTiet(DienThoai dienThoai, int soLuong) {
 		ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(dienThoai, soLuong);
 		chiTietHoaDon.setHoaDon(this);
 		danhSachChiTiet.add(chiTietHoaDon);

@@ -35,13 +35,7 @@
 		<li><a href="${pageContext.request.contextPath}/admin/brand/list">
 				<i class="zmdi zmdi-store"></i> <span>Thương hiệu</span>
 		</a></li>
-		<li><a
-			href="${pageContext.request.contextPath}/admin/review/list"> <i
-				class="zmdi zmdi-calendar-check"></i> <span>Review</span>
-		</a></li>
-		<li><a href="${pageContext.request.contextPath}/admin/new/list">
-				<i class="icon-envelope-open"></i> <span>Tin tức</span>
-		</a></li>
+
 	</ul>
 </div>
 <header class="topbar-nav">
@@ -69,6 +63,7 @@
 									<h6 class="mt-2 user-title">Xin chào!</h6>
 									
 									<b> Admin: <security:authentication property="principal.username" /> </b>
+									
 								</div>
 							</div>
 					</a></li>

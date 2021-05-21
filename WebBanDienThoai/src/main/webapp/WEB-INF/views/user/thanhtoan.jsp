@@ -24,7 +24,7 @@
 								Màu : ${dt.dienThoai.mauSac} <br>Đơn giá: <fmt:formatNumber
 									type="number" pattern="#,###,###.##₫"
 									value="${dt.dienThoai.giaDT}" /> <br> Số lượng:
-								${dt.soLuong}
+								${dt.soLuong}	
 						</b></td>
 					</tr>
 				</c:forEach>
@@ -42,8 +42,9 @@
 				<div style="text-align: center;">
 					<h4>THÔNG TIN KHÁCH HÀNG</h4>
 				</div>
+
 				<form:form
-					action="${pageContext.request.contextPath}/user/themnguoinhan"
+					action="${pageContext.request.contextPath}/user/thanhtoan"
 					method="POST" modelAttribute="nguoiNhan">
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Họ và
@@ -84,15 +85,17 @@
 									cssClass="error"></form:errors></span>
 						</div>
 					</div>
+
+
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Phương
 							thức thanh toán</label>
 						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-							<form:select path="thanhToan" cssClass="form-control">
+							<select class="form-control " name="idPT" aria-invalid="false">
 								<c:forEach var="pttt" items="${layTatCaPhuongThucThanhToan}">
-									<form:option path="thanhToan" value="${pttt.id }">${pttt.phuongThuc }</form:option>
+									<option value="${pttt.id }" selected>${pttt.phuongThuc }</option>
 								</c:forEach>
-							</form:select>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

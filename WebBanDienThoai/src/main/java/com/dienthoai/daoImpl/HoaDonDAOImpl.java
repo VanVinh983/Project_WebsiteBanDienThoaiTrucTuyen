@@ -55,4 +55,12 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		return list;
 	}
 
+	@Override
+	public PhuongThucThanhToan getPhuongThuc(int id) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		PhuongThucThanhToan pttt=currentSession.get(PhuongThucThanhToan.class, id);
+		return pttt;
+	}
+
 }

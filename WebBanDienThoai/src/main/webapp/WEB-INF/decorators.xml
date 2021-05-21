@@ -18,11 +18,11 @@
 	<decorator name="user-dangnhap" page="user.jsp">
 		<pattern>/user/formDangNhap</pattern>
 	</decorator>
-	<decorator name="user-thanhtoan" page="user.jsp">
+	<decorator name="user-showformnguoinhan" page="user.jsp">
 		<pattern>/user/showFormNguoiNhan</pattern>
 	</decorator>
-	<decorator name="user-themnguoinhan" page="user.jsp">
-		<pattern>/user/themnguoinhan</pattern>
+	<decorator name="user-thanhtoan" page="user.jsp">
+		<pattern>/user/thanhtoan</pattern>
 	</decorator>
 	<decorator name="admin-trangchu" page="admin.jsp">
 		<pattern>/admin/</pattern>
@@ -31,6 +31,7 @@
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/admin/trang-chu</pattern>
 	</decorator>
+	
 
 	<decorator name="admin-list-user" page="admin.jsp">
 		<pattern>/admin/user/list</pattern>

@@ -10,7 +10,6 @@ public class DangNhapController {
 	@GetMapping("/showFormLogin")
 	public String showMyLoginPage() {
 		return "admin/login-form";
-		
 	}
 	
 }

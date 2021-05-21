@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:url value="/resources" var="resources" />
 	<c:url value="/resources/user/images" var="img" />
 	<br>
 	<div class="container">
@@ -37,7 +38,7 @@
 						<td>
 							<div class="row ">
 								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
-									<img src="${img}/11pr.png" alt="" class="" style="width: 100%">
+									<img src="${resources}/user/images/SanPham/${ds.dienThoai.anhURL}" alt="" class="" style="width: 100%">
 									<div style="text-align: center; margin-top: 10%">
 										<a
 											href="${pageContext.request.contextPath}/user/xoadienthoaigiohang/${ds.dienThoai.id}"><button

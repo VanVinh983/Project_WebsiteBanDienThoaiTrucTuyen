@@ -10,14 +10,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="/resources/user/images" var="img" />
+	<c:url value="/resources" var="resources" />
 	<br>
 	<div class="container">
 		<div class="row">
 			<table class="table" style="width: 60%">
 				<c:forEach var="dt" items="${sessionScope.cart}">
 					<tr>
-						<td><img alt="" src="${img}/11pr.png"
+						<td><img alt="" src="${resources}/user/images/SanPham/${dt.dienThoai.anhURL}"
 							style="width: 100p; height: 100px"></td>
 						<td><b>Điện thoại ${dt.dienThoai.tenDT}
 								${dt.dienThoai.thongSo.boNho} - ${dt.dienThoai.thongSo.ram} <br>

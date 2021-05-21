@@ -34,13 +34,13 @@
 					<div style="text-align: center;">
 						<b>ĐĂNG NHẬP</b>
 					</div>
-					<form:form action="user/dangnhap" method="POST">
+					<form action="user/dangnhap" method="POST">
 						<div class="form-group">
 							<label class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
 								for="tenDangNhap"><b>Tên đăng nhập</b></label>
 							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 								<input type="text" placeholder="Nhập tên đăng nhập"
-									class="form-control" id="tenDangNhap">
+									class="form-control" name="tenDangNhap" id="tenDangNhap">
 							</div>
 						</div>
 						<div class="form-group">
@@ -48,7 +48,7 @@
 									khẩu</b></label>
 							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 								<input type="text" placeholder="Nhập mật khẩu"
-									class="form-control" id="matKhau">
+									class="form-control" name="matKhau" id="matKhau">
 							</div>
 						</div>
 						<div style="margin-top: 30px">
@@ -57,7 +57,7 @@
 							</button>
 							</a>
 						</div>
-					</form:form>
+					</form>
 					<div class="quenmatkhau">
 						<a href="">Quên mật khẩu</a>
 					</div>

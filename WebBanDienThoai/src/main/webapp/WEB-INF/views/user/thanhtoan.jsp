@@ -51,6 +51,8 @@
 						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<form:input class="form-control" path="hoTenKhachHang"
 								placeholder="Nhập họ và tên người nhận" />
+							<span style="color: red"><form:errors
+									path="hoTenKhachHang" cssClass="error"></form:errors></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -59,6 +61,8 @@
 						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<form:input cssClass="form-control" path="soDienThoaiGiaoHang"
 								placeholder="Nhập số điện thoại người nhận" />
+							<span style="color: red;"><form:errors
+									path="soDienThoaiGiaoHang" cssClass="error"></form:errors></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -67,6 +71,8 @@
 						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<form:input class="form-control" path="diaChiGiaoHang"
 								placeholder="Nhập số địa chỉ người nhận" />
+							<span style="color: red"><form:errors
+									path="diaChiGiaoHang" cssClass="error"></form:errors></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -74,14 +80,20 @@
 						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<form:input class="form-control" path="email"
 								placeholder="Nhập email người nhận" />
+							<span style="color: red"><form:errors path="email"
+									cssClass="error"></form:errors></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Phương
 							thức thanh toán</label>
-						<c:forEach var="pttt" items="${layTatCaPhuongThucThanhToan}">
-							<form:radiobutton path="thanhToan" value="${pttt.id }" />${pttt.phuongThuc } &nbsp;
-						</c:forEach>
+						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+							<form:select path="thanhToan" cssClass="form-control">
+								<c:forEach var="pttt" items="${layTatCaPhuongThucThanhToan}">
+									<form:option path="thanhToan" value="${pttt.id }">${pttt.phuongThuc }</form:option>
+								</c:forEach>
+							</form:select>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></label>

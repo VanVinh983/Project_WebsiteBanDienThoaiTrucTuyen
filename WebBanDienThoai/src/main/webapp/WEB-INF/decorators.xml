@@ -12,8 +12,7 @@
 	<decorator name="chiTietDienThoai" page="user.jsp">
 		<pattern>/user/chitietdt</pattern>
 	</decorator>
-
-	<decorator name="user-gioang" page="user.jsp">
+	<decorator name="user-giohang" page="user.jsp">
 		<pattern>/user/gioHang</pattern>
 	</decorator>
 	<decorator name="user-dangnhap" page="user.jsp">
@@ -21,6 +20,9 @@
 	</decorator>
 	<decorator name="user-thanhtoan" page="user.jsp">
 		<pattern>/user/showFormNguoiNhan</pattern>
+	</decorator>
+	<decorator name="user-themnguoinhan" page="user.jsp">
+		<pattern>/user/themnguoinhan</pattern>
 	</decorator>
 	<decorator name="admin-trangchu" page="admin.jsp">
 		<pattern>/admin/</pattern>

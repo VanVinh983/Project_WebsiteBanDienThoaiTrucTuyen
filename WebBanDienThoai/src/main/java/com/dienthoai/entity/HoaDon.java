@@ -15,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -39,15 +42,19 @@ public class HoaDon implements Serializable{
 	private Date ngayLap;
 	
 	@Nationalized
+	@Pattern(regexp = ".{1,}",message = "Họ và tên không hợp lệ")
 	private String hoTenKhachHang;
 	
 	@Nationalized
+	@Pattern(regexp = "[0-9]{9,11}",message = "Số điện thoại không hợp lệ")
 	private String soDienThoaiGiaoHang;
 	
 	@Nationalized
+	@Size(min = 1,message = "Địa chỉ không hợp lệ")
 	private String diaChiGiaoHang;
 	
 	@Nationalized
+	@Pattern(regexp = "^.{1,}@(gmail|yahoo|hotgmail).com",message = "Email không hợp lệ")
 	private String email;
 	
 	@ManyToOne

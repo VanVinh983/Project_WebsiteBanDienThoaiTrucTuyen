@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,21 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:url value="/resources" var="resources" />
 	<div class="container-fluid ">
 		<div class="row ">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-1 text-left ">
-				<a href="index_1.html " style="color: black; text-decoration: none;">
+				<a href="${pageContext.request.contextPath}/dienthoai/danhsach" style="color: black; text-decoration: none;">
 					<button class="btn btn-light border ">
 						<b>Trang chủ</b>
 					</button>
-				</a> <span style="font-size: 18px;">-></span><a href=" "
+				</a> <span style="font-size: 18px;">-></span><a href="${pageContext.request.contextPath}/dienthoai/danhmuc"
 					style="text-decoration: none;"><button
 						class="btn btn-light border ">
 						<b>Sản phẩm</b>
-					</button> </a> <span style="font-size: 18px;">-></span><a href="iPhone.html "
+					</button> </a> <span style="font-size: 18px;">-></span><a href=""
 					style="text-decoration: none;"><button
 						class="btn btn-light border ">
-						<b>${tendt}</b>
+						<b>${dt.tenDT}</b>
 					</button> </a>
 			</div>
 
@@ -33,13 +35,9 @@
 			<div class="row mt-3 " id="danhgiaiPhone ">
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left pt-2 ">
 					<h4 id="promax ">
-						Điện thoại iPhone 11 Pro Max 64GB <img
-							src="../images/ChiTietSanPham/iPhone/5Start.PNG " alt=" "
-							class="src "> <a href="#DanhGia ">69 đánh giá</a>
+						${dt.tenDT} ${dt.thongSo.boNho}
 					</h4>
-
 				</div>
-
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-1 text-right ">
 					<button class="btn btn-primary ">
 						<i class="fas fa-thumbs-up "></i>&nbsp; Like 814
@@ -61,21 +59,13 @@
 						<div class="tab-content col-xs-12 col-sm-12 col-md-12 col-lg-12 "
 							style="margin-top: 40px;">
 							<div class="tab-pane active " id="anh1 "
-								value="../images/iPhone/iphone-11-pro-max-black-400x460.png ">
-								<img src="../images/iPhone/iphone-11-pro-max-black-400x460.png "
+								value="${resources}/user/images/SanPham/${dt.anhURL}">
+								<img src="${resources}/user/images/SanPham/${dt.anhURL}"
 									style="width: 100%" />
 							</div>
 							<div class="tab-pane " id="anh2 ">
 								<img
-									src="../images/iPhone/iphone-11-pro-max-512gb-gold-400x460.png "
-									style="width: 100%" />
-							</div>
-							<div class="tab-pane " id="anh3 ">
-								<img src="../images/iPhone/iphone-11-red-2-400x460-400x460.png "
-									style="width: 100%" />
-							</div>
-							<div class="tab-pane " id="anh4 ">
-								<img src="../images/iPhone/iphone-11-pro-max-(21).jpg "
+									src=""
 									style="width: 100%" />
 							</div>
 						</div>
@@ -87,16 +77,10 @@
 							<ul class="nav nav-tabs " id="anh ">
 								<li class="active "><a data-target="#anh1 "
 									data-toggle="tab "><img
-										src="../images/iPhone/iphone-11-pro-max-black-400x460.png "
+										src="${resources}/user/images/SanPham/${dt.anhURL}"
 										width="100px " /></a></li>
 								<li><a data-target="#anh2 " data-toggle="tab "><img
-										src="../images/iPhone/iphone-11-pro-max-512gb-gold-400x460.png "
-										width="100px " /></a></li>
-								<li><a data-target="#anh3 " data-toggle="tab "><img
-										src="../images/iPhone/iphone-11-red-2-400x460-400x460.png "
-										width="100px " /></a></li>
-								<li><a data-target="#anh4 " data-toggle="tab "><img
-										src="../images/iPhone/iphone-11-pro-max-(21).jpg "
+										src=""
 										width="100px " /></a></li>
 							</ul>
 						</div>
@@ -112,10 +96,14 @@
 						<div
 							class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-left pt-2 text-center ">
 							<h4>
-								<b><span style="color: red;">30.490.000₫</span></b>&nbsp; &nbsp;<span
-									style="font-size: 18px;"><strike>33.990.000₫</strike></span>
+								<b><span style="color: red;"><fmt:formatNumber
+																type="number" pattern="#,###,###.##"
+																value="${(dt.giaDT*(100-dt.giamGia))/100}" /> ₫</span></b>&nbsp; &nbsp;<span
+									style="font-size: 18px;"><strike><i> <fmt:formatNumber type="number"
+																	pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+														</i></strike></span>
 							</h4>
-							<span class="text-left ">Bạn đang xem phiên bản: 64GB</span>
+							<span class="text-left ">Bạn đang xem phiên bản: ${dt.thongSo.boNho}</span>
 						</div>
 						<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-left mt-1 ">
 							<input type="button " class="btn btn-danger " value="Trả góp 0% "
@@ -125,34 +113,18 @@
 						</div>
 
 					</div>
-
-					<div class="row mt-2 ">
-
-						<div
-							class="col-xs-12 col-sm-5 col-md-5 col-lg-5 text-center btn btn-warning ">
-							<input type="checkbox " class="checkbox " value="64GB ">&nbsp;
-							<b>64GB</b> <br> <b><span style="color: red;">30.490.000₫</span></b>
-						</div>
-						<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center ">
-
-						</div>
-						<div
-							class="col-xs-12 col-sm-5 col-md-5 col-lg-5 text-center btn btn-warning ">
-							<input type="checkbox " class="checkbox " value="256GB ">&nbsp;
-							<b>256GB</b> <br> <span style="color: red;"><b>35.990.000₫</b></span>
-						</div>
-					</div>
-
 					<div class="row mt-2 border ">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left ">
 							<h6 class="text-left ">KHUYẾN MÃI</h6>
-							<span><i class="far fa-check-circle text-left border "></i>
-								&nbsp;Giảm ngay 2 triệu (đã trừ vào giá) <label for="sao "
-								id="sao " style="color: red;"><b>*</b></label></span><br> <span><i
+							<c:if test="${dt.giamGia>0}">
+								<span><i class="far fa-check-circle text-left border "></i>
+								&nbsp;Giảm ngay ${dt.giamGia}% (đã trừ vào giá) <label for="sao "
+								id="sao " style="color: red;"><b>*</b></label></span><br> 
+							</c:if>
+							<span><i
 								class="far fa-check-circle text-left "></i> &nbsp;Tặng 2 suất
 								mua Đồng hồ thời trang giảm 40% &emsp; &ensp; &emsp; (không áp
-								dụng thêm khuyến mãi khác) <a href="# ">(click xem &emsp;
-									&ensp; &ensp; chi tiết)</a></span>
+								dụng thêm khuyến mãi khác) <a href="# ">(click xem chi tiết)</a></span>
 							<form class="border border-danger ">
 								<button class="btn btn-danger border border-danger ">
 									<i class="fa fa-gift " aria-hidden="true "></i> Mua online tặng
@@ -183,10 +155,20 @@
 					</div>
 					<div class="row mt-2 ">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center ">
-							<a href="thanhtoan.html "><button
-									class="btn btn-danger form-control ">
-									<b>MUA NGAY</b>
-								</button></a>
+							<a href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+							<button
+									class="btn btn-success form-control ">
+									<b>THÊM VÀO GIỎ HÀNG</b>
+							</button></a>
+							<c:if test="${tenDangNhap==null}">
+								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
+									onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
+										style="width: 100%" type="button" class="btn btn-danger"><b>MUA NGAY</b></button></a>
+							</c:if>
+							<c:if test="${tenDangNhap!=null}">
+								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
+								<button style="width: 100%" type="button" class="btn btn-danger"><b>MUA NGAY</b></button></a>
+							</c:if>
 						</div>
 					</div>
 

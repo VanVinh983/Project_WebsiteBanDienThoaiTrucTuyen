@@ -56,7 +56,7 @@ public class DienThoaiController {
 	@GetMapping("/chitietdienthoai")
 	public String chitietdienthoai(Model model, HttpSession session) {
 		DienThoai dt = (DienThoai) session.getAttribute("dienthoai");
-		model.addAttribute("tendt", dt.getTenDT());
+		model.addAttribute("dt", dt);
 		return "user/chitietdienthoai";
 	}
 	@RequestMapping(value = "/laychitiet/{id}", method = RequestMethod.GET)

@@ -44,6 +44,7 @@ public class DienThoaiController {
 	public String danhmuc(Model theModel) {
 		theModel.addAttribute("ths", dienThoaiService.getListThuongHieu());
 		theModel.addAttribute("dts", dienThoaiService.getListDienThoai());
+		theModel.addAttribute("dtbc",  dienThoaiService.getDienTHoaiBanChay());
 		return "user/danhmuc";
 	}
 }

@@ -77,9 +77,9 @@
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
 				<h3 style="float: left;">${countGiamGia} ĐIỆNTHOẠIĐANGGIẢMGIÁ</h3>
-				<button class="btn btn-light" type="submit" style="float: right;">
+				<a class="btn btn-light" href="${pageContext.request.contextPath}/dienthoai/danhmuc" style="float: right;">
 					<h3>Xem tất cả ></h3>
-				</button>
+				</a>
 			</div>
 			<div class="container-fluid mt-3 mb-3 col1_2 ">
 				<div class="row">
@@ -131,9 +131,9 @@
 			<div class="container-fluid "
 				style="overflow: hidden; margin-top: 1%">
 				<h3 style="float: left;">${countBanChay} ĐIỆNTHOẠIBÁNCHẠYNHẤT</h3>
-				<button class="btn btn-light" type="submit" style="float: right;">
+				<a class="btn btn-light" href="${pageContext.request.contextPath}/dienthoai/danhmuc" style="float: right;">
 					<h3>Xem tất cả ></h3>
-				</button>
+				</a>
 			</div>
 			<div class="container-fluid mt-3 mb-3 col1_2 ">
 				<div class="row">

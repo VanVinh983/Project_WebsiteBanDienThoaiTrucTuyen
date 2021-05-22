@@ -70,58 +70,6 @@ public class HoaDon implements Serializable{
 	@JsonIgnore
 	private List<ChiTietHoaDon> danhSachChiTiet;
 
-	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
-			PhuongThucThanhToan thanhToan, NguoiDung nguoiDung, List<ChiTietHoaDon> danhSachChiTiet) {
-		super();
-		this.ngayLap = ngayLap;
-		this.hoTenKhachHang = hoTenKhachHang;
-		this.soDienThoaiGiaoHang = soDienThoaiGiaoHang;
-		this.diaChiGiaoHang = diaChiGiaoHang;
-		this.email = email;
-		this.thanhToan = thanhToan;
-		this.nguoiDung = nguoiDung;
-		this.danhSachChiTiet = danhSachChiTiet;
-	}
-
-	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
-			PhuongThucThanhToan thanhToan, NguoiDung nguoiDung) {
-		super();
-		this.ngayLap = ngayLap;
-		this.hoTenKhachHang = hoTenKhachHang;
-		this.soDienThoaiGiaoHang = soDienThoaiGiaoHang;
-		this.diaChiGiaoHang = diaChiGiaoHang;
-		this.email = email;
-		this.thanhToan = thanhToan;
-		this.nguoiDung = nguoiDung;
-	}
-
-	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
-			PhuongThucThanhToan thanhToan) {
-		super();
-		this.ngayLap = ngayLap;
-		this.hoTenKhachHang = hoTenKhachHang;
-		this.soDienThoaiGiaoHang = soDienThoaiGiaoHang;
-		this.diaChiGiaoHang = diaChiGiaoHang;
-		this.email = email;
-		this.thanhToan = thanhToan;
-	}
-
-	public PhuongThucThanhToan getThanhToan() {
-		return thanhToan;
-	}
-
-	public void setThanhToan(PhuongThucThanhToan thanhToan) {
-		this.thanhToan = thanhToan;
-	}
-
-	public NguoiDung getNguoiDung() {
-		return nguoiDung;
-	}
-
-	public void setNguoiDung(NguoiDung nguoiDung) {
-		this.nguoiDung = nguoiDung;
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -137,21 +85,6 @@ public class HoaDon implements Serializable{
 	public void setNgayLap(Date ngayLap) {
 		this.ngayLap = ngayLap;
 	}
-
-
-	@Override
-	public String toString() {
-		return "HoaDon [id=" + id + ", ngayLap=" + ngayLap + ", hoTenKhachHang=" + hoTenKhachHang
-				+ ", soDienThoaiGiaoHang=" + soDienThoaiGiaoHang + ", diaChiGiaoHang=" + diaChiGiaoHang + ", email="
-				+ email + ", thanhToan=" + thanhToan + ", nguoiDung=" + nguoiDung + ", danhSachChiTiet="
-				+ danhSachChiTiet + "]";
-	}
-
-	public HoaDon() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 
 	public String getHoTenKhachHang() {
 		return hoTenKhachHang;
@@ -185,6 +118,22 @@ public class HoaDon implements Serializable{
 		this.email = email;
 	}
 
+	public PhuongThucThanhToan getThanhToan() {
+		return thanhToan;
+	}
+
+	public void setThanhToan(PhuongThucThanhToan thanhToan) {
+		this.thanhToan = thanhToan;
+	}
+
+	public NguoiDung getNguoiDung() {
+		return nguoiDung;
+	}
+
+	public void setNguoiDung(NguoiDung nguoiDung) {
+		this.nguoiDung = nguoiDung;
+	}
+
 	public List<ChiTietHoaDon> getDanhSachChiTiet() {
 		return danhSachChiTiet;
 	}
@@ -192,5 +141,25 @@ public class HoaDon implements Serializable{
 	public void setDanhSachChiTiet(List<ChiTietHoaDon> danhSachChiTiet) {
 		this.danhSachChiTiet = danhSachChiTiet;
 	}
+
+	public HoaDon(Integer id, Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang,
+			String email, PhuongThucThanhToan thanhToan, NguoiDung nguoiDung) {
+		super();
+		this.id = id;
+		this.ngayLap = ngayLap;
+		this.hoTenKhachHang = hoTenKhachHang;
+		this.soDienThoaiGiaoHang = soDienThoaiGiaoHang;
+		this.diaChiGiaoHang = diaChiGiaoHang;
+		this.email = email;
+		this.thanhToan = thanhToan;
+		this.nguoiDung = nguoiDung;
+	}
+
+	public HoaDon() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 
 }

@@ -33,6 +33,13 @@ public class ChiTietHoaDonServiceImpl implements ChiTietHoaDonService {
 	public void themChiTietHoaDon(ChiTietHoaDon chiTietHoaDon) {
 		chiTietHoaDonDAO.themChiTietHoaDon(chiTietHoaDon);
 	}
+
+	@Override
+	@Transactional
+	public void addChiTietHoaDon(int id_dienthoai, int id_hoadon, int soLuong) {
+		// TODO Auto-generated method stub
+		 chiTietHoaDonDAO.addChiTietHoaDon(id_dienthoai, id_hoadon, soLuong);
+	}
 	
 
 	

@@ -80,18 +80,22 @@ public class DienThoaiController {
 		String imageUrl=linkImage.getOriginalFilename();
 		//String path="D:\\IUH\\WWW.JAVA\\A-project\\New folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
 		byte[] bytes=linkImage.getBytes();
-		BufferedOutputStream stream=new BufferedOutputStream(new FileOutputStream(new File(path+File.separator + imageUrl)));
-		stream.write(bytes);
-		stream.flush();
-		stream.close();
-		
-		product.setAnhURL(imageUrl);
-		DanhMuc cate=danhMucService.getDanhMuc(id);
-		product.setDanhMuc(cate);
-		ThongSo ts=thongSoService.getThongSo(Integer.parseInt(detail_id));
-		product.setThongSo(ts);		
-		dienThoaiService.saveDienThoai(product);
-		
+		try {
+			BufferedOutputStream stream=new BufferedOutputStream(new FileOutputStream(new File(path+File.separator + imageUrl)));
+			stream.write(bytes);
+			stream.flush();
+			stream.close();
+			
+			product.setAnhURL(imageUrl);
+			DanhMuc cate=danhMucService.getDanhMuc(id);
+			product.setDanhMuc(cate);
+			ThongSo ts=thongSoService.getThongSo(Integer.parseInt(detail_id));
+			product.setThongSo(ts);		
+			dienThoaiService.saveDienThoai(product);
+		} catch (Exception e) {
+			// TODO: handle exception			
+		}
+
 		return "redirect:/admin/product/list";
 	}
 	

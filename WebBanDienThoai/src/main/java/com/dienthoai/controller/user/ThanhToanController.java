@@ -18,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dienthoai.entity.ChiTietHoaDon;
 import com.dienthoai.entity.DienThoaiGioHang;
 import com.dienthoai.entity.HoaDon;
 import com.dienthoai.entity.NguoiDung;
 import com.dienthoai.entity.PhuongThucThanhToan;
+import com.dienthoai.service.ChiTietHoaDonService;
+import com.dienthoai.service.DienThoaiService;
 import com.dienthoai.service.HoaDonService;
 import com.dienthoai.service.NguoiDungService;
 
@@ -33,6 +36,12 @@ public class ThanhToanController {
 
 	@Autowired
 	NguoiDungService nguoiDungService;
+	
+	@Autowired
+	ChiTietHoaDonService chiTietHoaDonService;
+	
+	@Autowired
+	DienThoaiService dienThoaiService;
 
 	@GetMapping(value = "/showFormNguoiNhan")
 	public String showFormNguoiNhan(Model model, HttpSession session) {
@@ -55,7 +64,8 @@ public class ThanhToanController {
 	}
 
 	@RequestMapping(value = "/thanhtoan", method = RequestMethod.POST)
-	public String thanhToan(@Valid @ModelAttribute("nguoiNhan")HoaDon nguoiNhan,BindingResult result,@RequestParam("idPT") int idPT, Model model, Principal principal) {
+	public String thanhToan(@Valid @ModelAttribute("nguoiNhan")HoaDon nguoiNhan,BindingResult result,@RequestParam("idPT") int idPT, Model model, Principal principal,
+			HttpSession session) {
 		if (result.hasErrors()) {
 			List<PhuongThucThanhToan> layTatCaPhuongThucThanhToan = hoaDonService.layTatCaPhuongThucThanhToan();
 			model.addAttribute("layTatCaPhuongThucThanhToan", layTatCaPhuongThucThanhToan);
@@ -72,11 +82,15 @@ public class ThanhToanController {
 			long millis = System.currentTimeMillis();
 			Date date = new Date(millis);
 			nguoiNhan.setNgayLap(date);
-			
-			//nguoiNhan.addDanhSachChiTiet(dt.getDienThoai(), dt.getSoLuong());
-			
+						
 			hoaDonService.saveHoaDon(nguoiNhan);
+			
+			
+			List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 
+			for (DienThoaiGioHang dt : cart) {			
+				chiTietHoaDonService.addChiTietHoaDon(dt.getDienThoai().getId(), nguoiNhan.getId(), dt.getSoLuong());
+			}
 			return "user/xacnhan";
 		}
 	}

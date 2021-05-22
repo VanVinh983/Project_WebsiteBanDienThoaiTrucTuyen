@@ -41,8 +41,14 @@ public class ChiTietHoaDonDAOImpl implements ChiTietHoaDonDAO {
 		currentSession.saveOrUpdate(chiTietHoaDon);
 	}
 	
-
-	
+	@Transactional
+	@Override
+	public void addChiTietHoaDon(int id_dienthoai,int id_hoadon,int soLuong) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query query =currentSession.createNativeQuery("insert into Chitiethoadon values("+id_dienthoai+","+id_hoadon+","+soLuong+" )");
+		int cthd=query.executeUpdate();
+	}
 
 	
 	

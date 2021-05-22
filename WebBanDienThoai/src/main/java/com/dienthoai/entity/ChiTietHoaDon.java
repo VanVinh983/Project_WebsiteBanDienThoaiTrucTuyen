@@ -2,7 +2,6 @@ package com.dienthoai.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -27,7 +26,7 @@ public class ChiTietHoaDon implements Serializable{
 	private DienThoai dienThoai;
 	
 	@Id
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_HoaDon")
 	private HoaDon hoaDon;
 	

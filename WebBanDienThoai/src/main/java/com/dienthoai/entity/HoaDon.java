@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -65,17 +66,10 @@ public class HoaDon implements Serializable{
 	@JoinColumn(name = "id_NguoiDung")
 	private NguoiDung nguoiDung;
 	
-	@OneToMany(mappedBy = "hoaDon",cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "hoaDon",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<ChiTietHoaDon> danhSachChiTiet;
 
-	public HoaDon(List<ChiTietHoaDon> danhSachChiTiet) {
-		super();
-		this.danhSachChiTiet = new ArrayList<ChiTietHoaDon>();
-	}
-
-	
 	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
 			PhuongThucThanhToan thanhToan, NguoiDung nguoiDung, List<ChiTietHoaDon> danhSachChiTiet) {
 		super();
@@ -89,11 +83,6 @@ public class HoaDon implements Serializable{
 		this.danhSachChiTiet = danhSachChiTiet;
 	}
 
-
-
-
-
-
 	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
 			PhuongThucThanhToan thanhToan, NguoiDung nguoiDung) {
 		super();
@@ -106,11 +95,6 @@ public class HoaDon implements Serializable{
 		this.nguoiDung = nguoiDung;
 	}
 
-
-
-
-
-
 	public HoaDon(Date ngayLap, String hoTenKhachHang, String soDienThoaiGiaoHang, String diaChiGiaoHang, String email,
 			PhuongThucThanhToan thanhToan) {
 		super();
@@ -121,11 +105,6 @@ public class HoaDon implements Serializable{
 		this.email = email;
 		this.thanhToan = thanhToan;
 	}
-
-
-
-
-
 
 	public PhuongThucThanhToan getThanhToan() {
 		return thanhToan;
@@ -159,24 +138,6 @@ public class HoaDon implements Serializable{
 		this.ngayLap = ngayLap;
 	}
 
-	public List<ChiTietHoaDon> getDanhSachChiTiet() {
-		return danhSachChiTiet;
-	}
-
-//	public void setDanhSachSanPham(List<ChiTietHoaDon> danhSachSanPham) {
-//		this.danhSachSanPham = danhSachSanPham;
-//	}
-	public void addDanhSachChiTiet(DienThoai dienThoai, int soLuong) {
-		ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(dienThoai, soLuong);
-		chiTietHoaDon.setHoaDon(this);
-		danhSachChiTiet.add(chiTietHoaDon);
-	}
-
-	
-	public HoaDon() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public String toString() {
@@ -185,6 +146,12 @@ public class HoaDon implements Serializable{
 				+ email + ", thanhToan=" + thanhToan + ", nguoiDung=" + nguoiDung + ", danhSachChiTiet="
 				+ danhSachChiTiet + "]";
 	}
+
+	public HoaDon() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 	public String getHoTenKhachHang() {
 		return hoTenKhachHang;
@@ -218,5 +185,12 @@ public class HoaDon implements Serializable{
 		this.email = email;
 	}
 
+	public List<ChiTietHoaDon> getDanhSachChiTiet() {
+		return danhSachChiTiet;
+	}
+
+	public void setDanhSachChiTiet(List<ChiTietHoaDon> danhSachChiTiet) {
+		this.danhSachChiTiet = danhSachChiTiet;
+	}
 
 }

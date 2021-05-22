@@ -161,6 +161,7 @@
 						</div>
 
 					</form>
+					<button type="button" class="btn btn-success" style="float: right">In hóa đơn</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal"
 						style="float: right">Đóng</button>
 				</div>

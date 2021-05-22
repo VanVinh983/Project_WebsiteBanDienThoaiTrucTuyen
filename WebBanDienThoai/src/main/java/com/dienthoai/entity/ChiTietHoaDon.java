@@ -32,6 +32,15 @@ public class ChiTietHoaDon implements Serializable{
 	private HoaDon hoaDon;
 	
 	private int soLuong;
+	
+	
+	
+	public ChiTietHoaDon(DienThoai dienThoai, HoaDon hoaDon, int soLuong) {
+		super();
+		this.dienThoai = dienThoai;
+		this.hoaDon = hoaDon;
+		this.soLuong = soLuong;
+	}
 	public ChiTietHoaDon(DienThoai dienThoai, int soLuong) {
 		super();
 		this.dienThoai = dienThoai;

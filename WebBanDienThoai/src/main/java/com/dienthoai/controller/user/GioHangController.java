@@ -1,5 +1,6 @@
 package com.dienthoai.controller.user;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,18 @@ public class GioHangController {
 	private DienThoaiService dienThoaiService;
 
 	@GetMapping(value = "/gioHang")
-	public String showGioHang(HttpSession session) {
+	public String showGioHang(HttpSession session, Model model,Principal principal) {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		if (cart == null) {
 			session.setAttribute("tamtinh", 0);
 			session.setAttribute("giamgia", 0);
 			session.setAttribute("tongtien", 0);
 			session.setAttribute("tinhtranggiohang", "Không có sản phẩm nào trong giỏ hàng");
+			try {
+				model.addAttribute("tenDangNhap",principal.getName());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			return "user/giohang";
 		} else {
 			if (cart.size() <= 0) {
@@ -38,10 +44,21 @@ public class GioHangController {
 				session.setAttribute("giamgia", 0);
 				session.setAttribute("tongtien", 0);
 				session.setAttribute("tinhtranggiohang", "Không có sản phẩm nào trong giỏ hàng");
+				try {
+					model.addAttribute("tenDangNhap",principal.getName());
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				return "user/giohang";
 			} else {
 				session.setAttribute("tinhtranggiohang", "");
 				capNhatGiaTrongGioHang(session);
+				try {
+					model.addAttribute("tenDangNhap",principal.getName());
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
 				return "user/giohang";
 			}
 		}

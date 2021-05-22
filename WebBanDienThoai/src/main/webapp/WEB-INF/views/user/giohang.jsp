@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:url value="/resources" var="resources" />
+	<c:url value="/resources" var="resources" />
 	<c:url value="/resources/user/images" var="img" />
 	<br>
 	<div class="container">
@@ -38,7 +38,9 @@
 						<td>
 							<div class="row ">
 								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
-									<img src="${resources}/user/images/SanPham/${ds.dienThoai.anhURL}" alt="" class="" style="width: 100%">
+									<img
+										src="${resources}/user/images/SanPham/${ds.dienThoai.anhURL}"
+										alt="" class="" style="width: 100%">
 									<div style="text-align: center; margin-top: 10%">
 										<a
 											href="${pageContext.request.contextPath}/user/xoadienthoaigiohang/${ds.dienThoai.id}"><button
@@ -106,23 +108,34 @@
 									type="number" pattern="#,###,###.## ₫" value="${tongtien}" /></b></td>
 					</tr>
 					<tr>
-						<td style="width: 100%"><a
-							href="${pageContext.request.contextPath }/user/showFormNguoiNhan"><button
-									style="width: 100%" type="button" class="btn btn-success">Đặt
-									hàng</button></a></td>
+						<td style="width: 100%">
+						<c:if test="${tenDangNhap==null}">
+								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
+									onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
+										style="width: 100%" type="button" class="btn btn-success">Đặt
+										hàng</button></a></td>
+						</c:if>
+						<c:if test="${tenDangNhap!=null}">
+							<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
+							<button style="width: 100%" type="button" class="btn btn-success">Đặt hàng</button></a></td>
+						</c:if>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<div class="row">
-			<div style="color: red; text-align: center;font-size: 20px"><b>${errorcartnull}</b></div>
+			<div style="color: red; text-align: center; font-size: 20px">
+				<b>${errorcartnull}</b>
+			</div>
 		</div>
 		<div class="row" style="display: none">
 			<div class="thongtinkhachhang">
 				<div style="text-align: center;">
 					<h4>THÔNG TIN KHÁCH HÀNG</h4>
 				</div>
-				<form:form action="${pageContext.request.contextPath}/user/showFormNguoiNhan" method="POST">
+				<form:form
+					action="${pageContext.request.contextPath}/user/showFormNguoiNhan"
+					method="POST">
 					<div class="form-group">
 						<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Họ và
 							tên</label>

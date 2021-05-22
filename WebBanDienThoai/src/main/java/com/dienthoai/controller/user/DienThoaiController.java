@@ -43,6 +43,7 @@ public class DienThoaiController {
 	@GetMapping("/danhmuc")
 	public String danhmuc(Model theModel) {
 		theModel.addAttribute("ths", dienThoaiService.getListThuongHieu());
+		theModel.addAttribute("dts", dienThoaiService.getListDienThoai());
 		return "user/danhmuc";
 	}
 }

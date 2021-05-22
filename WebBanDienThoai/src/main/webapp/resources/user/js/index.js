@@ -165,3 +165,11 @@ function dathang() {
     }
 
 }
+function actionsubmenudanhmuc() {
+    var dropdown = document.getElementById('dropdown-container');
+    if (dropdown.style.display === "none") {
+        dropdown.style.display = "block";
+    } else {
+        dropdown.style.display = "none";
+    }
+}

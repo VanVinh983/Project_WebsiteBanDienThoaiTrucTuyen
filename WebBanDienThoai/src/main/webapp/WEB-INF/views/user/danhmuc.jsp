@@ -8,28 +8,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+	<c:url value="/resources" var="resources" />
+	<div class="container-fluid">
 		<!-- Page Content-->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-12">
-                    <h1 class="my-4">Shop Name</h1>
-                    <div class="list-group">
-                    	<a class="list-group-item col-lg-12 col-md-8 col-sm-6 btn btn-outline-info" href="#!">Tất cả sản phẩm</a>
-                        <a class="list-group-item col-lg-12 col-md-8 col-sm-6  btn btn-outline-info" href="#!">Điện thoại giảm giá</a>
-                        <a class="list-group-item col-lg-12 col-md-8 col-sm-6  btn btn-outline-info" href="#!">Điện thoại bán chạy</a>
-                        <div class="list-group-item col-lg-12 col-md-8 col-sm-6 dropdown  btn btn-outline-info">
-						  <a class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						  	  Thương hiệu
-						  </a>
-						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						  		<c:forEach var="th" items="${ths}">
-						  			<a class="dropdown-item" href="#">${th.tenTH}</a>
-						  		</c:forEach>
-						  </div>
+                    <ul class="nav nav-pills list-group my-4 col-12" role="tablist">
+						<li class="btn nav-item list-group-item col-12" style="padding: 1px;border: none;">
+							<a class="nav-link active btn btn-outline-info col-12" data-toggle="pill" href="#allSP">Tất cả sản phẩm</a>
+						</li>
+						<li class="btn nav-item list-group-item col-12" style="padding: 1px;border: none;">
+							<a class="nav-link btn btn-outline-info col-12" data-toggle="pill" href="#GiamGia">Đang giảm giá</a>
+						</li>
+						<li class="btn nav-item list-group-item col-12" style="padding: 1px;border: none;">
+							<a class="nav-link btn btn-outline-info col-12" data-toggle="pill" href="#${th.tenTH}">Đang bán chạy</a>
+						</li>
+						<li class="btn nav-item list-group-item col-12" style="padding: 1px;border: none;" onclick="actionsubmenudanhmuc()">
+							<a class="nav-link btn btn-outline-info col-12" data-toggle="pill" href="#${th.tenTH}">Thương hiệu</a>
+						</li>
+						<div style="width: 100%; display: none;" id="dropdown-container">
+							<c:forEach var="th" items="${ths}">
+								<li class="btn nav-item list-group-item col-12" style="padding: 1px;border: none;">
+									<a class="nav-link btn btn-secondary text-white col-12" data-toggle="pill" href="#${th.tenTH}">${th.tenTH}</a>
+								</li>
+							</c:forEach>
 						</div>
-
-                    </div>
+					</ul>
                 </div>
                 <!-- -------Quảng Cáo----------------------------------------------------------------------- -->
                 <div class="col-lg-9">
@@ -55,17 +60,96 @@
                     </div>
                     <!---------------------------Điện Thoại-------------------------------------------- -->
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                                <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="#!">Item One</a></h4>
-                                    <h5>$24.99</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                </div>
-                                <div class="card-footer"><small class="text-muted">★ ★ ★ ★ ☆</small></div>
-                            </div>
-                        </div>
+                    	<div class="tab-content">
+                    		<div id="allSP" class="tab-pane active">
+                    			<c:forEach var="dt" items="${dts}">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 float-left">
+										<div class="card text-center">
+											<div class="dt">
+												<div class="tragop">
+													<label class="installment">Trả góp <b>0%</b></label>
+												</div>
+												<form:form method="get"
+													action="${pageContext.request.contextPath}/user/chitietdt"
+													modelAttribute="dt">
+													<button class="btn " type="submit"
+														style="text-decoration: none; color: black;">
+														<img class="card-img-top"
+															src="${resources}/user/images/SanPham/${dt.anhURL}"
+															alt="Card image" style="width: 50%">
+														<div class="card-body">
+															<h4 class="card-title">
+																<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
+															</h4>
+															<p class="card-text">
+																<span style="color: red;"> <b><fmt:formatNumber
+																			type="number" pattern="#,###,###.##"
+																			value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b> &nbsp;
+																	<strike><i> <fmt:formatNumber type="number"
+																				pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+																	</i></strike>
+																</span><br>
+															</p>
+														</div>
+														<div class="card-footer"
+															style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
+															<a class="btn btn-success btn-block"
+																href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+																Thêm vào gỏi hàng </a>
+														</div>
+													</button>
+												</form:form>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+                    		</div>
+                    		<div id="GiamGia" class="tab-pane fade">
+                    			<c:forEach var="dt" items="${dts}">
+                    				<c:if test="${dt.giamGia > 0}">
+                    					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 float-left">
+											<div class="card text-center">
+												<div class="dt">
+													<div class="tragop">
+														<label class="installment">Trả góp <b>0%</b></label>
+													</div>
+													<form:form method="get"
+														action="${pageContext.request.contextPath}/user/chitietdt"
+														modelAttribute="dt">
+														<button class="btn " type="submit"
+															style="text-decoration: none; color: black;">
+															<img class="card-img-top"
+																src="${resources}/user/images/SanPham/${dt.anhURL}"
+																alt="Card image" style="width: 50%">
+															<div class="card-body">
+																<h4 class="card-title">
+																	<c:out value="${dt.tenDT} ${dt.thongSo.boNho}" />
+																</h4>
+																<p class="card-text">
+																	<span style="color: red;"> <b><fmt:formatNumber
+																				type="number" pattern="#,###,###.##"
+																				value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b> &nbsp;
+																		<strike><i> <fmt:formatNumber type="number"
+																					pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+																		</i></strike>
+																	</span><br>
+																</p>
+															</div>
+															<div class="card-footer"
+																style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
+																<a class="btn btn-success btn-block"
+																	href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+																	Thêm vào gỏi hàng </a>
+															</div>
+														</button>
+													</form:form>
+												</div>
+											</div>
+										</div>
+                    				</c:if>
+                    			</c:forEach>
+                    		</div>
+                    	</div >
                     </div>
                 </div>
             </div>

@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Nationalized;
 
@@ -34,20 +36,26 @@ public class NguoiDung implements Serializable{
 	private Integer id;
 	
 	@Nationalized
+	@Pattern(regexp = ".{1,}",message = "Họ và tên không hợp lệ")
 	private String tenNguoiDung;
-	
+	@Pattern(regexp = "[0-9]{9,11}",message = "Số điện thoại không hợp lệ")
 	private String soDienThoai;
 	
 	@Nationalized
+	@Size(min = 1,message = "Địa chỉ không hợp lệ")
 	private String diaChi;
 	
 	@Nationalized
+	@Pattern(regexp = "^.{1,}@(gmail|yahoo|hotgmail).com",message = "Email không hợp lệ")
 	private String email;
 	
 	@Nationalized
+	@Pattern(regexp = "[a-zA-Z-0-9]{8,}",message = "Tên đăng nhập có ít nhất 8 kí tự và không được chứa kí tự đặc biệt")
 	private String tenDangNhap;
 	
 	@Nationalized 
+//	@Pattern(regexp = "[a-zA-Z-0-9]{8,}",message = "Mật khẩu có ít nhất 8 kí tự và không được chứa kí tự đặc biệt")
+	@Size(min = 1,message = "Mật khẩu không được trống")
 	private String matKhau;
 	
 	@Nationalized 

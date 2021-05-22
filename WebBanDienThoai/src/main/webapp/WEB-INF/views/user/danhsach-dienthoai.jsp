@@ -90,10 +90,7 @@
 									<div class="tragop">
 										<label class="installment">Trả góp <b>0%</b></label>
 									</div>
-									<form:form method="get"
-										action="${pageContext.request.contextPath}/user/chitietdt"
-										modelAttribute="dt">
-										<button class="btn " type="submit"
+										<a class="btn" href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}"
 											style="text-decoration: none; color: black;">
 											<img class="card-img-top"
 												src="${resources}/user/images/SanPham/${dt.anhURL}"
@@ -118,8 +115,7 @@
 													href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
 													Thêm vào gỏi hàng </a>
 											</div>
-										</button>
-									</form:form>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -144,10 +140,7 @@
 									<div class="tragop">
 										<label class="installment">Trả góp <b>0%</b></label>
 									</div>
-									<form:form method="get"
-										action="${pageContext.request.contextPath}/user/chitietdt"
-										modelAttribute="dt">
-										<button class="btn " type="submit"
+										<a class="btn" href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}"
 											style="text-decoration: none; color: black;">
 											<img class="card-img-top"
 												src="${resources}/user/images/SanPham/${dt.anhURL}"
@@ -172,8 +165,7 @@
 													href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
 													Thêm vào gỏi hàng </a>
 											</div>
-										</button>
-									</form:form>
+										</a>
 								</div>
 							</div>
 						</div>
@@ -215,10 +207,7 @@
 														<div class="tragop">
 															<label class="installment">Trả góp <b>0%</b></label>
 														</div>
-														<form:form method="get"
-															action="${pageContext.request.contextPath}/user/chitietdt"
-															modelAttribute="dt">
-															<button class="btn " type="submit"
+														<a class="btn" href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}"
 																style="text-decoration: none; color: black;">
 																<img class="card-img-top"
 																	src="${resources}/user/images/SanPham/${dt.anhURL}"
@@ -230,10 +219,9 @@
 																	<p class="card-text">
 																		<span style="color: red;"> <b><fmt:formatNumber
 																					type="number" pattern="#,###,###.##"
-																					value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b>
-																			&nbsp; <strike><i> <fmt:formatNumber
-																						type="number" pattern="#,###,###.##"
-																						value="${dt.giaDT}" /> đ
+																					value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b> &nbsp;
+																			<strike><i> <fmt:formatNumber type="number"
+																						pattern="#,###,###.##" value="${dt.giaDT}" /> đ
 																			</i></strike>
 																		</span><br>
 																	</p>
@@ -244,8 +232,7 @@
 																		href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
 																		Thêm vào gỏi hàng </a>
 																</div>
-															</button>
-														</form:form>
+														</a>
 													</div>
 												</div>
 											</div>
@@ -263,10 +250,7 @@
 														<div class="tragop">
 															<label class="installment">Trả góp <b>0%</b></label>
 														</div>
-														<form:form method="get"
-															action="${pageContext.request.contextPath}/user/chitietdt"
-															modelAttribute="dt">
-															<button class="btn " type="submit"
+														<a class="btn" href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}"
 																style="text-decoration: none; color: black;">
 																<img class="card-img-top"
 																	src="${resources}/user/images/SanPham/${dt.anhURL}"
@@ -278,10 +262,9 @@
 																	<p class="card-text">
 																		<span style="color: red;"> <b><fmt:formatNumber
 																					type="number" pattern="#,###,###.##"
-																					value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b>
-																			&nbsp; <strike><i> <fmt:formatNumber
-																						type="number" pattern="#,###,###.##"
-																						value="${dt.giaDT}" /> đ
+																					value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </b> &nbsp;
+																			<strike><i> <fmt:formatNumber type="number"
+																						pattern="#,###,###.##" value="${dt.giaDT}" /> đ
 																			</i></strike>
 																		</span><br>
 																	</p>
@@ -292,8 +275,7 @@
 																		href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
 																		Thêm vào gỏi hàng </a>
 																</div>
-															</button>
-														</form:form>
+														</a>
 													</div>
 												</div>
 											</div>

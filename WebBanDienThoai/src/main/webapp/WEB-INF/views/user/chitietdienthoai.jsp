@@ -14,14 +14,14 @@
 					<button class="btn btn-light border ">
 						<b>Trang chủ</b>
 					</button>
-				</a> <span style="font-size: 18px;">-></span><a href="gioithieu.html "
+				</a> <span style="font-size: 18px;">-></span><a href=" "
 					style="text-decoration: none;"><button
 						class="btn btn-light border ">
 						<b>Sản phẩm</b>
 					</button> </a> <span style="font-size: 18px;">-></span><a href="iPhone.html "
 					style="text-decoration: none;"><button
 						class="btn btn-light border ">
-						<b>iphone</b>
+						<b>${tendt}</b>
 					</button> </a>
 			</div>
 

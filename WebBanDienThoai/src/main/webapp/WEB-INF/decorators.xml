@@ -8,9 +8,9 @@
 	<decorator name="danhmuc" page="user.jsp">
 		<pattern>/dienthoai/danhmuc</pattern>
 	</decorator>
-
-	<decorator name="chiTietDienThoai" page="user.jsp">
-		<pattern>/user/chitietdt</pattern>
+	
+	<decorator name="chitietdienthoai" page="user.jsp">
+		<pattern>/dienthoai/chitietdienthoai</pattern>
 	</decorator>
 	<decorator name="user-giohang" page="user.jsp">
 		<pattern>/user/gioHang</pattern>

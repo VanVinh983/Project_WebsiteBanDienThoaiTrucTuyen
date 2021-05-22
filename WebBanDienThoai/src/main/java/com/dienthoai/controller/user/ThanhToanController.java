@@ -2,8 +2,17 @@ package com.dienthoai.controller.user;
 
 import java.security.Principal;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -85,13 +94,57 @@ public class ThanhToanController {
 						
 			hoaDonService.saveHoaDon(nguoiNhan);
 			
-			
+			DecimalFormat format = new DecimalFormat("###,###.## vnđ");
 			List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
-
-			for (DienThoaiGioHang dt : cart) {			
+			String noiDung="";
+			for (DienThoaiGioHang dt : cart) {	
+				noiDung+="Điện thoại: "+dt.getDienThoai().getTenDT()+" "+dt.getDienThoai().getThongSo().getBoNho()+" "+dt.getDienThoai().getThongSo().getRam()
+						+ ", màu: "+dt.getDienThoai().getMauSac()+" . "+"Đơn giá: "+format.format(dt.getDienThoai().getGiaDT())+" "+" Số lượng: "+dt.getSoLuong()+" \n";
 				chiTietHoaDonService.addChiTietHoaDon(dt.getDienThoai().getId(), nguoiNhan.getId(), dt.getSoLuong());
 			}
+			String thongTinNguoiNhan = 
+					"- Họ và tên: "+nguoiNhan.getHoTenKhachHang()+"\n"+
+					"- Số điện thoại: "+nguoiNhan.getSoDienThoaiGiaoHang()+"\n"+
+					"- Email: "+nguoiNhan.getEmail()+"\n"+
+					"- Địa chỉ nhận: "+nguoiNhan.getDiaChiGiaoHang()+"\n";
+			
+			guiMailChoKhachHang(nguoiDung.getEmail(), noiDung, format.format((Double) session.getAttribute("tongtien")),thongTinNguoiNhan);
+			cart.removeAll(cart);
+			session.setAttribute("cart", cart);
 			return "user/xacnhan";
+		}
+	}
+	
+	public void guiMailChoKhachHang(String email,String noiDung,String tongTien,String thongTinNguoiNhan) {
+		try {
+			Properties properties = System.getProperties();
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.port","465");
+			properties.put("mail.smtp.auth", "true");
+			properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			properties.put("mail.smtp.socketFactory.port", "465");
+			Session session = Session.getDefaultInstance(properties, null);
+			session.setDebug(true);
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("HoangTheLongxm40@gmail.com"));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+			message.setContent("Cảm ơn bạn đã đặt mua điện thoại tại QMobile. \n"
+					+ "Sản phẩm bạn mua gồm: \n"
+					+ noiDung
+					+ "Tổng tiền: "+tongTien+"\n"
+					+"Thông tin người nhận:\n"
+					+thongTinNguoiNhan
+					+ "Xin chào và hẹn gặp lại\n","text/plain; charset=UTF-8");
+			message.setSubject("QMobile");
+			Transport transport = session.getTransport("smtp");
+			transport.connect("smtp.gmail.com","HoangTheLongxm40@gmail.com","Dkm0983382780");
+			transport.sendMessage(message, message.getAllRecipients());
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

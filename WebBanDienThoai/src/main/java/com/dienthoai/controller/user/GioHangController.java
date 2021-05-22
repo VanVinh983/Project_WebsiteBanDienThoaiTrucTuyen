@@ -25,7 +25,7 @@ public class GioHangController {
 	private DienThoaiService dienThoaiService;
 
 	@GetMapping(value = "/gioHang")
-	public String showGioHang(HttpSession session, Model model,Principal principal) {
+	public String showGioHang(HttpSession session, Model model, Principal principal) {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		if (cart == null) {
 			session.setAttribute("tamtinh", 0);
@@ -33,7 +33,7 @@ public class GioHangController {
 			session.setAttribute("tongtien", 0);
 			session.setAttribute("tinhtranggiohang", "Không có sản phẩm nào trong giỏ hàng");
 			try {
-				model.addAttribute("tenDangNhap",principal.getName());
+				model.addAttribute("tenDangNhap", principal.getName());
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -45,7 +45,7 @@ public class GioHangController {
 				session.setAttribute("tongtien", 0);
 				session.setAttribute("tinhtranggiohang", "Không có sản phẩm nào trong giỏ hàng");
 				try {
-					model.addAttribute("tenDangNhap",principal.getName());
+					model.addAttribute("tenDangNhap", principal.getName());
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -54,11 +54,11 @@ public class GioHangController {
 				session.setAttribute("tinhtranggiohang", "");
 				capNhatGiaTrongGioHang(session);
 				try {
-					model.addAttribute("tenDangNhap",principal.getName());
+					model.addAttribute("tenDangNhap", principal.getName());
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				
+
 				return "user/giohang";
 			}
 		}
@@ -93,12 +93,14 @@ public class GioHangController {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		double giamGia = 0;
 		double tamTinh = 0;
+		double thue = 0;
 		for (DienThoaiGioHang dienThoaiGioHang : cart) {
 			tamTinh += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getSoLuong();
 			giamGia += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getDienThoai().getGiamGia() / 100;
+			thue += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getDienThoai().getThue() / 100;
 			session.setAttribute("tamtinh", tamTinh);
 			session.setAttribute("giamgia", giamGia);
-			session.setAttribute("tongtien", tamTinh - giamGia);
+			session.setAttribute("tongtien", tamTinh - giamGia + thue);
 		}
 	}
 
@@ -125,28 +127,30 @@ public class GioHangController {
 		session.setAttribute("errorcartnull", "");
 		return "redirect:/user/gioHang";
 	}
+
 	@RequestMapping(value = "/tangsoluong/{id}")
-	public String tangSoLuong(@PathVariable(value = "id") int id,HttpSession session) {
+	public String tangSoLuong(@PathVariable(value = "id") int id, HttpSession session) {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		for (DienThoaiGioHang dienThoaiGioHang : cart) {
-			if(dienThoaiGioHang.getDienThoai().getId() == id) {
-				int quantity = dienThoaiGioHang.getSoLuong()+1;
+			if (dienThoaiGioHang.getDienThoai().getId() == id) {
+				int quantity = dienThoaiGioHang.getSoLuong() + 1;
 				dienThoaiGioHang.setSoLuong(quantity);
 			}
 		}
 		return "redirect:/user/gioHang";
-		
-	}	
+
+	}
+
 	@RequestMapping(value = "/giamsoluong/{id}")
-	public String giamSoLuong(@PathVariable(value = "id") int id,HttpSession session) {
+	public String giamSoLuong(@PathVariable(value = "id") int id, HttpSession session) {
 		List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 		for (DienThoaiGioHang dienThoaiGioHang : cart) {
-			if(dienThoaiGioHang.getDienThoai().getId() == id) {
-				int quantity = dienThoaiGioHang.getSoLuong()-1;
+			if (dienThoaiGioHang.getDienThoai().getId() == id) {
+				int quantity = dienThoaiGioHang.getSoLuong() - 1;
 				dienThoaiGioHang.setSoLuong(quantity);
 			}
 		}
 		return "redirect:/user/gioHang";
-		
+
 	}
 }

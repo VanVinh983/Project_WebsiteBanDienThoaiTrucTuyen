@@ -103,7 +103,7 @@
 								value="${giamgia}" /></td>
 					</tr>
 					<tr>
-						<td><b>Tổng tiền:</b></td>
+						<td><b>Tổng tiền (đã tính VAT):</b></td>
 						<td style="color: red;"><b><fmt:formatNumber
 									type="number" pattern="#,###,###.## ₫" value="${tongtien}" /></b></td>
 					</tr>

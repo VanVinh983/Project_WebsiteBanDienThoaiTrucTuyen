@@ -42,6 +42,7 @@
 							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 								<input type="text" placeholder="Nhập tên đăng nhập"
 									class="form-control" name="tenDangNhap" id="tenDangNhap">
+									<span style="color: red"><form:errors path="tenDangNhap" ></form:errors> </span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -50,6 +51,7 @@
 							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 								<input type="password" placeholder="Nhập mật khẩu"
 									class="form-control" name="matKhau" id="matKhau">
+									<span style="color: red"><form:errors path="matKhau" ></form:errors> </span>
 							</div>
 						</div>
 						<div style="margin-top: 30px">

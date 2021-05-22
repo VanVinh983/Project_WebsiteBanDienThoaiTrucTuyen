@@ -43,7 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.exceptionHandling()
 				.accessDeniedPage("/access-denied");
-		
 	}
 
 	/*

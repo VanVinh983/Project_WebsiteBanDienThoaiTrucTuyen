@@ -25,7 +25,8 @@
 					</div>
 					<div>Bạn chưa có tài khoản?</div>
 					<div>
-						<a><button class="btn btn-outline-warning">Đăng ký</button></a>
+						<a href="${pageContext.request.contextPath}/user/formDangKy"><button
+								class="btn btn-outline-warning" style="color: black">Đăng ký</button></a>
 					</div>
 				</div>
 			</div>

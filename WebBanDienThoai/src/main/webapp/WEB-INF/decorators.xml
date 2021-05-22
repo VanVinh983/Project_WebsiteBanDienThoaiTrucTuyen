@@ -18,6 +18,9 @@
 	<decorator name="user-dangnhap" page="user.jsp">
 		<pattern>/user/formDangNhap</pattern>
 	</decorator>
+	<decorator name="user-formdangky" page="user.jsp">
+		<pattern>/user/formDangKy</pattern>
+	</decorator>
 	<decorator name="user-showformnguoinhan" page="user.jsp">
 		<pattern>/user/showFormNguoiNhan</pattern>
 	</decorator>

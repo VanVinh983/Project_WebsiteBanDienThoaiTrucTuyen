@@ -1,5 +1,7 @@
 package com.dienthoai.controller.user;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,7 @@ public class DangKyController {
 	
 	@GetMapping(value = "/formDangKy")
 	public String showFormDangKy(Model model) {
-		model.addAttribute("nguoiDungDangNhap",	new NguoiDung());
+		model.addAttribute("nguoiDung",	new NguoiDung());
 		return "user/dangky";
 	}
 	
@@ -34,6 +36,7 @@ public class DangKyController {
 			return "user/dangky";
 		}
 		else {
+			nguoiDung.setNgayTao(new Date(System.currentTimeMillis()));
 			nguoiDungService.saveNguoiDung(nguoiDung);
 			return "user/dangkythanhcong";
 		}

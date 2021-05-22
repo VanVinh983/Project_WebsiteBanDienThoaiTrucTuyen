@@ -173,16 +173,10 @@ public class HoaDon implements Serializable{
 	}
 
 	
-
 	public HoaDon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
-
-
-
 
 	@Override
 	public String toString() {
@@ -192,65 +186,36 @@ public class HoaDon implements Serializable{
 				+ danhSachChiTiet + "]";
 	}
 
-
 	public String getHoTenKhachHang() {
 		return hoTenKhachHang;
 	}
-
-
-
 
 	public void setHoTenKhachHang(String hoTenKhachHang) {
 		this.hoTenKhachHang = hoTenKhachHang;
 	}
 
-
-
-
 	public String getSoDienThoaiGiaoHang() {
 		return soDienThoaiGiaoHang;
 	}
-
-
-
 
 	public void setSoDienThoaiGiaoHang(String soDienThoaiGiaoHang) {
 		this.soDienThoaiGiaoHang = soDienThoaiGiaoHang;
 	}
 
-
-
-
 	public String getDiaChiGiaoHang() {
 		return diaChiGiaoHang;
 	}
-
-
-
 
 	public void setDiaChiGiaoHang(String diaChiGiaoHang) {
 		this.diaChiGiaoHang = diaChiGiaoHang;
 	}
 
-
-
-
 	public String getEmail() {
 		return email;
 	}
 
-
-
-
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-
-
-	public void setDanhSachChiTiet(List<ChiTietHoaDon> danhSachChiTiet) {
-		this.danhSachChiTiet = danhSachChiTiet;
 	}
 
 

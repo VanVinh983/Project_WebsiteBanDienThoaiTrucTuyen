@@ -25,9 +25,11 @@
 									type="number" pattern="#,###,###.##₫"
 									value="${dt.dienThoai.giaDT}" /> <br> Số lượng:
 								${dt.soLuong}	
+								
 						</b></td>
 					</tr>
 				</c:forEach>
+				
 				<tr>
 					<td><b style="color: red; font-size: 20px">Tổng tiền</b>
 					<td><b style="color: red; font-size: 20px; float: right;"><fmt:formatNumber

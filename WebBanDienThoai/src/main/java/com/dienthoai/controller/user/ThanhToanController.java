@@ -108,7 +108,7 @@ public class ThanhToanController {
 					"- Email: "+nguoiNhan.getEmail()+"\n"+
 					"- Địa chỉ nhận: "+nguoiNhan.getDiaChiGiaoHang()+"\n";
 			
-			guiMailChoKhachHang(nguoiDung.getEmail(), noiDung, format.format((Double) session.getAttribute("tongtien")),thongTinNguoiNhan);
+			guiMailChoKhachHang(nguoiNhan.getEmail(), noiDung, format.format((Double) session.getAttribute("tongtien")),thongTinNguoiNhan);
 			cart.removeAll(cart);
 			session.setAttribute("cart", cart);
 			return "user/xacnhan";

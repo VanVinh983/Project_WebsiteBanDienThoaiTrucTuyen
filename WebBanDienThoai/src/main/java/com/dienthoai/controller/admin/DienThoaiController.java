@@ -85,17 +85,17 @@ public class DienThoaiController {
 			stream.write(bytes);
 			stream.flush();
 			stream.close();
-			
 			product.setAnhURL(imageUrl);
 			DanhMuc cate=danhMucService.getDanhMuc(id);
 			product.setDanhMuc(cate);
 			ThongSo ts=thongSoService.getThongSo(Integer.parseInt(detail_id));
 			product.setThongSo(ts);		
-			dienThoaiService.saveDienThoai(product);
+			
 		} catch (Exception e) {
 			// TODO: handle exception			
 		}
-
+	
+		dienThoaiService.saveDienThoai(product);
 		return "redirect:/admin/product/list";
 	}
 	

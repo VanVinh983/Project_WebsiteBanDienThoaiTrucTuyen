@@ -169,6 +169,7 @@ function renderDuLieu(data) {
 }
 
 function xoats(id) {
+
 	if (confirm("Bạn có chắc chắn xóa không ?")) {
 		$.ajax({
 			url: `api/details/${id}`,

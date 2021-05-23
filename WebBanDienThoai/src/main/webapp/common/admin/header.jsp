@@ -62,7 +62,7 @@
 								<div class="media-body">
 									<h6 class="mt-2 user-title">Xin chào!</h6>
 									
-									<b> Admin: <security:authentication property="principal.username" /> </b>
+									<b> Admin: <security:authentication property="principal.username"/> </b>
 									
 								</div>
 							</div>

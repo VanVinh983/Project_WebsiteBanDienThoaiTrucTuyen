@@ -43,7 +43,7 @@ public class DienThoaiController {
 		theModel.addAttribute("dtsbc",dtsBanChay);
 		theModel.addAttribute("dienthoais", listDienThoai);
 		theModel.addAttribute("ths", listThuongHieu);
-		return "user/danhsach-dienthoai2";
+		return "user/danhsach-dienthoai";
 	}
 	
 	@GetMapping("/danhmuc")

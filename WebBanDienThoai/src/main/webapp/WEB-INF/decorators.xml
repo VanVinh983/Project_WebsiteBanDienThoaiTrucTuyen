@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/decorators">
 
-	<decorator name="danhsach-dienthoai" page="user1.jsp">
+	<decorator name="danhsach-dienthoai" page="user.jsp">
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
 

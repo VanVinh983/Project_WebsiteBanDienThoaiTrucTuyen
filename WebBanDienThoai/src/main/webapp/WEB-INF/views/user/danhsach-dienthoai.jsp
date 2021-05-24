@@ -111,9 +111,9 @@
 											</div>
 											<div class="card-footer"
 												style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
-												<a class="btn btn-success btn-block"
+												<a class="btn btn-success btn-block fs14"
 													href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
-													Thêm vào gỏi hàng </a>
+													Thêm vào giỏ hàng </a>
 											</div>
 									</a>
 								</div>

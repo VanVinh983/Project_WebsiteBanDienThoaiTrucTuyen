@@ -21,6 +21,9 @@
 <link rel="stylesheet" type="text/css" href="${font}/icon.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
 <link rel="stylesheet" type="text/css"
 	href="${font}/font-awesome.min.css">
 <script src="${js}/jquery.js"></script>
@@ -30,10 +33,10 @@
 <script src='${js}/index.js'></script>
 </head>
 <body>
-<c:url value="/resources/user/images" var="img" />
-	<%@ include file="/common/user/header.jsp" %>
-	<decorator:body/>
-	<%@ include file="/common/user/footer.jsp" %>
-	
+	<c:url value="/resources/user/images" var="img" />
+	<%@ include file="/common/user/header.jsp"%>
+	<decorator:body />
+	<%@ include file="/common/user/footer.jsp"%>
+
 </body>
 </html>

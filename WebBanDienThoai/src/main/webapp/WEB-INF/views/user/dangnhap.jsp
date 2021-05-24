@@ -16,7 +16,7 @@
 		<div class="row"
 			style="background-color: #f2f885; margin-bottom: 20px">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<div class="welcomelogin">
+				<div class="welcomelogin fs14">
 					<div>
 						<img alt="" src="${img}/logo.png">
 					</div>
@@ -26,12 +26,12 @@
 					<div>Bạn chưa có tài khoản?</div>
 					<div>
 						<a href="${pageContext.request.contextPath}/user/formDangKy"><button
-								class="btn btn-outline-warning" style="color: black">Đăng ký</button></a>
+								class="btn btn-outline-warning text-uppercase mt-2" style="color: black">Đăng ký</button></a>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<div class="login">
+				<div class="login fs14">
 					<div style="text-align: center;">
 						<b>ĐĂNG NHẬP</b>
 					</div>
@@ -56,7 +56,7 @@
 						</div>
 						<div style="margin-top: 30px">
 							<button class="btn" type="submit">
-								<b>Đăng nhập</b>
+								<b class="text-uppercase fs14">Đăng nhập</b>
 							</button>
 							</a>
 						</div>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/decorators">
 
-	<decorator name="danhsach-dienthoai" page="user.jsp">
+	<decorator name="danhsach-dienthoai" page="user1.jsp">
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
 
@@ -9,25 +9,25 @@
 		<pattern>/dienthoai/danhmuc</pattern>
 	</decorator>
 	
-	<decorator name="chitietdienthoai" page="user.jsp">
+	<decorator name="chitietdienthoai" page="user1.jsp">
 		<pattern>/dienthoai/chitietdienthoai</pattern>
 	</decorator>
-	<decorator name="user-giohang" page="user.jsp">
+	<decorator name="user-giohang" page="user1.jsp">
 		<pattern>/user/gioHang</pattern>
 	</decorator>
-	<decorator name="user-dangnhap" page="user.jsp">
+	<decorator name="user-dangnhap" page="user1.jsp">
 		<pattern>/user/formDangNhap</pattern>
 	</decorator>
-	<decorator name="user-formdangky" page="user.jsp">
+	<decorator name="user-formdangky" page="user1.jsp">
 		<pattern>/user/formDangKy</pattern>
 	</decorator>
-		<decorator name="user-formdangky" page="user.jsp">
+		<decorator name="user-formdangky" page="user1.jsp">
 		<pattern>/user/dangky</pattern>
 	</decorator>
-	<decorator name="user-showformnguoinhan" page="user.jsp">
+	<decorator name="user-showformnguoinhan" page="user1.jsp">
 		<pattern>/user/showFormNguoiNhan</pattern>
 	</decorator>
-	<decorator name="user-thanhtoan" page="user.jsp">
+	<decorator name="user-thanhtoan" page="user1.jsp">
 		<pattern>/user/thanhtoan</pattern>
 	</decorator>
 	<decorator name="admin-trangchu" page="admin.jsp">

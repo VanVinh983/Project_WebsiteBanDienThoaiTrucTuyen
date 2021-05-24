@@ -28,6 +28,9 @@
 .gt {
 	background-color: #a1a1a83b;
 }
+.fs14{
+	font-size: 14px !important;
+}
 
 .menu a {
 	color: rgb(233, 227, 227);

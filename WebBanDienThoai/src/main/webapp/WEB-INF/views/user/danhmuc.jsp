@@ -174,7 +174,7 @@
 															style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
 															<a class="btn btn-success btn-block"
 																href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
-																Thêm vào gỏi hàng </a>
+																Thêm vào giỏ hàng </a>
 														</div>
 												</a>
 											</div>
@@ -215,7 +215,7 @@
 																	style="bottom: 0; position: absolute; width: 90%; float: center; background-color: white;">
 																	<a class="btn btn-success btn-block"
 																		href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
-																		Thêm vào gỏi hàng </a>
+																		Thêm vào giỏ hàng </a>
 																</div>
 														</a>
 													</div>

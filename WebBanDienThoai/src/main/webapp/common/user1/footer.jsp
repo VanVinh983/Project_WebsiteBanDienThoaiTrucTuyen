@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 	<footer class="footer">
-            <div class="grid wide footer__content~">
+ 	 <footer class="footer">
+            <div class="container footer__content~">
                 <div class="row">
-                    <div class="col l-2-4 m-4 c-6 ">
+                    <div class="col-3">
                         <h3 class="footer__heading">
                             Chăm sóc khách hàng
                         </h3>
@@ -19,7 +19,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col l-2-4 m-4 c-6">
+                    <div class="col-2">
                         <h3 class="footer__heading">
                             Giới thiệu
                         </h3>
@@ -35,7 +35,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col l-2-4 m-4 c-6">
+                    <div class="col-2">
                         <h3 class="footer__heading">
                             Danh mục
                         </h3>
@@ -52,7 +52,7 @@
                         </ul>
 
                     </div>
-                    <div class="col l-2-4 m-4 c-6">
+                    <div class="col-2">
                         <h3 class="footer__heading">
                             Theo dõi
                         </h3>
@@ -72,7 +72,7 @@
                         </ul>
 
                     </div>
-                    <div class="col l-2-4 m-4 c-6">
+                    <div class="col-3">
                         <h3 class="footer__heading">
                             Vào cửa hàng trên ứng dụng
                         </h3>
@@ -97,5 +97,4 @@
                     <p class="footer__text">© 2021 TrungVinh's, Inc. All Rights Reserved</p>
                 </div>
             </div>
-
         </footer>

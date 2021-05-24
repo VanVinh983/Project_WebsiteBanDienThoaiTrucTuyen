@@ -19,7 +19,7 @@
 				<tr>
 					<td style="text-align: left;"><a
 						href="${pageContext.request.contextPath}/dienthoai/danhsach">
-							<button type="button" class="btn btn-success">
+							<button type="button" class="btn btn-success fs14">
 								<i class="fa fa-angle-left"></i> Tiếp tục mua hàng
 							</button>
 					</a></td>
@@ -79,27 +79,27 @@
 								<c:if test="${ds.soLuong >= 2}">
 									<a
 										href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}"><button
-											class="btn btn-warning">
+											class="btn btn-warning fs16">
 											<b>-</b>
 										</button></a>
 								</c:if>
 								<c:if test="${ds.soLuong == 1}">
-									<button class="btn btn-warning" style="opacity: 0.5">
+									<button class="btn btn-warning fs16" style="opacity: 0.5">
 										<b>-</b>
 									</button>
 								</c:if>	
 								&nbsp; 
-									${ds.soLuong} 
+									<span class="fs14">${ds.soLuong} </span>
 								&nbsp;
 								<c:if test="${ds.soLuong >= ds.dienThoai.soLuongTon}">
 									<a onclick="return confirm('Không đủ số lượng trong kho!');">
-										<button	class="btn btn-warning" style="opacity: 0.5">
+										<button	class="btn btn-warning fs16" style="opacity: 0.5">
 											<b>+</b>
 										</button></a>
 								</c:if>
 								<c:if test="${ds.soLuong < ds.dienThoai.soLuongTon}">
 								<a href="${pageContext.request.contextPath }/user/tangsoluong/${ds.dienThoai.id}"><button
-											class="btn btn-warning">
+											class="btn btn-warning fs16">
 											<b>+</b>
 										</button></a>
 								</c:if>
@@ -115,7 +115,7 @@
 		</table>
 		<div class="row">
 			<div class="giohangtongtien">
-				<table class="table">
+				<table class="table fs14">
 					<tr>
 						<td>Tạm tính:</td>
 						<td><fmt:formatNumber type="number" pattern="#,###,###.## ₫"
@@ -136,14 +136,14 @@
 							<c:if test="${tenDangNhap==null}">
 								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
 									onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
-										style="width: 100%" type="button" class="btn btn-success">Đặt
+										style="width: 100%" type="button" class="btn btn-success fs14">Đặt
 										hàng</button></a>
 							</c:if>
 						<c:if test="${tenDangNhap!=null}">
 							<a
 								href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
 								<button style="width: 100%" type="button"
-									class="btn btn-success">Đặt hàng</button>
+									class="btn btn-success fs14 text-uppercase">Đặt hàng</button>
 							</a>
 							
 						</c:if>

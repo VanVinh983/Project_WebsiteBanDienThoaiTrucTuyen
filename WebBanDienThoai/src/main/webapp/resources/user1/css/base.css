@@ -177,10 +177,6 @@ html {
     padding: 4px 0;
 }
 
-.footer_item-link:hover {
-    color: var(--primary-color)
-}
-
 .footer_item-icon {
     font-size: 1.8rem;
     padding-right: 8px;

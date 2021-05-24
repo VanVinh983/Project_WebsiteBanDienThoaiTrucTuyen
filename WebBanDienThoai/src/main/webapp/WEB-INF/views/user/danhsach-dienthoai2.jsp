@@ -96,8 +96,10 @@
                                                 <span>Yêu thích</span>
                                             </div>
                                             <div class="home-product-item__sale-off">
+                                               <c:if test="${dt.giamGia>0}">
                                                 <span class="home-product-item__percent">${dt.giamGia}</span>
                                                 <span class="home-product-item__label">GIẢM</span>
+                                               </c:if>
                                             </div>
                                         </a>
                                         <a class="btn btn-success btn-block fs14"

@@ -1031,7 +1031,7 @@ a.auth-form__text-link {
 .home-product-item:hover {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
+    transform: translateY(-10px);
 }
 
 .home-product-item-img {

@@ -77,14 +77,14 @@
                             Vào cửa hàng trên ứng dụng
                         </h3>
                         <div class="footer__download">
-                            <img src="./assets/img/code.png" alt="QR Code" class="footer__download_qr">
+                            <img src="${resources}/user1/img/code.png" alt="QR Code" class="footer__download_qr">
                             <div class="footer__download-apps">
                                 <a href="#" class="footer__download-link">
-                                    <img src="./assets/img/appstore.png" alt="App Store"
+                                    <img src="${resources}/user1/img/appstore.png" alt="App Store"
                                         class="footer__download-app-store">
                                 </a>
                                 <a href="#" class="footer__download-link">
-                                    <img src="./assets/img/googleplay.png" alt="Google Play"
+                                    <img src="${resources}/user1/img/googleplay.png" alt="Google Play"
                                         class="footer__download-google-play">
                                 </a>
                             </div>

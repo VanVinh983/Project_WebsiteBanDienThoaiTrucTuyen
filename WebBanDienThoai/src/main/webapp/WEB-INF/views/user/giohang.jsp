@@ -74,6 +74,8 @@
 									value="${ds.dienThoai.giaDT}" />
 							</div>
 							<div style="text-align: center; margin-top: 10px">
+							
+							
 								<c:if test="${ds.soLuong >= 1}">
 									<a
 										href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}"><button
@@ -86,11 +88,39 @@
 										<b>-</b>
 									</button>
 								</c:if>
-								&nbsp; ${ds.soLuong} &nbsp; <a
-									href="${pageContext.request.contextPath }/user/tangsoluong/${ds.dienThoai.id}"><button
-										class="btn btn-warning">
-										<b>+</b>
-									</button></a>
+								
+								
+								
+								
+								&nbsp; 
+								<c:if test="${ds.dienThoai.soLuongTon>0}">
+									${ds.soLuong} 
+								</c:if>
+								<c:if test="${ds.dienThoai.soLuongTon==0}">
+									${ds.soLuong}
+								</c:if>
+								&nbsp;
+								
+								
+								
+								
+								
+								<c:if test="${ds.soLuong >= ds.dienThoai.soLuongTon}">
+									<a onclick="return confirm('Không đủ số lượng trong kho!');">
+										<button	class="btn btn-warning">
+											<b>+</b>
+										</button></a>
+								</c:if>
+								<c:if test="${ds.soLuong < ds.dienThoai.soLuongTon}">
+								<a href="${pageContext.request.contextPath }/user/tangsoluong/${ds.dienThoai.id}"><button
+											class="btn btn-warning">
+											<b>+</b>
+										</button></a>
+								</c:if>
+								
+								
+								
+								
 							</div>
 						</td>
 					</tr>
@@ -116,21 +146,22 @@
 									type="number" pattern="#,###,###.## ₫" value="${tongtien}" /></b></td>
 					</tr>
 					<tr>
-						<td style="width: 100%"><c:if test="${tenDangNhap==null}">
-								<a
-									href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
+						<td style="width: 100%">
+							<c:if test="${tenDangNhap==null}">
+								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
 									onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
 										style="width: 100%" type="button" class="btn btn-success">Đặt
-										hàng</button></a></td>
-						</c:if>
+										hàng</button></a>
+							</c:if>
 						<c:if test="${tenDangNhap!=null}">
 							<a
 								href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
 								<button style="width: 100%" type="button"
 									class="btn btn-success">Đặt hàng</button>
 							</a>
-							</td>
+							
 						</c:if>
+						</td>
 					</tr>
 				</table>
 			</div>

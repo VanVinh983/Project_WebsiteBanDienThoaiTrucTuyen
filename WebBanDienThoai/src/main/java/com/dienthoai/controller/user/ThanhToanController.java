@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dienthoai.entity.ChiTietHoaDon;
+import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.DienThoaiGioHang;
 import com.dienthoai.entity.HoaDon;
 import com.dienthoai.entity.NguoiDung;
@@ -45,10 +46,10 @@ public class ThanhToanController {
 
 	@Autowired
 	NguoiDungService nguoiDungService;
-	
+
 	@Autowired
 	ChiTietHoaDonService chiTietHoaDonService;
-	
+
 	@Autowired
 	DienThoaiService dienThoaiService;
 
@@ -101,6 +102,11 @@ public class ThanhToanController {
 				noiDung+="Điện thoại: "+dt.getDienThoai().getTenDT()+" "+dt.getDienThoai().getThongSo().getBoNho()+" "+dt.getDienThoai().getThongSo().getRam()
 						+ ", màu: "+dt.getDienThoai().getMauSac()+" . "+"Đơn giá: "+format.format(dt.getDienThoai().getGiaDT())+" "+" Số lượng: "+dt.getSoLuong()+" \n";
 				chiTietHoaDonService.addChiTietHoaDon(dt.getDienThoai().getId(), nguoiNhan.getId(), dt.getSoLuong());
+				DienThoai capNhatSoLuong=dt.getDienThoai();
+				int soLuong=0;
+				soLuong= dt.getDienThoai().getSoLuongTon()-dt.getSoLuong();
+				capNhatSoLuong.setSoLuongTon(soLuong);
+				dienThoaiService.saveDienThoai(capNhatSoLuong);
 			}
 			String thongTinNguoiNhan = 
 					"- Họ và tên: "+nguoiNhan.getHoTenKhachHang()+"\n"+
@@ -114,12 +120,12 @@ public class ThanhToanController {
 			return "user/xacnhan";
 		}
 	}
-	
-	public void guiMailChoKhachHang(String email,String noiDung,String tongTien,String thongTinNguoiNhan) {
+
+	public void guiMailChoKhachHang(String email, String noiDung, String tongTien, String thongTinNguoiNhan) {
 		try {
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.host", "smtp.gmail.com");
-			properties.put("mail.smtp.port","465");
+			properties.put("mail.smtp.port", "465");
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 			properties.put("mail.smtp.socketFactory.port", "465");
@@ -128,16 +134,12 @@ public class ThanhToanController {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("HoangTheLongxm40@gmail.com"));
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
-			message.setContent("Cảm ơn bạn đã đặt mua điện thoại tại QMobile. \n"
-					+ "Sản phẩm bạn mua gồm: \n"
-					+ noiDung
-					+ "Tổng tiền: "+tongTien+"\n"
-					+"Thông tin người nhận:\n"
-					+thongTinNguoiNhan
-					+ "Xin chào và hẹn gặp lại\n","text/plain; charset=UTF-8");
+			message.setContent("Cảm ơn bạn đã đặt mua điện thoại tại QMobile. \n" + "Sản phẩm bạn mua gồm: \n" + noiDung
+					+ "Tổng tiền: " + tongTien + "\n" + "Thông tin người nhận:\n" + thongTinNguoiNhan
+					+ "Xin chào và hẹn gặp lại\n", "text/plain; charset=UTF-8");
 			message.setSubject("QMobile");
 			Transport transport = session.getTransport("smtp");
-			transport.connect("smtp.gmail.com","HoangTheLongxm40@gmail.com","Dkm0983382780");
+			transport.connect("smtp.gmail.com", "HoangTheLongxm40@gmail.com", "Dkm0983382780");
 			transport.sendMessage(message, message.getAllRecipients());
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block

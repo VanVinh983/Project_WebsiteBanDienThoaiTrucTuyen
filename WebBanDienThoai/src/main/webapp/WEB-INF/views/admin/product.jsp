@@ -83,16 +83,16 @@
 <div class="modal fade" id="xem-modal" style="display: none;"
 	aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
+		<div class="modal-content" style="background-color: #0d5b80;">
+			<div class="modal-body" >
 				<div class="scroll">
-					<h4 class="text-center text-danger">
+					<h4 class="text-center ">
 						Thông số kỹ thuật chi tiết<br>${product.tenDT}
 					</h4>
 					
 					<ul class="parameterfull">
 						<li>
-							<div style="text-align: center;">												
+							<div style="text-align: center;">										
 								<img id="anh" src=""  width="300" height="250">
 							</div>
 						</li>

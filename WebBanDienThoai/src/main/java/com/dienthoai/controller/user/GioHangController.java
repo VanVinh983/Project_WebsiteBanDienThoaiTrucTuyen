@@ -95,9 +95,9 @@ public class GioHangController {
 		double tamTinh = 0;
 		double thue = 0;
 		for (DienThoaiGioHang dienThoaiGioHang : cart) {
-			tamTinh += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getSoLuong();
-			giamGia += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getDienThoai().getGiamGia() / 100;
-			thue += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getDienThoai().getThue() / 100;
+			tamTinh = dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getSoLuong();
+			giamGia = (tamTinh * dienThoaiGioHang.getDienThoai().getGiamGia()) / 100;
+			thue = (tamTinh * dienThoaiGioHang.getDienThoai().getThue()) / 100;
 			session.setAttribute("tamtinh", tamTinh);
 			session.setAttribute("giamgia", giamGia);
 			session.setAttribute("tongtien", tamTinh - giamGia + thue);

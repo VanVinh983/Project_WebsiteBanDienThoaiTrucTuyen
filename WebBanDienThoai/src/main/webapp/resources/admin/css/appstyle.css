@@ -664,7 +664,7 @@ body.bg-theme15 {
 .search-bar input::placeholder {
     color: #fff !important;
     font-size: 13px;
-    opacity: .5 !important; /* Firefox */
+    opacity: .5 !important; 
 }
 
 

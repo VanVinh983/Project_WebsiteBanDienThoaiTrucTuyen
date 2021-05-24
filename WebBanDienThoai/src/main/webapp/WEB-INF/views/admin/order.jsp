@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/common/taglib.jsp"%>
 <c:url value="/resources" var="resources"></c:url>
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -40,7 +40,7 @@
 											<td><c:choose>
 													<c:when
 														test="${order.thanhToan.phuongThuc == 'COD'}">
-														<c:out value="Chưa thanh toán" />
+														<c:out value="Đang chờ thanh toán" />
 													</c:when>
 													<c:otherwise>
 														<c:out value="Đã thanh toán" />
@@ -129,9 +129,9 @@
 									<thead>
 										<tr>
 											<th scope="col">ID</th>
-											<th scope="col">Tên sản phẩm</th>
-											<th scope="col">Giá</th>
+											<th scope="col">Tên sản phẩm</th>											
 											<th scope="col">Số lượng</th>
+											<th scope="col">Giá</th>
 											<th scope="col">Thuế(%)</th>
 											<th scope="col">Giảm giá(%)</th>
 											<th scope="col">Thành tiền</th>
@@ -141,7 +141,8 @@
 										<tr>
 											<th scope="row">1</th>
 											<td>iphone</td>
-											<td>1100000</td>
+											<td><fmt:formatNumber type="number" pattern="#,###,###.##"
+												value="" /></td>
 											<td>1</td>
 											<td>10%</td>
 											<td>5%</td>

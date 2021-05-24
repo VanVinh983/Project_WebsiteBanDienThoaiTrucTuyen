@@ -74,11 +74,19 @@
 									value="${ds.dienThoai.giaDT}" />
 							</div>
 							<div style="text-align: center; margin-top: 10px">
-								<a
-									href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}"><button
-										class="btn btn-warning">
+								<c:if test="${ds.soLuong >= 1}">
+									<a
+										href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}"><button
+											class="btn btn-warning">
+											<b>-</b>
+										</button></a>
+								</c:if>
+								<c:if test="${ds.soLuong == 0}">
+									<button class="btn btn-warning">
 										<b>-</b>
-									</button></a> &nbsp; ${ds.soLuong} &nbsp; <a
+									</button>
+								</c:if>
+								&nbsp; ${ds.soLuong} &nbsp; <a
 									href="${pageContext.request.contextPath }/user/tangsoluong/${ds.dienThoai.id}"><button
 										class="btn btn-warning">
 										<b>+</b>
@@ -108,16 +116,20 @@
 									type="number" pattern="#,###,###.## ₫" value="${tongtien}" /></b></td>
 					</tr>
 					<tr>
-						<td style="width: 100%">
-						<c:if test="${tenDangNhap==null}">
-								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
+						<td style="width: 100%"><c:if test="${tenDangNhap==null}">
+								<a
+									href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
 									onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
 										style="width: 100%" type="button" class="btn btn-success">Đặt
 										hàng</button></a></td>
 						</c:if>
 						<c:if test="${tenDangNhap!=null}">
-							<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
-							<button style="width: 100%" type="button" class="btn btn-success">Đặt hàng</button></a></td>
+							<a
+								href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
+								<button style="width: 100%" type="button"
+									class="btn btn-success">Đặt hàng</button>
+							</a>
+							</td>
 						</c:if>
 					</tr>
 				</table>

@@ -21,11 +21,11 @@
 <link href="${resources}/admin/css/icons.css" rel="stylesheet" type="text/css" />
 <link href="${resources}/admin/css/sidebar-menu.css" rel="stylesheet" />
 <link href="${resources}/admin/css/appstyle.css" rel="stylesheet" />
-<link href="${resources}/admin/css/fullparameter.css" rel="stylesheet" />
+<link href="${resources}/admin/css/fullparamer.css" rel="stylesheet" />
 
  <link rel="stylesheet" href="${resources}/admin/plugins/toastr/toastr.min.css">
 </head>
-<body class="bg-theme bg-theme1">
+<body style="background-color: #0d5b80">
 	<div id="wrapper">
 
 		<%@ include file="/common/admin/header.jsp"%>

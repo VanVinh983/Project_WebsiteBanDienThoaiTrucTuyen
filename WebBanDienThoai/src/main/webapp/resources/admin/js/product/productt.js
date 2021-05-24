@@ -38,7 +38,7 @@ $('#btnThem').click(function() {
 	const pin = $('#them-modal #pin').val();
 
 	const url = "api/details";
-	var person = {
+	var thongso = {
           manHinh:manHinh,
           boNho:boNho,
           camera:camera,
@@ -52,7 +52,7 @@ $('#btnThem').click(function() {
 		url: url,
 		type: 'POST',
 		contentType: 'application/json',
-		data: JSON.stringify(person),
+		data: JSON.stringify(thongso),
 		success: function() {
 			$('#them-modal').modal('hide');
 			toastr.success('Thêm thành công')

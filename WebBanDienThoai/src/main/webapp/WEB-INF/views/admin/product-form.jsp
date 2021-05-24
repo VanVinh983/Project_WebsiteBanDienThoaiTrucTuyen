@@ -182,10 +182,10 @@
 	<div class="modal fade " id="them-modal" style="display: none; "
 	aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" style="background-color: #0d5b80;">
 			<div class="modal-body">
 				<div class="scroll">
-					<h4 class="text-center text-danger">
+					<h4 class="text-center">
 						Thông số kỹ thuật chi tiết
 					</h4>
 					
@@ -195,56 +195,56 @@
 							<div><input type="hidden" id="id"/> </div>
 						</li>					
 						<li><span>Màn hình</span>
-							<div><input id="manHinh" type="text" Class="form" /></div>
+							<div><input id="manHinh" type="text" Class="form-control" /></div>
 						</li>
 						
 						<li><span>Hệ điều hành</span>
 							<div>
-								<input id="heDieuHanh" type="text" Class="form"/> 
+								<input id="heDieuHanh" type="text" Class="form-control"/> 
 							</div>
 						</li>
 						<li><span>Độ phân giải Camera</span>
 							<div>
-								<select class="form" id="camera" >
-									<option style="background-color: white;"selected>select</option>
-									<option style="background-color: white;"value="12MP" >12MP</option>
-									<option style="background-color: white;"value="16MP" >16MP</option>	
-									<option style="background-color: white;"value="24MP" >24MP</option>	
-									<option style="background-color: white;"value="36MP" >36MP</option>	
-									<option style="background-color: white;"value="48MB" >48MB</option>		
+								<select class="form-control" id="camera" >
+									<option selected>select</option>
+									<option value="12MP" >12MP</option>
+									<option value="16MP" >16MP</option>	
+									<option value="24MP" >24MP</option>	
+									<option value="36MP" >36MP</option>	
+									<option value="48MB" >48MB</option>		
 								</select>
 							</div>
 						</li>
 						<li><span>Ram</span>
 							<div>
-								<select class="form" id="ram">
-									<option style="background-color: white;" value="4GB" selected>4GB</option>
-									<option style="background-color: white;" value="8GB" >8GB</option>	
-									<option style="background-color: white;" value="12GB" >12GB</option>	
-									<option style="background-color: white;"value="16GB" >16GB</option>	
+								<select class="form-control" id="ram">
+									<option  value="4GB" selected>4GB</option>
+									<option  value="8GB" >8GB</option>	
+									<option  value="12GB" >12GB</option>	
+									<option value="16GB" >16GB</option>	
 								</select>
 							</div>
 						</li>
 						<li><span>Bộ nhớ trong</span>
 							<div>
-								<select class="form" id="boNho" >
-									<option style="background-color: white;" value="16GB" selected>16GB</option>
-									<option style="background-color: white;"value="32GB" >32GB</option>	
-									<option style="background-color: white;"value="64GB" >64GB</option>	
-									<option style="background-color: white;"value="128GB" >128GB</option>	
-									<option style="background-color: white;"value="256GB" >256GB</option>	
-									<option style="background-color: white;"value="512GB" >512GB</option>	
+								<select class="form-control" id="boNho" >
+									<option  value="16GB" selected>16GB</option>
+									<option value="32GB" >32GB</option>	
+									<option value="64GB" >64GB</option>	
+									<option value="128GB" >128GB</option>	
+									<option value="256GB" >256GB</option>	
+									<optionvalue="512GB" >512GB</option>	
 								</select>
 							</div>
 						</li>
 						<li><span>Sim</span>
 							<div>
-								<input id="sim" type="text" Class="form"></input>
+								<input id="sim" type="text" Class="form-control"></input>
 							</div>
 						</li>
 						<li><span>Pin</span>
 							<div>
-								<input id="pin" type="text" Class="form"></input>
+								<input id="pin" type="text" Class="form-control"></input>
 							</div>
 						</li>				
 					</ul>
@@ -265,50 +265,50 @@
 	<div class="modal fade " id="sua-modal" style="display: none; "
 	aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" style="background-color: #0d5b80;">
 			<div class="modal-body">
 				<div class="scroll">
-					<h4 class="text-center text-danger">
+					<h4 class="text-center">
 						Thông số kỹ thuật chi tiết
 					</h4>
 					
 					<ul class="parameterfull">
 					<li><span>ID</span>
-							<div><input id="idSua" type="text" Class="form" readonly="readonly"/></div>
+							<div><input id="idSua" type="text" Class="form-control" readonly="readonly"/></div>
 						</li>
 					
 						<li><span>Màn hình</span>
-							<div><input id="manHinhSua" type="text" Class="form" /></div>
+							<div><input id="manHinhSua" type="text" Class="form-control" /></div>
 						</li>
 						
 						<li><span>Hệ điều hành</span>
 							<div>
-								<input id="heDieuHanhSua" type="text" Class="form"/> 
+								<input id="heDieuHanhSua" type="text" Class="form-control"/> 
 							</div>
 						</li>
 						<li><span>Độ phân giải Camera</span>
 							<div>
-							<input id="cameraSua" type="text" Class="form"/> 
+							<input id="cameraSua" type="text" Class="form-control"/> 
 							</div>
 						</li>
 						<li><span>Ram</span>
 							<div>
-								<input id="ramSua" type="text" Class="form"/> 
+								<input id="ramSua" type="text" Class="form-control"/> 
 							</div>
 						</li>
 						<li><span>Bộ nhớ trong</span>
 							<div>
-								<input id="boNhoSua" type="text" Class="form"/> 
+								<input id="boNhoSua" type="text" Class="form-control"/> 
 							</div>
 						</li>
 						<li><span>Sim</span>
 							<div>
-								<input id="simSua" type="text" Class="form"></input>
+								<input id="simSua" type="text" Class="form-control"></input>
 							</div>
 						</li>
 						<li><span>Pin</span>
 							<div>
-								<input id="pinSua" type="text" Class="form"></input>
+								<input id="pinSua" type="text" Class="form-control"></input>
 							</div>
 						</li>			
 					</ul>

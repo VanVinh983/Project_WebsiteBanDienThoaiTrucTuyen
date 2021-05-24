@@ -2,7 +2,9 @@ function xemChiTiet(id) {
 
 	const url = `api/orderdetails/${id}`;
 	console.log('url: ', url);
-
+	
+	const numberFormat = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND',});
+	
 	$.get(url, function(data, status) {
 	
 		const {hoaDon} = data;	
@@ -24,17 +26,20 @@ function xemChiTiet(id) {
 		var thue=(giaDT*dienThoai.thue)/100;
 		var giamGia=(giaDT*dienThoai.giamGia)/100;		
 		var thanhTien=giaDT + thue - giamGia;
-		var tt=new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(thanhTien);
-		var gia=new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(dienThoai.giaDT);
+		
+		
+		
+		var tt=numberFormat.format(thanhTien);
+		var gia=numberFormat.format(dienThoai.giaDT);
 		
 		$("<tr>").appendTo($("#tableBody"))	
 			.append($("<td>").text(dienThoai.id))
 			.append($("<td>").text(dienThoai.tenDT+' ('+dienThoai.thongSo.boNho+')'))
 			.append($("<td>").text(soLuong))
-			.append($("<td>").text(gia +' đ'))
+			.append($("<td>").text(gia))
 			.append($("<td>").text(dienThoai.thue))
 			.append($("<td>").text(dienThoai.giamGia))
-			.append($("<td>").text(tt +' đ'))
+			.append($("<td>").text(tt))
 						
 		});
 		
@@ -45,8 +50,8 @@ function xemChiTiet(id) {
 					((data[i].dienThoai.giaDT*data[i].soLuong)*data[i].dienThoai.thue)/100 - 
 					((data[i].dienThoai.giaDT*data[i].soLuong)*data[i].dienThoai.giamGia)/100; 
 			}
-		var sub=new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(tongTien);
-			$("#xem-modal #tongTien").val(sub +' đ');
+		var sub=numberFormat.format(tongTien);
+			$("#xem-modal #tongTien").val(sub);
 	});
 }
 

@@ -244,6 +244,7 @@
 								<div id="${th.tenTH}" class="tab-pane fade">
 									<c:forEach var="dt" items="${dienthoais}">
 										<c:if test="${dt.thuongHieu.id == th.id}">
+											<c:if test="${dt.soLuongTon>0 }">
 											<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 float-left">
 												<div class="card text-center">
 													<div class="dt">
@@ -279,6 +280,7 @@
 													</div>
 												</div>
 											</div>
+											</c:if>
 										</c:if>
 									</c:forEach>
 								</div>

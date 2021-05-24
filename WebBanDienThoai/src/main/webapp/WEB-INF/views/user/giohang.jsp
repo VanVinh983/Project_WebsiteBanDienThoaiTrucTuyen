@@ -76,15 +76,15 @@
 							<div style="text-align: center; margin-top: 10px">
 							
 							
-								<c:if test="${ds.soLuong >= 1}">
+								<c:if test="${ds.soLuong >= 2}">
 									<a
 										href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}"><button
 											class="btn btn-warning">
 											<b>-</b>
 										</button></a>
 								</c:if>
-								<c:if test="${ds.soLuong == 0}">
-									<button class="btn btn-warning">
+								<c:if test="${ds.soLuong == 1}">
+									<button class="btn btn-warning" style="opacity: 0.5">
 										<b>-</b>
 									</button>
 								</c:if>
@@ -107,7 +107,7 @@
 								
 								<c:if test="${ds.soLuong >= ds.dienThoai.soLuongTon}">
 									<a onclick="return confirm('Không đủ số lượng trong kho!');">
-										<button	class="btn btn-warning">
+										<button	class="btn btn-warning" style="opacity: 0.5">
 											<b>+</b>
 										</button></a>
 								</c:if>

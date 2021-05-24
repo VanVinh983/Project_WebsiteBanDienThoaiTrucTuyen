@@ -87,24 +87,10 @@
 									<button class="btn btn-warning" style="opacity: 0.5">
 										<b>-</b>
 									</button>
-								</c:if>
-								
-								
-								
-								
+								</c:if>	
 								&nbsp; 
-								<c:if test="${ds.dienThoai.soLuongTon>0}">
 									${ds.soLuong} 
-								</c:if>
-								<c:if test="${ds.dienThoai.soLuongTon==0}">
-									${ds.soLuong}
-								</c:if>
 								&nbsp;
-								
-								
-								
-								
-								
 								<c:if test="${ds.soLuong >= ds.dienThoai.soLuongTon}">
 									<a onclick="return confirm('Không đủ số lượng trong kho!');">
 										<button	class="btn btn-warning" style="opacity: 0.5">

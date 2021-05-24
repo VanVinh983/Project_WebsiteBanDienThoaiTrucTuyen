@@ -39,7 +39,7 @@
 						<div class="form-group">
 							<label class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
 								for="tenDangNhap"><b>Tên đăng nhập</b></label>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<input type="text" placeholder="Nhập tên đăng nhập"
 									class="form-control" name="tenDangNhap" id="tenDangNhap">
 									<span style="color: red"><form:errors path="tenDangNhap" ></form:errors> </span>
@@ -48,7 +48,7 @@
 						<div class="form-group">
 							<label class="col-xs-4 col-sm-4 col-md-4 col-lg-4" for="matKhau"><b>Mật
 									khẩu</b></label>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<input type="password" placeholder="Nhập mật khẩu"
 									class="form-control" name="matKhau" id="matKhau">
 									<span style="color: red"><form:errors path="matKhau" ></form:errors> </span>

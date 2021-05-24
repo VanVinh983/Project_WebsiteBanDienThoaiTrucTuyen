@@ -71,7 +71,6 @@ public class GioHangController {
 			DienThoaiGioHang dienThoaiGioHang = new DienThoaiGioHang(dienThoaiService.getDienThoai(id), 1);
 			cart.add(dienThoaiGioHang);
 			session.setAttribute("cart", cart);
-			capNhatGiaTrongGioHang(session);
 		} else {
 			List<DienThoaiGioHang> cart = (List<DienThoaiGioHang>) session.getAttribute("cart");
 			int index = kiemTraDienThoaiTonTaiTrongGioHang(id, session);
@@ -83,7 +82,6 @@ public class GioHangController {
 				cart.get(index).setSoLuong(quantity);
 			}
 			session.setAttribute("cart", cart);
-			capNhatGiaTrongGioHang(session);
 		}
 		session.setAttribute("errorcartnull", "");
 		return "redirect:/user/gioHang";
@@ -95,9 +93,10 @@ public class GioHangController {
 		double tamTinh = 0;
 		double thue = 0;
 		for (DienThoaiGioHang dienThoaiGioHang : cart) {
-			tamTinh = dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getSoLuong();
-			giamGia = (tamTinh * dienThoaiGioHang.getDienThoai().getGiamGia()) / 100;
-			thue = (tamTinh * dienThoaiGioHang.getDienThoai().getThue()) / 100;
+			thue++;
+			tamTinh += dienThoaiGioHang.getDienThoai().getGiaDT() * dienThoaiGioHang.getSoLuong();
+			giamGia += (tamTinh * dienThoaiGioHang.getDienThoai().getGiamGia()) / 100;
+			thue += (tamTinh * dienThoaiGioHang.getDienThoai().getThue()) / 100;
 			session.setAttribute("tamtinh", tamTinh);
 			session.setAttribute("giamgia", giamGia);
 			session.setAttribute("tongtien", tamTinh - giamGia + thue);

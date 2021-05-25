@@ -55,6 +55,19 @@
     position: relative;
     /* border: 1px solid black; */
 }
+.header__cart-notice{
+    position: absolute;
+    color: black;
+    background-color: #ffd93a;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.4rem;
+    padding: 1px 9px;
+    border-radius: 8px;
+    border: 2px solid white;
+    top: -11px;
+    right: -12px;
+}
 
 .header__navbar-user {
     display: flex;

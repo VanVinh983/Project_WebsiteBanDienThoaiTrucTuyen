@@ -26,7 +26,7 @@
 					<div>Bạn chưa có tài khoản?</div>
 					<div>
 						<a href="${pageContext.request.contextPath}/user/formDangKy"><button
-								class="btn btn-outline-warning text-uppercase mt-2" style="color: black">Đăng ký</button></a>
+								class="btn btn-outline-warning text-uppercase mt-2 fs14" style="color: black">Đăng ký</button></a>
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 								for="tenDangNhap"><b>Tên đăng nhập</b></label>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<input type="text" placeholder="Nhập tên đăng nhập"
-									class="form-control" name="tenDangNhap" id="tenDangNhap">
+									class="form-control fs14" name="tenDangNhap" id="tenDangNhap">
 									<span style="color: red"><form:errors path="tenDangNhap" ></form:errors> </span>
 							</div>
 						</div>
@@ -50,7 +50,7 @@
 									khẩu</b></label>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<input type="password" placeholder="Nhập mật khẩu"
-									class="form-control" name="matKhau" id="matKhau">
+									class="form-control fs14" name="matKhau" id="matKhau">
 									<span style="color: red"><form:errors path="matKhau" ></form:errors> </span>
 							</div>
 						</div>

@@ -10,8 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>TRANG CHỦ Q-MOBILE</title>
-<link rel="shortcut icon" type="image/png"
-	href="./assets/favicon/favicon.ico">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet" href="${resources}/user1/css/base.css">

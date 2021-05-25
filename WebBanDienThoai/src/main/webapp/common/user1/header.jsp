@@ -1,6 +1,9 @@
+<%@page import="com.dienthoai.entity.DienThoaiGioHang"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
+
 <c:url value="/resources" var="resources" />
 <header class="header">
 	<div class="container-fluid">
@@ -10,7 +13,7 @@
 					<span class=" text-dark font-weight-bold">Cửa hàng</span></li>
 				<li
 					class="header__navbar-item header__navbar-item--has-qr header__navbar-item-separate font-weight-bold">
-					<i class="fas fa-mobile-alt"></i>&nbsp; Tải ứng dụng <!-- HEADER QR CODE -->
+					<i class="fas fa-mobile-alt"></i>&nbsp; Tải ứng dụng
 
 				</li>
 				<li class="header__navbar-item"><span
@@ -22,33 +25,27 @@
 				</a></li>
 			</ul>
 
-			<ul class="header__navbar-list">
-
-
-				<li
-					class="header__navbar-item header__navbar-item-bold header__navbar-item-separate">
-					Đăng ký</li>
-				<class class="header__navbar-item header__navbar-item-bold">
-				Đăng nhập </class>
-				<!-- <li class="header__navbar-item header__navbar-user">
-                            <img src="./assets/img/user.jpg" alt="" class="header__navbar-user-img">
-                            <span class="header__navbar-user-name">Trung Vinh</span>
-                            <ul class="header__navbar-user-menu">
-                                <li class="header__navbar-user-item">
-                                    <a href="#">Tài khoản của tôi</a>
-                                </li>
-                                <li class="header__navbar-user-item">
-                                    <a href="#">Địa chỉ của tôi</a>
-                                </li>
-                                <li class="header__navbar-user-item">
-                                    <a href="#">Đơn mua</a>
-                                </li>
-                                <li class="header__navbar-user-item header__navbar-user-item-separate">
-                                    <a href="#">Đăng xuất</a>
-                                </li>
-                            </ul>
-                        </li> -->
-
+			<ul class="header__navbar-list">									
+				<c:if test="${pageContext.request.userPrincipal.name==null}">
+					<li class="header__navbar-item header__navbar-item-bold">
+                           <a class="text-deco" href="${pageContext.request.contextPath}/user/formDangKy">Đăng ký<a>
+                        </li>
+                        <li class="header__navbar-item header__navbar-item-bold">
+                            <a class="text-deco" href="${pageContext.request.contextPath}/user/formDangNhap">Đăng nhập</a>
+                        </li>			
+				</c:if>
+				<c:if test="${pageContext.request.userPrincipal.name!=null}">
+					<li class="header__navbar-item header__navbar-user">					
+						<span class="header__navbar-user-name">Xin chào: <b>${pageContext.request.userPrincipal.name}</b></span>
+						<ul class="header__navbar-user-menu ">
+							<li class="header__navbar-user-item text-deco"><a href="#">Tài khoản của tôi</a></li>
+							<li class="header__navbar-user-item text-deco"><a href="#">Đơn mua</a></li>
+							<li class="header__navbar-user-item text-deco">
+								<a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+							</li>
+						</ul>			
+					</li>
+				</c:if>
 			</ul>
 
 
@@ -83,8 +80,15 @@
 				<div class="header__cart-wrap">
 					<i class="header__cart-icon fas fa-shopping-cart"
 						style="color: black;"></i>
-					<!-- No cart: header__cart-list-none-cart-->
-
+						
+						<%  List<DienThoaiGioHang> cart= (List<DienThoaiGioHang>) session.getAttribute("cart");
+							int count=0;
+							try{count=cart.size();}catch(Exception e){}						
+						%>		
+						<c:if test="${pageContext.request.userPrincipal.name!=null}">
+						 <span class="header__cart-notice"><%=count%></span>
+						</c:if>				
+						
 				</div>
 			</div>
 
@@ -106,9 +110,17 @@
 </header>
 <div class="text-center" style="background: #ffd93a">
 	<ul class="list-inline pb-3">
-		<li class="list-inline-item"><a class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold" href="#">Trang chủ</a></li>
-		<li class="list-inline-item"><a class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold" href="#">Sản phẩm</a></li>
-		<li class="list-inline-item"><a class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold" href="#">Giỏ hàng</a></li>
-		<li class="list-inline-item"><a class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold" href="#">Chi tiết</a></li>
+		<li class="list-inline-item"><a
+			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
+			href="#">Trang chủ</a></li>
+		<li class="list-inline-item"><a
+			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
+			href="#">Sản phẩm</a></li>
+		<li class="list-inline-item"><a
+			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
+			href="#">Giỏ hàng</a></li>
+		<li class="list-inline-item"><a
+			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
+			href="#">Chi tiết</a></li>
 	</ul>
 </div>

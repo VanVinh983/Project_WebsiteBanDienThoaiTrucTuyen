@@ -50,6 +50,7 @@ html {
 }
 .text-deco{
 	text-decoration: none !important;
+	color: black !important;
 }
 .opacity05:hover{
 	opacity: 0.8;

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.DienThoaiGioHang;
 import com.dienthoai.service.DienThoaiService;
 

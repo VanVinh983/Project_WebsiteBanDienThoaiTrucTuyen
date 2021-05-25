@@ -10,6 +10,18 @@
 </head>
 <body>
 	<c:url value="/resources" var="resources" />
+	 <c:url var="linkgia_asc" value="/dienthoai/danhsach">
+     	<c:param name="sort" value="gia_asc" />
+     </c:url>
+     <c:url var="linkgia_desc" value="/dienthoai/danhsach">
+     	<c:param name="sort" value="gia_desc" />
+     </c:url>
+      <c:url var="linkgiamgia" value="/dienthoai/danhsach">
+     	<c:param name="sort" value="giamgia" />
+     </c:url>	
+      <c:url var="linkbanchay" value="/dienthoai/danhsach">
+     	<c:param name="sort" value="banchay" />
+     </c:url>				
 	  <main class="mt-3">
             <div class="app-body">
                 <div class="container-fluid">
@@ -19,18 +31,14 @@
 
                                 <h3 class="category__heading">
                                     <i class="category__heading-icon fas fa-list"></i>
-                                    Danh mục
+                                    Thương hiệu
                                 </h3>
                                 <ul class="category-list">
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link text-decoration-none">Product 1</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link text-decoration-none">Product 2</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link text-decoration-none">Product 3</a>
-                                    </li>
+                                    <c:forEach var="th" items="${ths}">
+                                    	 <li class="category-item">
+	                                        <a href="#" class="category-item__link text-decoration-none">${th.tenTH}</a>
+	                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </nav>
                         </div>
@@ -39,24 +47,45 @@
                                 <div class="col-12">
                                     <div class="home-filter hide-on-mobile-tablet">
                                         <span class="home-filter__label fs14">Sắp xếp theo</span>
-                                        <button class="home-filter-btn btn fs14">Phổ biến</button>
-                                        <button class="home-filter-btn btn btn--primary text-dark fs14">Mới
-                                            nhất</button>
-                                        <button class="home-filter-btn btn fs14">Bán chạy</button>
-
+                                       	<c:if test="${param.sort == 'gia_asc'}"> 
+                                       		 <button class="home-filter-btn btn btn-warning fs14"><a class="text-dark" href="${linkgia_asc}">Mới nhất</a></button>
+                                       	</c:if>
+                                       	<c:if test="${param.sort != 'gia_asc'}"> 
+                                       		 <button class="home-filter-btn btn fs14"><a class="text-dark" href="${linkgia_asc}">Mới nhất</a></button>
+                                       	</c:if>
+                                       	<c:if test="${param.sort=='giamgia' }">
+                                       		<button class="home-filter-btn btn btn-warning fs14"><a class="text-dark" href="${linkgiamgia}">Giảm giá</a></button>
+                                       	</c:if>
+                                       	<c:if test="${param.sort!='giamgia' }">
+                                       		<button class="home-filter-btn btn fs14"><a class="text-dark" href="${linkgiamgia}">Giảm giá</a></button>
+                                       	</c:if>
+                                       	<c:if test="${param.sort=='banchay' }">
+                                       		<button class="home-filter-btn btn btn-warning fs14"><a class="text-dark" href="${linkbanchay}">Bán chạy</a></button>
+                                       	</c:if>
+                                       	<c:if test="${param.sort!='banchay' }">
+                                       		<button class="home-filter-btn btn fs14"><a class="text-dark" href="${linkbanchay}">Bán chạy</a></button>
+                                       	</c:if>
                                         <div class="select-input">
                                             <span class="select-input-price">
-                                                Giá
+                                                <c:if test="${param.sort =='gia_asc'}">
+                                                	Giá: Thấp đến cao
+                                                </c:if>
+                                                <c:if test="${param.sort =='gia_desc'}">
+                                                	Giá: Cao đến thấp
+                                                </c:if>
+                                                <c:if test="${!param.sort}">
+                                                	Giá
+                                                </c:if>
                                             </span>
                                             <i class="select-input-icon fas fa-angle-down"></i>
                                             <ul class="select-input-list">
                                                 <li class="select-input-item">
-                                                    <a href="#" class="select-input-link text-decoration-none">Giá: Thấp
-                                                        đến Cao <i
+                                                    <a href="${linkgia_asc}" class="select-input-link text-decoration-none">Giá: Thấp
+                                                        đến cao <i
                                                             class="select-input-item-icon fas fa-arrow-up"></i></a>
                                                 </li>
                                                 <li class="select-input-item">
-                                                    <a href="#" class="select-input-link">Giá: Cao đến Thấp <i
+                                                    <a href="${linkgia_desc}" class="select-input-link">Giá: Cao đến thấp <i
                                                             class="select-input-item-icon fas fa-arrow-down"></i></a>
                                                 </li>
 
@@ -76,13 +105,23 @@
                                             <div class="home-product-item-img"
                                                 style="background-image: url(${resources}/user/images/SanPham/${dt.anhURL}); width: 90%;"></div>
                                             <h4 class="home-product-item__name">${dt.tenDT} ${dt.thongSo.boNho}</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old"><fmt:formatNumber type="number"
-																	pattern="#,###,###.##" value="${dt.giaDT}" /> đ</span>
-                                                <span class="home-product-item__price-current"><fmt:formatNumber
-																type="number" pattern="#,###,###.##"
-																value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </span>
-                                            </div>
+                                            
+                                           <c:if test="${dt.giamGia>0}">
+                                           		<div class="home-product-item__price">
+	                                                <span class="home-product-item__price-old"><fmt:formatNumber type="number"
+																		pattern="#,###,###.##" value="${dt.giaDT}" /> đ</span>
+	                                                <span class="home-product-item__price-current"><fmt:formatNumber
+																	type="number" pattern="#,###,###.##"
+																	value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </span>
+	                                            </div>
+                                           </c:if>
+                                           <c:if test="${dt.giamGia<=0}">
+                                           		<div class="home-product-item__price">
+	                                                <span class="home-product-item__price-current float-right"><fmt:formatNumber
+																	type="number" pattern="#,###,###.##"
+																	value="${dt.giaDT}" /> đ </span>
+	                                            </div>
+                                           </c:if>
                                             <div class="home-product-item__origin">
                                                 <span class="home-product-item__brand">
                                                     Whoo
@@ -95,12 +134,12 @@
                                                 <i class="fas fa-check"></i>
                                                 <span>Yêu thích</span>
                                             </div>
-                                            <div class="home-product-item__sale-off">
-                                               <c:if test="${dt.giamGia>0}">
-                                                <span class="home-product-item__percent">${dt.giamGia}</span>
-                                                <span class="home-product-item__label">GIẢM</span>
-                                               </c:if>
-                                            </div>
+                                             <c:if test="${dt.giamGia>0}">
+                                             		<div class="home-product-item__sale-off">
+		                                                <span class="home-product-item__percent">${dt.giamGia}</span>
+		                                                <span class="home-product-item__label">GIẢM</span>
+		                                            </div>
+                                             </c:if>
                                         </a>
                                         <a class="btn btn-success btn-block fs14"
 													href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">

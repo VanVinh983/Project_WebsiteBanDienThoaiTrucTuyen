@@ -106,5 +106,43 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 		
 		return dienThoais;
 	}
+	@Transactional
+	@Override
+	public List<DienThoai> getListDienThoaiCoSapXep(String sortName) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<DienThoai> dts = new ArrayList<DienThoai>();
+		String sql = null;
+		switch (sortName) {
+		case "gia_asc":
+			sql = "select * from DIENTHOAI order by (giaDT*(100-giamGia))/100  asc";
+			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
+			break;
+		case "gia_desc ":
+			sql = "select * from DIENTHOAI order by (giaDT*(100-giamGia))/100  desc";
+			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
+			break;
+		case "giamgia":
+			sql = "select * from DIENTHOAI where giamGia > 0 order by (giaDT*(100-giamGia))/100  asc";
+			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
+			break;
+		case "banchay":
+			sql = "select id, SUM(ct.soLuong) as sum from DIENTHOAI as dt join CHITIETHOADON ct on dt.id = ct.id_DienThoai\r\n"
+					+ "group by dt.id,dt.tenDT\r\n"
+					+ "order by sum desc";
+			List<?> list = currentSession.createNativeQuery(sql).getResultList();
+			for (Object object : list) {
+				Object[] temp = (Object[]) object;
+				DienThoai dt = currentSession.find(DienThoai.class, temp[0]);
+				dts.add(dt);
+			}
+			break;
+
+		default:
+			sql = "select * from DIENTHOAI order by (giaDT*(100-giamGia))/100  desc";
+			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
+			break;
+		}
+		return dts;
+	}
 
 }

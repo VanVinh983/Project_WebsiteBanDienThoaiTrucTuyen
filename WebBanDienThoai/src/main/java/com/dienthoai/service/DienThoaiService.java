@@ -15,4 +15,5 @@ public interface DienThoaiService {
 	public List<DienThoai> getDienTHoaiBanChay();
 	public List<ThuongHieu> getListThuongHieu();
 	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list);
+	public List<DienThoai> getListDienThoaiCoSapXep(String sort);
 }

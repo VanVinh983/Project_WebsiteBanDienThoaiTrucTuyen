@@ -26,21 +26,14 @@ public class DienThoaiController {
 	private DienThoaiService dienThoaiService;
 
 	@GetMapping("/danhsach")
-	public String listCustomers(Model theModel) {
-		List<DienThoai> listGiamGia = dienThoaiService.getDienThoaiGiamGia();
-		List<DienThoai> listBanChay = dienThoaiService.getDienTHoaiBanChay();
-		List<DienThoai> listDienThoai = dienThoaiService.getListDienThoai();
-		List<DienThoai> dtsGiamGia = new ArrayList<DienThoai>();
-		List<DienThoai> dtsBanChay = new ArrayList<DienThoai>();
-		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
-		for (int i = 0; i < 4; i++) {
-			dtsGiamGia.add(listGiamGia.get(i));
-			dtsBanChay.add(listBanChay.get(i));
+	public String listCustomers(Model theModel, @RequestParam(required = false) String sort) {
+		List<DienThoai> listDienThoai = new ArrayList<DienThoai>();
+		if (sort!=null) {
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort);
+		}else {
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc");
 		}
-		theModel.addAttribute("countGiamGia", listGiamGia.size());
-		theModel.addAttribute("countBanChay", listBanChay.size());
-		theModel.addAttribute("dts", dtsGiamGia);
-		theModel.addAttribute("dtsbc",dtsBanChay);
+		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
 		theModel.addAttribute("dienthoais", listDienThoai);
 		theModel.addAttribute("ths", listThuongHieu);
 		return "user/danhsach-dienthoai2";

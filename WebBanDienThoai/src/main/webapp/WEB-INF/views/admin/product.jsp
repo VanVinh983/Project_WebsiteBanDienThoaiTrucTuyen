@@ -70,8 +70,14 @@
 								</tbody>
 							</table>
 						</div>
-						<br />
-						<ul class="pagination" id="pagination" style="padding-left: 300px"></ul>
+						<br />	
+						    <div class="col-md-12">
+						    <form action="${pageContext.request.contextPath}/admin/product/list" id="formSubmit" method="get">
+							    <ul id="pagination" class="pagination"></ul>
+							  	 <input type="hidden" value="" id="page" name="page"/>
+								</form>
+							</div>
+											    
 					</div>
 				</div>
 			</div>
@@ -165,19 +171,19 @@
 	</div>
 </div>
 
-<!-- <script type="text/javascript">
-	$(function() {
-		window.pagObj = $('#pagination').twbsPagination({
-			totalPages : 35,
-			visiblePages : 5,
-			onPageClick : function(event, page) {
-				console.info(page + ' (from options)');
-			}
-		})
-	});
-</script> -->
-
-
 <script src="${resources}/admin/js/jquery.min.js"></script>
 <script type="text/javascript"
 	src="${resources}/admin/js/product/productt.js"></script>
+<script type="text/javascript" src="${resources}/admin/js/pagination.min.js"></script>
+<script type="text/javascript">
+$('#pagination').pagination({
+    total: ${total},
+    current: ${page},
+    length: 7,
+    size: 1, 
+    click: function(options,$target) {
+    	$target.next("#page").val(options.current);
+    	$('#formSubmit').submit();
+    }
+});
+</script>

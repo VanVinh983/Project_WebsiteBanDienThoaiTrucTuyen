@@ -54,8 +54,16 @@
 									</c:forEach>
 								</tbody>
 							</table>
-						</div>
+						</div>		
+						<br>
+						 <div class="col-md-12">
+						    <form action="${pageContext.request.contextPath}/admin/order/list" id="formSubmit" method="get">
+							    <ul id="pagination" class="pagination"></ul>
+							  	 <input type="hidden" value="" id="page" name="page"/>
+								</form>
+							</div>				
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -174,5 +182,17 @@
 
 <c:url value="/resources" var="resources"></c:url>
 <script src="${resources}/admin/js/jquery.min.js"></script>
-<script type="text/javascript"
-	src="${resources}/admin/js/order/order.js"></script>
+<script type="text/javascript" src="${resources}/admin/js/order/order.js"></script>
+<script type="text/javascript" src="${resources}/admin/js/pagination.min.js"></script>
+<script type="text/javascript">
+$('#pagination').pagination({
+    total: ${total},
+    current: ${page},
+    length: 9,
+    size: 1, 
+    click: function(options,$target) {
+    	$target.next("#page").val(options.current);
+    	$('#formSubmit').submit();
+    }
+});
+</script>

@@ -45,10 +45,11 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListTheoTen(tenDT);
 	}
+
 	@Override
 	public List<DienThoai> getDienThoaiGiamGia() {
 		// TODO Auto-generated method stub
-		return dienThoaiDAO.getListDienThoaiGiamGia(); 
+		return dienThoaiDAO.getListDienThoaiGiamGia();
 	}
 
 	@Override
@@ -56,10 +57,19 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiBanChay();
 	}
+
 	@Override
 	@Transactional
 	public List<ThuongHieu> getListThuongHieu() {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListThuongHieu();
 	}
+
+	@Transactional
+	@Override
+	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list) {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiTheoPage(page, list);
+	}
+
 }

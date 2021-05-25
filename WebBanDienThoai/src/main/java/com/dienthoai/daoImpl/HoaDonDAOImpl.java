@@ -1,5 +1,6 @@
 package com.dienthoai.daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.HoaDonDAO;
+import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.HoaDon;
 import com.dienthoai.entity.PhuongThucThanhToan;
 
@@ -61,6 +63,22 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		PhuongThucThanhToan pttt=currentSession.get(PhuongThucThanhToan.class, id);
 		return pttt;
+	}
+
+	@Override
+	public List<HoaDon> getListHoaDonTheoPage(int page, List<HoaDon> list) {
+		// TODO Auto-generated method stub
+		int position = (page-1)*9;
+		int end = position + 9;
+		
+		List<HoaDon> hoaDons = new ArrayList<HoaDon>();
+		
+		while(position < end && list.size() > position) {
+			hoaDons.add(list.get(position));
+			position++;
+		}
+		
+		return hoaDons;
 	}
 
 }

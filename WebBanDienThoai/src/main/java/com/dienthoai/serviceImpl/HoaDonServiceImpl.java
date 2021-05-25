@@ -47,4 +47,11 @@ public class HoaDonServiceImpl implements HoaDonService {
 		return hoaDonDAO.getPhuongThuc(id);
 	}
 
+	@Override
+	@Transactional
+	public List<HoaDon> getListHoaDonTheoPage(int page, List<HoaDon> list) {
+		// TODO Auto-generated method stub
+		return hoaDonDAO.getListHoaDonTheoPage(page, list);
+	}
+
 }

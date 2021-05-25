@@ -11,4 +11,5 @@ public interface HoaDonService {
 	public List<HoaDon> getListHoaDon();
 	public List<PhuongThucThanhToan> layTatCaPhuongThucThanhToan();
 	public PhuongThucThanhToan getPhuongThuc(int id);
+	public List<HoaDon> getListHoaDonTheoPage(int page, List<HoaDon> list);
 }

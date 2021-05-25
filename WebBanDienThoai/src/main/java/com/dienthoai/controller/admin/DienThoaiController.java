@@ -39,9 +39,11 @@ public class DienThoaiController {
 	private ThongSoService thongSoService;
 
 	@GetMapping("/product/list")
-	public String listProduct(Model theModel) {
+	public String listProduct(Model theModel, @RequestParam(value = "page",  defaultValue = "1") int page) {
 		List<DienThoai> productList = dienThoaiService.getListDienThoai();
-		theModel.addAttribute("productList", productList);
+		theModel.addAttribute("page", page);
+		theModel.addAttribute("productList", dienThoaiService.getListDienThoaiTheoPage(page,productList));
+		theModel.addAttribute("total",productList.size());
 		return "admin/product";
 	}
 	
@@ -98,5 +100,6 @@ public class DienThoaiController {
 		dienThoaiService.saveDienThoai(product);
 		return "redirect:/admin/product/list";
 	}
+	
 	
 }

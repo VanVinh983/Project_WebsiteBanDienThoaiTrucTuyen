@@ -91,4 +91,20 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 		List<ThuongHieu> ths = theQuery.getResultList();
 		return ths;	
 	}
+	@Override
+	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list) {
+		// TODO Auto-generated method stub
+		int position = (page-1)*7;
+		int end = position + 7;
+		
+		List<DienThoai> dienThoais = new ArrayList<DienThoai>();
+		
+		while(position < end && list.size() > position) {
+			dienThoais.add(list.get(position));
+			position++;
+		}
+		
+		return dienThoais;
+	}
+
 }

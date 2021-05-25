@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dienthoai.entity.HoaDon;
 import com.dienthoai.service.HoaDonService;
@@ -18,9 +19,11 @@ public class HoaDonController {
 	private HoaDonService hoaDonService;
 
 	@GetMapping("/order/list")
-	private String order(Model theModel) {
-		List<HoaDon> order=hoaDonService.getListHoaDon();
-		theModel.addAttribute("order",order);
+	private String order(Model theModel,@RequestParam(value = "page",  defaultValue = "1") int page) {
+		List<HoaDon> orders=hoaDonService.getListHoaDon();
+		theModel.addAttribute("order",hoaDonService.getListHoaDonTheoPage(page, orders));
+		theModel.addAttribute("page", page);
+		theModel.addAttribute("total",orders.size());
 		return "admin/order";
 	}
 	

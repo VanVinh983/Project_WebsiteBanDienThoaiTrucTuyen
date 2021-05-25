@@ -64,17 +64,16 @@
 			</div>
 			<input type="checkbox" hidden name="" id="mobile-search-checkbox"
 				class="mobile__check-header">
-			<div class="header__search">
+			<form:form class="header__search form-inline" action="${pageContext.request.contextPath}/dienthoai/search" method="GET">
 				<div class="header__search-input-wrap">
-					<input type="text" class="header__search-input"
+					<input type="text" class="header__search-input" name="searchName"
 						placeholder="Tìm sản phẩm, thương hiệu và tên shop">
-
 				</div>
 
-				<button class="header__search-btn">
+				<button class="header__search-btn" value="Search">
 					<i class="header__search-btn-icon fas fa-search"></i>
 				</button>
-			</div>
+			</form:form>
 			<!-- Cart Layout -->
 			<div class="header__cart">
 				<div class="header__cart-wrap">

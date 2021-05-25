@@ -144,5 +144,22 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 		}
 		return dts;
 	}
+	@Override
+	@Transactional
+	public List<DienThoai> getListDienThoaiSearch(String searchName) {
+		 Session currentSession = sessionFactory.getCurrentSession();
+		 List<DienThoai> dts = new ArrayList<DienThoai>();
+		 String sql =null;
+	        if (searchName != null && searchName.trim().length() > 0) {
+	            // search for firstName or lastName ... case insensitive
+	        	String theName = "'%"+searchName+"%'";
+	        	sql = "select dt.* from DIENTHOAI dt join THUONGHIEU th  on dt.id_ThuongHieu = th.id join THONGSO ts on dt.id = ts.id\r\n"
+	        			+ "where LOWER(tenDT) like("+theName+") or LOWER(baoHanh) like("+theName+") or LOWER(kichThuoc) like("+theName+") or LOWER(mauSac) like("+theName+") or LOWER(tenTH) like("+theName+") or LOWER(xuatXu) like("+theName+") or LOWER(heDieuHanh) like("+theName+") or LOWER(manHinh) like("+theName+") or LOWER(boNho) like("+theName+") or LOWER(camera) like("+theName+") or LOWER(pin) like("+theName+") or LOWER(ram) like("+theName+") or LOWER(sim) like("+theName+")";
+	        }else {
+				sql = "select * from DIENTHOAI";
+			}
+	        dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
+	        return dts;   
+	}
 
 }

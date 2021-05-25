@@ -58,5 +58,18 @@ public class DienThoaiController {
 		session.setAttribute("dienthoai", dt);
 		return "redirect:/dienthoai/chitietdienthoai";
 	}
+	@GetMapping("/search")
+	public String searchDienThoai(Model model, @RequestParam(required = false) String searchName) {
+		List<DienThoai> dts = dienThoaiService.getListDienThoaiSearch(searchName);
+		if (dts.size()>0) {
+			System.out.println(dts);
+			model.addAttribute("dienthoais", dts);
+			model.addAttribute("ths", dienThoaiService.getListThuongHieu());
+			return "user/danhsach-dienthoai2";
+		}else {
+			System.out.println("không có điện thoại!");
+			return "user/notfounddienthoai";
+		}
+	}
 	
 }

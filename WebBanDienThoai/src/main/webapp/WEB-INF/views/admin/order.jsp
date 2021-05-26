@@ -6,6 +6,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
+			<label for="tenDienThoai" class="col-lg-12 col-form-label">Họ tên </label>
+			<div class="col-lg-12">	
+				<input type="text" class="form-control" id="timKiemTendienThoai" placeholder="Nhập họ tên" />
+				<br>
+			</div>		
 				<div class="card" style="background: transparent">
 					<div class="card-body">
 						<h5 class="card-title">Danh sách đơn hàng</h5>

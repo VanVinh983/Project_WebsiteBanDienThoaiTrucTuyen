@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,21 +25,14 @@ public class DienThoaiController {
 	private DienThoaiService dienThoaiService;
 
 	@GetMapping("/danhsach")
-	public String listCustomers(Model theModel) {
-		List<DienThoai> listGiamGia = dienThoaiService.getDienThoaiGiamGia();
-		List<DienThoai> listBanChay = dienThoaiService.getDienTHoaiBanChay();
-		List<DienThoai> listDienThoai = dienThoaiService.getListDienThoai();
-		List<DienThoai> dtsGiamGia = new ArrayList<DienThoai>();
-		List<DienThoai> dtsBanChay = new ArrayList<DienThoai>();
-		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
-		for (int i = 0; i < 4; i++) {
-			dtsGiamGia.add(listGiamGia.get(i));
-			dtsBanChay.add(listBanChay.get(i));
+	public String listCustomers(Model theModel, @RequestParam(required = false) String sort) {
+		List<DienThoai> listDienThoai = new ArrayList<DienThoai>();
+		if (sort!=null) {
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort);
+		}else {
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc");
 		}
-		theModel.addAttribute("countGiamGia", listGiamGia.size());
-		theModel.addAttribute("countBanChay", listBanChay.size());
-		theModel.addAttribute("dts", dtsGiamGia);
-		theModel.addAttribute("dtsbc",dtsBanChay);
+		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
 		theModel.addAttribute("dienthoais", listDienThoai);
 		theModel.addAttribute("ths", listThuongHieu);
 		return "user/danhsach-dienthoai2";
@@ -64,6 +56,19 @@ public class DienThoaiController {
 		DienThoai dt = dienThoaiService.getDienThoai(id);
 		session.setAttribute("dienthoai", dt);
 		return "redirect:/dienthoai/chitietdienthoai";
+	}
+	@GetMapping("/search")
+	public String searchDienThoai(Model model, @RequestParam(required = false) String searchName) {
+		List<DienThoai> dts = dienThoaiService.getListDienThoaiSearch(searchName);
+		if (dts.size()>0) {
+			System.out.println(dts);
+			model.addAttribute("dienthoais", dts);
+			model.addAttribute("ths", dienThoaiService.getListThuongHieu());
+			return "user/danhsach-dienthoai2";
+		}else {
+			System.out.println("không có điện thoại!");
+			return "user/notfounddienthoai";
+		}
 	}
 	
 }

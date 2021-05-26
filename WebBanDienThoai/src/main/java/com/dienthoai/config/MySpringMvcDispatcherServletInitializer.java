@@ -1,5 +1,7 @@
 package com.dienthoai.config;
 
+import javax.servlet.ServletRegistration;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -17,6 +19,11 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
+	}
+	
+	@Override
+	public void customizeRegistration(ServletRegistration.Dynamic registration) {
+	    registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 	}
 }
 

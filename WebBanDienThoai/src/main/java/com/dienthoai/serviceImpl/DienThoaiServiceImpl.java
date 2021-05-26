@@ -71,5 +71,15 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiTheoPage(page, list);
 	}
+	@Override
+	public List<DienThoai> getListDienThoaiCoSapXep(String sort) {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiCoSapXep(sort);
+	}
 
+	@Override
+	public List<DienThoai> getListDienThoaiSearch(String searchName) {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiSearch(searchName);
+	}
 }

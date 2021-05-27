@@ -410,13 +410,17 @@
 </div>
 <!-- -----------------------------------------------Binh Luan ----------------------------------------------------------- -->
 <div class="container-fluid">
-	<div class="row fs14">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2">
+	<div class="row fs14 border mx-1 mt-4 rounded">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left">
 			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2">
-				
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
+				<c:if test="${binhluans.size()>0}">
+					<span>Có tất cả ${binhluans.size()} đánh giá</span>
+				</c:if>
+				<c:if test="${binhluans.size()<=0}">
+					<span>Chưa có đánh giá nào</span>
+				</c:if>
 			</div>
-			
 		</div>
 	</div>
 </div>

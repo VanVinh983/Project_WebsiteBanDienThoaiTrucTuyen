@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dienthoai.dao.BinhLuanDao;
 import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.ThuongHieu;
+import com.dienthoai.service.BinhLuanService;
 import com.dienthoai.service.DienThoaiService;
 
 @Controller(value = "dienThoaiControllerOfUser")
@@ -23,6 +25,9 @@ import com.dienthoai.service.DienThoaiService;
 public class DienThoaiController { 
 	@Autowired
 	private DienThoaiService dienThoaiService;
+	
+	@Autowired
+	private BinhLuanService binhLuanService;
 
 	@GetMapping("/danhsach")
 	public String listCustomers(Model theModel, @RequestParam(required = false) String sort) {
@@ -49,6 +54,7 @@ public class DienThoaiController {
 	public String chitietdienthoai(Model model, HttpSession session) {
 		DienThoai dt = (DienThoai) session.getAttribute("dienthoai");
 		model.addAttribute("dt", dt);
+		model.addAttribute("binhluans", binhLuanService.getListBinhLuan());
 		return "user/chitietdienthoai";
 	}
 	@RequestMapping(value = "/laychitiet/{id}", method = RequestMethod.GET)

@@ -86,13 +86,21 @@
 					<div
 						class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-left pt-2 text-center ">
 						<h4>
-							<b><span class="fs16" style="color: red;"><fmt:formatNumber
-										type="number" pattern="#,###,###.##"
-										value="${(dt.giaDT*(100-dt.giamGia))/100}" /> ₫</span></b>&nbsp; &nbsp;<span
-								style="font-size: 15px;"><strike><i> <fmt:formatNumber
+							<c:if test="${dt.giamGia>0}">
+								<b><span class="fs16" style="color: red;"><fmt:formatNumber
+											type="number" pattern="#,###,###.##"
+											value="${(dt.giaDT*(100-dt.giamGia))/100}" /> ₫</span></b>&nbsp; &nbsp;
+								<span style="font-size: 15px;"><strike><i> <fmt:formatNumber
+												type="number" pattern="#,###,###.##" value="${dt.giaDT}" />
+											đ
+									</i></strike></span>
+							</c:if>
+							<c:if test="${dt.giamGia<=0}">
+								<b><span class="fs16" style="color: red;"><fmt:formatNumber
 											type="number" pattern="#,###,###.##" value="${dt.giaDT}" />
-										đ
-								</i></strike></span>
+										₫</span></b>
+							</c:if>
+
 						</h4>
 						<span class="text-left ">Bạn đang xem phiên bản:
 							${dt.thongSo.boNho}</span>
@@ -138,10 +146,10 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left ">
 						<button class="btn btn-warning pb-4" style="width: 100%">
 							<div class="form-check ">
-								<input class="form-check-input" style="color: red" type="checkbox" value=""
-									id="defaultCheck1"> <label class="form-check-label"
-									for="defaultCheck1"> <b>&nbsp;Yêu cầu nhân viên kỹ thuật
-									giao hàng:</b> hỗ trợ copy danh bạ.
+								<input class="form-check-input" style="color: red"
+									type="checkbox" value="" id="defaultCheck1"> <label
+									class="form-check-label" for="defaultCheck1"> <b>&nbsp;Yêu
+										cầu nhân viên kỹ thuật giao hàng:</b> hỗ trợ copy danh bạ.
 								</label>
 							</div>
 						</button>
@@ -179,21 +187,6 @@
 					<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 text-left ">
 
 					</div>
-					<div
-						class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center btn btn-warning ">
-						<a href="# " style="color: white; text-decoration: none;"> <b>MUA
-								TRẢ GÓP 0%</b>
-						</a> <br> <span>Thủ tục đơn giản</span>
-					</div>
-					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-left ">
-
-					</div>
-					<div
-						class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center btn btn-warning ">
-						<a href="# " style="color: white; text-decoration: none;"> <b>TRẢ
-								GÓP 0% QUA THẺ</b>
-						</a> <br> <span>Visa, Master, JCB</span>
-					</div>
 					<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 text-left ">
 
 					</div>
@@ -211,7 +204,8 @@
 			</div>
 			<!------------------------------------------------------------------------------------------------------------------------------------------------>
 
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 text-left pt-2 fs14">
+			<div
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-3 text-left pt-2 fs14">
 				<div class="row ">
 					<div
 						class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left text-center ">
@@ -262,17 +256,6 @@
 						<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 text-left   ">
 
 						</div>
-						<div class="col-xs-12 col-sm-11 col-md-11 col-lg-11 text-left">
-							<div class="PRODUCTS">
-								<a class="" target="_blank" href="thanhtoan.html"> Xem
-									iPhone 11 Pro 64GB cũ
-									<div>
-										<span>Giá dưới: <strong>27.610.000₫</strong></span> <span
-											style="color: black;">Bảo hành tới 11.5 tháng</span>
-									</div>
-								</a>
-							</div>
-						</div>
 					</div>
 
 				</div>
@@ -282,293 +265,161 @@
 	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------>
-
+<c:url var="manhinh" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.manHinh}" />
+</c:url>
+<c:url var="hedieuhanh" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.heDieuHanh}" />
+</c:url>
+<c:url var="camera" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.camera}" />
+</c:url>
+<c:url var="ram" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.ram}" />
+</c:url>
+<c:url var="bonho" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.boNho}" />
+</c:url>
+<c:url var="sim" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.sim}" />
+</c:url>
+<c:url var="pin" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thongSo.pin}" />
+</c:url>
+<c:url var="kichthuoc" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.kichThuoc}" />
+</c:url>
+<c:url var="trongluong" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.trongLuong}" />
+</c:url>
+<c:url var="baohanh" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.baoHanh}" />
+</c:url>
+<c:url var="thuonghieu" value="/dienthoai/search">
+	<c:param name="searchName" value="${dt.thuongHieu.tenTH}" />
+</c:url>
 <div class="container border mt-2">
-       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 text-left mt-3">
+	<div class="row">
 
-            <div class="row">
-                <h4 style=" color: rgba(0, 0, 0, 0.616)">Đặc điểm nổi bật của iPhone 11 Pro Max 64GB</h4>
-            </div>
-            
-            <div class="row mt-2 border" >
-                <div class="carousel slide" id="carouselExampleControl" data-ride="carousel" style="width: 100%;">
-                    <ol class="carousel-indicators">
-                        <li class="active" data-target="#carouselExampleControl" data-slide-to="0"></li>
-                        <li data-target="#carouselExampleControl" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleControl" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleControl" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleControl" data-slide-to="4"></li>
-                        <li data-target="#carouselExampleControl" data-slide-to="5"></li>
+		<!---------------------------------------------------------------------THÔNG SỐ KỸ THUẬT------------------------------------------------------------------->
+		<div
+			class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left mt-3 fs14">
+			<div class="row">
+				<h4 style="color: rgba(0, 0, 0, 0.616)">Thông số kỹ thuật</h4>
+			</div>
 
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active"><img src="${resources}/user/images/11pr.png" alt="First"
-                                class="d-block w-100"> </div>
-                        <div class="carousel-item "><img src="${resources}/user/images/apple.png" alt="Second"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item "><img src="${resources}/user/images/galaxy1.png" alt="Third"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item "><img src="${resources}/user/images/iphone.png" alt="Fourth"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item "><img src="${resources}/user/images/samsung.png" alt="Fifth"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item "><img src="${resources}/user/images/apple.png" alt="Fifth"
-                                class="d-block w-100">
-                        </div>
-
-                    </div>
-                    <a href="#carouselExampleControl" class="carousel-control-prev" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true">
-
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a href="#carouselExampleControl" class="carousel-control-next" role="button"
-                        data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true">
-
-                        </span>
-                        <span class="sr-only">Next</span>
-                    </a>
-
-                </div>
-            </div>
-            <div class="row mt-2  mt-4">
-                <div class="container">
-                    <h4><b>Trong năm 2019 thì chiếc <a href="#">smartphone</a> được nhiều người mong muốn sở hữu trên tay và sử dụng nhất không ai khác chính là <a href="chitetsanpham.html" style="text-decoration: none;">iPhone 11 Pro Max 64GB </a> tới từ nhà Apple.</b></h4>
-                </div>
-            </div>
-            <div class="row mt-2  mt-4">
-                <div class="container">
-                    <h4><b>Camera được cải tiến mạnh mẽ</b></h4>
-                </div>
-            </div>
-            <div class="row mt-2  mt-1">
-                <div class="container">
-                    <p>Chắc chắn lý do lớn nhất mà bạn muốn nâng cấp lên iPhone 11 Pro Max chính là cụm camera mới được Apple nâng cấp rất nhiều.</p>
-                </div>
-            </div>
-        </div>
-        
-<!---------------------------------------------------------------------THÔNG SỐ KỸ THUẬT------------------------------------------------------------------->
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-left mt-3 fs14">
-            <div class="row">
-                <h4 style=" color: rgba(0, 0, 0, 0.616)">Thông số kỹ thuật</h4>
-            </div>
-            
-            <div class="row border-top mt-2">
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                        <label>Màn hình: </label>
-                    </div>
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                        <label>  <a href="javascript:void(0)" style="text-decoration: none;">OLED</a> , 6.5", <a href="javascript:void(0)" style="text-decoration: none;">Super Retina XDR</a></label>
-                    </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>Hệ điều hành:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>  <a href="javascript:void(0)" style="text-decoration: none;">iOS 13</a> </label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>Camera sau:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>  	3 camera 12 MP</label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>Camera trước:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>12 MP</label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>CPU:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>  <a href="javascript:void(0)" style="text-decoration: none;">Apple A13 Bionic 6 nhân</a> </label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>RAM:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>4 GB</label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>Bộ nhớ trong:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>64 GB </label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>Thẻ SIM:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>  <a href="javascript:void(0)" style="text-decoration: none;">1 eSIM & 1 Nano SIM, Hỗ trợ 4G</a> </label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label></label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>  <button class="btn btn-danger" style="font-size: 50%;">HOT</button><a href="javascript:void(0)" style="text-decoration: none;"> &nbsp; SIM VNMB Sieu sim (5GB/ngày)</a> </label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
-                    <label>Dung lượng pin:</label>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
-                    <label>3969 mAh, có sạc nhanh </label>
-                </div>
-            </div>
-            <div class="row border-top mt-2">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2 " id="xemThemCauHinhChiTiet" > <a href="javascript:void(0)"> <input type="button" class="btn btn-primary form-control" value="Xem thêm cấu hình chi tiết" name="" id="" data-target="#exampleModalLong_ChiTiet" data-toggle="modal"> </a>
-                </div>
-            </div>
-            <div class="row  mt-5 ">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2" > 
-                    <h4>Hướng dẫn về iPhone 11 Pro Max 64GB</h4>
-                </div>
-            </div>
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p>iPhone SE 2020 và iPhone 11 Điều gì làm nên sự khác biệt?<br>
-                        <i class='fas fa-comment-alt'></i> 69 bình luận
-                    </p>
-                    
-                </div>
-            </div>
-
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p>Cách tải cài đặt bộ hình nền iPhone 11, iPhone 11 Pro mới nhất<br>
-                        <i class='fas fa-comment-alt'></i> 222 bình luận
-                    </p>
-                    
-                </div>
-            </div>
-
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p>Cách tìm lại tài khoản iCloud Apple ID đơn giản, nhanh chóng<br>
-                        <i class='fas fa-comment-alt'></i> 52 bình luận
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="row mt-2 ">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2 " > 
-                    <a href="#"><b>Xem thêm hướng dẫn</b></a>
-                </div>
-                
-            </div>
-
-            <div class="row  mt-5 ">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2" > 
-                    <h4>Phụ kiện iPhone 11 Pro Max 64GB</h4>
-                </div>
-            </div>
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p><b>Tai nghe EP Mozard DS509-WB Xám </b>                       <br>
-                        <span style="color: red"><b>116.000₫ </b></span><span>&emsp;<strike>  299.000₫</strike></span>
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p><b>Adapter Sạc 1A AVA JC62</b> <br>
-                        <span style="color: red"><b>99.000₫ </b></span><span>&emsp;<strike>  199.000₫</strike></span>
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p><b>Cáp Lightning 20 cm AVA Speed II Trắng
-                    </b>                       <br>
-                        <span style="color: red"><b>50.000₫  </b></span>
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p><b>Dây cáp Lightning 20 cm e.VALU LTL-02
-                    </b>                       <br>
-                        <span style="color: red"><b>70.000₫</b></span>
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="row border-top mt-2 ">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center mt-2 " > 
-                    <img src="${resources}/user/images/11pr.png" alt="" class="src" width="100%">
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-left mt-2 " > 
-                    <p><b>Ốp lưng iPhone 11 Pro Max nhựa dẻo Luggage Nake Slim JM Nude
-                    </b>                       <br>
-                        <span style="color: red"><b>35.000₫ </b></span><span>&emsp;<strike>  70.000₫</strike></span><br>
-                        <button class="btn btn-danger" style="height: 10%;">Giảm 50%</button>
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="row mt-2 ">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2 " > 
-                    <a href="#"><b>Xem tất cả phụ kiện iPhone 11 Pro Max 64GB</b></a>
-                </div>
-                
-            </div>
-            
-            
-         
-        </div>
-       </div>
-    </div>
+			<div class="row border-top mt-2">
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+					<label>Màn hình</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+					<label><a href="${manhinh}"> ${dt.thongSo.manHinh}</a></label>
+				</div>
+			</div>
+			<div class="row border-top mt-2">
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+					<label>Hệ điều hành</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+					<label> <a href="${hedieuhanh}"
+						style="text-decoration: none;">${dt.thongSo.heDieuHanh}</a>
+					</label>
+				</div>
+			</div>
+			<div class="row border-top mt-2">
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+					<label>Camera</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+					<label><a href="${camera}" style="text-decoration: none;">${dt.thongSo.camera}</a></label>
+				</div>
+			</div>
+			<div  class="chitietcauhinh">
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2 ">
+						<label>RAM</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label><a href="${ram}" style="text-decoration: none;">${dt.thongSo.ram}</a></label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Bộ nhớ</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label> <a href="${bonho}" style="text-decoration: none;">${dt.thongSo.boNho}</a></label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Thẻ SIM</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label> <a href="${sim }" style="text-decoration: none;">${dt.thongSo.sim}</a>
+						</label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Dung lượng pin</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label><a href="${pin }" style="text-decoration: none;">${dt.thongSo.pin}</a></label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Kích thước</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label><a href="${kichthuoc }"
+							style="text-decoration: none;">${dt.kichThuoc}</a></label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Trọng lượng</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label><a href="${trongluong }"
+							style="text-decoration: none;">${dt.trongLuong}</a></label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Bảo hành</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label><a href="${baohanh }"
+							style="text-decoration: none;">${dt.baoHanh}</a></label>
+					</div>
+				</div>
+				<div class="row border-top mt-2">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
+						<label>Thương hiệu</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-left mt-2">
+						<label><a href="${thuonghieu }"
+							style="text-decoration: none;">${dt.thuongHieu.tenTH}</a></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- -----------------------------------------------Binh Luan ----------------------------------------------------------- -->
+<div class="container-fluid">
+	<div class="row fs14">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2">
+			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2">
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
 
 <!--------------------------------------------------FOOOTER----------------------------------------------------------------->
 <div class="container-fluid">
@@ -581,8 +432,7 @@
 			<div class="card text-center" style="">
 				<a href="chitetsanpham.html"
 					style="text-decoration: none; color: black;"> <img
-					class="card-img-top"
-					src="${resources}/user/images/11pr.png"
+					class="card-img-top" src="${resources}/user/images/11pr.png"
 					alt="Card image" style="width: 50%">
 					<div class="card-body">
 						<h4 class="card-title">iPhone 11 Pro 64GB</h4>
@@ -600,8 +450,7 @@
 			<div class="card text-center" style="">
 				<a href="chitetsanpham.html"
 					style="text-decoration: none; color: black;"> <img
-					class="card-img-top"
-					src="${resources}/user/images/11pr.png"
+					class="card-img-top" src="${resources}/user/images/11pr.png"
 					alt="Card image" style="width: 50%">
 					<div class="card-body">
 						<h4 class="card-title">iPhone Xs Max 256GB</h4>
@@ -619,8 +468,7 @@
 			<div class="card text-center" style="">
 				<a href="chitetsanpham.html"
 					style="text-decoration: none; color: black;"> <img
-					class="card-img-top"
-					src="${resources}/user/images/11pr.png"
+					class="card-img-top" src="${resources}/user/images/11pr.png"
 					alt="Card image" style="width: 50%">
 					<div class="card-body">
 						<h4 class="card-title">iPhone 11 64GB New</h4>
@@ -638,8 +486,7 @@
 			<div class="card text-center" style="">
 				<a href="chitetsanpham.html"
 					style="text-decoration: none; color: black;"> <img
-					class="card-img-top"
-					src="${resources}/user/images/11pr.png"
+					class="card-img-top" src="${resources}/user/images/11pr.png"
 					alt="Card image" style="width: 50%">
 					<div class="card-body">
 						<h4 class="card-title">iPhone SE 128GB (2020)</h4>

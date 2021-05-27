@@ -66,8 +66,14 @@
 				class="mobile__check-header">
 			<form:form class="header__search form-inline" action="${pageContext.request.contextPath}/dienthoai/search" method="GET">
 				<div class="header__search-input-wrap">
-					<input type="text" class="header__search-input" name="searchName"
+					<c:if test="${param.searchName != null }">
+						<input type="text" class="header__search-input" name="searchName"
+						placeholder="Tìm sản phẩm, thương hiệu và tên shop" value="${param.searchName}">
+					</c:if>
+					<c:if test="${param.searchName == null }">
+						<input type="text" class="header__search-input" name="searchName"
 						placeholder="Tìm sản phẩm, thương hiệu và tên shop">
+					</c:if>
 				</div>
 
 				<button class="header__search-btn" value="Search">

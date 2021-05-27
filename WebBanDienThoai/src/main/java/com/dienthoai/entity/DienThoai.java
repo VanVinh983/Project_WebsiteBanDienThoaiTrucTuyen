@@ -62,12 +62,12 @@ public class DienThoai implements Serializable{
 	@JoinColumn(name = "id_ThuongHieu")
 	private ThuongHieu thuongHieu;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_ThongSo")
 	private ThongSo thongSo;
 	
 	
-	@OneToMany(mappedBy = "dienThoai",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "dienThoai", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<ChiTietHoaDon> danhSachSanPhamHoaDon;
 

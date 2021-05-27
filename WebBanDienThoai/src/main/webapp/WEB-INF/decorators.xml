@@ -11,7 +11,7 @@
 	<decorator name="search" page="user1.jsp">
 		<pattern>/dienthoai/search</pattern>
 	</decorator>
-	
+
 	<decorator name="chitietdienthoai" page="user1.jsp">
 		<pattern>/dienthoai/chitietdienthoai</pattern>
 	</decorator>
@@ -24,7 +24,7 @@
 	<decorator name="user-formdangky" page="user1.jsp">
 		<pattern>/user/formDangKy</pattern>
 	</decorator>
-		<decorator name="user-formdangky" page="user1.jsp">
+	<decorator name="user-formdangky" page="user1.jsp">
 		<pattern>/user/dangky</pattern>
 	</decorator>
 	<decorator name="user-showformnguoinhan" page="user1.jsp">
@@ -40,10 +40,22 @@
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/admin/trang-chu</pattern>
 	</decorator>
-	
+
 
 	<decorator name="admin-list-user" page="admin.jsp">
 		<pattern>/admin/user/list</pattern>
+	</decorator>
+
+	<decorator name="admin-list-brand" page="admin.jsp">
+		<pattern>/admin/brand/list</pattern>
+	</decorator>
+	
+	<decorator name="admin-showformadd-brand" page="admin.jsp">
+		<pattern>/admin/brand/showFormAdd</pattern>
+	</decorator>
+	
+	<decorator name="admin-showformedit-brand" page="admin.jsp">
+		<pattern>/admin/brand/showFormEdit</pattern>
 	</decorator>
 
 	<decorator name="admin-showformedit-user" page="admin.jsp">

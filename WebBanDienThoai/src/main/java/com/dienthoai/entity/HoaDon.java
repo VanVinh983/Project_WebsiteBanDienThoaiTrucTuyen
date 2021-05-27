@@ -66,7 +66,7 @@ public class HoaDon implements Serializable{
 	@JoinColumn(name = "id_NguoiDung")
 	private NguoiDung nguoiDung;
 	
-	@OneToMany(mappedBy = "hoaDon",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<ChiTietHoaDon> danhSachChiTiet;
 

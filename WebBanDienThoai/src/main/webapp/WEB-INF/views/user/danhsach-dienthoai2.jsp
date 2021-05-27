@@ -48,22 +48,22 @@
                                     <div class="home-filter hide-on-mobile-tablet">
                                         <span class="home-filter__label fs14">Sắp xếp theo</span>
                                        	<c:if test="${param.sort == 'gia_asc'}"> 
-                                       		 <button class="home-filter-btn btn btn-warning fs14"><a class="text-dark" href="${linkgia_asc}">Mới nhất</a></button>
+                                       		 <a class="text-dark" href="${linkgia_asc}"><button class="home-filter-btn btn btn-warning fs14">Mới nhất</button></a>
                                        	</c:if>
                                        	<c:if test="${param.sort != 'gia_asc'}"> 
-                                       		 <button class="home-filter-btn btn fs14"><a class="text-dark" href="${linkgia_asc}">Mới nhất</a></button>
+                                       		 <a class="text-dark" href="${linkgia_asc}"><button class="home-filter-btn btn fs14">Mới nhất</button></a>
                                        	</c:if>
                                        	<c:if test="${param.sort=='giamgia' }">
-                                       		<button class="home-filter-btn btn btn-warning fs14"><a class="text-dark" href="${linkgiamgia}">Giảm giá</a></button>
+                                       		<a class="text-dark" href="${linkgiamgia}"><button class="home-filter-btn btn btn-warning fs14">Giảm giá</button></a>
                                        	</c:if>
                                        	<c:if test="${param.sort!='giamgia' }">
-                                       		<button class="home-filter-btn btn fs14"><a class="text-dark" href="${linkgiamgia}">Giảm giá</a></button>
+                                       		<a class="text-dark" href="${linkgiamgia}"><button class="home-filter-btn btn fs14">Giảm giá</button></a>
                                        	</c:if>
                                        	<c:if test="${param.sort=='banchay' }">
-                                       		<button class="home-filter-btn btn btn-warning fs14"><a class="text-dark" href="${linkbanchay}">Bán chạy</a></button>
+                                       		<a class="text-dark" href="${linkbanchay}"><button class="home-filter-btn btn btn-warning fs14">Bán chạy</button></a>
                                        	</c:if>
                                        	<c:if test="${param.sort!='banchay' }">
-                                       		<button class="home-filter-btn btn fs14"><a class="text-dark" href="${linkbanchay}">Bán chạy</a></button>
+                                       		<a class="text-dark" href="${linkbanchay}"><button class="home-filter-btn btn fs14">Bán chạy</button></a>
                                        	</c:if>
                                         <div class="select-input">
                                             <span class="select-input-price">

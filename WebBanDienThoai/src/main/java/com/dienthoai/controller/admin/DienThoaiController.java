@@ -21,85 +21,96 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.dienthoai.entity.DanhMuc;
 import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.ThongSo;
+import com.dienthoai.entity.ThuongHieu;
 import com.dienthoai.service.DanhMucService;
 import com.dienthoai.service.DienThoaiService;
 import com.dienthoai.service.ThongSoService;
+import com.dienthoai.service.ThuongHieuService;
 
 @Controller(value = "dienThoaiControllerOfAdmin")
 @RequestMapping("/admin")
-public class DienThoaiController { 
-	private static final String UPLOA_DIRECTORY ="resources/user/images/SanPham";
+public class DienThoaiController {
+	private static final String UPLOA_DIRECTORY = "resources/user/images/SanPham";
 	@Autowired
 	private DienThoaiService dienThoaiService;
-	
+
 	@Autowired
 	private DanhMucService danhMucService;
-	
+
 	@Autowired
 	private ThongSoService thongSoService;
 
+	@Autowired
+	private ThuongHieuService thuongHieuService;
+
 	@GetMapping("/product/list")
-	public String listProduct(Model theModel, @RequestParam(value = "page",  defaultValue = "1") int page) {
+	public String listProduct(Model theModel, @RequestParam(value = "page", defaultValue = "1") int page) {
 		List<DienThoai> productList = dienThoaiService.getListDienThoai();
 		theModel.addAttribute("page", page);
-		theModel.addAttribute("productList", dienThoaiService.getListDienThoaiTheoPage(page,productList));
-		theModel.addAttribute("total",productList.size());
+		theModel.addAttribute("productList", dienThoaiService.getListDienThoaiTheoPage(page, productList));
+		theModel.addAttribute("total", productList.size());
 		return "admin/product";
 	}
-	
+
 	@GetMapping("/product/delete")
 	public String deleteProduct(@RequestParam("productId") int id, @RequestParam("productDetailId") int detailId) {
 		thongSoService.deleteThongSo(detailId);
-		dienThoaiService.deleteDienThoai(id);	
+		dienThoaiService.deleteDienThoai(id);
 		return "redirect:/admin/product/list";
 	}
-	
+
 	@GetMapping("/product/showFormEdit")
 	private String showFormEditProduct(@RequestParam("productId") int id, Model theModel) {
-		DienThoai product=dienThoaiService.getDienThoai(id);
-		List<DanhMuc> cates=danhMucService.getListDanhMuc();
-		int cate_id=product.getDanhMuc().getId();
-		theModel.addAttribute("product",product);
-		theModel.addAttribute("cates",cates);
-		theModel.addAttribute("id",cate_id);
+		DienThoai product = dienThoaiService.getDienThoai(id);
+		List<DanhMuc> cates = danhMucService.getListDanhMuc();
+		int cate_id = product.getDanhMuc().getId();
+		theModel.addAttribute("product", product);
+		theModel.addAttribute("cates", cates);
+		theModel.addAttribute("id", cate_id);
 		return "admin/product-form";
 	}
-	
+
 	@GetMapping("/product/showFormAdd")
 	private String showFormAddProduct(Model theModel) {
-		DienThoai product=new DienThoai();
-		List<DanhMuc> cates=danhMucService.getListDanhMuc();
-		theModel.addAttribute("cates",cates);
-		theModel.addAttribute("product",product);
+		DienThoai product = new DienThoai();
+		List<DanhMuc> cates = danhMucService.getListDanhMuc();
+		theModel.addAttribute("cates", cates);
+		theModel.addAttribute("product", product);
 		return "admin/product-form";
 	}
-	
+
 	@PostMapping("/product/save")
-	private String editAdmin(@ModelAttribute("product") DienThoai product, @RequestParam ("cateId") int id, 
-			@RequestParam("detail_id") String detail_id,@RequestParam() CommonsMultipartFile linkImage, HttpServletRequest request) throws Exception {
-		ServletContext context= request.getServletContext();		
-		String path= context.getRealPath(UPLOA_DIRECTORY);
-		String imageUrl=linkImage.getOriginalFilename();
-		//String path="D:\\IUH\\WWW.JAVA\\A-project\\New folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
-		byte[] bytes=linkImage.getBytes();
+	private String editAdmin(@ModelAttribute("product") DienThoai product, @RequestParam("cateId") int id,
+			@RequestParam("detail_id") String detail_id, @RequestParam() CommonsMultipartFile linkImage,
+			HttpServletRequest request) throws Exception {
+
 		try {
-			BufferedOutputStream stream=new BufferedOutputStream(new FileOutputStream(new File(path+File.separator + imageUrl)));
+
+			ServletContext context = request.getServletContext();
+			String path = context.getRealPath(UPLOA_DIRECTORY);
+			String imageUrl = linkImage.getOriginalFilename();
+			// String path="D:\\IUH\\WWW.JAVA\\A-project\\New
+			// folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
+			byte[] bytes = linkImage.getBytes();
+			BufferedOutputStream stream = new BufferedOutputStream(
+					new FileOutputStream(new File(path + File.separator + imageUrl)));
 			stream.write(bytes);
 			stream.flush();
 			stream.close();
-			product.setAnhURL(imageUrl);
-			DanhMuc cate=danhMucService.getDanhMuc(id);
-			product.setDanhMuc(cate);
-			ThongSo ts=thongSoService.getThongSo(Integer.parseInt(detail_id));
-			product.setThongSo(ts);		
 			
+			product.setAnhURL(imageUrl);
 		} catch (Exception e) {
-			// TODO: handle exception			
+			// TODO: handle exception
+			e.printStackTrace();
 		}
-	
+		ThongSo ts = thongSoService.getThongSo(Integer.parseInt(detail_id));
+		product.setThongSo(ts);
+		DanhMuc cate = danhMucService.getDanhMuc(id);
+		product.setDanhMuc(cate);
+		ThuongHieu thuongHieu = thuongHieuService.getTheoTen(cate.getTenDanhMuc().trim());
+		product.setThuongHieu(thuongHieu);
 		dienThoaiService.saveDienThoai(product);
 		return "redirect:/admin/product/list";
 	}
-	
-	
+
 }

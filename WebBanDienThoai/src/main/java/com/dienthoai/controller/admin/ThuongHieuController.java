@@ -11,65 +11,44 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dienthoai.entity.NguoiDung;
-import com.dienthoai.service.NguoiDungService;
+import com.dienthoai.entity.ThuongHieu;
+import com.dienthoai.service.ThuongHieuService;
 
 @Controller(value = "thuongHieuControllerOfAdmin")
 @RequestMapping("/admin")
 public class ThuongHieuController {
-//	@Autowired
-//	private NguoiDungService nguoiDungService;
-//	
-//	@GetMapping("/user/list")
-//	private String User(Model theModel) {
-//		List<NguoiDung> users=nguoiDungService.getListNguoiDung();
-//		theModel.addAttribute("users",users);
-//		return "admin/user";
-//	}
-//	
-//	@GetMapping("/user/showFormEdit")
-//	private String showFormEditUser(@RequestParam("userId") int id, Model theModel) {
-//		NguoiDung user=nguoiDungService.getNguoiDung(id);
-//		theModel.addAttribute("user",user);
-//		return "admin/user-form";
-//	}
-//	
-//	@PostMapping("/user/save")
-//	private String editUser(@ModelAttribute("user") NguoiDung user) {
-//		nguoiDungService.saveNguoiDung(user);
-//		return "redirect:/admin/user/list";
-//	}
-//	
-//	@GetMapping("/user/showFormAdd")
-//	private String showFormAddUser(Model theModel) {
-//		NguoiDung user=new NguoiDung();
-//		theModel.addAttribute("user",user);
-//		return "admin/user-form";
-//	}
-//	
-//	@GetMapping("/user/delete")
-//	private String deleteUser(@RequestParam("userId") int id) {
-//		nguoiDungService.deleteNguoiDung(id);
-//		return "redirect:/admin/user/list";
-//	}
-//	
-//	@GetMapping("/admin/list")
-//	private String admin(Model theModel) {
-//		List<NguoiDung> admin=nguoiDungService.getListNguoiDung();
-//		theModel.addAttribute("admin",admin);
-//		return "admin/admin";
-//	}
-//	
-//	@GetMapping("/admin/showFormEdit")
-//	private String showFormEditAdmin(@RequestParam("adminId") int id, Model theModel) {
-//		NguoiDung admin=nguoiDungService.getNguoiDung(id);
-//		theModel.addAttribute("admin",admin);
-//		return "admin/admin-form";
-//	}
-//	
-//	@PostMapping("/admin/save")
-//	private String editAdmin(@ModelAttribute("admin") NguoiDung admin) {
-//		nguoiDungService.saveNguoiDung(admin);
-//		return "redirect:/admin/admin/list";
-//	}
+	@Autowired
+	private ThuongHieuService thuongHieuService;
+	
+	@GetMapping("/brand/list")
+	private String getListThuongHieu(Model thModel) {
+		List<ThuongHieu> brands=thuongHieuService.getListThuongHieu();
+		thModel.addAttribute("brands",brands);
+		return "admin/brand";
+	}
+	@GetMapping("/brand/showFormEdit")
+	private String showFormEdit(@RequestParam("brandId") int id, Model theModel) {
+		ThuongHieu brand=thuongHieuService.getThuongHieu(id);
+		theModel.addAttribute("brand",brand);
+		return "admin/brand-form";
+	}
+	
+	@GetMapping("/brand/showFormAdd")
+	private String showFormAdd(Model theModel) {
+		ThuongHieu brand=new ThuongHieu();
+		theModel.addAttribute("brand",brand);
+		return "admin/brand-form";
+	}
+	
+	@PostMapping("/brand/save")
+	private String save(@ModelAttribute("brand") ThuongHieu brand) {
+		thuongHieuService.saveThuongHieu(brand);
+		return "redirect:/admin/brand/list";
+	}
+	
+	@GetMapping("/brand/delete")
+	private String delete(@RequestParam("brandId") int id) {
+		thuongHieuService.deleteThuongHieu(id);
+		return "redirect:/admin/brand/list";
+	}
 }

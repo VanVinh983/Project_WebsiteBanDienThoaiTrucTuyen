@@ -60,7 +60,7 @@
 											<td>											
 													<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
 													&emsp;&nbsp;																																	
-													<a onClick="xoa(${product.id});xoats(${product.thongSo.id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i>
+													<a onClick="xoa(${product.id})" class="text-white"><i class="zmdi zmdi-delete zmdi-hc-lg"></i>
 													</a>				
 											</td>
 										</tr>

@@ -93,8 +93,8 @@
 								<span style="color: red"><form:errors path="matKhau" ></form:errors> </span>
 							</div>
 						</div>
-						<div style="color: red;text-align: center;">
-							<b>${loi}</b>
+						<div style="color: red;padding-left: 15px;">
+							<b class="fs14">${loi}</b>
 						</div>
 						<div style="margin-top: 30px">
 							<button class="btn" type="submit">

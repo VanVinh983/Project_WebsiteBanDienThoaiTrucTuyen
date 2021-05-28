@@ -8,6 +8,23 @@
 	<decorator name="danhmuc" page="user.jsp">
 		<pattern>/dienthoai/danhmuc</pattern>
 	</decorator>
+	
+	<decorator name="timtaikhoan" page="user1.jsp">
+		<pattern>/user/formTimTenDangNhap</pattern>
+	</decorator>
+	
+	<decorator name="guiemaildoimk" page="user1.jsp">
+		<pattern>/user/guiEmail</pattern>
+	</decorator>
+	
+	<decorator name="formCapNhatMatKhau" page="user1.jsp">
+		<pattern>/user/formCapNhatMatKhau</pattern>
+	</decorator>
+	
+	<decorator name="capNhatMatKhau" page="user1.jsp">
+		<pattern>/user/capNhatMatKhau</pattern>
+	</decorator>
+	
 	<decorator name="search" page="user1.jsp">
 		<pattern>/dienthoai/search</pattern>
 	</decorator>

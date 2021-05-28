@@ -266,7 +266,7 @@ h5 {
 
 .login input {
 	background: rgba(0, 0, 0, 0.05);
-	border-radius: 50px;
+	border-radius: 25px;
 	border: 1px solid transparent;
 	padding-left: 20px;
 	height: 48px;
@@ -277,7 +277,7 @@ h5 {
 	font-size: 20px;
 	width: 100%;
 	background: #f2f885;
-	border-radius: 50px;
+	border-radius: 25px;
 	border: 1px solid transparent;
 	padding-left: 20px;
 	height: 48px;

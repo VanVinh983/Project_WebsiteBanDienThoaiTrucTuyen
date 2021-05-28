@@ -28,6 +28,7 @@ public class NguoiDungDAOImpl implements NguoiDungDAO {
 	public void deleteNguoiDung(int id) {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.createNativeQuery("delete NGUOIDUNGS_ROLES where nguoiDung_id = "+id+"").executeUpdate();
 		NguoiDung nguoiDung=currentSession.get(NguoiDung.class, id);
 		currentSession.delete(nguoiDung);
 	}
@@ -72,6 +73,14 @@ public class NguoiDungDAOImpl implements NguoiDungDAO {
 		}
 		return nguoiDung;
 	}
+	@Override
+	public NguoiDung getEmail(String email) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		NguoiDung nguoiDung=currentSession.createNativeQuery("select * from NGUOIDUNG where email='"+email+"'",NguoiDung.class).getSingleResult();
+		return nguoiDung;
+	}
+	
 	
 	
 }

@@ -13,4 +13,5 @@ public interface NguoiDungService extends UserDetailsService{
 	public List<NguoiDung> getListNguoiDung();
 	public NguoiDung dangNhapAdmin(String tenDangnhap, String matKhau);
 	public NguoiDung getTenDangNhap(String tenDangNhap);
+	public NguoiDung getEmail(String email);
 }

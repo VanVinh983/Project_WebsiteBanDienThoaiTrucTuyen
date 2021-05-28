@@ -36,6 +36,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	public void saveNguoiDung(NguoiDung nguoiDung) {
 		String role="ROLE_USER";
 		NguoiDung user=new NguoiDung();
+		user.setId(nguoiDung.getId());
 		user.setTenNguoiDung(nguoiDung.getTenNguoiDung());
 		user.setTenDangNhap(nguoiDung.getTenDangNhap());
 		user.setEmail(nguoiDung.getEmail());
@@ -95,6 +96,13 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	}
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+	}
+
+	@Transactional
+	@Override
+	public NguoiDung getEmail(String email) {
+		// TODO Auto-generated method stub
+		return nguoiDungDAO.getEmail(email);
 	}
 	
 }

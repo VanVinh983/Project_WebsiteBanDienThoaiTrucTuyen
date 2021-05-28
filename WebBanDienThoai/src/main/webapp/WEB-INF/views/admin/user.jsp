@@ -51,7 +51,7 @@
 													<td>
 														<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
 													&emsp;&nbsp;																																	
-													<a href="${delete}"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
+													<a onclick="return confirm('Bạn có chắn chắn xóa không?')" href="${delete}"><i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
 													</td>
 												</tr>
 											</c:if>

@@ -18,7 +18,7 @@
 						<div class="form-group">
 							<label>Tạo mật khẩu mới có tối thiểu 6 ký tự.</label> <br>
 							<div>								
-									<br>
+							<br>
 								<input name="matKhau"
 									Class="form-control fs14" placeholder="Nhập mật khẩu mới" />
 							</div>

@@ -33,5 +33,13 @@ public class BinhLuanDaoImpl implements BinhLuanDao{
 		Session session = factory.getCurrentSession();
 		session.saveOrUpdate(binhLuan);
 	}
+	@Transactional
+	@Override
+	public List<BinhLuan> getListBinhLuanByIdDienThoai(int dtId) {
+		Session session = factory.getCurrentSession();
+		String sql = "select bl.* from DIENTHOAI dt join BINHLUAN bl on dt.id = bl.id_DienThoai where dt.id ="+dtId;
+		List<BinhLuan> list = session.createNativeQuery(sql, BinhLuan.class).getResultList();
+		return list;
+	}
 
 }

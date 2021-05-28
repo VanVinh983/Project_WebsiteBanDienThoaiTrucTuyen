@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
+<%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
 <c:url value="/resources" var="resources" />
 <div class="container-fluid ">
 	<div class="row ">
@@ -421,7 +422,32 @@
 					<span>Chưa có đánh giá nào</span>
 				</c:if>
 			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom" style="height:auto; overflow: auto;">
+				<form:form action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}" method="post" modelAttribute="binhluan">
+					<form:textarea path="noiDung" cssClass="col-12" cssStyle="height:200px; border-radius: 10px;"  placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...'/>
+					<form:input path="tenBinhLuan" cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left" placeholder="Tên của bạn...."/>
+					<form:input path="email" cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-right" placeholder="Email của bạn....(không bắt buộc)"/>
+					 <br> <br>
+					<div class="col-12" style="display: inline;">
+						<button type="submit" class="btn btn-success col-3 mt-2 mb-2 float-right"><b>GỬI</b></button>
+					</div>
+				</form:form>
+			</div>
+			<c:forEach var="binhluan" items="${binhluans}">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left">
+						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="30px">
+					</div>
+					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br/> <br/>
+						<span>${binhluan.noiDung}</span> <br/>
+						<span>${binhluan.ngay}</span>
+					</div>
+				</div>
+			</c:forEach>
+			
 		</div>
+		
 	</div>
 </div>
 

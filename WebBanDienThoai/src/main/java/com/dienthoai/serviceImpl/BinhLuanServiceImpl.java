@@ -27,5 +27,11 @@ public class BinhLuanServiceImpl implements BinhLuanService{
 		// TODO Auto-generated method stub
 		binhLuanDao.themBinhLuan(binhLuan);
 	}
+	@Transactional
+	@Override
+	public List<BinhLuan> getListBinhLuanByIdDienThoai(int dtId) {
+		// TODO Auto-generated method stub
+		return binhLuanDao.getListBinhLuanByIdDienThoai(dtId);
+	}
 	
 }

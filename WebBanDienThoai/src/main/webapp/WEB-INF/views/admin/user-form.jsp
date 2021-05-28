@@ -30,22 +30,27 @@
 							<div class="form-group">
 								<label>Họ tên</label>
 								<form:input path="tenNguoiDung" cssClass="form-control" />
+								<span style="color: red"><form:errors path="tenNguoiDung" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<label>Tên đăng nhập</label>
 								<form:input path="tenDangNhap" cssClass="form-control" />
+								<span style="color: red"><form:errors path="tenDangNhap" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<label>Email</label>
 								<form:input path="email" cssClass="form-control" />
+								<span style="color: red"><form:errors path="email" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<label>Số điện thoại</label>
 								<form:input path="soDienThoai" cssClass="form-control" />
+								<span style="color: red"><form:errors path="soDienThoai" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<label>Địa chỉ</label>
 								<form:input path="diaChi" cssClass="form-control" />
+								<span style="color: red"><form:errors path="diaChi" ></form:errors> </span>
 							</div>
 
 							<div class="form-group">

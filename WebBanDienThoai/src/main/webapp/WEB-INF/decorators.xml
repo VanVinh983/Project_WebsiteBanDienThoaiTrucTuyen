@@ -66,11 +66,11 @@
 	<decorator name="admin-list-brand" page="admin.jsp">
 		<pattern>/admin/brand/list</pattern>
 	</decorator>
-	
+
 	<decorator name="admin-showformadd-brand" page="admin.jsp">
 		<pattern>/admin/brand/showFormAdd</pattern>
 	</decorator>
-	
+
 	<decorator name="admin-showformedit-brand" page="admin.jsp">
 		<pattern>/admin/brand/showFormEdit</pattern>
 	</decorator>
@@ -81,6 +81,9 @@
 
 	<decorator name="admin-showformeadd-user" page="admin.jsp">
 		<pattern>/admin/user/showFormAdd</pattern>
+	</decorator>
+	<decorator name="admin-showformeadd-user" page="admin.jsp">
+		<pattern>/admin/user/save</pattern>
 	</decorator>
 
 	<decorator name="admin-delete-user" page="admin.jsp">

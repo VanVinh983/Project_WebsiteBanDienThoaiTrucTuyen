@@ -15,7 +15,7 @@ import com.dienthoai.service.DanhMucService;
 
 @RestController(value = "danhMucRestControllerOfAdmin")
 @RequestMapping("/admin/cate/api")
-public class DanhMucResstController {
+public class DanhMucRestController {
 	@Autowired
 	private DanhMucService  danhMucService;
 	

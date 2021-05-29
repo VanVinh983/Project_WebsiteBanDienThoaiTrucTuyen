@@ -17,9 +17,6 @@ public interface DienThoaiService {
 	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list);
 	public List<DienThoai> getListDienThoaiCoSapXep(String sort);
 	public List<DienThoai> getListDienThoaiSearch(String searchName);
-<<<<<<< HEAD
 	public List<DienThoai> getListDienThoaiLienQuan(String tenDM);
-=======
 	public List<DienThoai> getListDienThoaiTheoThuongHieu(int idThuongHieu);
->>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 }

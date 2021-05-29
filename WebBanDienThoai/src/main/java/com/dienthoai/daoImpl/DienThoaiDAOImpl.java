@@ -106,10 +106,10 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 	}
 
 	@Override
-	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list) {
+	public List<DienThoai> getListDienThoaiTheoPage(int page, int element, List<DienThoai> list) {
 		// TODO Auto-generated method stub
-		int position = (page - 1) * 7;
-		int end = position + 7;
+		int position = (page - 1) * element;
+		int end = position + element;
 
 		List<DienThoai> dienThoais = new ArrayList<DienThoai>();
 

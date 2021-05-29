@@ -9,4 +9,5 @@ public interface ThongKeService {
 	public double getDoanhThuTheoThangHienTai();
 	public double getDoanhThuTheoThangTruoc();
 	public List<DienThoai> getListDienThoaiBanChay();
+	public int getSoLuongBan();
 }

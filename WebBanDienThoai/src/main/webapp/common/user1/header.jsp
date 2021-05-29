@@ -83,8 +83,9 @@
 			<!-- Cart Layout -->
 			<div class="header__cart">
 				<div class="header__cart-wrap">
+				<a href="${pageContext.request.contextPath}/user/gioHang">
 					<i class="header__cart-icon fas fa-shopping-cart"
-						style="color: black;"></i>
+						style="color: black;"></i></a>
 						
 						<%  List<DienThoaiGioHang> cart= (List<DienThoaiGioHang>) session.getAttribute("cart");
 							int count=0;
@@ -117,13 +118,13 @@
 	<ul class="list-inline pb-3">
 		<li class="list-inline-item"><a
 			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
-			href="#">Trang chủ</a></li>
+			href="${pageContext.request.contextPath}/dienthoai/danhsach">Trang chủ</a></li>
 		<li class="list-inline-item"><a
 			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
 			href="#">Sản phẩm</a></li>
 		<li class="list-inline-item"><a
 			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
-			href="#">Giỏ hàng</a></li>
+			href="${pageContext.request.contextPath}/user/gioHang">Giỏ hàng</a></li>
 		<li class="list-inline-item"><a
 			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
 			href="#">Chi tiết</a></li>

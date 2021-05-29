@@ -19,7 +19,7 @@
 							<label>Tạo mật khẩu mới có tối thiểu 6 ký tự.</label> <br>
 							<div>								
 							<br>
-								<input name="matKhau"
+								<input name="matKhau" type="password"
 									Class="form-control fs14" placeholder="Nhập mật khẩu mới" />
 							</div>
 							<c:if test="${error!=null}">

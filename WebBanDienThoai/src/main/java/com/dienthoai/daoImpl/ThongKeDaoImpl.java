@@ -68,4 +68,13 @@ public class ThongKeDaoImpl implements ThongKeDao {
 		return listDT;	
 	}
 
+	@Override
+	public int getSoLuongBan() {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		int sum=(int) currentSession.createNativeQuery("select  sum(soLuong) as sum from CHITIETHOADON ct join HOADON hd on hd.id=ct.id_HoaDon\r\n"
+				+ "where MONTH(hd.ngayLap)=MONTH(GETDATE())").getSingleResult();
+		return sum;
+	}
+
 }

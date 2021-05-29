@@ -43,4 +43,11 @@ public class ThongKeServiceImpl implements ThongKeService {
 		return thongKeDao.getListDienThoaiBanChay();
 	}
 
+	@Transactional
+	@Override
+	public int getSoLuongBan() {
+		// TODO Auto-generated method stub
+		return thongKeDao.getSoLuongBan();
+	}
+
 }

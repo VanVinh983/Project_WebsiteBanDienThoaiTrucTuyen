@@ -21,7 +21,8 @@ public class TrangchuController {
 		double doanhThuTheoThangTruoc=thongKeService.getDoanhThuTheoThangTruoc();
 		double loiNhuan=(doanhThuTheoThangHienTai-doanhThuTheoThangTruoc);
 		double phanTram=((doanhThuTheoThangHienTai-doanhThuTheoThangTruoc)/doanhThuTheoThangTruoc)*100;
-		
+		int soLuongBan=thongKeService.getSoLuongBan();
+		model.addAttribute("soLuongBan",soLuongBan);
 		model.addAttribute("sl",soLuongDonHangTheoThang);
 		model.addAttribute("doanhThu",doanhThuTheoThangHienTai);
 		model.addAttribute("loiNhuan",loiNhuan);

@@ -33,7 +33,7 @@ public class DienThoaiController {
 	private BinhLuanService binhLuanService;
 
 	@GetMapping("/danhsach")
-	public String listCustomers(Model theModel, @RequestParam(required = false) String sort) {
+	public String listCustomers(Model theModel, @RequestParam(required = false) String sort,  @RequestParam(value = "page", defaultValue = "1") int page) {
 		List<DienThoai> listDienThoai = new ArrayList<DienThoai>();
 		if (sort!=null) {
 			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort);
@@ -41,7 +41,9 @@ public class DienThoaiController {
 			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc");
 		}
 		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
-		theModel.addAttribute("dienthoais", listDienThoai);
+		theModel.addAttribute("page", page);
+		theModel.addAttribute("dienthoais", dienThoaiService.getListDienThoaiTheoPage(page,12, listDienThoai));
+		theModel.addAttribute("total", listDienThoai.size());	
 		theModel.addAttribute("ths", listThuongHieu);
 		return "user/danhsach-dienthoai2";
 	}

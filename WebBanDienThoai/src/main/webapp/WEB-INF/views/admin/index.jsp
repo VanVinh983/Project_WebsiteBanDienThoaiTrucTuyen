@@ -67,14 +67,13 @@
 					<div class="col-12 col-lg-6 col-xl-3 border-light">
 						<div class="card-body">
 							<h5 class="text-white mb-0">
-								3 <span class="float-right"><i class="fa fa-envira"></i></span>
+								${soLuongBan } <span class="float-right"><i class="fa fa-envira"></i></span>
 							</h5>
 							<div class="progress my-3" style="height: 3px;">
 								<div class="progress-bar" style="width: 0%"></div>
 							</div>
 							<p class="mb-0 text-white small-font">
-								Bán ra (theo tuần)<span class="float-right">+2.2% <i
-									class="zmdi zmdi-long-arrow-up"></i></span>
+								Bán ra (theo tháng)<span class="float-right"></span>
 							</p>
 						</div>
 					</div>

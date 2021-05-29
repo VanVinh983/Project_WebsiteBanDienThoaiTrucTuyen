@@ -67,9 +67,9 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 
 	@Transactional
 	@Override
-	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list) {
+	public List<DienThoai> getListDienThoaiTheoPage(int page, int element, List<DienThoai> list) {
 		// TODO Auto-generated method stub
-		return dienThoaiDAO.getListDienThoaiTheoPage(page, list);
+		return dienThoaiDAO.getListDienThoaiTheoPage(page,element, list);
 	}
 	@Override
 	public List<DienThoai> getListDienThoaiCoSapXep(String sort) {

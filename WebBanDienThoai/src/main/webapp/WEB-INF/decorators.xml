@@ -5,7 +5,7 @@
 		<pattern>/dienthoai/danhsach</pattern>
 	</decorator>
 
-	<decorator name="danhmuc" page="user.jsp">
+	<decorator name="danhmuc" page="user1.jsp">
 		<pattern>/dienthoai/danhmuc</pattern>
 	</decorator>
 	

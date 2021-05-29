@@ -21,6 +21,7 @@ import com.dienthoai.entity.BinhLuan;
 import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.ThuongHieu;
 import com.dienthoai.service.BinhLuanService;
+import com.dienthoai.service.DanhMucService;
 import com.dienthoai.service.DienThoaiService;
 
 @Controller(value = "dienThoaiControllerOfUser")
@@ -31,6 +32,9 @@ public class DienThoaiController {
 	
 	@Autowired
 	private BinhLuanService binhLuanService;
+	
+	@Autowired
+	private DanhMucService danhMucService;
 
 	@GetMapping("/danhsach")
 	public String listCustomers(Model theModel, @RequestParam(required = false) String sort,  @RequestParam(value = "page", defaultValue = "1") int page) {
@@ -44,17 +48,24 @@ public class DienThoaiController {
 		theModel.addAttribute("page", page);
 		theModel.addAttribute("dienthoais", dienThoaiService.getListDienThoaiTheoPage(page,12, listDienThoai));
 		theModel.addAttribute("total", listDienThoai.size());	
-		theModel.addAttribute("ths", listThuongHieu);
+		theModel.addAttribute("dms", danhMucService.getListDanhMuc());
 		return "user/danhsach-dienthoai2";
 	}
 	
 	@GetMapping("/danhmuc")
-	public String danhmuc(Model theModel) {
-		theModel.addAttribute("ths", dienThoaiService.getListThuongHieu());
-		theModel.addAttribute("dts", dienThoaiService.getListDienThoai());
-		theModel.addAttribute("dtbc",  dienThoaiService.getDienTHoaiBanChay());
+	public String danhmuc(Model theModel, HttpSession session) {
+		theModel.addAttribute("dts", session.getAttribute("dts"));
+		theModel.addAttribute("iddanhmuc", session.getAttribute("iddanhmuc"));
+		theModel.addAttribute("dms", danhMucService.getListDanhMuc());
 		return "user/danhmuc";
 	}
+	@RequestMapping(value = "/danhmuc/{danhMucId}", method = RequestMethod.GET)
+	public String getDienThoaiTheoDanhMuc(Model model,@PathVariable(value = "danhMucId")int danhMucId,HttpSession session) {
+		session.setAttribute("dts", dienThoaiService.getListDienThoaiLienQuan(danhMucService.getDanhMuc(danhMucId).getTenDanhMuc()));
+		session.setAttribute("iddanhmuc", danhMucId);
+		return "redirect:/dienthoai/danhmuc";
+	}
+	
 	@GetMapping("/chitietdienthoai")
 	public String chitietdienthoai(Model model, HttpSession session) {
 		DienThoai dt = (DienThoai) session.getAttribute("dienthoai");

@@ -23,15 +23,16 @@
 			<div class="row">
 				<div class="col-2">
 					<nav class="category">
-
 						<h3 class="category__heading">
-							<i class="category__heading-icon fas fa-list"></i> Thương hiệu
+							<i class="category__heading-icon fas fa-list"></i> Danh Mục Sản
+							Phẩm
 						</h3>
 						<ul class="category-list">
-							<c:forEach var="th" items="${ths}">
-								<li class="category-item"><a href="#"
-									class="category-item__link text-decoration-none">${th.tenTH}</a>
-								</li>
+							<c:forEach var="dm" items="${dms}">
+									<li class="category-item"><a
+										href="${pageContext.request.contextPath}/dienthoai/danhmuc/${dm.id}"
+										class="category-item__link text-decoration-none">${dm.tenDanhMuc}</a>
+									</li>
 							</c:forEach>
 						</ul>
 					</nav>

@@ -335,7 +335,7 @@
 					<label><a href="${camera}" style="text-decoration: none;">${dt.thongSo.camera}</a></label>
 				</div>
 			</div>
-			<div  class="chitietcauhinh">
+			<div class="chitietcauhinh">
 				<div class="row border-top mt-2">
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2 ">
 						<label>RAM</label>
@@ -414,7 +414,8 @@
 	<div class="row fs14 border mx-1 mt-4 rounded">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left">
 			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
+			<div
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 				<c:if test="${binhluans.size()>0}">
 					<span>Có tất cả ${binhluans.size()} đánh giá</span>
 				</c:if>
@@ -422,113 +423,109 @@
 					<span>Chưa có đánh giá nào</span>
 				</c:if>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom" style="height:auto; overflow: auto;">
-				<form:form action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}" method="post" modelAttribute="binhluan">
-					<form:textarea path="noiDung" cssClass="col-12" cssStyle="height:200px; border-radius: 10px;"  placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...'/>
-					<form:input path="tenBinhLuan" cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left" placeholder="Tên của bạn...."/>
-					<form:input path="email" cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-right" placeholder="Email của bạn....(không bắt buộc)"/>
-					 <br> <br>
+			<div
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
+				style="height: auto; overflow: auto;">
+				<form:form
+					action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}"
+					method="post" modelAttribute="binhluan">
+					<form:textarea path="noiDung" cssClass="col-12"
+						cssStyle="height:200px; border-radius: 10px;"
+						placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...' />
+					<c:if test="${pageContext.request.userPrincipal.name==null}">
+						<form:input path="tenBinhLuan"
+							cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left"
+							placeholder="Tên của bạn...." />
+					</c:if>
+					<c:if test="${pageContext.request.userPrincipal.name!=null}">
+						<form:input path="tenBinhLuan"
+							cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left"
+							placeholder="Tên của bạn...."
+							value="${pageContext.request.userPrincipal.name}" />
+					</c:if>
+					<form:input path="email"
+						cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-right"
+						placeholder="Email của bạn....(không bắt buộc)" />
+					<br>
+					<br>
 					<div class="col-12" style="display: inline;">
-						<button type="submit" class="btn btn-success col-3 mt-2 mb-2 float-right"><b>GỬI</b></button>
+						<button type="submit"
+							class="btn btn-success col-3 mt-2 mb-2 float-right">
+							<b>GỬI</b>
+						</button>
 					</div>
 				</form:form>
 			</div>
 			<c:forEach var="binhluan" items="${binhluans}">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
+				<div
+					class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left">
-						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="30px">
+						<img alt="avatar"
+							src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png"
+							width="30px">
 					</div>
 					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br/> <br/>
-						<span>${binhluan.noiDung}</span> <br/>
-						<span>${binhluan.ngay}</span>
+						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br />
+						<br /> <span>${binhluan.noiDung}</span> <br /> <span>${binhluan.ngay}</span>
 					</div>
 				</div>
 			</c:forEach>
-			
+
 		</div>
-		
+
 	</div>
 </div>
 
 <!--------------------------------------------------FOOOTER----------------------------------------------------------------->
 <div class="container-fluid">
 	<div class="row fs14">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2"
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-4"
 			style="background-color: rgba(255, 255, 255, 0.5);">
-			<h4 for=" " style="">SẢN PHẨM LIÊN QUAN</h4>
+			<h4 style="float: left;">SẢN PHẨM LIÊN QUAN</h4>
+			<a class="btn btn-info float-right text-white"><span style="font-size: 15px;">Xem tất cả ></span></a>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone 11 Pro 64GB</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>30.490.000₫</b> &nbsp;<strike><i>33.990.000₫</i></strike></span><br>
-							<span>Tặng 2 suất mua tai nghe cực xịn (không áp dụng thêm
-								khuyến mãi khác) </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone Xs Max 256GB</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>8.810.000₫</b> &nbsp;<strike><i>9.500.000₫</i></strike></span><br>
-							<span>Tặng 2 suất mua Đồng hồ thời trang giảm 40% (không
-								áp dụng thêm khuyến mãi khác) </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone 11 64GB New</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>20.990.000₫</b> &nbsp;<strike><i>21.990.000₫</i></strike></span><br>
-							<span>Giảm ngay 16% (5.6 triệu) (áp dụng đặt và nhận hàng
-								từ 11 - 14/7) (đã trừ vào giá) * </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone SE 128GB (2020)</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>8.810.000₫</b> &nbsp;<strike><i>9.500.000₫</i></strike></span><br>
-							<span>Giảm ngay 500.000đ (đã trừ vào giá) Tặng 2 suất
-								mua Đồng hồ thời trang giảm 40% </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2">
+			<c:forEach items="${dtbythuonghieu}" var="dt" begin="0" end="3">
+				<div class="col-3 home-product-item-wrapper float-left">
+					<a class="home-product-item pb-3 text-deco"
+						style="padding-top: 15px;"
+						href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}">
+						<div class="home-product-item-img"
+							style="background-image: url(${resources}/user/images/SanPham/${dt.anhURL}); width: 90%;"></div>
+						<h4 class="home-product-item__name">${dt.tenDT}
+							${dt.thongSo.boNho}</h4> <c:if test="${dt.giamGia>0}">
+							<div class="home-product-item__price">
+								<span class="home-product-item__price-old"><fmt:formatNumber
+										type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ</span>
+								<span class="home-product-item__price-current"><fmt:formatNumber
+										type="number" pattern="#,###,###.##"
+										value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </span>
+							</div>
+						</c:if> <c:if test="${dt.giamGia<=0}">
+							<div class="home-product-item__price">
+								<span class="home-product-item__price-current float-right"><fmt:formatNumber
+										type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+								</span>
+							</div>
+						</c:if>
+						<div class="home-product-item__origin">
+							<span class="home-product-item__brand"> Whoo </span> <span
+								class="home-product-item__name-o"> ${dt.thuongHieu.xuatXu }
+							</span>
+						</div>
+						<div class="home-product-item__favorite">
+							<i class="fas fa-check"></i> <span>Yêu thích</span>
+						</div> <c:if test="${dt.giamGia>0}">
+							<div class="home-product-item__sale-off">
+								<span class="home-product-item__percent">${dt.giamGia}</span> <span
+									class="home-product-item__label">GIẢM</span>
+							</div>
+						</c:if>
+					</a> <a class="btn btn-success btn-block fs14"
+						href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+						Thêm vào giỏ hàng </a>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 </div>

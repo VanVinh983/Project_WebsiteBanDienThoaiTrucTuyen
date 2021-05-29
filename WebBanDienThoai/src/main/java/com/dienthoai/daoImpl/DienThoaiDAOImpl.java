@@ -203,5 +203,11 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 		dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
 		return dts;
 	}
+	@Transactional
+	@Override
+	public List<DienThoai> getListDienThoaiTheoThuongHieu(int idThuongHieu) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createNativeQuery("select * from DIENTHOAI where id_ThuongHieu = "+idThuongHieu, DienThoai.class).getResultList();
+	}
 
 }

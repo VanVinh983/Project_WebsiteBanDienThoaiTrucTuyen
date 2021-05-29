@@ -59,6 +59,7 @@ public class DienThoaiController {
 		model.addAttribute("dt", dt);
 		model.addAttribute("binhluans", binhLuanService.getListBinhLuanByIdDienThoai(dt.getId()));
 		model.addAttribute("binhluan", new BinhLuan());
+		model.addAttribute("dtbythuonghieu", dienThoaiService.getListDienThoaiTheoThuongHieu(dt.getThuongHieu().getId()));
 		return "user/chitietdienthoai";
 	}
 	@RequestMapping(value = "/laychitiet/{id}", method = RequestMethod.GET)

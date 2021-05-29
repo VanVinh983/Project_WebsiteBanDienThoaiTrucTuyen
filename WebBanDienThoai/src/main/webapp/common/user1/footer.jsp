@@ -12,7 +12,7 @@
                                 <a href="#" class="footer_item-link">Trung tâm trợ giúp</a>
                             </li>
                             <li class="footer_item">
-                                <a href="#" class="footer_item-link">OWEN-Shop Mall</a>
+                                <a href="#" class="footer_item-link">Q-MOBILE</a>
                             </li>
                             <li class="footer_item">
                                 <a href="#" class="footer_item-link">Hướng dẫn mua hàng</a>
@@ -41,13 +41,13 @@
                         </h3>
                         <ul class="footer_list">
                             <li class="footer_item">
-                                <a href="#" class="footer_item-link">Sim Viettel</a>
+                                <a href="#" class="footer_item-link">Iphone</a>
                             </li>
                             <li class="footer_item">
-                                <a href="#" class="footer_item-link">Sim MobiFone</a>
+                                <a href="#" class="footer_item-link">SamSung</a>
                             </li>
                             <li class="footer_item">
-                                <a href="#" class="footer_item-link">Sim Vinaphone</a>
+                                <a href="#" class="footer_item-link">Oppo</a>
                             </li>
                         </ul>
 
@@ -94,7 +94,7 @@
             </div>
             <div class="footer__bottom">
                 <div class="grid wide">
-                    <p class="footer__text">© 2021 TrungVinh's, Inc. All Rights Reserved</p>
+                    <p class="footer__text">© Inc. All Rights Reserved<br>Website bán điện thoại trực tuyến</p>
                 </div>
             </div>
         </footer>

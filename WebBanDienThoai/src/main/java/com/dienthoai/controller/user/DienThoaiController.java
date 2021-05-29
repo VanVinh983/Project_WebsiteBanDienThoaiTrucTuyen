@@ -112,6 +112,9 @@ public class DienThoaiController {
 		List<DienThoaiGioHang> cart = new ArrayList<DienThoaiGioHang>();
 		cart.add(new DienThoaiGioHang(dienThoaiService.getDienThoai(id), 1));
 		session.setAttribute("cart", cart);
+		float giamGia = dienThoaiService.getDienThoai(id).getGiaDT()*(dienThoaiService.getDienThoai(id).getGiamGia()/100);
+		float thue = dienThoaiService.getDienThoai(id).getGiaDT()*(dienThoaiService.getDienThoai(id).getThue()/100);
+		session.setAttribute("tongtien",dienThoaiService.getDienThoai(id).getGiaDT()- giamGia + thue);
 		return "redirect:/user/showFormNguoiNhan";
 	}
 	

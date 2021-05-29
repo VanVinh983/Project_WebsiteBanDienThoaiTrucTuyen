@@ -44,7 +44,6 @@ public class DienThoaiController {
 		}else {
 			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc");
 		}
-		List<ThuongHieu> listThuongHieu = dienThoaiService.getListThuongHieu();
 		theModel.addAttribute("page", page);
 		theModel.addAttribute("dienthoais", dienThoaiService.getListDienThoaiTheoPage(page,12, listDienThoai));
 		theModel.addAttribute("total", listDienThoai.size());	

@@ -12,10 +12,10 @@
 					<b>Trang chủ</b>
 				</button>
 			</a> <span style="font-size: 18px;">-></span><a
-				href="${pageContext.request.contextPath}/dienthoai/danhmuc"
+				href="${pageContext.request.contextPath}/dienthoai/danhmuc/${dt.danhMuc.id}"
 				style="text-decoration: none;"><button
 					class="btn btn-light border ">
-					<b>Sản phẩm</b>
+					<b>Danh Mục</b>
 				</button> </a> <span style="font-size: 18px;">-></span><a href=""
 				style="text-decoration: none;"><button
 					class="btn btn-light border ">
@@ -160,11 +160,11 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center ">
 						<a
 							href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
-							<button class="btn btn-success form-control mt-2">
+							<button class="btn btn-success form-control mt-2 mb-2">
 								<b>THÊM VÀO GIỎ HÀNG</b>
 							</button>
 						</a>
-						<c:if test="${tenDangNhap==null}">
+						<c:if test="${pageContext.request.userPrincipal.name==null}">
 							<a
 								href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
 								onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
@@ -172,7 +172,7 @@
 									<b>MUA NGAY</b>
 								</button></a>
 						</c:if>
-						<c:if test="${tenDangNhap!=null}">
+						<c:if test="${pageContext.request.userPrincipal.name!=null}">
 							<a
 								href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
 								<button style="width: 100%" type="button" class="btn btn-danger">
@@ -451,8 +451,14 @@
 					method="post" modelAttribute="binhluan">
 					<div class="form-group">
 						<label>Tên</label>
-						<form:input path="tenBinhLuan" cssClass="form-control"
+						<c:if test="${pageContext.request.userPrincipal.name == null}">
+							<form:input path="tenBinhLuan" cssClass="form-control"
 							placeholder="Tên của bạn..." />
+						</c:if>
+						<c:if test="${pageContext.request.userPrincipal.name != null}">
+							<form:input path="tenBinhLuan" cssClass="form-control"
+							placeholder="Tên của bạn..."  value = "${pageContext.request.userPrincipal.name}"/>
+						</c:if>
 					</div>
 					<div class="form-group">
 						<label>Email</label>

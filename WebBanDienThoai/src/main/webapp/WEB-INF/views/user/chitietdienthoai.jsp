@@ -453,6 +453,7 @@
 <div class="container">
 	<div class="row fs14 border mx-1 mt-4 rounded">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left">
+<<<<<<< HEAD
 			<br>
 			<h3>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h3>
 			<br>			
@@ -487,6 +488,9 @@
 				</form:form>
 			</div>
 			
+=======
+			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 			<div
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 				<c:if test="${binhluans.size()>0}">
@@ -498,21 +502,137 @@
 					<span>Chưa có đánh giá nào</span>
 				</c:if>
 			</div>
+<<<<<<< HEAD
 			<br>
+=======
+			<div
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
+				style="height: auto; overflow: auto;">
+				<form:form
+					action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}"
+					method="post" modelAttribute="binhluan">
+					<form:textarea path="noiDung" cssClass="col-12"
+						cssStyle="height:200px; border-radius: 10px;"
+						placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...' />
+					<c:if test="${pageContext.request.userPrincipal.name==null}">
+						<form:input path="tenBinhLuan"
+							cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left"
+							placeholder="Tên của bạn...." />
+					</c:if>
+					<c:if test="${pageContext.request.userPrincipal.name!=null}">
+						<form:input path="tenBinhLuan"
+							cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left"
+							placeholder="Tên của bạn...."
+							value="${pageContext.request.userPrincipal.name}" />
+					</c:if>
+					<form:input path="email"
+						cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-right"
+						placeholder="Email của bạn....(không bắt buộc)" />
+					<br>
+					<br>
+					<div class="col-12" style="display: inline;">
+						<button type="submit"
+							class="btn btn-success col-3 mt-2 mb-2 float-right">
+							<b>GỬI</b>
+						</button>
+					</div>
+				</form:form>
+			</div>
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 			<c:forEach var="binhluan" items="${binhluans}">
+<<<<<<< HEAD
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left border-bottom">
 					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left" style="padding-top: 20px;">
 						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="40px">
+=======
+				<div
+					class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left">
+						<img alt="avatar"
+							src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png"
+							width="30px">
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 					</div>
+<<<<<<< HEAD
 					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-top: 10px;">
 						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span>
 						<br><span> ${binhluan.noiDung}</span><br>
 						<span>${binhluan.ngay}</span>
+=======
+					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br />
+						<br /> <span>${binhluan.noiDung}</span> <br /> <span>${binhluan.ngay}</span>
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 					</div>
 					<br>
+				</div>
+			</c:forEach>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
+		</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
+	</div>
+</div>
+<<<<<<< HEAD
+<br>
+=======
+
+<!--------------------------------------------------FOOOTER----------------------------------------------------------------->
+<div class="container-fluid">
+	<div class="row fs14">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-4"
+			style="background-color: rgba(255, 255, 255, 0.5);">
+			<h4 style="float: left;">SẢN PHẨM LIÊN QUAN</h4>
+			<a class="btn btn-info float-right text-white"><span style="font-size: 15px;">Xem tất cả ></span></a>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2">
+			<c:forEach items="${dtbythuonghieu}" var="dt" begin="0" end="3">
+				<div class="col-3 home-product-item-wrapper float-left">
+					<a class="home-product-item pb-3 text-deco"
+						style="padding-top: 15px;"
+						href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}">
+						<div class="home-product-item-img"
+							style="background-image: url(${resources}/user/images/SanPham/${dt.anhURL}); width: 90%;"></div>
+						<h4 class="home-product-item__name">${dt.tenDT}
+							${dt.thongSo.boNho}</h4> <c:if test="${dt.giamGia>0}">
+							<div class="home-product-item__price">
+								<span class="home-product-item__price-old"><fmt:formatNumber
+										type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ</span>
+								<span class="home-product-item__price-current"><fmt:formatNumber
+										type="number" pattern="#,###,###.##"
+										value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </span>
+							</div>
+						</c:if> <c:if test="${dt.giamGia<=0}">
+							<div class="home-product-item__price">
+								<span class="home-product-item__price-current float-right"><fmt:formatNumber
+										type="number" pattern="#,###,###.##" value="${dt.giaDT}" /> đ
+								</span>
+							</div>
+						</c:if>
+						<div class="home-product-item__origin">
+							<span class="home-product-item__brand"> Whoo </span> <span
+								class="home-product-item__name-o"> ${dt.thuongHieu.xuatXu }
+							</span>
+						</div>
+						<div class="home-product-item__favorite">
+							<i class="fas fa-check"></i> <span>Yêu thích</span>
+						</div> <c:if test="${dt.giamGia>0}">
+							<div class="home-product-item__sale-off">
+								<span class="home-product-item__percent">${dt.giamGia}</span> <span
+									class="home-product-item__label">GIẢM</span>
+							</div>
+						</c:if>
+					</a> <a class="btn btn-success btn-block fs14"
+						href="${pageContext.request.contextPath}/user/themvaogiohang/${dt.id}">
+						Thêm vào giỏ hàng </a>
 				</div>
 			</c:forEach>
 		</div>
 	</div>
 </div>
-<br>
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git

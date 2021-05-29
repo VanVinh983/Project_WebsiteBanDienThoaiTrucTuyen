@@ -18,5 +18,6 @@ public interface DienThoaiDAO {
 	public List<DienThoai> getListDienThoaiTheoPage(int page, List<DienThoai> list);
 	public List<DienThoai> getListDienThoaiCoSapXep(String sortName);
 	public List<DienThoai> getListDienThoaiSearch(String searchName);
+	public List<DienThoai> getListDienThoaiTheoThuongHieu(int idThuongHieu);
 	
 }

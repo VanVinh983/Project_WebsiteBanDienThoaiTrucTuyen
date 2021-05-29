@@ -82,10 +82,18 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiSearch(searchName);
 	}
+<<<<<<< HEAD
 	@Transactional
 	@Override
 	public List<DienThoai> getListDienThoaiLienQuan(String tenDM) {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiLienQuan(tenDM);
+=======
+
+	@Override
+	public List<DienThoai> getListDienThoaiTheoThuongHieu(int idThuongHieu) {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiTheoThuongHieu(idThuongHieu);
+>>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 	}
 }

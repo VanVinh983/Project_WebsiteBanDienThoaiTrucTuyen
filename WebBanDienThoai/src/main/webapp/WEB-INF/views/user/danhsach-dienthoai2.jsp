@@ -24,8 +24,7 @@
 				<div class="col-2">
 					<nav class="category">
 						<h3 class="category__heading">
-							<i class="category__heading-icon fas fa-list"></i> Danh Mục Sản
-							Phẩm
+							<i class="category__heading-icon fas fa-list"></i> Danh Mục
 						</h3>
 						<ul class="category-list">
 							<c:forEach var="dm" items="${dms}">

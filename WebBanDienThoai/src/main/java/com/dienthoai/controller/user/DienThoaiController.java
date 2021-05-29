@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dienthoai.dao.BinhLuanDao;
 import com.dienthoai.entity.BinhLuan;
 import com.dienthoai.entity.DienThoai;
-import com.dienthoai.entity.DienThoaiGioHang;
 import com.dienthoai.entity.ThuongHieu;
 import com.dienthoai.service.BinhLuanService;
 import com.dienthoai.service.DanhMucService;
@@ -107,15 +106,4 @@ public class DienThoaiController {
 		}
 		return "redirect:/dienthoai/chitietdienthoai";
 	}
-	@RequestMapping(value = "/thanhtoantructiep/{id}", method = RequestMethod.GET)
-	public String thanhToanTrucTiep( @PathVariable("id") int id, HttpSession session) {
-		List<DienThoaiGioHang> cart = new ArrayList<DienThoaiGioHang>();
-		cart.add(new DienThoaiGioHang(dienThoaiService.getDienThoai(id), 1));
-		session.setAttribute("cart", cart);
-		float giamGia = dienThoaiService.getDienThoai(id).getGiaDT()*(dienThoaiService.getDienThoai(id).getGiamGia()/100);
-		float thue = dienThoaiService.getDienThoai(id).getGiaDT()*(dienThoaiService.getDienThoai(id).getThue()/100);
-		session.setAttribute("tongtien",dienThoaiService.getDienThoai(id).getGiaDT()- giamGia + thue);
-		return "redirect:/user/showFormNguoiNhan";
-	}
-	
 }

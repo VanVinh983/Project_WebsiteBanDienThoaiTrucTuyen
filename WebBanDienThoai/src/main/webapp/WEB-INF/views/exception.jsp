@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,19 +45,37 @@
 </head>
 
 <body>
-	<section id="error">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="area">
-						<h2>404</h2>
-						<span>Không tìm thấy trang!</span> <a
-							href="${pageContext.request.contextPath}/dienthoai/danhsach">
-							Trở về trang chủ</a>
+	<c:if test="${error==null}">
+		<section id="error">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="area">
+							<h2>404</h2>
+							<span>Không tìm thấy trang!</span> <a
+								href="${pageContext.request.contextPath}/dienthoai/danhsach">
+								Trở về trang chủ</a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	</c:if>
+	<c:if test="${error!=null}">
+		<section id="error">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="area">
+						<h2>Exception</h2>
+							<span>${error}</span> <a
+								href="${pageContext.request.contextPath}/dienthoai/danhsach">
+								Trở về trang chủ</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</c:if>
 </body>
 </html>

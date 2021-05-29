@@ -1,8 +1,10 @@
 package com.dienthoai.controller.admin;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +17,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dienthoai.entity.NguoiDung;
 import com.dienthoai.service.NguoiDungService;
+import com.dienthoai.service.RoleService;
 
 @Controller(value = "nguoiDungControllerOfAdmin")
 @RequestMapping("/admin")
 public class NguoiDungController {
 	@Autowired
 	private NguoiDungService nguoiDungService;
+	@Autowired
+	private RoleService roleService;
+
 
 	@GetMapping("/user/list")
 	private String User(Model theModel) {
@@ -41,6 +47,9 @@ public class NguoiDungController {
 		if (result.hasErrors()) {
 			return "admin/user-form";
 		} else {
+			String role="ROLE_USER";
+			user.setVaiTro(role);
+			user.setRoles(Arrays.asList(roleService.findRoleByName(role)));
 			nguoiDungService.saveNguoiDung(user);
 			return "redirect:/admin/user/list";
 		}
@@ -75,6 +84,9 @@ public class NguoiDungController {
 
 	@PostMapping("/admin/save")
 	private String editAdmin(@ModelAttribute("admin") NguoiDung admin) {
+		String role="ROLE_ADMIN";
+		admin.setVaiTro(role);
+		admin.setRoles(Arrays.asList(roleService.findRoleByName(role)));
 		nguoiDungService.saveNguoiDung(admin);
 		return "redirect:/admin/admin/list";
 	}

@@ -13,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,8 @@ import com.dienthoai.service.NguoiDungService;
 public class QuenMkController {
 	@Autowired
 	private NguoiDungService nguoiDungService;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@GetMapping("/formTimTenDangNhap")
 	public String timTenDangNhap() {
@@ -44,7 +47,8 @@ public class QuenMkController {
 		try {
 			String email = (String) session.getAttribute("email");
 			NguoiDung nguoiDung = nguoiDungService.getEmail(email);
-			nguoiDung.setMatKhau(matKhau);
+			
+			nguoiDung.setMatKhau(passwordEncoder.encode(matKhau));
 			nguoiDungService.saveNguoiDung(nguoiDung);
 			session.removeAttribute("email");
 

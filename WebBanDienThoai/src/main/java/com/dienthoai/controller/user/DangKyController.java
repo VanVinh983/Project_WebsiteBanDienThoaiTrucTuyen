@@ -1,8 +1,10 @@
 package com.dienthoai.controller.user;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,12 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dienthoai.entity.NguoiDung;
 import com.dienthoai.service.NguoiDungService;
+import com.dienthoai.service.RoleService;
 
 @Controller(value = "dangKyController")
 @RequestMapping(value = "/user")
 public class DangKyController {
 	@Autowired
 	private NguoiDungService nguoiDungService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private RoleService roleService;
 
 	@GetMapping(value = "/formDangKy")
 	public String showFormDangKy(Model model) {
@@ -33,6 +42,7 @@ public class DangKyController {
 		if (result.hasErrors()) {
 			return "user/dangky";
 		} else {
+			String role="ROLE_USER";
 			String tenDangNhap = nguoiDung.getTenDangNhap();
 			NguoiDung tonTai = nguoiDungService.getTenDangNhap(tenDangNhap);
 			if (tonTai != null) {
@@ -41,6 +51,9 @@ public class DangKyController {
 				return "user/dangky";
 			} else {
 				nguoiDung.setNgayTao(new Date(System.currentTimeMillis()));
+				nguoiDung.setVaiTro(role);
+				nguoiDung.setMatKhau(passwordEncoder.encode(nguoiDung.getMatKhau()));
+				nguoiDung.setRoles(Arrays.asList(roleService.findRoleByName(role)));
 				nguoiDungService.saveNguoiDung(nguoiDung);
 				return "user/dangkythanhcong";
 			}

@@ -453,7 +453,6 @@
 <div class="container">
 	<div class="row fs14 border mx-1 mt-4 rounded">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left">
-<<<<<<< HEAD
 			<br>
 			<h3>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h3>
 			<br>			
@@ -487,10 +486,7 @@
 					</div>
 				</form:form>
 			</div>
-			
-=======
 			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
->>>>>>> branch 'master' of https://github.com/VanVinh983/Project_WebsiteBanDienThoaiTrucTuyen.git
 			<div
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 				<c:if test="${binhluans.size()>0}">
@@ -502,9 +498,7 @@
 					<span>Chưa có đánh giá nào</span>
 				</c:if>
 			</div>
-<<<<<<< HEAD
 			<br>
-=======
 			<div
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
 				style="height: auto; overflow: auto;">

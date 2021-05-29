@@ -216,12 +216,10 @@
 							class="material-icons pb-3"> edit_location </span> Kiểm tra có
 							hàng tại nơi bạn không? </a>
 					</div>
-
 				</div>
 				<div class="container border">
 					<div class="row mt-2 ">
 						<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 text-left   ">
-
 						</div>
 						<div class="col-xs-12 col-sm-11 col-md-11 col-lg-11 text-left">
 							<span><i class='fab fa-product-hunt btn-danger mt-2'></i>
@@ -232,7 +230,6 @@
 					</div>
 					<div class="row mt-2 ">
 						<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 text-left   ">
-
 						</div>
 						<div
 							class="col-xs-12 col-sm-11 col-md-11 col-lg-11 text-left border-top">
@@ -255,12 +252,9 @@
 				<div class="container border mt-2">
 					<div class="row mt-2 pb-2">
 						<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 text-left   ">
-
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -301,14 +295,12 @@
 </c:url>
 <div class="container border mt-2">
 	<div class="row">
-
 		<!---------------------------------------------------------------------THÔNG SỐ KỸ THUẬT------------------------------------------------------------------->
 		<div
 			class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left mt-3 fs14">
 			<div class="row">
 				<h4 style="color: rgba(0, 0, 0, 0.616)">Thông số kỹ thuật</h4>
 			</div>
-
 			<div class="row border-top mt-2">
 				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2">
 					<label>Màn hình</label>
@@ -409,7 +401,6 @@
 		</div>
 	</div>
 </div>
-
 <!--------------------------------------------------FOOOTER----------------------------------------------------------------->
 <div class="container">
 	<div class="row fs14">
@@ -441,14 +432,10 @@
 						</div>
 					</a>
 				</div>
-
 			</div>
 		</c:forEach>
-
-
 	</div>
 </div>
-
 <!-- -----------------------------------------------Binh Luan ----------------------------------------------------------- -->
 <div class="container">
 	<div class="row fs14 border mx-1 mt-4 rounded">
@@ -486,7 +473,7 @@
 					</div>
 				</form:form>
 			</div>
-			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
+			
 			<div
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 				<c:if test="${binhluans.size()>0}">
@@ -499,57 +486,15 @@
 				</c:if>
 			</div>
 			<br>
-			<div
-				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
-				style="height: auto; overflow: auto;">
-				<form:form
-					action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}"
-					method="post" modelAttribute="binhluan">
-					<form:textarea path="noiDung" cssClass="col-12"
-						cssStyle="height:200px; border-radius: 10px;"
-						placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...' />
-					<c:if test="${pageContext.request.userPrincipal.name==null}">
-						<form:input path="tenBinhLuan"
-							cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left"
-							placeholder="Tên của bạn...." />
-					</c:if>
-					<c:if test="${pageContext.request.userPrincipal.name!=null}">
-						<form:input path="tenBinhLuan"
-							cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left"
-							placeholder="Tên của bạn...."
-							value="${pageContext.request.userPrincipal.name}" />
-					</c:if>
-					<form:input path="email"
-						cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-right"
-						placeholder="Email của bạn....(không bắt buộc)" />
-					<br>
-					<br>
-					<div class="col-12" style="display: inline;">
-						<button type="submit"
-							class="btn btn-success col-3 mt-2 mb-2 float-right">
-							<b>GỬI</b>
-						</button>
-					</div>
-				</form:form>
-			</div>
 			<c:forEach var="binhluan" items="${binhluans}">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left border-bottom">
 					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left" style="padding-top: 20px;">
 						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="40px">
-				<div
-					class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
-					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left">
-						<img alt="avatar"
-							src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png"
-							width="30px">
 					</div>
 					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-top: 10px;">
 						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span>
 						<br><span> ${binhluan.noiDung}</span><br>
 						<span>${binhluan.ngay}</span>
-					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br />
-						<br /> <span>${binhluan.noiDung}</span> <br /> <span>${binhluan.ngay}</span>
 					</div>
 					<br>
 				</div>
@@ -558,5 +503,3 @@
 	</div>
 </div>
 <br>
-
-

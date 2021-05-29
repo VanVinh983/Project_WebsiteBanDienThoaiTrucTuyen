@@ -166,7 +166,7 @@
 						</a>
 						<c:if test="${pageContext.request.userPrincipal.name==null}">
 							<a
-								href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
+								href="${pageContext.request.contextPath }/dienthoai/thanhtoantructiep/${dt.id}"
 								onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
 									style="width: 100%" type="button" class="btn btn-danger mt-3">
 									<b>MUA NGAY</b>
@@ -174,7 +174,7 @@
 						</c:if>
 						<c:if test="${pageContext.request.userPrincipal.name!=null}">
 							<a
-								href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
+								href="${pageContext.request.contextPath }/dienthoai/thanhtoantructiep/${dt.id}">
 								<button style="width: 100%" type="button" class="btn btn-danger">
 									<b>MUA NGAY</b>
 								</button>

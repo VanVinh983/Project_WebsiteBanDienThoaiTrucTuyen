@@ -6,10 +6,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-			<label for="tenDienThoai" class="col-lg-12 col-form-label">Họ tên </label>
+			<label class="col-lg-12 col-form-label">Tìm kiếm hóa đơn: </label>
 			<div class="col-lg-12">	
-				<input type="text" class="form-control" id="timKiemTendienThoai" placeholder="Nhập họ tên" />
-				<br>
+				<form:form action="search" method="GET"> 
+				<input type="text" class="form-control" name="search" placeholder="Nhập từ khóa cần tìm kiếm..." />
+				<button type="submit" class="btn btn-light" style="margin-top: 8px;">Tìm kiếm</button>
+			</form:form>
+								<br>
 			</div>		
 				<div class="card" style="background: transparent">
 					<div class="card-body">

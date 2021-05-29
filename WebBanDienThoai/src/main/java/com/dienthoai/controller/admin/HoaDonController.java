@@ -26,50 +26,14 @@ public class HoaDonController {
 		theModel.addAttribute("total",orders.size());
 		return "admin/order";
 	}
+	@GetMapping("/order/search")
+	private String order(Model theModel,@RequestParam(value = "page",  defaultValue = "1") int page,@RequestParam(value="search", defaultValue = "") String search) {
+		List<HoaDon> orders=hoaDonService.timKiemHoaDon(search);
+		theModel.addAttribute("order",hoaDonService.getListHoaDonTheoPage(page, orders));
+		theModel.addAttribute("page", page);
+		theModel.addAttribute("total",orders.size());
+		return "admin/order";
+	}
 	
-//	@GetMapping("/user/showFormEdit")
-//	private String showFormEditUser(@RequestParam("userId") int id, Model theModel) {
-//		NguoiDung user=nguoiDungService.getNguoiDung(id);
-//		theModel.addAttribute("user",user);
-//		return "admin/user-form";
-//	}
-//	
-//	@PostMapping("/user/save")
-//	private String editUser(@ModelAttribute("user") NguoiDung user) {
-//		nguoiDungService.saveNguoiDung(user);
-//		return "redirect:/admin/user/list";
-//	}
-//	
-//	@GetMapping("/user/showFormAdd")
-//	private String showFormAddUser(Model theModel) {
-//		NguoiDung user=new NguoiDung();
-//		theModel.addAttribute("user",user);
-//		return "admin/user-form";
-//	}
-//	
-//	@GetMapping("/user/delete")
-//	private String deleteUser(@RequestParam("userId") int id) {
-//		nguoiDungService.deleteNguoiDung(id);
-//		return "redirect:/admin/user/list";
-//	}
-//	
-//	@GetMapping("/admin/list")
-//	private String admin(Model theModel) {
-//		List<NguoiDung> admin=nguoiDungService.getListNguoiDung();
-//		theModel.addAttribute("admin",admin);
-//		return "admin/admin";
-//	}
-//	
-//	@GetMapping("/admin/showFormEdit")
-//	private String showFormEditAdmin(@RequestParam("adminId") int id, Model theModel) {
-//		NguoiDung admin=nguoiDungService.getNguoiDung(id);
-//		theModel.addAttribute("admin",admin);
-//		return "admin/admin-form";
-//	}
-//	
-//	@PostMapping("/admin/save")
-//	private String editAdmin(@ModelAttribute("admin") NguoiDung admin) {
-//		nguoiDungService.saveNguoiDung(admin);
-//		return "redirect:/admin/admin/list";
-//	}
+
 }

@@ -101,6 +101,9 @@
 	<decorator name="admin-order-list" page="admin.jsp">
 		<pattern>/admin/order/list</pattern>
 	</decorator>
+	<decorator name="admin-order-search" page="admin.jsp">
+		<pattern>/admin/order/search</pattern>
+	</decorator>
 
 	<decorator name="admin-cate-list" page="admin.jsp">
 		<pattern>/admin/cate/list</pattern>

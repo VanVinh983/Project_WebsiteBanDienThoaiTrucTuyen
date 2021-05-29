@@ -81,4 +81,13 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		return hoaDons;
 	}
 
+	@Override
+	public List<HoaDon> timKiemHoaDon(String search) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<HoaDon> hoaDons=currentSession.createNativeQuery("select * from HOADON hd join CHITIETHOADON ct on hd.id=ct.id_HoaDon\r\n"
+				+ "where hd.hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%'",HoaDon.class).getResultList();
+		return hoaDons;
+	}
+
 }

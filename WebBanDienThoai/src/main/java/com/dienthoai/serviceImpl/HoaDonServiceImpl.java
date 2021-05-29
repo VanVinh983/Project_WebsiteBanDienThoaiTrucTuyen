@@ -54,4 +54,11 @@ public class HoaDonServiceImpl implements HoaDonService {
 		return hoaDonDAO.getListHoaDonTheoPage(page, list);
 	}
 
+	@Transactional
+	@Override
+	public List<HoaDon> timKiemHoaDon(String search) {
+		// TODO Auto-generated method stub
+		return hoaDonDAO.timKiemHoaDon(search);
+	}
+
 }

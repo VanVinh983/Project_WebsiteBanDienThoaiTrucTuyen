@@ -138,13 +138,13 @@
 							<!-- == null thêm -->
 							<c:if test="${product.id == null}">
 								<div>
-									<input id="detail_id" type="text" name="detail_id" />
+									<input id="detail_id" type="hidden" name="detail_id" />
 								</div>
 							</c:if>
 							<!-- != null sửa -->
 							<c:if test="${product.id != null}">
 								<div>
-									<input id="detail_id" type="text" name="detail_id"
+									<input id="detail_id" type="hidden" name="detail_id"
 										value="${product.thongSo.id}" />
 								</div>
 							</c:if>

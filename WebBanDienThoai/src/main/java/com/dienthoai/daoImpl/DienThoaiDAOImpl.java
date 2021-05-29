@@ -204,4 +204,13 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 		return dts;
 	}
 
+	@Override
+	public List<DienThoai> getListDienThoaiLienQuan(String tenDM) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<DienThoai> list=currentSession.createNativeQuery("select dt.* from DIENTHOAI dt join DANHMUC dm on dt.id_DanhMuc=dm.id\r\n"
+				+ " where dm.tenDanhMuc = '"+tenDM+"'",DienThoai.class).getResultList();
+		return list;
+	}
+
 }

@@ -1,7 +1,7 @@
 package com.dienthoai.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +36,7 @@ public class BinhLuan implements Serializable{
 	@Nationalized
 	private String noiDung;
 	
-	private Date ngay;
+	private LocalDateTime ngay;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_DienThoai")
@@ -74,11 +74,11 @@ public class BinhLuan implements Serializable{
 		this.noiDung = noiDung;
 	}
 
-	public Date getNgay() {
+	public LocalDateTime getNgay() {
 		return ngay;
 	}
 
-	public void setNgay(Date ngay) {
+	public void setNgay(LocalDateTime ngay) {
 		this.ngay = ngay;
 	}
 
@@ -90,7 +90,7 @@ public class BinhLuan implements Serializable{
 		this.dienThoai = dienThoai;
 	}
 
-	public BinhLuan(Integer id, String tenBinhLuan, String email, String noiDung, Date ngay, DienThoai dienThoai) {
+	public BinhLuan(Integer id, String tenBinhLuan, String email, String noiDung, LocalDateTime ngay, DienThoai dienThoai) {
 		super();
 		this.id = id;
 		this.tenBinhLuan = tenBinhLuan;
@@ -105,7 +105,7 @@ public class BinhLuan implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public BinhLuan(Integer id, String tenBinhLuan, String email, String noiDung, Date ngay) {
+	public BinhLuan(Integer id, String tenBinhLuan, String email, String noiDung, LocalDateTime ngay) {
 		super();
 		this.id = id;
 		this.tenBinhLuan = tenBinhLuan;
@@ -114,8 +114,10 @@ public class BinhLuan implements Serializable{
 		this.ngay = ngay;
 	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "BinhLuan [id=" + id + ", tenBinhLuan=" + tenBinhLuan + ", email=" + email + ", noiDung=" + noiDung
+				+ ", ngay=" + ngay + ", dienThoai=" + dienThoai + "]";
+	}
 	
 }

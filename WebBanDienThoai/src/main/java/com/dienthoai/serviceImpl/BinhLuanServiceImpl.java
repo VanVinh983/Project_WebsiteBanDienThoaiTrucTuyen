@@ -11,27 +11,36 @@ import com.dienthoai.entity.BinhLuan;
 import com.dienthoai.service.BinhLuanService;
 
 @Service
-public class BinhLuanServiceImpl implements BinhLuanService{
+public class BinhLuanServiceImpl implements BinhLuanService {
 	@Autowired
 	private BinhLuanDao binhLuanDao;
+
 	@Transactional
 	@Override
 	public List<BinhLuan> getListBinhLuan() {
 		// TODO Auto-generated method stub
 		return binhLuanDao.getListBinhLuan();
 	}
-	
+
 	@Transactional
 	@Override
 	public void themBinhLuan(BinhLuan binhLuan) {
 		// TODO Auto-generated method stub
 		binhLuanDao.themBinhLuan(binhLuan);
 	}
+
 	@Transactional
 	@Override
 	public List<BinhLuan> getListBinhLuanByIdDienThoai(int dtId) {
 		// TODO Auto-generated method stub
 		return binhLuanDao.getListBinhLuanByIdDienThoai(dtId);
 	}
-	
+
+	@Transactional
+	@Override
+	public void xoaBinhLuan(int id) {
+		// TODO Auto-generated method stub
+		binhLuanDao.xoaBinhLuan(id);
+	}
+
 }

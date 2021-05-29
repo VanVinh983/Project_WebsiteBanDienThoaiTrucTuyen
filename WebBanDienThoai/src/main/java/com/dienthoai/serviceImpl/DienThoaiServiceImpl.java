@@ -82,4 +82,10 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 		// TODO Auto-generated method stub
 		return dienThoaiDAO.getListDienThoaiSearch(searchName);
 	}
+	@Transactional
+	@Override
+	public List<DienThoai> getListDienThoaiLienQuan(String tenDM) {
+		// TODO Auto-generated method stub
+		return dienThoaiDAO.getListDienThoaiLienQuan(tenDM);
+	}
 }

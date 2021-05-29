@@ -22,7 +22,7 @@
 	<c:url var="linkbanchay" value="/dienthoai/danhsach">
 		<c:param name="sort" value="banchay" />
 	</c:url>
-		<c:url var="linkhotnhat" value="/dienthoai/danhsach">
+	<c:url var="linkhotnhat" value="/dienthoai/danhsach">
 		<c:param name="sort" value="hotnhat" />
 	</c:url>
 	<main class="mt-3">
@@ -114,12 +114,13 @@
 											<div class="home-product-item-img"
 												style="background-image: url(${resources}/user/images/SanPham/${dt.anhURL}); width: 90%;"></div>
 											<h4 class="home-product-item__name">${dt.tenDT}
-												${dt.thongSo.boNho}</h4> <c:if test="${dt.giamGia>0}">
+												(${dt.thongSo.boNho})</h4> <c:if test="${dt.giamGia>0}">
 												<div class="home-product-item__price">
 													<span class="home-product-item__price-old"><fmt:formatNumber
 															type="number" pattern="#,###,###.##" value="${dt.giaDT}" />
-														đ</span> <span class="home-product-item__price-current"><fmt:formatNumber
-															type="number" pattern="#,###,###.##"
+														đ</span> <span class="home-product-item__price-current"
+														style="color: red;"><fmt:formatNumber type="number"
+															pattern="#,###,###.##"
 															value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </span>
 												</div>
 											</c:if> <c:if test="${dt.giamGia<=0}">
@@ -130,7 +131,7 @@
 												</div>
 											</c:if>
 											<div class="home-product-item__origin">
-												<span class="home-product-item__brand"> Whoo </span> <span
+												${dt.thongSo.heDieuHanh } <span
 													class="home-product-item__name-o">
 													${dt.thuongHieu.xuatXu } </span>
 											</div>

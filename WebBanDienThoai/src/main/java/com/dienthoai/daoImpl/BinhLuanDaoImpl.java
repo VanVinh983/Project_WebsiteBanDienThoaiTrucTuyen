@@ -41,5 +41,12 @@ public class BinhLuanDaoImpl implements BinhLuanDao{
 		List<BinhLuan> list = session.createNativeQuery(sql, BinhLuan.class).getResultList();
 		return list;
 	}
+	@Override
+	public void xoaBinhLuan(int id) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		BinhLuan binhLuan=session.get(BinhLuan.class, id);
+		session.delete(binhLuan);
+	}
 
 }

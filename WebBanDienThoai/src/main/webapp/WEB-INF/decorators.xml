@@ -66,6 +66,10 @@
 	<decorator name="admin-list-brand" page="admin.jsp">
 		<pattern>/admin/brand/list</pattern>
 	</decorator>
+	
+	<decorator name="admin-list-comment" page="admin.jsp">
+		<pattern>/admin/comment/list</pattern>
+	</decorator>
 
 	<decorator name="admin-showformadd-brand" page="admin.jsp">
 		<pattern>/admin/brand/showFormAdd</pattern>

@@ -35,6 +35,9 @@
 		<li><a href="${pageContext.request.contextPath}/admin/brand/list">
 				<i class="zmdi zmdi-store"></i> <span>Thương hiệu</span>
 		</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/comment/list">
+				<i class="zmdi zmdi-calendar-check"></i> <span>Bình luận</span>
+		</a></li>
 
 	</ul>
 </div>

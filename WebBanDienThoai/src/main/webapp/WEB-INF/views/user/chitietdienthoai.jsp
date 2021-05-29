@@ -3,7 +3,7 @@
 <%@ include file="/common/taglib.jsp"%>
 <%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
 <c:url value="/resources" var="resources" />
-<div class="container-fluid ">
+<div class="container">
 	<div class="row ">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-1 text-left ">
 			<a href="${pageContext.request.contextPath}/dienthoai/danhsach"
@@ -26,11 +26,11 @@
 	</div>
 </div>
 <!--------------------------------------------------CHI TIẾT SẢN PHẨM---------------------------------------------------------------->
-<div class="container-fluid mt-1 border-bottom mb-2 pb-2">
-	<div class="container-fluid ">
+<div class="container mt-1 border-bottom mb-2 pb-2">
+	<div class="container">
 		<div class="row mt-3 " id="danhgiaiPhone ">
 			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left pt-2 ">
-				<h4 id="promax ">${dt.tenDT}${dt.thongSo.boNho}</h4>
+				<h3 id="promax ">${dt.tenDT}${dt.thongSo.boNho}</h3>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-1 text-right ">
 				<button class="btn btn-primary btn-lg">
@@ -44,8 +44,8 @@
 	</div>
 </div>
 
-<div class="container-fluid mt-3">
-	<div class="container-fluid ">
+<div class="containermt-3">
+	<div class="container">
 		<div class="row ">
 			<!------------------------------------------------------------------------------------------------------------------------------------------------>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 text-left pt-2 ">
@@ -335,7 +335,7 @@
 					<label><a href="${camera}" style="text-decoration: none;">${dt.thongSo.camera}</a></label>
 				</div>
 			</div>
-			<div  class="chitietcauhinh">
+			<div class="chitietcauhinh">
 				<div class="row border-top mt-2">
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left mt-2 ">
 						<label>RAM</label>
@@ -409,126 +409,110 @@
 		</div>
 	</div>
 </div>
+
+<!--------------------------------------------------FOOOTER----------------------------------------------------------------->
+<div class="container">
+	<div class="row fs14">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2"
+			style="background-color: rgba(255, 255, 255, 0.5);">
+			<br>
+			<h3 style="">SẢN PHẨM LIÊN QUAN</h3>
+			<br>
+		</div>
+		<c:forEach var="dt" items="${dts}">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
+				<div class="card text-center" style="">
+					<a
+						href="${pageContext.request.contextPath}/dienthoai/laychitiet/${dt.id}"
+						style="text-decoration: none; color: black;"> <img
+						class="card-img-top"
+						src="${resources}/user/images/SanPham/${dt.anhURL}"
+						alt="Card image" style="width: 50%">
+						<div class="card-body">
+							<h4 class="card-title">${dt.tenDT}(${dt.thongSo.boNho})</h4>
+							<p class="card-text">
+								<span style="color: red;"> <b><fmt:formatNumber
+											type="number" pattern="#,###,###.##"
+											value="${(dt.giaDT*(100-dt.giamGia))/100}" /> đ </span></b> &nbsp;<strike><i><fmt:formatNumber
+											type="number" pattern="#,###,###.##" value="${dt.giaDT}" />
+										đ</i></strike> <br> <span>Tặng 2 suất mua tai nghe cực xịn
+									(không áp dụng thêm khuyến mãi khác) </span>
+							</p>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</c:forEach>
+
+
+	</div>
+</div>
+
 <!-- -----------------------------------------------Binh Luan ----------------------------------------------------------- -->
-<div class="container-fluid">
+<div class="container">
 	<div class="row fs14 border mx-1 mt-4 rounded">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left">
-			<h4>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h4>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
+			<br>
+			<h3>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h3>
+			<br>			
+			<div
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
+				style="height: auto; overflow: auto;">
+				<form:form
+					action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}"
+					method="post" modelAttribute="binhluan">
+					<div class="form-group">
+						<label>Tên</label>
+						<form:input path="tenBinhLuan" cssClass="form-control"
+							placeholder="Tên của bạn..." />
+					</div>
+					<div class="form-group">
+						<label>Email</label>
+						<form:input path="email" cssClass="form-control"
+							placeholder="Email của bạn..." />
+					</div>
+					<div class="form-group">
+						<label>Đánh giá của bạn</label>
+						<form:textarea path="noiDung" cssClass="form-control" rows="5"
+							placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...' />
+					</div>
+					<br>
+					<div class="col-12" style="display: inline;">
+						<button type="submit"
+							class="btn btn-success col-1 mt-1 mb-1 float-right">
+							<b>GỬI</b>
+						</button>						
+					</div>
+				</form:form>
+			</div>
+			
+			<div
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 				<c:if test="${binhluans.size()>0}">
-					<span>Có tất cả ${binhluans.size()} đánh giá</span>
+				<br>
+					<h4>Có tất cả ${binhluans.size()} đánh giá</h4>
+					<br>
 				</c:if>
 				<c:if test="${binhluans.size()<=0}">
 					<span>Chưa có đánh giá nào</span>
 				</c:if>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom" style="height:auto; overflow: auto;">
-				<form:form action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}" method="post" modelAttribute="binhluan">
-					<form:textarea path="noiDung" cssClass="col-12" cssStyle="height:200px; border-radius: 10px;"  placeholder='Mời bạn bình luận về điện thoại ${dt.tenDT}...'/>
-					<form:input path="tenBinhLuan" cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-left" placeholder="Tên của bạn...."/>
-					<form:input path="email" cssClass="col-lg-6 col-md-6 col-sm-12 col-xs-12 float-right" placeholder="Email của bạn....(không bắt buộc)"/>
-					 <br> <br>
-					<div class="col-12" style="display: inline;">
-						<button type="submit" class="btn btn-success col-3 mt-2 mb-2 float-right"><b>GỬI</b></button>
-					</div>
-				</form:form>
-			</div>
+			<br>
 			<c:forEach var="binhluan" items="${binhluans}">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
-					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left">
-						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="30px">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left border-bottom">
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left" style="padding-top: 20px;">
+						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="40px">
 					</div>
-					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br/> <br/>
-						<span>${binhluan.noiDung}</span> <br/>
+					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-top: 10px;">
+						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span>
+						<br><span> ${binhluan.noiDung}</span><br>
 						<span>${binhluan.ngay}</span>
 					</div>
+					<br>
 				</div>
 			</c:forEach>
-			
-		</div>
-		
-	</div>
-</div>
-
-<!--------------------------------------------------FOOOTER----------------------------------------------------------------->
-<div class="container-fluid">
-	<div class="row fs14">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2"
-			style="background-color: rgba(255, 255, 255, 0.5);">
-			<h4 for=" " style="">SẢN PHẨM LIÊN QUAN</h4>
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone 11 Pro 64GB</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>30.490.000₫</b> &nbsp;<strike><i>33.990.000₫</i></strike></span><br>
-							<span>Tặng 2 suất mua tai nghe cực xịn (không áp dụng thêm
-								khuyến mãi khác) </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone Xs Max 256GB</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>8.810.000₫</b> &nbsp;<strike><i>9.500.000₫</i></strike></span><br>
-							<span>Tặng 2 suất mua Đồng hồ thời trang giảm 40% (không
-								áp dụng thêm khuyến mãi khác) </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone 11 64GB New</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>20.990.000₫</b> &nbsp;<strike><i>21.990.000₫</i></strike></span><br>
-							<span>Giảm ngay 16% (5.6 triệu) (áp dụng đặt và nhận hàng
-								từ 11 - 14/7) (đã trừ vào giá) * </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
-			<div class="card text-center" style="">
-				<a href="chitetsanpham.html"
-					style="text-decoration: none; color: black;"> <img
-					class="card-img-top" src="${resources}/user/images/11pr.png"
-					alt="Card image" style="width: 50%">
-					<div class="card-body">
-						<h4 class="card-title">iPhone SE 128GB (2020)</h4>
-						<p class="card-text">
-							<span style="color: red;"> <b>8.810.000₫</b> &nbsp;<strike><i>9.500.000₫</i></strike></span><br>
-							<span>Giảm ngay 500.000đ (đã trừ vào giá) Tặng 2 suất
-								mua Đồng hồ thời trang giảm 40% </span>
-						</p>
-					</div>
-				</a>
-			</div>
-
 		</div>
 	</div>
 </div>
+<br>

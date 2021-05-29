@@ -56,6 +56,8 @@ public class DienThoaiController {
 	@GetMapping("/chitietdienthoai")
 	public String chitietdienthoai(Model model, HttpSession session) {
 		DienThoai dt = (DienThoai) session.getAttribute("dienthoai");
+		List<DienThoai> dts=dienThoaiService.getListDienThoaiLienQuan(dt.getDanhMuc().getTenDanhMuc());
+		model.addAttribute("dts", dts);
 		model.addAttribute("dt", dt);
 		model.addAttribute("binhluans", binhLuanService.getListBinhLuanByIdDienThoai(dt.getId()));
 		model.addAttribute("binhluan", new BinhLuan());
@@ -86,7 +88,7 @@ public class DienThoaiController {
 			DienThoai dt = dienThoaiService.getDienThoai(idDT);
 			binhLuan.setDienThoai(dt);
 			binhLuan.setId(null);
-			binhLuan.setNgay(java.sql.Timestamp.valueOf(LocalDateTime.now()));
+			binhLuan.setNgay(LocalDateTime.now());
 			binhLuanService.themBinhLuan(binhLuan);
 		}
 		return "redirect:/dienthoai/chitietdienthoai";

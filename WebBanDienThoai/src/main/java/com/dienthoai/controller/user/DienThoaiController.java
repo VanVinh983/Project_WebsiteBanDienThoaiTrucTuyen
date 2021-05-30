@@ -44,6 +44,7 @@ public class DienThoaiController {
 		}else {
 			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc");
 		}
+		theModel.addAttribute("sort",sort);
 		theModel.addAttribute("page", page);
 		theModel.addAttribute("dienthoais", dienThoaiService.getListDienThoaiTheoPage(page,12, listDienThoai));
 		theModel.addAttribute("total", listDienThoai.size());	
@@ -83,11 +84,12 @@ public class DienThoaiController {
 		return "redirect:/dienthoai/chitietdienthoai";
 	}
 	@GetMapping("/search")
-	public String searchDienThoai(Model model, @RequestParam(required = false) String searchName) {
+	public String searchDienThoai(Model model, @RequestParam(required = false) String searchName,  @RequestParam(value = "page", defaultValue = "1") int page) {
 		List<DienThoai> dts = dienThoaiService.getListDienThoaiSearch(searchName);
 		if (dts.size()>0) {
-			System.out.println(dts);
-			model.addAttribute("dienthoais", dts);
+			model.addAttribute("page", page);
+			model.addAttribute("dienthoais", dienThoaiService.getListDienThoaiTheoPage(page,8, dts));
+			model.addAttribute("total", dts.size());
 			model.addAttribute("ths", dienThoaiService.getListThuongHieu());
 			return "user/danhsach-dienthoai2";
 		}else {

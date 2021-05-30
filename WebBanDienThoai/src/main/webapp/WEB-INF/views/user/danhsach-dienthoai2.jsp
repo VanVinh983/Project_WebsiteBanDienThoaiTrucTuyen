@@ -3,18 +3,23 @@
 <%@ include file="/common/taglib.jsp"%>
 <c:url value="/resources" var="resources" />
 <c:url var="linkgia_asc" value="/dienthoai/danhsach">
+	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="gia_asc" />
 </c:url>
 <c:url var="linkgia_desc" value="/dienthoai/danhsach">
+<c:param name="page" value="${page}" />
 	<c:param name="sort" value="gia_desc" />
 </c:url>
 <c:url var="linkgiamgia" value="/dienthoai/danhsach">
+<c:param name="page" value="${page}" />
 	<c:param name="sort" value="giamgia" />
 </c:url>
 <c:url var="linkbanchay" value="/dienthoai/danhsach">
+<c:param name="page" value="${page}" />
 	<c:param name="sort" value="banchay" />
 </c:url>
 <c:url var="linkhotnhat" value="/dienthoai/danhsach">
+	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="hotnhat" />
 </c:url>
 <div class="mt-3">
@@ -148,7 +153,7 @@
 									id="formSubmit" method="get">
 									<ul id="pagination" class="pagination"></ul>
 									<input type="hidden" value="" id="page" name="page" />
-									<input type="hidden" value="" id="sort" name="sort" />
+									<input type="hidden" value="${sort}"  name="sort" />
 								</form>
 							</div>
 					</div>
@@ -167,8 +172,7 @@ $('#pagination').pagination({
     length: 12,
     size: 1, 
     click: function(options,$target) {
-    	$("#page").val(options.current);
-    	$("#sort").val('${param.sort}')
+    	$target.next("#page").val(options.current);
     	$('#formSubmit').submit();
     }
 });

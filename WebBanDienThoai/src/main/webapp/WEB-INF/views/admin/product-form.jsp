@@ -151,7 +151,7 @@
 							<c:if test="${product.id == null}">
 								<div class="form-group">
 									<label>Hình ảnh</label><br> <input name="linkImage"
-										type="file" id="linkImage" /> <span id="result"></span>
+										type="file" id="linkImage" multiple="multiple"/> <span id="result"></span>
 								</div>
 							</c:if>
 							<c:if test="${product.id != null}">

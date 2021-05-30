@@ -431,7 +431,7 @@
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
 				style="height: auto; overflow: auto;">
 				<form:form
-					action="${pageContext.request.contextPath}/dienthoai/savebinhluan/${dt.id}"
+					action="${pageContext.request.contextPath}/dienthoai/savebinhluan"
 					method="post" modelAttribute="binhluan">
 					<div class="form-group">
 						<label>Tên</label>

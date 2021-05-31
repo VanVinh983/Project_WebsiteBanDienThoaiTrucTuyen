@@ -70,7 +70,7 @@
 						<input type="hidden" value="${page}" name="page"/>
 						<input type="hidden" value="${sort}" name="sort"/>
 						<input type="text" class="header__search-input" name="search"
-						placeholder="Tìm sản phẩm, thương hiệu và tên shop">
+						placeholder="Tìm sản phẩm, thương hiệu và tên shop" value="${param.search }">
 					
 				</div>
 

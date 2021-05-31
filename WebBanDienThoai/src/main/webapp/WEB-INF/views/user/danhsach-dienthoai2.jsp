@@ -38,10 +38,19 @@
 						</h3>
 						<ul class="category-list">
 							<c:forEach var="dm" items="${dms}">
-									<li class="category-item"><a
-										href="${pageContext.request.contextPath}/dienthoai/danhmuc/${dm.id}"
-										class="category-item__link text-decoration-none">${dm.tenDanhMuc}</a>
-									</li>
+							<form:form action="${pageContext.request.contextPath}/dienthoai/danhsach" method="get">
+									<input type="hidden" value="${page}" name="page"/>
+									<input type="hidden" value="${sort}" name="sort"/>
+									<input type="hidden" value="${dm.tenDanhMuc}" name="search"/>
+
+								<li class="category-item">
+									<div class="list-group">
+										<button type="submit" class="list-group-item list-group-item-action fs16" style="width: 200; border-bottom: 1px solid #c3c3c3;">${dm.tenDanhMuc}</button>							
+									</div>
+								</li>
+							
+							</form:form>
+									
 							</c:forEach>
 						</ul>
 					</nav>

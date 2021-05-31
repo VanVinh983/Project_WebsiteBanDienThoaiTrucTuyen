@@ -54,7 +54,11 @@ public class DienThoaiController {
 	
 	@GetMapping("/danhmuc")
 	public String danhmuc(Model theModel, HttpSession session) {
-		theModel.addAttribute("dts", session.getAttribute("dts"));
+		List<DienThoai> dts = (List<DienThoai>) session.getAttribute("dts");
+		if (dts == null) {
+			dts = dienThoaiService.getListDienThoaiLienQuan(danhMucService.getListDanhMuc().get(0).getTenDanhMuc());
+		}
+		theModel.addAttribute("dts", dts);
 		theModel.addAttribute("iddanhmuc", session.getAttribute("iddanhmuc"));
 		theModel.addAttribute("dms", danhMucService.getListDanhMuc());
 		return "user/danhmuc";
@@ -97,15 +101,16 @@ public class DienThoaiController {
 			return "user/notfounddienthoai";
 		}
 	}
-	@RequestMapping(value = "/savebinhluan/{id}", method = RequestMethod.POST)
-	public String themBinhLuan(@ModelAttribute("binhluan") BinhLuan binhLuan, @PathVariable("id") int idDT) {
-		if (!binhLuan.getNoiDung().equals("")) {
-			DienThoai dt = dienThoaiService.getDienThoai(idDT);
+	@RequestMapping(value = "/savebinhluan", method = RequestMethod.POST)
+	public String themBinhLuan(@ModelAttribute("binhluan") BinhLuan binhLuan,HttpSession session) {
+		if (!binhLuan.getNoiDung().equals("")||!binhLuan.getTenBinhLuan().equals("")) {
+			DienThoai dt =(DienThoai) session.getAttribute("dienthoai");
 			binhLuan.setDienThoai(dt);
 			binhLuan.setId(null);
 			binhLuan.setNgay(LocalDateTime.now());
 			binhLuanService.themBinhLuan(binhLuan);
 		}
+		
 		return "redirect:/dienthoai/chitietdienthoai";
 	}
 }

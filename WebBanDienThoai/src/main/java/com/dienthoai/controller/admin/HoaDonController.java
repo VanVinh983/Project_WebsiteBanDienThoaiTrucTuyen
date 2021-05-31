@@ -1,5 +1,6 @@
 package com.dienthoai.controller.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,16 @@ public class HoaDonController {
 	private HoaDonService hoaDonService;
 
 	@GetMapping("/order/list")
-	private String order(Model theModel,@RequestParam(value = "page",  defaultValue = "1") int page) {
-		List<HoaDon> orders=hoaDonService.getListHoaDon();
+	private String order(Model theModel,@RequestParam(required = false) String sort,@RequestParam(value = "page",  defaultValue = "1") int page,
+			@RequestParam(value="search", defaultValue = "") String search) {
+		List<HoaDon> orders=new ArrayList<HoaDon>();
+		if(sort!=null) {
+			orders=hoaDonService.xapXepTheo(sort,search);
+		}else {
+			orders=hoaDonService.xapXepTheo("desc",search);
+		}
+		theModel.addAttribute("search",search);
+		theModel.addAttribute("sort",sort);
 		theModel.addAttribute("order",hoaDonService.getListHoaDonTheoPage(page, orders));
 		theModel.addAttribute("page", page);
 		theModel.addAttribute("total",orders.size());

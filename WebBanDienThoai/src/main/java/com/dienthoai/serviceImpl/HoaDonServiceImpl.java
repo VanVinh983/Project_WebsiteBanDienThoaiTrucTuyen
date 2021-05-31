@@ -60,5 +60,14 @@ public class HoaDonServiceImpl implements HoaDonService {
 		// TODO Auto-generated method stub
 		return hoaDonDAO.timKiemHoaDon(search);
 	}
+	
+	@Transactional
+	@Override
+	public List<HoaDon> xapXepTheo(String name, String search) {
+		// TODO Auto-generated method stub
+		return hoaDonDAO.xapXepTheo(name, search);
+	}
+
+	
 
 }

@@ -73,20 +73,16 @@
 								<fmt:formatNumber type="number" pattern="#,###,###.##₫"
 									value="${ds.dienThoai.giaDT}" />
 							</div>
-							<div style="text-align: center; margin-top: 10px">
-							
-							
+							<div style="text-align: center; margin-top: 10px">												
 								<c:if test="${ds.soLuong >= 2}">
-									<a
-										href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}"><button
-											class="btn btn-warning fs16">
-											<b>-</b>
-										</button></a>
+									<a href="${pageContext.request.contextPath }/user/giamsoluong/${ds.dienThoai.id}">
+										<button class="btn btn-warning fs16"><b>-</b></button>
+									</a>
 								</c:if>
 								<c:if test="${ds.soLuong == 1}">
-									<button class="btn btn-warning fs16" style="opacity: 0.5">
-										<b>-</b>
-									</button>
+									<a href="${pageContext.request.contextPath}/user/xoadienthoaigiohang/${ds.dienThoai.id}">
+										<button class="btn btn-warning fs16"><b>-</b></button>
+									</a>
 								</c:if>	
 								&nbsp; 
 									<span class="fs14">${ds.soLuong} </span>
@@ -95,18 +91,15 @@
 									<a onclick="return confirm('Không đủ số lượng trong kho!');">
 										<button	class="btn btn-warning fs16" style="opacity: 0.5">
 											<b>+</b>
-										</button></a>
+										</button>
+									</a>
 								</c:if>
 								<c:if test="${ds.soLuong < ds.dienThoai.soLuongTon}">
 								<a href="${pageContext.request.contextPath }/user/tangsoluong/${ds.dienThoai.id}"><button
 											class="btn btn-warning fs16">
 											<b>+</b>
 										</button></a>
-								</c:if>
-								
-								
-								
-								
+								</c:if>																														
 							</div>
 						</td>
 					</tr>

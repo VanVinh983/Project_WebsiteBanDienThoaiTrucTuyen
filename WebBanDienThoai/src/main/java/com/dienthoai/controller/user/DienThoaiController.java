@@ -37,13 +37,15 @@ public class DienThoaiController {
 	private DanhMucService danhMucService;
 
 	@GetMapping("/danhsach")
-	public String listCustomers(Model theModel, @RequestParam(required = false) String sort,  @RequestParam(value = "page", defaultValue = "1") int page) {
+	public String listCustomers(Model theModel, @RequestParam(required = false) String sort,  @RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value="search", defaultValue = "") String search) {
 		List<DienThoai> listDienThoai = new ArrayList<DienThoai>();
 		if (sort!=null) {
-			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort);
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort,search);
 		}else {
-			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc");
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc",search);
 		}
+		theModel.addAttribute("search",search);
 		theModel.addAttribute("sort",sort);
 		theModel.addAttribute("page", page);
 		theModel.addAttribute("dienthoais", dienThoaiService.getListDienThoaiTheoPage(page,12, listDienThoai));

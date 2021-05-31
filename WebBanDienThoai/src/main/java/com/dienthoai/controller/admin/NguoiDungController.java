@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,11 +26,26 @@ public class NguoiDungController {
 	@Autowired
 	private RoleService roleService;
 
-
+	@GetMapping("/user/search")
+	private String timKiemNguoiDung(Model theModel,@RequestParam(value="search", defaultValue = "") String search) {
+		 if (search != null && search.trim().length() > 0) {
+			 List<NguoiDung> datHang=nguoiDungService.timKiemNguoiDungDatHang(search);
+				List<NguoiDung> chuaDat=nguoiDungService.timKiemNguoiDungChuaDatHang(search);
+				theModel.addAttribute("datHang",datHang);
+				theModel.addAttribute("chuaDatHang",chuaDat);
+				return "admin/user";
+		}else {			
+			return "redirect:/admin/user/list";
+		}
+		
+	}
+	
 	@GetMapping("/user/list")
-	private String User(Model theModel) {
-		List<NguoiDung> users = nguoiDungService.getListNguoiDung();
-		theModel.addAttribute("users", users);
+	private String User(Model theModel,@RequestParam(value="search", defaultValue = "") String search) {
+		List<NguoiDung> chuaDatHang = nguoiDungService.getChuaDatHang();
+		List<NguoiDung> datHang = nguoiDungService.getDatHang();
+		theModel.addAttribute("chuaDatHang", chuaDatHang);
+		theModel.addAttribute("datHang", datHang);
 		return "admin/user";
 	}
 
@@ -90,4 +104,6 @@ public class NguoiDungController {
 		nguoiDungService.saveNguoiDung(admin);
 		return "redirect:/admin/admin/list";
 	}
+	
+	
 }

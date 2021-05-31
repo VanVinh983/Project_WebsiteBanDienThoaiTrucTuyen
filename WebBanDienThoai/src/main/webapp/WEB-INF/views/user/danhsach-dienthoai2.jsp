@@ -5,22 +5,27 @@
 <c:url var="linkgia_asc" value="/dienthoai/danhsach">
 	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="gia_asc" />
+	<c:param name="search" value="${search}" />
 </c:url>
 <c:url var="linkgia_desc" value="/dienthoai/danhsach">
-<c:param name="page" value="${page}" />
+	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="gia_desc" />
+	<c:param name="search" value="${search}" />
 </c:url>
 <c:url var="linkgiamgia" value="/dienthoai/danhsach">
-<c:param name="page" value="${page}" />
+	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="giamgia" />
+	<c:param name="search" value="${search}" />
 </c:url>
 <c:url var="linkbanchay" value="/dienthoai/danhsach">
-<c:param name="page" value="${page}" />
+	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="banchay" />
+	<c:param name="search" value="${search}" />
 </c:url>
 <c:url var="linkhotnhat" value="/dienthoai/danhsach">
 	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="hotnhat" />
+	<c:param name="search" value="${search}" />
 </c:url>
 <div class="mt-3">
 	<div class="app-body">
@@ -74,16 +79,10 @@
 											class="home-filter-btn btn fs14">Bán chạy</button></a>
 								</c:if>
 								<div class="select-input">
-									<span class="select-input-price"> <c:if
-											test="${param.sort =='gia_asc'}">
-                                                	Giá: Thấp đến cao
-                                                </c:if> <c:if
-											test="${param.sort =='gia_desc'}">
-                                                	Giá: Cao đến thấp
-                                                </c:if> <c:if
-											test="${!param.sort}">
-                                                	Giá
-                                                </c:if>
+									<span class="select-input-price"> 
+										<c:if test="${param.sort =='gia_asc'}"> Giá: Thấp đến cao</c:if> 
+										<c:if test="${param.sort =='gia_desc'}"> Giá: Cao đến thấp</c:if> 
+										<c:if test="${!param.sort}"> Giá </c:if>
 									</span> <i class="select-input-icon fas fa-angle-down"></i>
 									<ul class="select-input-list">
 										<li class="select-input-item"><a href="${linkgia_asc}"
@@ -93,7 +92,6 @@
 										<li class="select-input-item"><a href="${linkgia_desc}"
 											class="select-input-link">Giá: Cao đến thấp <i
 												class="select-input-item-icon fas fa-arrow-down"></i></a></li>
-
 									</ul>
 								</div>
 
@@ -154,6 +152,7 @@
 									<ul id="pagination" class="pagination"></ul>
 									<input type="hidden" value="" id="page" name="page" />
 									<input type="hidden" value="${sort}"  name="sort" />
+									<input type="hidden" value="${search}"  name="search" />
 								</form>
 							</div>
 					</div>

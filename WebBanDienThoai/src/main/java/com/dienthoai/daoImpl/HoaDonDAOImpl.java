@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.HoaDonDAO;
-import com.dienthoai.entity.DienThoai;
 import com.dienthoai.entity.HoaDon;
 import com.dienthoai.entity.PhuongThucThanhToan;
 
@@ -88,6 +87,30 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		List<HoaDon> hoaDons=currentSession.createNativeQuery("select * from HOADON hd join CHITIETHOADON ct on hd.id=ct.id_HoaDon\r\n"
 				+ "where hd.hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%'",HoaDon.class).getResultList();
 		return hoaDons;
+	}
+
+	@Override
+	public List<HoaDon> xapXepTheo(String name,String search) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();		
+		String sql=null;
+		List<HoaDon> hoadons=new ArrayList<HoaDon>();
+		switch (name) {
+		case "ngay_desc":
+			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%' order by ngayLap desc";
+			hoadons=currentSession.createNativeQuery(sql,HoaDon.class).getResultList();
+			break;
+		case "ngay_asc":
+			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%' order by ngayLap asc";
+			hoadons=currentSession.createNativeQuery(sql,HoaDon.class).getResultList();
+			break;
+		default:
+			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%'";
+			hoadons=currentSession.createNativeQuery(sql,HoaDon.class).getResultList();
+			break;
+		}
+		
+		return hoadons;
 	}
 
 }

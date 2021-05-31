@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dienthoai.dao.NguoiDungDAO;
-import com.dienthoai.dao.RoleDao;
 import com.dienthoai.entity.NguoiDung;
 import com.dienthoai.entity.Role;
 import com.dienthoai.service.NguoiDungService;
@@ -22,11 +21,6 @@ import com.dienthoai.service.NguoiDungService;
 public class NguoiDungServiceImpl implements NguoiDungService {
 	@Autowired
 	private NguoiDungDAO nguoiDungDAO;
-	
-	@Autowired
-	private RoleDao roleDao;
-	
-	
 
 	@Override
 	@Transactional
@@ -74,10 +68,11 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		if (nguoiDung == null) {
 			throw new UsernameNotFoundException("Tên đăng nhập hoặc mật khẩu không hợp lệ.");
 		}
-		return new org.springframework.security.core.userdetails.User(nguoiDung.getTenDangNhap(), nguoiDung.getMatKhau(),
-				mapRolesToAuthorities(nguoiDung.getRoles()));
-		
+		return new org.springframework.security.core.userdetails.User(nguoiDung.getTenDangNhap(),
+				nguoiDung.getMatKhau(), mapRolesToAuthorities(nguoiDung.getRoles()));
+
 	}
+
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
@@ -88,5 +83,33 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		// TODO Auto-generated method stub
 		return nguoiDungDAO.getEmail(email);
 	}
-	
+
+	@Transactional
+	@Override
+	public List<NguoiDung> getDatHang() {
+		// TODO Auto-generated method stub
+		return nguoiDungDAO.getDatHang();
+	}
+
+	@Transactional
+	@Override
+	public List<NguoiDung> getChuaDatHang() {
+		// TODO Auto-generated method stub
+		return nguoiDungDAO.getChuaDatHang();
+	}
+
+	@Transactional
+	@Override
+	public List<NguoiDung> timKiemNguoiDungChuaDatHang(String search) {
+		// TODO Auto-generated method stub
+		return nguoiDungDAO.timKiemNguoiDungChuaDatHang(search);
+	}
+
+	@Transactional
+	@Override
+	public List<NguoiDung> timKiemNguoiDungDatHang(String search) {
+		// TODO Auto-generated method stub
+		return nguoiDungDAO.timKiemNguoiDungDatHang(search);
+	}
+
 }

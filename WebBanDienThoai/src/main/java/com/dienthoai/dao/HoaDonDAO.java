@@ -13,4 +13,5 @@ public interface HoaDonDAO {
 	public PhuongThucThanhToan getPhuongThuc(int id);
 	public List<HoaDon> getListHoaDonTheoPage(int page, List<HoaDon> list);
 	public List<HoaDon> timKiemHoaDon(String search);
+	public List<HoaDon> xapXepTheo(String name,String search);
 }

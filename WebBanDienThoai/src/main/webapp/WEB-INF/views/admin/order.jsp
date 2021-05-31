@@ -2,18 +2,45 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 <c:url value="/resources" var="resources"></c:url>
+<c:url var="ngay_desc" value="/admin/order/list">
+	<c:param name="page" value="${page}" />
+	<c:param name="sort" value="ngay_desc" />
+	<c:param name="search" value="${search}" />
+</c:url>
+<c:url var="ngay_asc" value="/admin/order/list">
+	<c:param name="page" value="${page}" />
+	<c:param name="sort" value="ngay_asc" />
+	<c:param name="search" value="${search}" />
+</c:url>
+
 <div class="content-wrapper">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-			<label class="col-lg-12 col-form-label">Tìm kiếm hóa đơn: </label>
-			<div class="col-lg-12">	
-				<form:form action="search" method="GET"> 
-				<input type="text" class="form-control" name="search" placeholder="Nhập từ khóa cần tìm kiếm..." />
-				<button type="submit" class="btn btn-light" style="margin-top: 8px;">Tìm kiếm</button>
-			</form:form>
-								<br>
-			</div>		
+			<div class="row">
+				<label class="col-lg-8 col-form-label">Tìm kiếm hóa đơn: </label>
+				<label class="col-lg-4 col-form-label">Xắp xếp theo: </label>
+			</div>
+			<div class="row">
+				<div class="col-lg-8">	
+				<form:form action="list" method="GET"> 						
+					<div class="input-group">						
+						<input type="hidden" value="${page}" name="page"/>
+						<input type="hidden" value="${sort}" name="sort"/>
+						<input type="text" class="form-control" name="search" placeholder="Nhập từ khóa cần tìm kiếm..." />
+						<button class="btn btn-light" type="submit"><i class="zmdi zmdi-search zmdi-hc-lg"></i></button>									
+					</div>
+				</form:form>
+				</div>	
+				<div class="col-lg-4">
+					<select class="form-control valid" onchange="location = this.options[this.selectedIndex].value;">
+						<option>Ngày</i></option>
+						<option value="${ngay_asc}">Ngày: Từ thấp đến cao</option>
+						<option value="${ngay_desc}">Ngày: Từ cao đến thấp</option>
+					</select>
+				</div>	
+			</div>
+			<br>
 				<div class="card" style="background: transparent">
 					<div class="card-body">
 						<h5 class="card-title">Danh sách đơn hàng</h5>
@@ -22,10 +49,10 @@
 								<thead>
 									<tr class="text-white">
 										<th scope="col">#</th>
-										<th scope="col">Tài khoản</th>
 										<th scope="col">Họ Tên</th>
+										<th scope="col">SĐT</th>										
 										<th scope="col">Phương thức thanh toán</th>
-										<th scope="col">Trạng thái</th>
+										<th scope="col">Ngày lập</th>
 										<th scope="col">Xem chi tiết</th>
 
 									</tr>
@@ -33,9 +60,9 @@
 								<tbody class="text-white">
 									<c:forEach items="${order}" var="order">
 										<tr>
-											<td scope="row">${order.id}</td>
-											<td>${order.nguoiDung.tenDangNhap}</td>
+											<td scope="row">${order.id}</td>											
 											<td>${order.hoTenKhachHang}</td>
+											<td>${order.soDienThoaiGiaoHang}</td>
 											<td><c:choose>
 													<c:when
 														test="${order.thanhToan.phuongThuc == 'COD'}">
@@ -45,15 +72,7 @@
 														<c:out value="Thẻ nội địa ATM" />
 													</c:otherwise>
 												</c:choose></td>
-											<td><c:choose>
-													<c:when
-														test="${order.thanhToan.phuongThuc == 'COD'}">
-														<c:out value="Đang chờ thanh toán" />
-													</c:when>
-													<c:otherwise>
-														<c:out value="Đã thanh toán" />
-													</c:otherwise>
-												</c:choose></td>
+											<td>${order.ngayLap}</td>
 											<td><a onClick="xemChiTiet('${order.id}')"
 												data-toggle="modal" data-target="#xem-modal"><i
 													class="zmdi zmdi-eye zmdi-hc-lg"></i> </a></td>
@@ -68,6 +87,8 @@
 						    <form action="${pageContext.request.contextPath}/admin/order/list" id="formSubmit" method="get">
 							    <ul id="pagination" class="pagination"></ul>
 							  	 <input type="hidden" value="" id="page" name="page"/>
+							  	  <input type="hidden" value="${sort}" name="sort"/>
+							  	  <input type="hidden" value="${search}" name="search"/>
 								</form>
 							</div>				
 					</div>
@@ -81,7 +102,7 @@
 <div class="modal fade bd-example-modal-lg" id="xem-modal"
 	style="display: none;" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
+		<div class="modal-content" style="background-color: #0d5b80;">
 			<div class="modal-body"
 				style="background-color: #0d5b80; opacity: 0.9;">
 				<div class="scroll">
@@ -178,7 +199,6 @@
 						</div>
 
 					</form>
-					<button type="button" class="btn btn-success" style="float: right">In hóa đơn</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal"
 						style="float: right">Đóng</button>
 				</div>

@@ -62,6 +62,10 @@
 	<decorator name="admin-list-user" page="admin.jsp">
 		<pattern>/admin/user/list</pattern>
 	</decorator>
+	
+	<decorator name="admin-list-user-search" page="admin.jsp">
+		<pattern>/admin/user/search</pattern>
+	</decorator>
 
 	<decorator name="admin-list-brand" page="admin.jsp">
 		<pattern>/admin/brand/list</pattern>

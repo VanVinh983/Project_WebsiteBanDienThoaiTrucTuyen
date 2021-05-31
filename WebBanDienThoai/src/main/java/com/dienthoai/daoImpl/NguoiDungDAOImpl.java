@@ -80,7 +80,39 @@ public class NguoiDungDAOImpl implements NguoiDungDAO {
 		NguoiDung nguoiDung=currentSession.createNativeQuery("select * from NGUOIDUNG where email='"+email+"'",NguoiDung.class).getSingleResult();
 		return nguoiDung;
 	}
-	
-	
+	@Override
+	public List<NguoiDung> getDatHang() {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<NguoiDung> nguoiDungs=currentSession.createNativeQuery("SELECT * FROM NGUOIDUNG nd WHERE exists ( SELECT hd.id FROM HOADON hd WHERE hd.id_NguoiDung=nd.id)",NguoiDung.class).getResultList();
+		return nguoiDungs;
+	}
+	@Override
+	public List<NguoiDung> getChuaDatHang() {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<NguoiDung> nguoiDungs=currentSession.createNativeQuery("SELECT * FROM NGUOIDUNG nd WHERE not exists ( SELECT hd.id FROM HOADON hd WHERE hd.id_NguoiDung=nd.id)",NguoiDung.class).getResultList();
+		return nguoiDungs;
+	}
+	@Override
+	public List<NguoiDung> timKiemNguoiDungChuaDatHang(String search) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<NguoiDung> nguoiDungs=currentSession.createNativeQuery("select * from NGUOIDUNG nd where not exists \r\n"
+				+ "( SELECT hd.id FROM HOADON hd WHERE hd.id_NguoiDung=nd.id)"
+				+ "and tenDangNhap = N'"+search+"' or tenNguoiDung = N'"+search+"' or email = N'"+search+"'\r\n"
+				+ "or soDienThoai = N'"+search+"'",NguoiDung.class).getResultList();
+		return nguoiDungs;
+	}
+	@Override
+	public List<NguoiDung> timKiemNguoiDungDatHang(String search) {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<NguoiDung> nguoiDungs=currentSession.createNativeQuery("select * from NGUOIDUNG nd where exists \r\n"
+				+ "( SELECT hd.id FROM HOADON hd WHERE hd.id_NguoiDung=nd.id)"
+				+ "and tenDangNhap = N'"+search+"' or tenNguoiDung = N'"+search+"' or email = N'"+search+"'\r\n"
+				+ "or soDienThoai = N'"+search+"'",NguoiDung.class).getResultList();
+		return nguoiDungs;
+	}
 	
 }

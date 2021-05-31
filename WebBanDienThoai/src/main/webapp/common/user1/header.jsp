@@ -64,19 +64,17 @@
 			</div>
 			<input type="checkbox" hidden name="" id="mobile-search-checkbox"
 				class="mobile__check-header">
-			<form:form class="header__search form-inline" action="${pageContext.request.contextPath}/dienthoai/search" method="GET">
+			<form:form class="header__search form-inline" action="${pageContext.request.contextPath}/dienthoai/danhsach" method="GET">
 				<div class="header__search-input-wrap">
-					<c:if test="${param.searchName != null }">
-						<input type="text" class="header__search-input" name="searchName"
-						placeholder="Tìm sản phẩm, thương hiệu và tên shop" value="${param.searchName}">
-					</c:if>
-					<c:if test="${param.searchName == null }">
-						<input type="text" class="header__search-input" name="searchName"
+									
+						<input type="hidden" value="${page}" name="page"/>
+						<input type="hidden" value="${sort}" name="sort"/>
+						<input type="text" class="header__search-input" name="search"
 						placeholder="Tìm sản phẩm, thương hiệu và tên shop">
-					</c:if>
+					
 				</div>
 
-				<button class="header__search-btn" value="Search">
+				<button class="header__search-btn" value="Search"> 
 					<i class="header__search-btn-icon fas fa-search"></i>
 				</button>
 			</form:form>

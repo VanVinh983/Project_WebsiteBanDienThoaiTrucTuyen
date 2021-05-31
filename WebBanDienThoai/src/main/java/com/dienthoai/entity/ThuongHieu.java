@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Nationalized;
 
@@ -25,9 +27,12 @@ public class ThuongHieu implements Serializable{
 	private Integer id;
 	
 	@Nationalized
+	@Pattern(regexp = ".{1,}",message = "Không được bỏ trống")
 	private String tenTH;
 	
 	@Nationalized
+	@Size(min = 1, message = "Không được bỏ trống")
+	@Pattern(regexp = "[a-zA-Z]{1,}",message = "Nơi xuất xứ không chứa số và kí tự đặc biệt")
 	private String xuatXu;
 
 	public Integer getId() {

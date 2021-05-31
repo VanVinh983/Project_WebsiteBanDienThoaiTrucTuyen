@@ -74,6 +74,10 @@
 	<decorator name="admin-showformadd-brand" page="admin.jsp">
 		<pattern>/admin/brand/showFormAdd</pattern>
 	</decorator>
+	
+	<decorator name="admin-save-brand" page="admin.jsp">
+		<pattern>/admin/brand/save</pattern>
+	</decorator>
 
 	<decorator name="admin-showformedit-brand" page="admin.jsp">
 		<pattern>/admin/brand/showFormEdit</pattern>
@@ -124,9 +128,17 @@
 	<decorator name="admin-delete-cate" page="admin.jsp">
 		<pattern>/admin/cate/delete</pattern>
 	</decorator>
+	
+	<decorator name="admin-save-cate" page="admin.jsp">
+		<pattern>/admin/cate/save</pattern>
+	</decorator>
 
 	<decorator name="admin-product-list" page="admin.jsp">
 		<pattern>/admin/product/list</pattern>
+	</decorator>
+	
+	<decorator name="admin-product-save" page="admin.jsp">
+		<pattern>/admin/product/save</pattern>
 	</decorator>
 
 	<decorator name="admin-product-detail" page="admin.jsp">

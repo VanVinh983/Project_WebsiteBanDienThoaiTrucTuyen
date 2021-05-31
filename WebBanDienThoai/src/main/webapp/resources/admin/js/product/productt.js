@@ -1,14 +1,14 @@
-function xemChiTiet(id) {
+function xemChiTiet(id) { //lấy dữ liệu từ api đưa vào jsp
 
-	const url = `api/products/${id}`;
+	const url = `api/products/${id}`; // url api lấy dữ liệu
 	console.log('url: ', url);
 	
-	$.get(url, function(data, status) {
+	$.get(url, function(data, status) { //lấy dữ liệu từ url 
 	
-		const {trongLuong,kichThuoc, mauSac, anhURL,thuongHieu, thongSo} = data;
+		const {trongLuong,kichThuoc, mauSac, anhURL,thuongHieu, thongSo} = data; 	//dữ liệu nhận được
 
 		if (status === 'success') {
-			$("#xem-modal #anh").attr("src","/WebBanDienThoai/resources/user/images/SanPham/"+anhURL);	
+			$("#xem-modal #anh").attr("src","/WebBanDienThoai/resources/user/images/SanPham/"+anhURL);	//lấy dữ liệu từ data đưa qua jsp
 			$("#xem-modal #manHinh").html(`<label>${thongSo.manHinh}</label>`);
 			$("#xem-modal #heDieuHanh").html(`<label>${thongSo.heDieuHanh}</label>`);
 			$("#xem-modal #camera").html(`<label>${thongSo.camera}</label>`);
@@ -27,9 +27,9 @@ function xemChiTiet(id) {
 
 
 //themChiTietDienThoai
-$('#btnThem').click(function() {
+$('#btnThem').click(function() { //khi nhấn btn thêm
 
-	const manHinh = $('#them-modal #manHinh').val();
+	const manHinh = $('#them-modal #manHinh').val(); //lấy dữ liệu đã nhập từ jsp
 	const heDieuHanh = $('#them-modal #heDieuHanh').val();
 	const camera = $('#them-modal #camera').val();
 	const ram = $('#them-modal #ram').val();
@@ -38,7 +38,7 @@ $('#btnThem').click(function() {
 	const pin = $('#them-modal #pin').val();
 
 	const url = "api/details";
-	var thongso = {
+	var thongso = { //khai báo biến
           manHinh:manHinh,
           boNho:boNho,
           camera:camera,
@@ -48,44 +48,44 @@ $('#btnThem').click(function() {
           sim:sim
        };
 
-	$.ajax({
-		url: url,
-		type: 'POST',
+	$.ajax({ 
+		url: url, 
+		type: 'POST', // thêm 
 		contentType: 'application/json',
-		data: JSON.stringify(thongso),
+		data: JSON.stringify(thongso), 
 		success: function() {
 			$('#them-modal').modal('hide');
-			toastr.success('Thêm thành công')
+			toastr.success("Thêm thành công")
 
 		},
 		error: function() {
-			toastr.error('a')
-			
+			toastr.error("Thêm không thành công")			
 		}
 	});
 	
 });
-$('#btnThem').click(function() {
-	$.get(`api/details`, function(data, status) {
+$('#btnThem').click(function() {  //đồng thời khi nhấn btnThem
+	$.get(`api/details`, function(data, status) {  //lấy dữ liệu từ url 
 		var detail = data;
-		const id=detail[detail.length-1].id;
+		const id=detail[detail.length-1].id; //lấy length id của arr
 		if (status === 'success') {
-			$("#detail_id").val((id+1));
+			$("#detail_id").val((id+1));  //lấy dữ liệu từ data đưa qua jsp
 		}
 	});
 });
 
-function sua(id) {
+//sửa thông số
+function sua(id) { 
 
-	const url = `api/details/${id}`;
+	const url = `api/details/${id}`; 			 // url api lấy dữ liệu
 	console.log('url: ', url);
 
-	$.get(url, function(data, status) {
+	$.get(url, function(data, status) { 		//lấy dữ liệu từ url 
 
-		const {id,manHinh, heDieuHanh,camera,ram ,boNho, sim, pin} = data;
+		const {id,manHinh, heDieuHanh,camera,ram ,boNho, sim, pin} = data;   //dữ liệu nhận được
 
 		if (status === 'success') {
-			$("#detail_id").val(id);
+			$("#detail_id").val(id);   					//lấy dữ liệu từ data đưa qua jsp
 			$("#sua-modal #idSua").val(id);
 			$("#sua-modal #manHinhSua").val(manHinh);
 			$("#sua-modal #heDieuHanhSua").val(heDieuHanh);
@@ -98,10 +98,10 @@ function sua(id) {
 		}
 	});
 }
-$('#btnSua').click(function() {
+$('#btnSua').click(function() {  		//khi nhấn btnSua
 	
-	// lấy dữ liệu từ modal
-	const id = $('#sua-modal #idSua').val();
+	
+	const id = $('#sua-modal #idSua').val();			//lấy dữ liệu từ jsp
 	const manHinh = $('#sua-modal #manHinhSua').val();
 	const heDieuHanh = $('#sua-modal #heDieuHanhSua').val();
 	const camera = $('#sua-modal #cameraSua').val();
@@ -110,12 +110,12 @@ $('#btnSua').click(function() {
 	const sim= $('#sua-modal #simSua').val();
 	const pin= $('#sua-modal #pinSua').val();
 	
-	const url = "api/details";
+	const url = "api/details";						//url api lấy dữ liệu
 
-	//cập nhật dữ liệu
+
 	$.ajax({
 		url: url,
-		type: 'PUT',
+		type: 'PUT',				//cập nhật
 		data: JSON.stringify({id, manHinh,heDieuHanh,camera,ram,boNho,sim,pin}),
 		contentType: 'application/json',
 		success: function() {
@@ -125,29 +125,29 @@ $('#btnSua').click(function() {
 
 		},
 		error: function() {
-			toastr.error('a')
+			toastr.error('Cập nhật không thành công')
 		},
 
 	});
 	
 });
 
-// nhập vào ô tìm kiếm
-$("#timKiemTendienThoai").on("keyup", function() {
-	capNhatDuLieu(this.value);
+// tìm kiếm tên điện thoại
+$("#timKiemTendienThoai").on("keyup", function() {  		//khi nhập 1 từ khóa vào 
+	capNhat(this.value);
 
 });
 
 
 
-// hiển thị dữ liệu khi tìm
-function renderDuLieu(data) {
-	$("#tableBody").html("");
-	$.each(data, (index, dt) => {
-		const { id, tenDT, giaDT,soLuongTon,giamGia, anhURL} = dt;
-		console.log(JSON.stringify(dt));
-		$("<tr>").appendTo($("#tableBody"))				
-			.append($("<td>").text(id))
+// thay đổi dữ liệu trong table của jsp
+function render(data) {
+	$("#tableBody").html("");												//lấy table từ jsp set null
+	$.each(data, (i, data) => {												//chạy vòng lặp, lặp qua dữ liệu 
+		const { id, tenDT, giaDT,soLuongTon,giamGia, anhURL} = data;			//dữ liệu nhận được
+		console.log(JSON.stringify(data));
+		$("<tr>").appendTo($("#tableBody"))									// tạo thẻ tr của table
+			.append($("<td>").text(id))										// thêm thẻ td vào thẻ tr
 			.append($("<td>").html(` 
 				<img style="width: 110px; height: 67px; border: 1px solid #fff;" 
 				src="/WebBanDienThoai/resources/user/images/SanPham/${anhURL}">
@@ -168,6 +168,7 @@ function renderDuLieu(data) {
 	});
 }
 
+
 function xoats(id) {
 
 	if (confirm("Bạn có chắc chắn xóa không ?")) {
@@ -177,7 +178,7 @@ function xoats(id) {
 			contentType: 'application/json',
 			success: function() {
 				toastr.success('Xóa thành công')	
-				capNhatDuLieu("");	
+				capNhat("");	
 			},
 			error: function() {
 				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
@@ -188,15 +189,17 @@ function xoats(id) {
 	}
 }
 
+
+// xóa điện thoại
 function xoa(id) {
 	if (confirm("Bạn có chắc chắn xóa không ?")) {
 		$.ajax({
-			url: `api/products/${id}`,
-			type: 'DELETE',
+			url: `api/products/${id}`,		//url api
+			type: 'DELETE',					// xóa 
 			contentType: 'application/json',
 			success: function() {
 				toastr.success('Xóa thành công')	
-				capNhatDuLieu("");	
+				capNhat("");		//cập nhập lại dữ liệu 
 			},
 			error: function() {
 				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
@@ -209,13 +212,13 @@ function xoa(id) {
 
 
 
-//tìm kiếm theo tên điện thoại
-function capNhatDuLieu(tenDT) {
+//cập nhật dữ liệu khi tìm kiếm theo tên điện thoại 
+function capNhat(tenDT) {
 
-	const url = `api/products?tenDT=${tenDT}`;
+	const url = `api/products?tenDT=${tenDT}`;   //url api
 	$.get(url, function(data, status) {
 		if (status === 'success') {
-			renderDuLieu(data);
+			render(data);		//thay đổi dữ liệu trong table của jsp
 		}
 	})
 }

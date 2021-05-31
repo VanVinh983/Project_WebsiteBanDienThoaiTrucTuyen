@@ -37,6 +37,7 @@
 							<div class="form-group">
 								<label>Danh mục</label>
 								<form:input path="tenDanhMuc" cssClass="form-control" />
+								<span style="color: red"><b><form:errors path="tenDanhMuc" ></form:errors> </b></span>
 							</div>
 							<div class="form-group">
 								<button class="btn btn-danger">

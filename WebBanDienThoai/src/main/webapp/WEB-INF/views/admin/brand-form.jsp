@@ -28,6 +28,7 @@
 									<c:if test="${brand.id != null}">
 										<label>ID</label>
 										<form:input path="id" cssClass="form-control" readonly="true"/>
+										
 									</c:if>
 									<c:if test="${brand.id == null}">
 										<form:hidden path="id"/>
@@ -37,10 +38,12 @@
 							<div class="form-group">
 								<label>Thương hiệu</label>
 								<form:input path="tenTH" cssClass="form-control" />
+								<span style="color: red"><form:errors path="tenTH" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<label>Xuất xứ</label>
 								<form:input path="xuatXu" cssClass="form-control" />
+									<span style="color: red"><form:errors path="xuatXu" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<button class="btn btn-danger">

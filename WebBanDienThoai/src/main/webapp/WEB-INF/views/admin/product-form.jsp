@@ -38,7 +38,9 @@
 							<div class="form-group">
 								<label>Tên sản phẩm</label>
 								<form:input path="tenDT" cssClass="form-control" />
+								<span style="color: red"><form:errors path="tenDT" ></form:errors> </span>
 							</div>
+							
 							<div class="form-group">
 								<label>Danh mục</label>
 								<div>
@@ -61,56 +63,68 @@
 							<div class="form-group">
 								<label>Giá</label>
 								<div class="input-group">
-
 									<form:input path="giaDT" cssClass="form-control" />
-									<button class="btn btn-light" type="button">VNĐ</button>
+									<button class="btn btn-light" type="button">VNĐ</button>									
 								</div>
+								<span style="color: red"><form:errors path="giaDT" ></form:errors> </span>
 							</div>
+							
 							<div class="form-group">
 								<label>Giảm giá (%)</label>
 								<div class="input-group">
 									<form:input path="giamGia" cssClass="form-control" />
-									<button class="btn btn-light" type="button">%</button>
+									<button class="btn btn-light" type="button">%</button>									
 								</div>
-
+								<span style="color: red"><form:errors path="giamGia" ></form:errors> </span>
 							</div>
 							<div class="form-group">
 								<label>Số lượng (Cái)</label>
 								<div class="input-group">
 									<form:input path="soLuongTon" cssClass="form-control" />
-									<button class="btn btn-light" type="button">Cái</button>
+									<button class="btn btn-light" type="button">Cái</button>								
 								</div>
+								<span style="color: red"><form:errors path="soLuongTon" ></form:errors> </span>
 							</div>
+							
 							<div class="form-group">
 								<label>Thuế (%)</label>
 								<div class="input-group">
 									<form:input path="thue" cssClass="form-control" />
-									<button class="btn btn-light" type="button">%</button>
+									<button class="btn btn-light" type="button">%</button>									
 								</div>
+								<span style="color: red"><form:errors path="thue" ></form:errors> </span>
 							</div>
+							
 							<div class="form-group">
 								<label>Trọng lượng (Gram)</label>
 								<div class="input-group">
 									<form:input path="trongLuong" cssClass="form-control" />
-									<button class="btn btn-light" type="button">Gram</button>
+									<button class="btn btn-light" type="button">Gram</button>									
 								</div>
+								<span style="color: red"><form:errors path="trongLuong" ></form:errors> </span>
 							</div>
+							
 							<div class="form-group">
 								<label>Kích thước (Inch)</label>
 								<div class="input-group">
 									<form:input path="kichThuoc" cssClass="form-control" />
-									<button class="btn btn-light" type="button">Inch</button>
-								</div>
+									<button class="btn btn-light" type="button">Inch</button>									
+								</div>	
+								<span style="color: red"><form:errors path="kichThuoc" ></form:errors> </span>							
 							</div>
+							
 							<div class="form-group">
 								<label>Màu sắc</label>
 								<form:input path="mauSac" cssClass="form-control" />
+								<span style="color: red"><form:errors path="mauSac" ></form:errors> </span>
 							</div>
+							
 							<div class="form-group">
 								<label>Bảo hành (Tháng)</label>
 								<form:input path="baoHanh" cssClass="form-control" />
+								<span style="color: red"><form:errors path="baoHanh" ></form:errors> </span>
 							</div>
-
+							
 							<caption>
 								<div class="form-group">
 									<c:if test="${product.thongSo.id != null}">
@@ -138,13 +152,13 @@
 							<!-- == null thêm -->
 							<c:if test="${product.id == null}">
 								<div>
-									<input id="detail_id" type="hidden" name="detail_id" />
+									<input id="detail_id" type="text" name="detail_id" />
 								</div>
 							</c:if>
 							<!-- != null sửa -->
 							<c:if test="${product.id != null}">
 								<div>
-									<input id="detail_id" type="hidden" name="detail_id"
+									<input id="detail_id" type="text" name="detail_id"
 										value="${product.thongSo.id}" />
 								</div>
 							</c:if>
@@ -164,17 +178,12 @@
 							</c:if>
 							<div class="form-group">
 
-								<a href="${pageContext.request.contextPath}/admin/product/list"><button
-										class="btn btn-danger">Hủy</button></a>
-
+								<a href="${pageContext.request.contextPath}/admin/product/list">
+								<button class="btn btn-danger">Hủy</button></a>
 
 								<button type="submit" class="btn btn-success">
-									<c:if test="${product.id != null}">
-								Cập nhật
-							</c:if>
-									<c:if test="${product.id == null}">
-								Thêm
-							</c:if>
+									<c:if test="${product.id != null}">Cập nhật</c:if>
+									<c:if test="${product.id == null}">Thêm</c:if>
 								</button>
 
 							</div>

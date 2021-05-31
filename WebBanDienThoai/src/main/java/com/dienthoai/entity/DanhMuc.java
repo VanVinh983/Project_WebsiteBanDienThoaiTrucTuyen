@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.Nationalized;
 
@@ -25,6 +26,7 @@ public class DanhMuc implements Serializable{
 	private Integer id;
 	
 	@Nationalized
+	@Pattern(regexp = ".{1,}",message = "Không được bỏ trống")
 	private String tenDanhMuc;
 
 	public Integer getId() {

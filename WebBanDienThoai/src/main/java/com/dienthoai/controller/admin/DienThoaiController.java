@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,37 +82,43 @@ public class DienThoaiController {
 	}
 
 	@PostMapping("/product/save")
-	private String editAdmin(@ModelAttribute("product") DienThoai product, @RequestParam("cateId") int id,
+	private String editAdmin(Model theModel,@ModelAttribute("product")@Validated DienThoai product,BindingResult result, @RequestParam("cateId") int id,
 			@RequestParam("detail_id") String detail_id, @RequestParam() CommonsMultipartFile linkImage,
 			HttpServletRequest request) throws Exception {
+		if(result.hasErrors()) {	
+			List<DanhMuc> cates = danhMucService.getListDanhMuc();
+			theModel.addAttribute("cates", cates);
+			return "admin/product-form";
+		}else {
+			try {
 
-		try {
-
-			ServletContext context = request.getServletContext();
-			String path = context.getRealPath(UPLOA_DIRECTORY);
-			String imageUrl = linkImage.getOriginalFilename();
-			// String path="D:\\IUH\\WWW.JAVA\\A-project\\New
-			// folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
-			byte[] bytes = linkImage.getBytes();
-			BufferedOutputStream stream = new BufferedOutputStream(
-					new FileOutputStream(new File(path + File.separator + imageUrl)));
-			stream.write(bytes);
-			stream.flush();
-			stream.close();
-			
-			product.setAnhURL(imageUrl);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+				ServletContext context = request.getServletContext();
+				String path = context.getRealPath(UPLOA_DIRECTORY);
+				String imageUrl = linkImage.getOriginalFilename();
+				// String path="D:\\IUH\\WWW.JAVA\\A-project\\New
+				// folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
+				byte[] bytes = linkImage.getBytes();
+				BufferedOutputStream stream = new BufferedOutputStream(
+						new FileOutputStream(new File(path + File.separator + imageUrl)));
+				stream.write(bytes);
+				stream.flush();
+				stream.close();
+				
+				product.setAnhURL(imageUrl);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			ThongSo ts = thongSoService.getThongSo(Integer.parseInt(detail_id));
+			product.setThongSo(ts);
+			DanhMuc cate = danhMucService.getDanhMuc(id);
+			product.setDanhMuc(cate);
+			ThuongHieu thuongHieu = thuongHieuService.getTheoTen(cate.getTenDanhMuc().trim());
+			product.setThuongHieu(thuongHieu);
+			dienThoaiService.saveDienThoai(product);
+			return "redirect:/admin/product/list";
 		}
-		ThongSo ts = thongSoService.getThongSo(Integer.parseInt(detail_id));
-		product.setThongSo(ts);
-		DanhMuc cate = danhMucService.getDanhMuc(id);
-		product.setDanhMuc(cate);
-		ThuongHieu thuongHieu = thuongHieuService.getTheoTen(cate.getTenDanhMuc().trim());
-		product.setThuongHieu(thuongHieu);
-		dienThoaiService.saveDienThoai(product);
-		return "redirect:/admin/product/list";
+		
 	}
 
 }

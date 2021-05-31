@@ -36,13 +36,13 @@ public class NguoiDung implements Serializable{
 	private Integer id;
 	
 	@Nationalized
-	@Pattern(regexp = ".{1,}",message = "Họ và tên không hợp lệ")
+	@Pattern(regexp = ".{1,}",message = "Không được bỏ trống")
 	private String tenNguoiDung;
 	@Pattern(regexp = "[0-9]{9,11}",message = "Số điện thoại không hợp lệ")
 	private String soDienThoai;
 	
 	@Nationalized
-	@Size(min = 1,message = "Địa chỉ không hợp lệ")
+	@Size(min = 1,message = "Không được bỏ trống")
 	private String diaChi;
 	
 	@Nationalized
@@ -55,7 +55,7 @@ public class NguoiDung implements Serializable{
 	
 	@Nationalized 
 //	@Pattern(regexp = "[a-zA-Z-0-9]{8,}",message = "Mật khẩu có ít nhất 8 kí tự và không được chứa kí tự đặc biệt")
-	@Size(min = 1,message = "Mật khẩu không được trống")
+	@Size(min = 1,message = "Không được bỏ trống")
 	private String matKhau;
 	
 	@Nationalized 

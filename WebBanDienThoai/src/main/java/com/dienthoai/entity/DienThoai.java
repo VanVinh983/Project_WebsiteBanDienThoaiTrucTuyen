@@ -14,6 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Nationalized;
 
@@ -34,21 +39,40 @@ public class DienThoai implements Serializable{
 	private Integer id;
 	
 	@Nationalized
+	@Size(min = 1, message = "Không được bỏ trống")
+	@Pattern(regexp = "[A-Za-z0-9 \\p{L}+]{1,}",message = "Không chứa kí tự đặc biệt")
 	private String tenDT;
 	
 	@Nationalized
+	@Size(min = 1, message = "Không được bỏ trống")
+	@Pattern(regexp = "[A-Za-z0-9 \\p{L}+]{1,}",message = "Không chứa kí tự đặc biệt")
 	private String baoHanh;
-	private float giaDT;
-	private float giamGia;
-	private int soLuongTon;
-	private float thue;
 	
+	@Min(value = 1, message = "Phải lớn hơn 0")
+	private float giaDT;
+
+	@NotNull(message = "Không được bỏ trống")
+	@Min(value = 1, message = "Phải lớn hơn 0")	
+	private float giamGia;
+
+	@NotNull(message = "Không được bỏ trống")
+	@Min(value = 1, message = "Phải lớn hơn 0")	
+	private int soLuongTon;
+	@NotNull(message = "Không được bỏ trống")
+	@Min(value = 1, message = "Phải lớn hơn 0")	
+	private float thue;
+
+	@NotNull(message = "Không được bỏ trống")
+	@Min(value = 1, message = "Phải lớn hơn 0")	
 	private float trongLuong;
 	
 	@Nationalized
+	@Pattern(regexp = ".{1,}",message = "Không được bỏ trống")
 	private String kichThuoc;
 	
 	@Nationalized
+	@Size(min = 1, message = "Không được bỏ trống")
+	@Pattern(regexp = "[A-Za-z0-9 \\p{L}+]{1,}",message = "Không chứa kí tự đặc biệt")
 	private String mauSac;
 	
 	@Nationalized

@@ -67,7 +67,7 @@
 								</c:if>
 								<c:if test="${param.sort != 'hotnhat'}">
 									<a class="text-dark" href="${linkhotnhat}"><button
-											class="home-filter-btn btn fs14">Hot nhất</button></a>
+											class="home-filter-btn btn fs14">GB</button></a>
 								</c:if>
 								<c:if test="${param.sort=='giamgia' }">
 									<a class="text-dark" href="${linkgiamgia}"><button

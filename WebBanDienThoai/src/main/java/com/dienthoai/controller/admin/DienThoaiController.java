@@ -95,11 +95,17 @@ public class DienThoaiController {
 				ServletContext context = request.getServletContext();
 				String path = context.getRealPath(UPLOA_DIRECTORY);
 				String imageUrl = linkImage.getOriginalFilename();
-				// String path="D:\\IUH\\WWW.JAVA\\A-project\\New
-				// folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\admin\\images\\product";
+				System.out.println(path + File.separator + imageUrl);
+				String img="D:\\IUH\\WWW.JAVA\\A-project\\New folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\user\\images\\SanPham\\";
+				
 				byte[] bytes = linkImage.getBytes();
 				BufferedOutputStream stream = new BufferedOutputStream(
 						new FileOutputStream(new File(path + File.separator + imageUrl)));
+				BufferedOutputStream str=new BufferedOutputStream(
+						new FileOutputStream(new File(img + imageUrl)));
+				str.write(bytes);
+				str.flush();
+				str.close();
 				stream.write(bytes);
 				stream.flush();
 				stream.close();

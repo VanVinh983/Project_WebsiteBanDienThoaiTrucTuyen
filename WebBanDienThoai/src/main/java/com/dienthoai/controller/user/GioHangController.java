@@ -38,7 +38,7 @@ public class GioHangController {
 			}
 			return "user/giohang";
 		} else {
-			if (cart.size() <= 0) {
+			if (cart.size() == 0) {
 				session.setAttribute("tamtinh", 0);
 				session.setAttribute("giamgia", 0);
 				session.setAttribute("tongtien", 0);

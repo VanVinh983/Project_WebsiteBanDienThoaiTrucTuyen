@@ -28,7 +28,7 @@
 							<img src="${img}/cartnull.jpg"
 								style="width: 100px; height: 100px">
 							<b>Không có sản phẩm nào trong giỏ hàng</b>
-						</c:if> <c:if test="${empty tinhtranggiohang}"></c:if></td>
+						</c:if></td>
 				</tr>
 
 			</thead>
@@ -64,6 +64,9 @@
 									<div>
 										Giảm giá: <b><fmt:formatNumber type="number" pattern="#,#"
 												value="${ds.dienThoai.giamGia}" />%</b>
+									</div>
+									<div>
+										Thuế: <b>${ds.dienThoai.thue }%</b>
 									</div>
 								</div>
 							</div>
@@ -126,13 +129,19 @@
 					</tr>
 					<tr>
 						<td style="width: 100%">
-							<c:if test="${tenDangNhap==null}">
+						<c:if test="${tongtien==0 }">
+							<a href="${pageContext.request.contextPath }/user/gioHang"
+									onclick="return confirm('Không có sản phẩm nào trong giỏ hàng!');"><button
+										style="width: 100%" type="button" class="btn btn-success fs14">Đặt
+										hàng</button></a>
+						</c:if>
+							<c:if test="${tenDangNhap==null && tongtien > 0}">
 								<a href="${pageContext.request.contextPath }/user/showFormNguoiNhan"
 									onclick="return confirm('Bạn phải đăng nhập mới đặt hàng được!');"><button
 										style="width: 100%" type="button" class="btn btn-success fs14">Đặt
 										hàng</button></a>
 							</c:if>
-						<c:if test="${tenDangNhap!=null}">
+						<c:if test="${tenDangNhap!=null && tongtien > 0}">
 							<a
 								href="${pageContext.request.contextPath }/user/showFormNguoiNhan">
 								<button style="width: 100%" type="button"

@@ -3,10 +3,13 @@ package com.dienthoai.controller.admin;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,8 +52,9 @@ public class DienThoaiController {
 	public String listProduct(Model theModel, @RequestParam(value = "page", defaultValue = "1") int page) {
 		List<DienThoai> productList = dienThoaiService.getListDienThoai();
 		theModel.addAttribute("page", page);
-		theModel.addAttribute("productList", dienThoaiService.getListDienThoaiTheoPage(page,7, productList));
+		theModel.addAttribute("productList", dienThoaiService.getListDienThoaiTheoPage(page, 7, productList));
 		theModel.addAttribute("total", productList.size());
+
 		return "admin/product";
 	}
 
@@ -62,13 +66,16 @@ public class DienThoaiController {
 	}
 
 	@GetMapping("/product/showFormEdit")
-	private String showFormEditProduct(@RequestParam("productId") int id, Model theModel) {
+	private String showFormEditProduct(@RequestParam("productId") int id, Model theModel,HttpSession session) {
 		DienThoai product = dienThoaiService.getDienThoai(id);
 		List<DanhMuc> cates = danhMucService.getListDanhMuc();
 		int cate_id = product.getDanhMuc().getId();
+	
+		session.setAttribute("photos", product.getHinhAnh());
 		theModel.addAttribute("product", product);
 		theModel.addAttribute("cates", cates);
 		theModel.addAttribute("id", cate_id);
+
 		return "admin/product-form";
 	}
 
@@ -82,38 +89,31 @@ public class DienThoaiController {
 	}
 
 	@PostMapping("/product/save")
-	private String editAdmin(Model theModel,@ModelAttribute("product")@Validated DienThoai product,BindingResult result, @RequestParam("cateId") int id,
-			@RequestParam("detail_id") String detail_id, @RequestParam() CommonsMultipartFile linkImage,
-			HttpServletRequest request) throws Exception {
-		if(result.hasErrors()) {	
+	private String editAdmin(Model theModel, @ModelAttribute("product") @Validated DienThoai product,
+			BindingResult result, @RequestParam("cateId") int id, @RequestParam("detail_id") String detail_id,
+			@RequestParam() CommonsMultipartFile[] files, HttpServletRequest request,HttpSession session) throws Exception {
+		if (result.hasErrors()) {
 			List<DanhMuc> cates = danhMucService.getListDanhMuc();
 			theModel.addAttribute("cates", cates);
 			return "admin/product-form";
-		}else {
-			try {
-
-				ServletContext context = request.getServletContext();
-				String path = context.getRealPath(UPLOA_DIRECTORY);
-				String imageUrl = linkImage.getOriginalFilename();
-				System.out.println(path + File.separator + imageUrl);
-				String img="D:\\IUH\\WWW.JAVA\\A-project\\New folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\user\\images\\SanPham\\";
-				
-				byte[] bytes = linkImage.getBytes();
-				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(new File(path + File.separator + imageUrl)));
-				BufferedOutputStream str=new BufferedOutputStream(
-						new FileOutputStream(new File(img + imageUrl)));
-				str.write(bytes);
-				str.flush();
-				str.close();
-				stream.write(bytes);
-				stream.flush();
-				stream.close();
-				
-				product.setAnhURL(imageUrl);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+		} else {
+			if (files.length > 1) {
+				try {
+					List<String> anhs = new ArrayList<String>();
+					for (CommonsMultipartFile file : files) {
+						String fileName = saveImage(file, request);
+						anhs.add(fileName);
+					}
+					product.setAnhURL(anhs.get(0));
+					product.setHinhAnh(anhs);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}				
+			}else {
+				List<String> photos=(List<String>) session.getAttribute("photos");
+				product.setAnhURL(photos.get(0));
+				product.setHinhAnh(photos);
+				session.removeValue("photos");
 			}
 			ThongSo ts = thongSoService.getThongSo(Integer.parseInt(detail_id));
 			product.setThongSo(ts);
@@ -124,7 +124,33 @@ public class DienThoaiController {
 			dienThoaiService.saveDienThoai(product);
 			return "redirect:/admin/product/list";
 		}
-		
+
 	}
 
+	private String saveImage(CommonsMultipartFile commonsMultipartFile, HttpServletRequest request) {
+		try {
+			ServletContext context = request.getServletContext();
+			String path = context.getRealPath(UPLOA_DIRECTORY);
+			String imageUrl = commonsMultipartFile.getOriginalFilename();
+			String img = "D:\\IUH\\WWW.JAVA\\A-project\\New folder\\Project_WebsiteBanDienThoaiTrucTuyen\\WebBanDienThoai\\src\\main\\webapp\\resources\\user\\images\\SanPham\\";
+
+			byte[] bytes = commonsMultipartFile.getBytes();
+			BufferedOutputStream stream = new BufferedOutputStream(
+					new FileOutputStream(new File(path + File.separator + imageUrl)));
+			stream.write(bytes);
+			stream.flush();
+			stream.close();
+
+			BufferedOutputStream str = new BufferedOutputStream(new FileOutputStream(new File(img + imageUrl)));
+			str.write(bytes);
+			str.flush();
+			str.close();
+
+			return commonsMultipartFile.getOriginalFilename();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }

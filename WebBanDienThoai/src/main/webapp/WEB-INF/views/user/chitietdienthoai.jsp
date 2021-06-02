@@ -67,12 +67,20 @@
 				<div class="row ">
 					<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 						<ul class="nav nav-tabs " id="anh ">
+
 							<li class="active "><a data-target="#anh1 "
 								data-toggle="tab "><img
 									src="${resources}/user/images/SanPham/${dt.anhURL}"
 									width="100px " /></a></li>
-							<li><a data-target="#anh2 " data-toggle="tab "><img
-									src="" width="100px " /></a></li>
+							<c:if test="${size > 0}">
+								<c:forEach items="${dt.hinhAnh}" var="anh">
+									<li><a data-target="#anh1" data-toggle="tab "><img
+											src="${resources}/user/images/SanPham/${anh}"
+											width="100px " /></a></li>
+								</c:forEach>
+
+
+							</c:if>
 						</ul>
 					</div>
 
@@ -426,7 +434,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left">
 			<br>
 			<h3>ĐÁNH GIÁ ĐIỆN THOẠI ${dt.tenDT}</h3>
-			<br>			
+			<br>
 			<div
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom"
 				style="height: auto; overflow: auto;">
@@ -437,11 +445,12 @@
 						<label>Tên</label>
 						<c:if test="${pageContext.request.userPrincipal.name == null}">
 							<form:input path="tenBinhLuan" cssClass="form-control"
-							placeholder="Tên của bạn..." />
+								placeholder="Tên của bạn..." />
 						</c:if>
 						<c:if test="${pageContext.request.userPrincipal.name != null}">
 							<form:input path="tenBinhLuan" cssClass="form-control"
-							placeholder="Tên của bạn..."  value = "${pageContext.request.userPrincipal.name}"/>
+								placeholder="Tên của bạn..."
+								value="${pageContext.request.userPrincipal.name}" />
 						</c:if>
 					</div>
 					<div class="form-group">
@@ -459,15 +468,15 @@
 						<button type="submit"
 							class="btn btn-success col-1 mt-1 mb-1 float-right">
 							<b>GỬI</b>
-						</button>						
+						</button>
 					</div>
 				</form:form>
 			</div>
-			
+
 			<div
 				class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-left mt-2 border-bottom">
 				<c:if test="${binhluans.size()>0}">
-				<br>
+					<br>
 					<h4>Có tất cả ${binhluans.size()} đánh giá</h4>
 					<br>
 				</c:if>
@@ -477,14 +486,18 @@
 			</div>
 			<br>
 			<c:forEach var="binhluan" items="${binhluans}">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left border-bottom">
-					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left" style="padding-top: 20px;">
-						<img alt="avatar" src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png" width="40px">
+				<div
+					class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left border-bottom">
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 float-left"
+						style="padding-top: 20px;">
+						<img alt="avatar"
+							src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png"
+							width="40px">
 					</div>
-					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-top: 10px;">
-						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span>
-						<br><span> ${binhluan.noiDung}</span><br>
-						<span>${binhluan.ngay}</span>
+					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"
+						style="padding-top: 10px;">
+						<span class="float-left"><b>${binhluan.tenBinhLuan}</b></span> <br>
+						<span> ${binhluan.noiDung}</span><br> <span>${binhluan.ngay}</span>
 					</div>
 					<br>
 				</div>

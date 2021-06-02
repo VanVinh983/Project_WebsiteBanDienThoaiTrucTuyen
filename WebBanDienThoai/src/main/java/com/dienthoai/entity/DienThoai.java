@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Nationalized;
 
 
@@ -52,14 +55,14 @@ public class DienThoai implements Serializable{
 	private float giaDT;
 
 	@NotNull(message = "Không được bỏ trống")
-	@Min(value = 1, message = "Phải lớn hơn 0")	
+	@Min(value = 0, message = "Phải lớn hơn 0")	
 	private float giamGia;
 
 	@NotNull(message = "Không được bỏ trống")
 	@Min(value = 1, message = "Phải lớn hơn 0")	
 	private int soLuongTon;
 	@NotNull(message = "Không được bỏ trống")
-	@Min(value = 1, message = "Phải lớn hơn 0")	
+	@Min(value = 0, message = "Phải lớn hơn 0")	
 	private float thue;
 
 	@NotNull(message = "Không được bỏ trống")
@@ -94,6 +97,19 @@ public class DienThoai implements Serializable{
 	@OneToMany(mappedBy = "dienThoai", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<ChiTietHoaDon> danhSachSanPhamHoaDon;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "HINHANH", joinColumns = @JoinColumn(name = "id"))
+	@JsonIgnore
+	private List<String> hinhAnh;
+
+	public List<String> getHinhAnh() {
+		return hinhAnh;
+	}
+
+	public void setHinhAnh(List<String> hinhAnh) {
+		this.hinhAnh = hinhAnh;
+	}
 
 	public Integer getId() {
 		return id;

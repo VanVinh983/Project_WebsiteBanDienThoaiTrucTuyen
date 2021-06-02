@@ -87,6 +87,7 @@ public class DienThoaiController {
 	public String laychitiethoadon(Model model,@PathVariable(value = "id")int id,HttpSession session) {
 		DienThoai dt = dienThoaiService.getDienThoai(id);
 		session.setAttribute("dienthoai", dt);
+		session.setAttribute("size", dt.getHinhAnh().size());
 		return "redirect:/dienthoai/chitietdienthoai";
 	}
 	@GetMapping("/search")

@@ -63,7 +63,7 @@ public class NguoiDung implements Serializable{
 	
 	private Date ngayTao;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "NGUOIDUNGS_ROLES", 
 	joinColumns = @JoinColumn(name = "nguoiDung_id"), 
 	inverseJoinColumns = @JoinColumn(name = "role_id"))

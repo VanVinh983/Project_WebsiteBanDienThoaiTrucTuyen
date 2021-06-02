@@ -152,28 +152,26 @@
 							<!-- == null thêm -->
 							<c:if test="${product.id == null}">
 								<div>
-									<input id="detail_id" type="text" name="detail_id" />
+									<input id="detail_id" type="hidden" name="detail_id" />
 								</div>
 							</c:if>
 							<!-- != null sửa -->
 							<c:if test="${product.id != null}">
 								<div>
-									<input id="detail_id" type="text" name="detail_id"
+									<input id="detail_id" type="hidden" name="detail_id"
 										value="${product.thongSo.id}" />
 								</div>
 							</c:if>
 							<c:if test="${product.id == null}">
 								<div class="form-group">
-									<label>Hình ảnh</label><br> <input name="linkImage"
-										type="file" id="linkImage" multiple="multiple"/> <span id="result"></span>
+									<label>Hình ảnh</label><br> <input name="files"
+										type="file" multiple="multiple"/> <span id="result"></span>
 								</div>
 							</c:if>
 							<c:if test="${product.id != null}">
 								<div class="form-group">
 									<label>Hình ảnh</label><br>
-									<form:input path="anhURL" cssClass="form-control" />
-									<input name="linkImage" type="file" id="linkImage"
-										hidden="hidden" /> <span id="result"></span>
+									<input name="files" type="file"  multiple="multiple" /> <span id="result"></span>
 								</div>
 							</c:if>
 							<div class="form-group">

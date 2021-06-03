@@ -8,7 +8,7 @@ function xoa(id) {
 			contentType: 'application/json',
 			success: function() {
 				toastr.success('Xóa thành công')
-				capNhatDuLieu("");
+				capNhat("");
 				
 			},
 			error: function() {
@@ -19,26 +19,18 @@ function xoa(id) {
 
 	}
 }
-// khi nhập vào ô tìm kiếm
-$("#timKiemTenDanhMuc").on("keyup", function() {
 
-	capNhatDuLieu(this.value);
+$("#timKiemTenDanhMuc").on("keyup", function() {
+	capNhat(this.value);
 
 });
 
 
-// hàm thay đổi dữ liệu table
-function renderDuLieu(data) {
 
-	// xóa dữ liệu table đã có
+function render(data) {
 	$("#tableBody").html("");
-
-	// lặp qua dữ liệu
-	$.each(data, (index, danhMuc) => {
-
+	$.each(data, (i, danhMuc) => {
 		const { id, tenDanhMuc} = danhMuc;
-
-		// tạo tr trong #tableBody
 		$("<tr>").appendTo($("#tableBody"))
 			// thêm td vào tr
 			.append($("<td>").text(id))
@@ -54,15 +46,14 @@ function renderDuLieu(data) {
 	});
 }
 
-// hàm tìm kiếm theo tên màu
-function capNhatDuLieu(tenDanhMuc) {
+function capNhat(tenDanhMuc) {
 
 	const url = `api/cates?tenDanhMuc=${tenDanhMuc}`;
 	$.get(url, function(data, status) {
 
 		if (status === 'success') {
 
-			renderDuLieu(data);
+			render(data);
 		}
 	})
 }

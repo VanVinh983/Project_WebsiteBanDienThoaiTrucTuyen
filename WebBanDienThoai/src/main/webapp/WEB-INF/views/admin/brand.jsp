@@ -51,7 +51,7 @@
 											&nbsp;
 												<a href="${edit}"><i class="zmdi zmdi-border-color zmdi-hc-lg"></i> </a>	
 													&emsp;&nbsp;																																	
-												<a onClick="xoa(${brand.id})" class="text-white" id="xoa" href="">	<i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
+												<a onClick="xoa(${brand.id})" class="text-white" id="xoa">	<i class="zmdi zmdi-delete zmdi-hc-lg"></i></a>
 											</td>
 										</tr>
 									</c:forEach>

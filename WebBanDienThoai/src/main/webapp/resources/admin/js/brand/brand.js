@@ -12,6 +12,7 @@ function xoa(id) {
 			},
 			error: function() {
 				toastr.error('Đã có sản phẩm, không xóa được')
+				$("#xoa").attr("href","#");
 			},
 
 		});

@@ -38,13 +38,14 @@ public class DienThoaiController {
 
 	@GetMapping("/danhsach")
 	public String listCustomers(Model theModel, @RequestParam(required = false) String sort,  @RequestParam(value = "page", defaultValue = "1") int page,
-			@RequestParam(value="search", defaultValue = "") String search) {
+			@RequestParam(value="search", defaultValue = "") String search,@RequestParam(value="memory", defaultValue = "") String memory) {
 		List<DienThoai> listDienThoai = new ArrayList<DienThoai>();
 		if (sort!=null) {
-			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort,search);
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep(sort,search,memory);
 		}else {
-			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc",search);
+			listDienThoai = dienThoaiService.getListDienThoaiCoSapXep("desc",search,memory);
 		}
+		theModel.addAttribute("memory",memory);
 		theModel.addAttribute("search",search);
 		theModel.addAttribute("sort",sort);
 		theModel.addAttribute("page", page);

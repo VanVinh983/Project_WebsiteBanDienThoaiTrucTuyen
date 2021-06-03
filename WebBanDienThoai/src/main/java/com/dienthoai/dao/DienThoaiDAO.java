@@ -16,7 +16,7 @@ public interface DienThoaiDAO {
 	public List<DienThoai> getListDienThoaiLienQuan(String tenDM);
 	public List<ThuongHieu> getListThuongHieu();
 	public List<DienThoai> getListDienThoaiTheoPage(int page, int element, List<DienThoai> list);
-	public List<DienThoai> getListDienThoaiCoSapXep(String sortName,String searchName);
+	public List<DienThoai> getListDienThoaiCoSapXep(String sortName,String searchName,String memory);
 	public List<DienThoai> getListDienThoaiSearch(String searchName);
 	public List<DienThoai> getListDienThoaiTheoThuongHieu(int idThuongHieu);
 	

@@ -123,58 +123,62 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 
 	@Transactional
 	@Override
-	public List<DienThoai> getListDienThoaiCoSapXep(String sortName,String searchName) {
+	public List<DienThoai> getListDienThoaiCoSapXep(String sortName,String searchName,String memory) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		List<DienThoai> dts = new ArrayList<DienThoai>();
 		String sql = null;
 		switch (sortName) {
 		case "gia_asc":
 			sql = "select dt.* from DIENTHOAI dt join THUONGHIEU th  on dt.id_ThuongHieu = th.id join THONGSO ts on dt.id_ThongSo = ts.id "
-					+ "where LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
+					+ "where (LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
 					+ "LOWER(kichThuoc) like N'%"+searchName+"%' or LOWER(mauSac) like N'%"+searchName+"%' or "
 					+ "LOWER(tenTH) like N'%"+searchName+"%' or LOWER(xuatXu) like N'%"+searchName+"%' or "
 					+ "LOWER(heDieuHanh) like N'%"+searchName+"%' or LOWER(manHinh) like N'%"+searchName+"%' or "
-					+ "LOWER(boNho) like N'%"+searchName+"%'or LOWER(camera) like N'%"+searchName+"%' or "
+					+ "LOWER(camera) like N'%"+searchName+"%' or "
 					+ "LOWER(pin) like N'%"+searchName+"%' or LOWER(ram) like N'%"+searchName+"%' or "
-					+ "LOWER(sim) like N'%"+searchName+"%' "
+					+ "LOWER(sim) like N'%"+searchName+"%') "
+					+ "and LOWER(boNho) like N'%"+memory+"%' "
 					+ "order by (giaDT*(100-giamGia))/100  asc";
 			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
 			break;
 		case "gia_desc":
 			sql = "select dt.* from DIENTHOAI dt join THUONGHIEU th  on dt.id_ThuongHieu = th.id join THONGSO ts on dt.id_ThongSo = ts.id "
-					+ "where LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
+					+ "where (LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
 					+ "LOWER(kichThuoc) like N'%"+searchName+"%' or LOWER(mauSac) like N'%"+searchName+"%' or "
 					+ "LOWER(tenTH) like N'%"+searchName+"%' or LOWER(xuatXu) like N'%"+searchName+"%' or "
 					+ "LOWER(heDieuHanh) like N'%"+searchName+"%' or LOWER(manHinh) like N'%"+searchName+"%' or "
-					+ "LOWER(boNho) like N'%"+searchName+"%'or LOWER(camera) like N'%"+searchName+"%' or "
+					+ "LOWER(camera) like N'%"+searchName+"%' or "
 					+ "LOWER(pin) like N'%"+searchName+"%' or LOWER(ram) like N'%"+searchName+"%' or "
-					+ "LOWER(sim) like N'%"+searchName+"%' "
+					+ "LOWER(sim) like N'%"+searchName+"%') "
+					+ "and LOWER(boNho) like N'%"+memory+"%' "
 					+ "order by (giaDT*(100-giamGia))/100  desc";
 			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
 			break;
 		case "giamgia":
 			sql = "select dt.* from DIENTHOAI dt join THUONGHIEU th  on dt.id_ThuongHieu = th.id join THONGSO ts on dt.id_ThongSo = ts.id "
 					+ "where giamGia > 0 and "
-					+ "LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
+					+ "(LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
 					+ "LOWER(kichThuoc) like N'%"+searchName+"%' or LOWER(mauSac) like N'%"+searchName+"%' or "
 					+ "LOWER(tenTH) like N'%"+searchName+"%' or LOWER(xuatXu) like N'%"+searchName+"%' or "
 					+ "LOWER(heDieuHanh) like N'%"+searchName+"%' or LOWER(manHinh) like N'%"+searchName+"%' or "
-					+ "LOWER(boNho) like N'%"+searchName+"%'or LOWER(camera) like N'%"+searchName+"%' or "
+					+ "LOWER(camera) like N'%"+searchName+"%' or "
 					+ "LOWER(pin) like N'%"+searchName+"%' or LOWER(ram) like N'%"+searchName+"%' or "
-					+ "LOWER(sim) like N'%"+searchName+"%' "
+					+ "LOWER(sim) like N'%"+searchName+"%') "
+					+ "and LOWER(boNho) like N'%"+memory+"%' "
 					+ "order by (giaDT*(100-giamGia))/100  asc";
 			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
 			break;
 		case "banchay":
 			sql = "select dt.id, SUM(ct.soLuong) as sum from DIENTHOAI dt join CHITIETHOADON ct on dt.id = ct.id_DienThoai "
 				+ "join THUONGHIEU th  on dt.id_ThuongHieu = th.id join THONGSO ts on dt.id_ThongSo = ts.id "
-				+ "where LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
+				+ "where (LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
 				+ "LOWER(kichThuoc) like N'%"+searchName+"%' or LOWER(mauSac) like N'%"+searchName+"%' or "
 				+ "LOWER(tenTH) like N'%"+searchName+"%' or LOWER(xuatXu) like N'%"+searchName+"%' or "
 				+ "LOWER(heDieuHanh) like N'%"+searchName+"%' or LOWER(manHinh) like N'%"+searchName+"%' or "
-				+ "LOWER(boNho) like N'%"+searchName+"%'or LOWER(camera) like N'%"+searchName+"%' or "
+				+ "LOWER(camera) like N'%"+searchName+"%' or "
 				+ "LOWER(pin) like N'%"+searchName+"%' or LOWER(ram) like N'%"+searchName+"%' or "
-				+ "LOWER(sim) like N'%"+searchName+"%' "
+				+ "LOWER(sim) like N'%"+searchName+"%') "
+				+ "and LOWER(boNho) like N'%"+memory+"%' "
 				+ "group by dt.id,dt.tenDT "
 				+ "order by sum desc";
 			List<?> list = currentSession.createNativeQuery(sql).getResultList();
@@ -184,37 +188,34 @@ public class DienThoaiDAOImpl implements DienThoaiDAO {
 				dts.add(dt);
 			}
 			break;
-		case "hotnhat":
-			sql = "select dt.id, ts.boNho from DIENTHOAI dt join THONGSO ts on dt.id_ThongSo = ts.id";
-			List<?> ds_id_boNho = currentSession.createNativeQuery(sql).getResultList();
-			final List<Integer> listboNho = new ArrayList<Integer>();
-			Map<String, Integer> map = new HashMap<String, Integer>();
-			for (Object object : ds_id_boNho) {
-				Object[] temp = (Object[]) object;
-				String chuoiBoNho = temp[1].toString().replaceAll("[a-zA-Z]", "");
-				int boNho = Integer.parseInt(chuoiBoNho);
-				map.put(temp[0].toString(), boNho);
-			}
-			final List<DienThoai> finaldt = new ArrayList<DienThoai>();
-			LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
-			map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-					.forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-			reverseSortedMap.forEach((id, bn) -> {
-				listboNho.add(bn);
-				finaldt.add(currentSession.find(DienThoai.class, Integer.parseInt(id)));
-			});
-			dts = finaldt;
-			break;
-
+		/*
+		 * case "hotnhat": sql =
+		 * "select dt.id, ts.boNho from DIENTHOAI dt join THONGSO ts on dt.id_ThongSo = ts.id"
+		 * ; List<?> ds_id_boNho =
+		 * currentSession.createNativeQuery(sql).getResultList(); final List<Integer>
+		 * listboNho = new ArrayList<Integer>(); Map<String, Integer> map = new
+		 * HashMap<String, Integer>(); for (Object object : ds_id_boNho) { Object[] temp
+		 * = (Object[]) object; String chuoiBoNho =
+		 * temp[1].toString().replaceAll("[a-zA-Z]", ""); int boNho =
+		 * Integer.parseInt(chuoiBoNho); map.put(temp[0].toString(), boNho); } final
+		 * List<DienThoai> finaldt = new ArrayList<DienThoai>(); LinkedHashMap<String,
+		 * Integer> reverseSortedMap = new LinkedHashMap<>();
+		 * map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.
+		 * reverseOrder())) .forEachOrdered(x -> reverseSortedMap.put(x.getKey(),
+		 * x.getValue())); reverseSortedMap.forEach((id, bn) -> { listboNho.add(bn);
+		 * finaldt.add(currentSession.find(DienThoai.class, Integer.parseInt(id))); });
+		 * dts = finaldt; break;
+		 */
 		default:
 			sql = "select dt.* from DIENTHOAI dt join THUONGHIEU th  on dt.id_ThuongHieu = th.id join THONGSO ts on dt.id_ThongSo = ts.id "
-					+ "where LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
+					+ "where (LOWER(tenDT) like N'%"+searchName+"%' or LOWER(baoHanh) like N'%"+searchName+"%' or "
 					+ "LOWER(kichThuoc) like N'%"+searchName+"%' or LOWER(mauSac) like N'%"+searchName+"%' or "
 					+ "LOWER(tenTH) like N'%"+searchName+"%' or LOWER(xuatXu) like N'%"+searchName+"%' or "
 					+ "LOWER(heDieuHanh) like N'%"+searchName+"%' or LOWER(manHinh) like N'%"+searchName+"%' or "
-					+ "LOWER(boNho) like N'%"+searchName+"%'or LOWER(camera) like N'%"+searchName+"%' or "
+					+ "LOWER(camera) like N'%"+searchName+"%' or "
 					+ "LOWER(pin) like N'%"+searchName+"%' or LOWER(ram) like N'%"+searchName+"%' or "
-					+ "LOWER(sim) like N'%"+searchName+"%' "
+					+ "LOWER(sim) like N'%"+searchName+"%') "
+					+ "and LOWER(boNho) like N'%"+memory+"%' "
 					+ "order by (giaDT*(100-giamGia))/100  desc";
 			dts = currentSession.createNativeQuery(sql, DienThoai.class).getResultList();
 			break;

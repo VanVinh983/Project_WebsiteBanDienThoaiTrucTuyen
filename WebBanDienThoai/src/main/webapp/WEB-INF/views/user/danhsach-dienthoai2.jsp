@@ -4,18 +4,60 @@
 <c:url value="/resources" var="resources" />
 <c:url var="linkgia_asc" value="/dienthoai/danhsach">
 	<c:param name="sort" value="gia_asc" />
+	<c:param name="search" value="${search}" />
+	<c:param name="memory" value="${memory}" />
 </c:url>
 <c:url var="linkgia_desc" value="/dienthoai/danhsach">
 	<c:param name="sort" value="gia_desc" />
+	<c:param name="search" value="${search}" />
+	<c:param name="memory" value="${memory}" />
 </c:url>
 <c:url var="linkgiamgia" value="/dienthoai/danhsach">
 	<c:param name="sort" value="giamgia" />
+	<c:param name="search" value="${search}" />
+	<c:param name="memory" value="${memory}" />
 </c:url>
 <c:url var="linkbanchay" value="/dienthoai/danhsach">
 	<c:param name="sort" value="banchay" />
+	<c:param name="search" value="${search}" />
+	<c:param name="memory" value="${memory}" />
 </c:url>
 <c:url var="linkhotnhat" value="/dienthoai/danhsach">
 	<c:param name="sort" value="hotnhat" />
+	<c:param name="search" value="${search}" />
+	<c:param name="memory" value="${memory}" />
+</c:url>
+<c:url var="memory1" value="/dienthoai/danhsach">
+	<c:param name="sort" value="${sort }" />
+	<c:param name="memory" value="16GB" />
+	<c:param name="search" value="${search}" />
+</c:url>
+<c:url var="memory2" value="/dienthoai/danhsach">
+	<c:param name="sort" value="${sort }" />
+	<c:param name="memory" value="32GB" />
+	<c:param name="search" value="${search}" />
+</c:url>
+<c:url var="memory3" value="/dienthoai/danhsach">
+	<c:param name="sort" value="${sort }" />
+	<c:param name="memory" value="64GB" />
+	<c:param name="search" value="${search}" />
+</c:url>
+<c:url var="memory4" value="/dienthoai/danhsach">
+	<c:param name="sort" value="${sort }" />
+	<c:param name="memory" value="128GB" />
+	<c:param name="search" value="${search}" />
+</c:url>
+<c:url var="memory5" value="/dienthoai/danhsach">
+	<c:param name="sort" value="${sort }" />
+	<c:param name="memory" value="256GB" />
+	<c:param name="search" value="${search}" />
+</c:url>
+<c:url var="memory6" value="/dienthoai/danhsach">
+	<c:param name="sort" value="${sort }" />
+	<c:param name="memory" value="512GB" />
+	<c:param name="search" value="${search}" />
+
+	
 </c:url>
 <div class="mt-3">
 	<div class="app-body">
@@ -28,18 +70,22 @@
 						</h3>
 						<ul class="category-list">
 							<c:forEach var="dm" items="${dms}">
-							<form:form action="${pageContext.request.contextPath}/dienthoai/danhsach" method="get">
-									<input type="hidden" value="${sort}" name="sort"/>
-									<input type="hidden" value="${dm.tenDanhMuc}" name="search"/>
+								<form:form
+									action="${pageContext.request.contextPath}/dienthoai/danhsach"
+									method="get">
+									<input type="hidden" value="${sort}" name="sort" />
+									<input type="hidden" value="${dm.tenDanhMuc}" name="search" />
+									<input type="hidden" value="${memory}" name="memory" />
+									<li class="category-item">
+										<div class="list-group">
+											<button type="submit"
+												class="list-group-item list-group-item-action fs16"
+												style="width: 200; border-bottom: 1px solid #c3c3c3;">${dm.tenDanhMuc}</button>
+										</div>
+									</li>
 
-								<li class="category-item">
-									<div class="list-group">
-										<button type="submit" class="list-group-item list-group-item-action fs16" style="width: 200; border-bottom: 1px solid #c3c3c3;">${dm.tenDanhMuc}</button>							
-									</div>
-								</li>
-							
-							</form:form>
-									
+								</form:form>
+
 							</c:forEach>
 						</ul>
 					</nav>
@@ -49,14 +95,14 @@
 						<div class="col-12">
 							<div class="home-filter hide-on-mobile-tablet">
 								<span class="home-filter__label fs14">Sắp xếp theo</span>
-								<c:if test="${param.sort == 'hotnhat'}">
+<%-- 								<c:if test="${param.sort == 'hotnhat'}">
 									<a class="text-dark" href="${linkhotnhat}"><button
 											class="home-filter-btn btn btn-warning fs14">Bộ nhớ</button></a>
 								</c:if>
 								<c:if test="${param.sort != 'hotnhat'}">
 									<a class="text-dark" href="${linkhotnhat}"><button
 											class="home-filter-btn btn fs14">Bộ nhớ</button></a>
-								</c:if>
+								</c:if> --%>
 								<c:if test="${param.sort=='giamgia' }">
 									<a class="text-dark" href="${linkgiamgia}"><button
 											class="home-filter-btn btn btn-warning fs14">Giảm
@@ -76,10 +122,10 @@
 											class="home-filter-btn btn fs14">Bán chạy</button></a>
 								</c:if>
 								<div class="select-input">
-									<span class="select-input-price"> 
-										<c:if test="${param.sort =='gia_asc'}"> Giá: Thấp đến cao</c:if> 
-										<c:if test="${param.sort =='gia_desc'}"> Giá: Cao đến thấp</c:if> 
-										<c:if test="${!param.sort}"> Giá </c:if>
+									<span class="select-input-price"> <c:if
+											test="${param.sort =='gia_asc'}"> Giá: Thấp đến cao</c:if> <c:if
+											test="${param.sort =='gia_desc'}"> Giá: Cao đến thấp</c:if> <c:if
+											test="${!param.sort}"> Giá </c:if>
 									</span> <i class="select-input-icon fas fa-angle-down"></i>
 									<ul class="select-input-list">
 										<li class="select-input-item"><a href="${linkgia_asc}"
@@ -91,7 +137,31 @@
 												class="select-input-item-icon fas fa-arrow-down"></i></a></li>
 									</ul>
 								</div>
-
+								<div class="select-input">
+									<span class="select-input-price"> <c:if
+											test="${param.memory =='16GB'}">16GB</c:if> <c:if
+											test="${param.memory =='32GB'}">32GB</c:if> <c:if
+											test="${param.memory =='64GB'}">64GB</c:if> <c:if
+											test="${param.memory =='128GB'}">128GB</c:if> <c:if
+											test="${param.memory =='256GB'}">256GB</c:if> <c:if
+											test="${param.memory =='512GB'}">512GB</c:if> <c:if
+											test="${!param.memory}">Bộ nhớ</c:if>
+									</span> <i class="select-input-icon fas fa-angle-down"></i>
+									<ul class="select-input-list">
+										<li class="select-input-item"><a href="${memory1}"
+											class="select-input-link text-decoration-none">16GB </a></li>
+										<li class="select-input-item"><a href="${memory2}"
+											class="select-input-link">32GB</a></li>
+										<li class="select-input-item"><a href="${memory3}"
+											class="select-input-link">64GB</a></li>
+										<li class="select-input-item"><a href="${memory4}"
+											class="select-input-link">128GB</a></li>
+										<li class="select-input-item"><a href="${memory5}"
+											class="select-input-link">256GB</a></li>
+										<li class="select-input-item"><a href="${memory6}"
+											class="select-input-link">512GB</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -140,18 +210,20 @@
 										Thêm vào giỏ hàng </a>
 								</div>
 							</c:forEach>
-							
+
 						</div>
 						<br>
-							<div class="col-md-12">
-								<form action="${pageContext.request.contextPath}/dienthoai/danhsach"
-									id="formSubmit" method="get">
-									<ul id="pagination" class="pagination"></ul>
-									<input type="hidden" value="" id="page" name="page" />
-									<input type="hidden" value="${sort}"  name="sort" />
-									<input type="hidden" value="${search}"  name="search" />
-								</form>
-							</div>
+						<div class="col-md-12">
+							<form
+								action="${pageContext.request.contextPath}/dienthoai/danhsach"
+								id="formSubmit" method="get">
+								<ul id="pagination" class="pagination"></ul>
+								<input type="hidden" value="" id="page" name="page" /> <input
+									type="hidden" value="${sort}" name="sort" /> <input
+									type="hidden" value="${search}" name="search" /> <input
+									type="hidden" value="${memory}" name="memory" />
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -160,7 +232,8 @@
 </div>
 
 <script src="${resources}/user/js/jquery.min.js"></script>
-<script type="text/javascript" src="${resources}/user/js/pagination.min.js"></script>
+<script type="text/javascript"
+	src="${resources}/user/js/pagination.min.js"></script>
 <script type="text/javascript">
 $('#pagination').pagination({
     total: ${total},

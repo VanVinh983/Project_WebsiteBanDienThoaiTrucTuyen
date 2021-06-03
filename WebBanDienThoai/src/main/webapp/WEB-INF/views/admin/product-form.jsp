@@ -222,8 +222,7 @@
 						<li><span>Độ phân giải Camera</span>
 							<div>
 								<select class="form-control" id="camera">
-									<option selected>select</option>
-									<option value="12MP">12MP</option>
+									<option value="12MP" selected>12MP</option>
 									<option value="16MP">16MP</option>
 									<option value="24MP">24MP</option>
 									<option value="36MP">36MP</option>
@@ -247,7 +246,7 @@
 									<option value="64GB">64GB</option>
 									<option value="128GB">128GB</option>
 									<option value="256GB">256GB</option>
-									<optionvalue="512GB" >512GB
+									<option value="512GB" >512GB
 									</option>
 								</select>
 							</div></li>

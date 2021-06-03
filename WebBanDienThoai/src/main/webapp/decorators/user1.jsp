@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="${css}/index_1.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="${resources}/user/css/pagination.min.css">
+
 <title>Mobile Việt Nam | Mua và Bán Trên Ứng Dụng Di Động Hoặc
 	Website</title>
 </head>

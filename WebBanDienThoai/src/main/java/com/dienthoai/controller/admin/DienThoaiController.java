@@ -111,7 +111,11 @@ public class DienThoaiController {
 				}				
 			}else {
 				List<String> photos=(List<String>) session.getAttribute("photos");
-				product.setAnhURL(photos.get(0));
+				try {
+					product.setAnhURL(photos.get(0));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				product.setHinhAnh(photos);
 				session.removeValue("photos");
 			}

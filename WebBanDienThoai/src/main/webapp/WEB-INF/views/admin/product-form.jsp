@@ -49,10 +49,10 @@
 										<c:forEach items="${cates}" var="cate">
 											<c:choose>
 												<c:when test="${cate.id==id }">
-													<option value="${cate.id}" selected>${cate.tenDanhMuc }</option>
+													<option value="${cate.id}"selected>${cate.tenDanhMuc }</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${cate.id}" selected>${cate.tenDanhMuc }</option>
+													<option value="${cate.id}">${cate.tenDanhMuc }</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>

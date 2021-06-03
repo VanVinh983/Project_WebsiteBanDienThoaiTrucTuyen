@@ -1,8 +1,10 @@
+<%@page import="com.dienthoai.entity.DienThoai"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 <%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
 <c:url value="/resources" var="resources" />
+
 <div class="container">
 	<div class="row ">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-1 text-left ">
@@ -30,7 +32,7 @@
 	<div class="container">
 		<div class="row mt-3 " id="danhgiaiPhone ">
 			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left pt-2 ">
-				<h3 id="promax ">${dt.tenDT}${dt.thongSo.boNho}</h3>
+				<h3 id="promax ">${dt.tenDT} (${dt.thongSo.boNho})</h3>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-1 text-right ">
 				<button class="btn btn-primary btn-lg">
@@ -52,34 +54,42 @@
 				<div class="row ">
 					<div class="tab-content col-xs-12 col-sm-12 col-md-12 col-lg-12 "
 						style="margin-top: 40px;">
-						<div class="tab-pane active " id="anh1 "
-							value="${resources}/user/images/SanPham/${dt.anhURL}">
-							<img src="${resources}/user/images/SanPham/${dt.anhURL}"
-								style="width: 100%" />
-						</div>
-						<div class="tab-pane " id="anh2 ">
-							<img src="" style="width: 100%" />
-						</div>
+						 <div class="tab-content col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:40px;">
+	                        <div class="tab-pane active" id="anh1" value="${resources}/user/images/SanPham/${dt.anhURL}">
+	                        	<img src="${resources}/user/images/SanPham/${dt.anhURL}" style="width: 100%"/>
+	                        </div> 
+	                        <c:if test="${size > 0}">
+								<% 	DienThoai dt= (DienThoai) session.getAttribute("dienthoai");
+										for (String anh :  dt.getHinhAnh()) {
+										String a = anh.split("\\.")[0];
+								%>							
+									<div class="tab-pane" id="<%=a %>">
+										<img src="${resources}/user/images/SanPham/<%=anh%>" style="width: 100%" />
+									</div>
+								<%}%>
+							</c:if>
+                    	</div>						
 					</div>
 					<span style="color: rgba(24, 22, 19, 0.384);" class="pt-2 mb-2 "><b>
 							Xem hình thực tế sản phẩm</b></span>
 				</div>
 				<div class="row ">
 					<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-						<ul class="nav nav-tabs " id="anh ">
-
-							<li class="active "><a data-target="#anh1 "
-								data-toggle="tab "><img
-									src="${resources}/user/images/SanPham/${dt.anhURL}"
-									width="100px " /></a></li>
+						<ul class="nav nav-tabs " id="anh">
 							<c:if test="${size > 0}">
-								<c:forEach items="${dt.hinhAnh}" var="anh">
-									<li><a data-target="#anh1" data-toggle="tab "><img
-											src="${resources}/user/images/SanPham/${anh}"
-											width="100px " /></a></li>
-								</c:forEach>
+								<%
+								DienThoai dt= (DienThoai) session.getAttribute("dienthoai");
+									for (String anh :  dt.getHinhAnh()) {
+									String a = anh.split("\\.")[0];
+								%>
 
+								<li class="active"><a data-target="#<%=a%>" data-toggle="tab "><img
+										src="${resources}/user/images/SanPham/<%=anh%>"
+										width="70px " /></a></li>
 
+								<%
+									}
+								%>
 							</c:if>
 						</ul>
 					</div>
@@ -93,10 +103,10 @@
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 text-left fs14">
 				<div class="row ">
 					<div
-						class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-left pt-2 text-center ">
+						class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-left pt-2">
 						<h4>
 							<c:if test="${dt.giamGia>0}">
-								<b><span class="fs16" style="color: red;"><fmt:formatNumber
+								<b>Giá: <span class="fs16" style="color: red;"><fmt:formatNumber
 											type="number" pattern="#,###,###.##"
 											value="${(dt.giaDT*(100-dt.giamGia))/100}" /> ₫</span></b>&nbsp; &nbsp;
 								<span style="font-size: 15px;"><strike><i> <fmt:formatNumber
@@ -105,12 +115,13 @@
 									</i></strike></span>
 							</c:if>
 							<c:if test="${dt.giamGia<=0}">
-								<b><span class="fs16" style="color: red;"><fmt:formatNumber
+								<b>Giá: <span class="fs16" style="color: red;"><fmt:formatNumber
 											type="number" pattern="#,###,###.##" value="${dt.giaDT}" />
 										₫</span></b>
 							</c:if>
 
 						</h4>
+						<h4>Màu sắc:  <span class="fs16" style="color: red;">${dt.mauSac}</span></h4>
 						<span class="text-left ">Bạn đang xem phiên bản:
 							${dt.thongSo.boNho}</span>
 					</div>

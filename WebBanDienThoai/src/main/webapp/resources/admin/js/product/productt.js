@@ -144,7 +144,7 @@ $("#timKiemTendienThoai").on("keyup", function() {  		//khi nhập 1 từ khóa 
 function render(data) {
 	$("#tableBody").html("");												//lấy table từ jsp set null
 	$.each(data, (i, data) => {												//chạy vòng lặp, lặp qua dữ liệu 
-		const { id, tenDT, giaDT,soLuongTon,giamGia, anhURL} = data;			//dữ liệu nhận được
+		const { id, tenDT, giaDT,soLuongTon,giamGia, anhURL,thongSo} = data;			//dữ liệu nhận được
 		console.log(JSON.stringify(data));
 		$("<tr>").appendTo($("#tableBody"))									// tạo thẻ tr của table
 			.append($("<td>").text(id))										// thêm thẻ td vào thẻ tr
@@ -152,7 +152,7 @@ function render(data) {
 				<img style="width: 110px; height: 67px; border: 1px solid #fff;" 
 				src="/WebBanDienThoai/resources/user/images/SanPham/${anhURL}">
 				`))			
-			.append($("<td>").text(tenDT))
+			.append($("<td>").text(tenDT +" ("+ thongSo.boNho+")"))
 			.append($("<td>").text(giaDT))
 			.append($("<td>").text(soLuongTon))
 			.append($("<td>").text(giamGia))

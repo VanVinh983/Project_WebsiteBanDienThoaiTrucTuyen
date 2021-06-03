@@ -64,7 +64,7 @@
 										String a = anh.split("\\.")[0];
 								%>							
 									<div class="tab-pane" id="<%=a %>">
-										<img src="${resources}/user/images/SanPham/<%=anh%>" style="width: 100%" />
+										<img src="${resources}/user/images/SanPham/<%=anh%>" style="width: 70px%" />
 									</div>
 								<%}%>
 							</c:if>

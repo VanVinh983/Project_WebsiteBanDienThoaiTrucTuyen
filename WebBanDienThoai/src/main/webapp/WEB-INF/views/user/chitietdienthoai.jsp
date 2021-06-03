@@ -32,7 +32,7 @@
 	<div class="container">
 		<div class="row mt-3 " id="danhgiaiPhone ">
 			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left pt-2 ">
-				<h3 id="promax ">${dt.tenDT} (${dt.thongSo.boNho})</h3>
+				<h3 id="promax ">${dt.tenDT}(${dt.thongSo.boNho})</h3>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-1 text-right ">
 				<button class="btn btn-primary btn-lg">
@@ -54,42 +54,59 @@
 				<div class="row ">
 					<div class="tab-content col-xs-12 col-sm-12 col-md-12 col-lg-12 "
 						style="margin-top: 40px;">
-						 <div class="tab-content col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:40px;">
-	                        <div class="tab-pane active" id="anh1" value="${resources}/user/images/SanPham/${dt.anhURL}">
-	                        	<img src="${resources}/user/images/SanPham/${dt.anhURL}" style="width: 100%"/>
-	                        </div> 
-	                        <c:if test="${size > 0}">
-								<% 	DienThoai dt= (DienThoai) session.getAttribute("dienthoai");
-										for (String anh :  dt.getHinhAnh()) {
-										String a = anh.split("\\.")[0];
-								%>							
-									<div class="tab-pane" id="<%=a %>">
-										<img src="${resources}/user/images/SanPham/<%=anh%>" style="width: 70px%" />
-									</div>
-								<%}%>
+						<div class="tab-content col-xs-12 col-sm-12 col-md-12 col-lg-12"
+							style="margin-top: 20px; height: 420px">
+							<c:if test="${size > 0}">
+								<c:forEach var="hinhanh" items="${dt.getHinhAnh()}">
+									<c:if test="${hinhanh == dt.getHinhAnh()[0]}">
+										<div class="tab-pane active" id="${hinhanh.replaceAll(".jpg|.png","")}">
+											<img src="${resources}/user/images/SanPham/${hinhanh}"
+												style="width: 100%" />
+										</div>
+									</c:if>
+									<c:if test="${hinhanh != dt.getHinhAnh()[0]}">
+										<div class="tab-pane fade" id="${hinhanh.replaceAll(".jpg|.png","")}">
+											<img src="${resources}/user/images/SanPham/${hinhanh}"
+												style="width: 100%" />
+										</div>
+									</c:if>
+								</c:forEach>
 							</c:if>
-                    	</div>						
+							<c:if test="${size <= 0}">
+								<div class="tab-pane fade" id="${dt.anhURL.replaceAll(".jpg|.png","")}">
+											<img src="${resources}/user/images/SanPham/${dt.anhURL}"
+												style="width: 100%" />
+										</div>
+							</c:if>
+						</div>
 					</div>
 					<span style="color: rgba(24, 22, 19, 0.384);" class="pt-2 mb-2 "><b>
 							Xem hình thực tế sản phẩm</b></span>
 				</div>
 				<div class="row ">
 					<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-						<ul class="nav nav-tabs " id="anh">
+						<ul class="nav nav-pills" role="tablist">
 							<c:if test="${size > 0}">
-								<%
-								DienThoai dt= (DienThoai) session.getAttribute("dienthoai");
-									for (String anh :  dt.getHinhAnh()) {
-									String a = anh.split("\\.")[0];
-								%>
-
-								<li class="active"><a data-target="#<%=a%>" data-toggle="tab "><img
-										src="${resources}/user/images/SanPham/<%=anh%>"
+								<c:forEach var="hinhanh" items="${dt.getHinhAnh()}">
+									<c:if test="${hinhanh == dt.getHinhAnh()[0]}">
+										<li class="nav-item"><a class="nav-link active p-1"
+											data-toggle="pill" href="#${hinhanh.replaceAll(".jpg|.png","")}"><img
+												src="${resources}/user/images/SanPham/${hinhanh}"
+												width="70px " /></a></li>
+									</c:if>
+									<c:if test="${hinhanh != dt.getHinhAnh()[0]}">
+										<li class="nav-item"><a class="nav-link p-1"
+											data-toggle="pill" href="#${hinhanh.replaceAll(".jpg|.png","")}"><img
+												src="${resources}/user/images/SanPham/${hinhanh}"
+												width="70px " /></a></li>
+									</c:if>
+								</c:forEach>
+							</c:if>
+							<c:if test="${size <= 0}">
+								<li class="nav-item"><a class="nav-link active p-1"
+									data-toggle="pill" href="#${dt.anhURL.replaceAll(".jpg|.png","")}"><img
+										src="${resources}/user/images/SanPham/${dt.anhURL}"
 										width="70px " /></a></li>
-
-								<%
-									}
-								%>
 							</c:if>
 						</ul>
 					</div>
@@ -102,8 +119,7 @@
 
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 text-left fs14">
 				<div class="row ">
-					<div
-						class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-left pt-2">
+					<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-left pt-2">
 						<h4>
 							<c:if test="${dt.giamGia>0}">
 								<b>Giá: <span class="fs16" style="color: red;"><fmt:formatNumber
@@ -121,7 +137,9 @@
 							</c:if>
 
 						</h4>
-						<h4>Màu sắc:  <span class="fs16" style="color: red;">${dt.mauSac}</span></h4>
+						<h4>
+							Màu sắc: <span class="fs16" style="color: red;">${dt.mauSac}</span>
+						</h4>
 						<span class="text-left ">Bạn đang xem phiên bản:
 							${dt.thongSo.boNho}</span>
 					</div>

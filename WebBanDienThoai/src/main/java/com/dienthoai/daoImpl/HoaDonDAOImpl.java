@@ -97,15 +97,15 @@ public class HoaDonDAOImpl implements HoaDonDAO {
 		List<HoaDon> hoadons=new ArrayList<HoaDon>();
 		switch (name) {
 		case "ngay_desc":
-			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%' order by ngayLap desc";
+			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' order by ngayLap desc";
 			hoadons=currentSession.createNativeQuery(sql,HoaDon.class).getResultList();
 			break;
 		case "ngay_asc":
-			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%' order by ngayLap asc";
+			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%'  order by ngayLap asc";
 			hoadons=currentSession.createNativeQuery(sql,HoaDon.class).getResultList();
 			break;
 		default:
-			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' or email like N'%"+search+"%'";
+			sql="select * from HOADON where hoTenKhachHang like N'%"+search+"%' or soDienThoaiGiaoHang like N'%"+search+"%' ";
 			hoadons=currentSession.createNativeQuery(sql,HoaDon.class).getResultList();
 			break;
 		}

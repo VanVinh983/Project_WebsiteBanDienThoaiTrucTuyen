@@ -181,7 +181,7 @@ function xoats(id) {
 				capNhat("");	
 			},
 			error: function() {
-				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
+				toastr.error('Đã có sản phẩm, không xóa được')
 			},
 
 		});
@@ -202,7 +202,7 @@ function xoa(id) {
 				capNhat("");		//cập nhập lại dữ liệu 
 			},
 			error: function() {
-				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
+				toastr.error('Đã có sản phẩm, không xóa được')
 			},
 
 		});

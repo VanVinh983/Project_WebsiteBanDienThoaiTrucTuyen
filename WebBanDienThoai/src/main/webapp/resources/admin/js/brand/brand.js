@@ -11,7 +11,7 @@ function xoa(id) {
 				$("#xoa").attr("href","list");
 			},
 			error: function() {
-				toastr.error('Không xóa được, vì đã có sản phẩm dùng')
+				toastr.error('Đã có sản phẩm, không xóa được')
 			},
 
 		});

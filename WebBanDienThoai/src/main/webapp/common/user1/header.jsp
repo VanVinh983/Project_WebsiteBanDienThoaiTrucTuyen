@@ -119,12 +119,7 @@
 			href="${pageContext.request.contextPath}/dienthoai/danhsach">Trang chủ</a></li>
 		<li class="list-inline-item"><a
 			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
-			href="${pageContext.request.contextPath}/dienthoai/danhmuc">Danh Mục Sản Phẩm</a></li>
-		<li class="list-inline-item"><a
-			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
 			href="${pageContext.request.contextPath}/user/gioHang">Giỏ hàng</a></li>
-		<li class="list-inline-item"><a
-			class="text-decoration-none fs14 mr-3 text-deco text-dark text-uppercase opacity05 px-3 py-2 font-weight-bold"
-			href="#">Chi tiết</a></li>
+
 	</ul>
 </div>

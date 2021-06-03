@@ -3,12 +3,10 @@
 <%@ include file="/common/taglib.jsp"%>
 <c:url value="/resources" var="resources"></c:url>
 <c:url var="ngay_desc" value="/admin/order/list">
-	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="ngay_desc" />
 	<c:param name="search" value="${search}" />
 </c:url>
 <c:url var="ngay_asc" value="/admin/order/list">
-	<c:param name="page" value="${page}" />
 	<c:param name="sort" value="ngay_asc" />
 	<c:param name="search" value="${search}" />
 </c:url>
@@ -25,7 +23,6 @@
 				<div class="col-lg-8">	
 				<form:form action="list" method="GET"> 						
 					<div class="input-group">						
-						<input type="hidden" value="${page}" name="page"/>
 						<input type="hidden" value="${sort}" name="sort"/>
 						<input type="text" class="form-control" name="search" placeholder="Nhập từ khóa cần tìm kiếm..." />
 						<button class="btn btn-light" type="submit"><i class="zmdi zmdi-search zmdi-hc-lg"></i></button>									

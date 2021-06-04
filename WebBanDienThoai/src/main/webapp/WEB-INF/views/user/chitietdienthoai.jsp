@@ -92,7 +92,7 @@
 										<li class="nav-item"><a class="nav-link active p-1"
 											data-toggle="pill" href="#${hinhanh.replaceAll(".jpg|.png","")}"><img
 												src="${resources}/user/images/SanPham/${hinhanh}"
-												width="70px " /></a></li>
+												width="48px " /></a></li>
 									</c:if>
 									<c:if test="${hinhanh != dt.getHinhAnh()[0]}">
 										<li class="nav-item"><a class="nav-link p-1"
